@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D7361C1029DAB3CF006F78D2 /* LoopingVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C0F29DAB3CF006F78D2 /* LoopingVideo.swift */; };
+		D7361C1229DAB64C006F78D2 /* splashScreen-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D7361C1129DAB402006F78D2 /* splashScreen-video.mp4 */; };
+		D7361C1629DAC50A006F78D2 /* SplitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C1529DAC50A006F78D2 /* SplitterView.swift */; };
+		D7361C1829DAC624006F78D2 /* FavoritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C1729DAC624006F78D2 /* FavoritesScreen.swift */; };
+		D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C1929DADC35006F78D2 /* RequestManager.swift */; };
+		D7361C2229DB2D3B006F78D2 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C2129DB2D3B006F78D2 /* Structs.swift */; };
+		D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */; };
+		D778901C29DB56C200044D10 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D778901B29DB56C200044D10 /* Alamofire */; };
+		D7ABA55529DAA28500CDA8DE /* Public_Transport_TrackingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA55429DAA28500CDA8DE /* Public_Transport_TrackingApp.swift */; };
+		D7ABA55929DAA28600CDA8DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7ABA55829DAA28600CDA8DE /* Assets.xcassets */; };
+		D7ABA55C29DAA28600CDA8DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7ABA55B29DAA28600CDA8DE /* Preview Assets.xcassets */; };
+		D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */; };
+		D7ABA56629DAA33600CDA8DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA56529DAA33600CDA8DE /* Constants.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D7361C0F29DAB3CF006F78D2 /* LoopingVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingVideo.swift; sourceTree = "<group>"; };
+		D7361C1129DAB402006F78D2 /* splashScreen-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "splashScreen-video.mp4"; path = "../../../../../Desktop/splashScreen-video.mp4"; sourceTree = "<group>"; };
+		D7361C1529DAC50A006F78D2 /* SplitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitterView.swift; sourceTree = "<group>"; };
+		D7361C1729DAC624006F78D2 /* FavoritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreen.swift; sourceTree = "<group>"; };
+		D7361C1929DADC35006F78D2 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		D7361C2129DB2D3B006F78D2 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingManager.swift; sourceTree = "<group>"; };
+		D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Public Transport Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7ABA55429DAA28500CDA8DE /* Public_Transport_TrackingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Public_Transport_TrackingApp.swift; sourceTree = "<group>"; };
+		D7ABA55829DAA28600CDA8DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D7ABA55B29DAA28600CDA8DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		D7ABA56529DAA33600CDA8DE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D7ABA54E29DAA28500CDA8DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D778901C29DB56C200044D10 /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D7ABA54829DAA28400CDA8DE = {
+			isa = PBXGroup;
+			children = (
+				D7ABA55329DAA28500CDA8DE /* Public-Transport-Tracking */,
+				D7ABA55229DAA28500CDA8DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D7ABA55229DAA28500CDA8DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D7ABA55329DAA28500CDA8DE /* Public-Transport-Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				D7361C1929DADC35006F78D2 /* RequestManager.swift */,
+				D7361C0F29DAB3CF006F78D2 /* LoopingVideo.swift */,
+				D7ABA56429DAA2CF00CDA8DE /* Interface */,
+				D7ABA55429DAA28500CDA8DE /* Public_Transport_TrackingApp.swift */,
+				D7ABA55829DAA28600CDA8DE /* Assets.xcassets */,
+				D7ABA55A29DAA28600CDA8DE /* Preview Content */,
+				D7ABA56529DAA33600CDA8DE /* Constants.swift */,
+				D7361C1129DAB402006F78D2 /* splashScreen-video.mp4 */,
+				D7361C2129DB2D3B006F78D2 /* Structs.swift */,
+				D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */,
+			);
+			path = "Public-Transport-Tracking";
+			sourceTree = "<group>";
+		};
+		D7ABA55A29DAA28600CDA8DE /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D7ABA55B29DAA28600CDA8DE /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D7ABA56429DAA2CF00CDA8DE /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */,
+				D7361C1529DAC50A006F78D2 /* SplitterView.swift */,
+				D7361C1729DAC624006F78D2 /* FavoritesScreen.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D7ABA55029DAA28500CDA8DE /* Public Transport Tracking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7ABA55F29DAA28600CDA8DE /* Build configuration list for PBXNativeTarget "Public Transport Tracking" */;
+			buildPhases = (
+				D7ABA54D29DAA28500CDA8DE /* Sources */,
+				D7ABA54E29DAA28500CDA8DE /* Frameworks */,
+				D7ABA54F29DAA28500CDA8DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Public Transport Tracking";
+			packageProductDependencies = (
+				D778901B29DB56C200044D10 /* Alamofire */,
+			);
+			productName = "Public Transport Tracking";
+			productReference = D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D7ABA54929DAA28400CDA8DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					D7ABA55029DAA28500CDA8DE = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = D7ABA54C29DAA28400CDA8DE /* Build configuration list for PBXProject "Public-Transport-Tracking" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D7ABA54829DAA28400CDA8DE;
+			packageReferences = (
+				D778901A29DB56C200044D10 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
+			productRefGroup = D7ABA55229DAA28500CDA8DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D7ABA55029DAA28500CDA8DE /* Public Transport Tracking */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D7ABA54F29DAA28500CDA8DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7361C1229DAB64C006F78D2 /* splashScreen-video.mp4 in Resources */,
+				D7ABA55C29DAA28600CDA8DE /* Preview Assets.xcassets in Resources */,
+				D7ABA55929DAA28600CDA8DE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D7ABA54D29DAA28500CDA8DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7361C2229DB2D3B006F78D2 /* Structs.swift in Sources */,
+				D7361C1029DAB3CF006F78D2 /* LoopingVideo.swift in Sources */,
+				D7361C1829DAC624006F78D2 /* FavoritesScreen.swift in Sources */,
+				D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */,
+				D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */,
+				D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */,
+				D7ABA55529DAA28500CDA8DE /* Public_Transport_TrackingApp.swift in Sources */,
+				D7ABA56629DAA33600CDA8DE /* Constants.swift in Sources */,
+				D7361C1629DAC50A006F78D2 /* SplitterView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D7ABA55D29DAA28600CDA8DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D7ABA55E29DAA28600CDA8DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D7ABA56029DAA28600CDA8DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Public Transport Tracking/Preview Content\"";
+				DEVELOPMENT_TEAM = GPQZ4K88YL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = RouteEase;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Mihnea.Public-Transport-Tracking";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D7ABA56129DAA28600CDA8DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Public Transport Tracking/Preview Content\"";
+				DEVELOPMENT_TEAM = GPQZ4K88YL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = RouteEase;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Mihnea.Public-Transport-Tracking";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D7ABA54C29DAA28400CDA8DE /* Build configuration list for PBXProject "Public-Transport-Tracking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7ABA55D29DAA28600CDA8DE /* Debug */,
+				D7ABA55E29DAA28600CDA8DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7ABA55F29DAA28600CDA8DE /* Build configuration list for PBXNativeTarget "Public Transport Tracking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7ABA56029DAA28600CDA8DE /* Debug */,
+				D7ABA56129DAA28600CDA8DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D778901A29DB56C200044D10 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D778901B29DB56C200044D10 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D778901A29DB56C200044D10 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = D7ABA54929DAA28400CDA8DE /* Project object */;
+}
