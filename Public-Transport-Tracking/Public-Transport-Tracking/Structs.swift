@@ -23,6 +23,7 @@ struct Vehicle: Codable, Hashable {
     let bikeAccessible: String?
     let wheelchairAccessible: String?
     var address : String?
+    var eta : Int?
     
     enum CodingKeys: String, CodingKey {
         case xProvider = "x_provider"

@@ -20,6 +20,7 @@
 		D7ABA55C29DAA28600CDA8DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7ABA55B29DAA28600CDA8DE /* Preview Assets.xcassets */; };
 		D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */; };
 		D7ABA56629DAA33600CDA8DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA56529DAA33600CDA8DE /* Constants.swift */; };
+		D7C8953629DC4D210090C97F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C8953529DC4D210090C97F /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		D7ABA55B29DAA28600CDA8DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		D7ABA56529DAA33600CDA8DE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D7C8953529DC4D210090C97F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D7C8953729DC4D8D0090C97F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Public-Transport-Tracking/Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +56,7 @@
 		D7ABA54829DAA28400CDA8DE = {
 			isa = PBXGroup;
 			children = (
+				D7C8953729DC4D8D0090C97F /* Info.plist */,
 				D7ABA55329DAA28500CDA8DE /* Public-Transport-Tracking */,
 				D7ABA55229DAA28500CDA8DE /* Products */,
 			);
@@ -69,6 +73,7 @@
 		D7ABA55329DAA28500CDA8DE /* Public-Transport-Tracking */ = {
 			isa = PBXGroup;
 			children = (
+				D7C8953529DC4D210090C97F /* LocationManager.swift */,
 				D7361C1929DADC35006F78D2 /* RequestManager.swift */,
 				D7361C0F29DAB3CF006F78D2 /* LoopingVideo.swift */,
 				D7ABA56429DAA2CF00CDA8DE /* Interface */,
@@ -180,6 +185,7 @@
 			files = (
 				D7361C2229DB2D3B006F78D2 /* Structs.swift in Sources */,
 				D7361C1029DAB3CF006F78D2 /* LoopingVideo.swift in Sources */,
+				D7C8953629DC4D210090C97F /* LocationManager.swift in Sources */,
 				D7361C1829DAC624006F78D2 /* FavoritesScreen.swift in Sources */,
 				D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */,
 				D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */,
@@ -314,12 +320,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Public Transport Tracking/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Public-Transport-Tracking/Preview Content\"";
 				DEVELOPMENT_TEAM = GPQZ4K88YL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Public-Transport-Tracking/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = RouteEase;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationUsageDescription = ETA;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ETA;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -348,12 +357,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Public Transport Tracking/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Public-Transport-Tracking/Preview Content\"";
 				DEVELOPMENT_TEAM = GPQZ4K88YL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Public-Transport-Tracking/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = RouteEase;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationUsageDescription = ETA;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ETA;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
