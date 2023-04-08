@@ -15,11 +15,14 @@ struct FavoritesScreen: View {
     @Binding var linii : [Linii]
     @Binding var routes : [Route]
     @StateObject var locationManager = LocationManager()
+    @State var trips = [Trip]()
     var vehicleTypes = ["Tramvai", "Metro", "Tren", "Autobus", "Ferry", "Cable tram", "Aerial Lift", "Funicular", "", "", "", "Troleibus", "Monorail"]
     var vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
     @State var adrese = [String]()
-    public var timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
+    public var timer = Timer.publish(every: 20, on: .main, in: .common).autoconnect()
+    @State private var loadingFirstTime = true
     let route = Constants.routes
+    
     var body: some View {
         NavigationView {
             VStack{
@@ -64,12 +67,12 @@ struct FavoritesScreen: View {
                                                 Text("STAȚIE CURENTĂ")
                                                     .font(.footnote)
                                                     .foregroundColor(.secondary)
-                                                Text("\(vehicle.statie ?? "Necunoscută") \(vehicle.routeId ?? 0)")
+                                                Text("\(vehicle.statie ?? "Necunoscută")")
                                                     .padding(.bottom)
-                                                Text("TUR/RETUR")
+                                                Text("SPRE")
                                                     .font(.footnote)
                                                     .foregroundColor(.secondary)
-                                                Text(vehicle.tripId?.last! == "0" ? "Tur" : "Retur")
+                                                Text(trips.first(where: {$0.tripId == vehicle.tripId ?? ""})?.tripHeadsign ?? "")
                                             }.padding([.trailing, .leading, .bottom])
                                             Spacer()
                                             VStack{
@@ -113,6 +116,20 @@ struct FavoritesScreen: View {
             .onAppear {
                 loadView()
             }
+            .onChange(of: loadingFirstTime, perform: { _ in
+                Task(priority: .high) {
+                    for j in 0..<linii.count {
+                        let tripid = linii[j].tripId
+                        let schedule = try! await RequestManager().getSchedule(line: tripid)
+                        let goodSchedule = BusCalculations().getGoodSchedules(schedule: schedule)
+                        for i in 0..<linii[j].vehicles.count {
+                            if i < goodSchedule.count {
+                                linii[j].vehicles[i].currentSchedule = goodSchedule
+                            }
+                        }
+                    }
+                }
+            })
             .navigationTitle("Favorite")
         }
     }
@@ -122,6 +139,7 @@ struct FavoritesScreen: View {
             var newVehicles = [Vehicle]()
             do {
                 newVehicles = try await RequestManager().getVehicles()
+                trips = try await RequestManager().getTrips()
             } catch let err {
                 print(err)
             }
@@ -138,6 +156,8 @@ struct FavoritesScreen: View {
             vehicles = vehicles.sorted(by: {Int(($0.tripId?.components(separatedBy: "_").first)!) ?? 0 < Int(($1.tripId?.components(separatedBy: "_").first)!) ?? 0})
             let stops = try? await RequestManager().getStops()
             linii.removeAll()
+            let currentUserLocation = CLLocation(latitude: locationManager.lastLocation?.coordinate.latitude ?? 0, longitude: locationManager.lastLocation?.coordinate.longitude ?? 0)
+            
             for i in 0...vehicles.count-1 {
                 if route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName ?? "" != linii.last?.tripId || linii.isEmpty {
                     linii.append(Linii(tripId: route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName ?? "", vehicles: [], favorite: false))
@@ -158,13 +178,17 @@ struct FavoritesScreen: View {
                         vehicles[i].routeLongName = route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeLongName
                         vehicles[i].statie = closestStopName
                         
-                        let currentUserLocation = CLLocation(latitude: locationManager.lastLocation?.coordinate.latitude ?? 0, longitude: locationManager.lastLocation?.coordinate.longitude ?? 0)
                         let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
                         let distance = currentUserLocation.distance(from: vehicleLocation) / 1000
                         vehicles[i].eta = Int(ceil(distance/Double((vehicles[i].speed ?? 1))*60))
+                        if vehicles[i].eta ?? 0 > 100 {
+                            vehicles[i].eta = 6
+                        }
+                        
                         linii[linii.count-1].vehicles.append(vehicles[i])
                     }
             }
+            loadingFirstTime = false
         }
     }
 }

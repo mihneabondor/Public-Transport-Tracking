@@ -53,4 +53,16 @@ class RequestManager {
         let responseData = try? DecodingManager().decodeStopTimes(jsonString: string)
         return responseData ?? [StopTime]()
     }
+    
+    func getSchedule(line : String) async throws -> Schedule {
+        let getRequest = AF.request("https://ctpcj-scraper-utwo.vercel.app/\(line).json", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [])
+        var responseJson : String!
+        do {
+            responseJson = try await getRequest.serializingString().value
+        } catch let err{
+            print(err)
+        }
+        let responseData = try? DecodingManager().decodeSchedule(jsonString: responseJson!)
+        return responseData ?? Schedule(name: nil, type: nil, route: nil, station: nil)
+    }
 }

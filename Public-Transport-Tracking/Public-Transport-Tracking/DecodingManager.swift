@@ -104,4 +104,20 @@ class DecodingManager {
         
         return stopTime
     }
+    
+    public func decodeSchedule(jsonString: String) throws -> Schedule {
+        let jsonData = jsonString.data(using: .utf8)!
+        let decoder = JSONDecoder()
+        var schedule : Schedule
+        
+        do {
+            schedule = try decoder.decode(Schedule.self, from: jsonData)
+        } catch let err {
+            print(err)
+            throw err
+        }
+        
+        return schedule
+    }
+    
 }

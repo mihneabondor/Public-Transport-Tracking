@@ -27,6 +27,7 @@ struct Vehicle: Codable, Hashable, Identifiable {
     var statie : String?
     var routeShortName : String?
     var routeLongName : String?
+    var currentSchedule = [[String()]]
     
     enum CodingKeys: String, CodingKey {
         case xProvider = "x_provider"
@@ -133,11 +134,36 @@ struct StopTime : Codable, Hashable{
 
 struct Annotation : Identifiable {
     let id = UUID()
+    var type : Int?
     var coordinates : CLLocationCoordinate2D
-    var type : Int // 0 vehicle 1 station
-    var shortName : String
-    var vehicleType : Int
-    var longName : String
-    var tripId : String
-    var statie : String
+    var vehicle : Vehicle?
+    var statie : Statie?
 }
+
+struct Schedule: Codable {
+    let name: String?
+    let type: String?
+    let route: String?
+    var station: Station?
+    
+    struct Station: Codable {
+        var lv: Line
+        var s: Line
+        var d: Line
+        
+        struct Line: Codable {
+            let serviceStart: String
+            let inStopName: String
+            let outStopName: String
+            var lines: [[String]]
+            
+            private enum CodingKeys: String, CodingKey {
+                case serviceStart = "service_start"
+                case inStopName = "in_stop_name"
+                case outStopName = "out_stop_name"
+                case lines
+            }
+        }
+    }
+}
+

@@ -28,8 +28,10 @@
 		D7ABA55C29DAA28600CDA8DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7ABA55B29DAA28600CDA8DE /* Preview Assets.xcassets */; };
 		D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */; };
 		D7ABA56629DAA33600CDA8DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA56529DAA33600CDA8DE /* Constants.swift */; };
+		D7AE9A3429E1A452008CE1C0 /* BusCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE9A3329E1A452008CE1C0 /* BusCalculations.swift */; };
 		D7C8953629DC4D210090C97F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C8953529DC4D210090C97F /* LocationManager.swift */; };
 		D7F8259929DDF53400A09A2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F8259829DDF53400A09A2B /* MapView.swift */; };
+		D7FBAB6F29E1E84A00299635 /* BusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FBAB6E29E1E84A00299635 /* BusDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,9 +59,11 @@
 		D7ABA55B29DAA28600CDA8DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		D7ABA56529DAA33600CDA8DE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D7AE9A3329E1A452008CE1C0 /* BusCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCalculations.swift; sourceTree = "<group>"; };
 		D7C8953529DC4D210090C97F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D7C8953729DC4D8D0090C97F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Public-Transport-Tracking/Info.plist"; sourceTree = "<group>"; };
 		D7F8259829DDF53400A09A2B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D7FBAB6E29E1E84A00299635 /* BusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 				D72E343A29DDE02D002974CE /* Resources */,
 				D7C8953529DC4D210090C97F /* LocationManager.swift */,
 				D7361C1929DADC35006F78D2 /* RequestManager.swift */,
+				D7AE9A3329E1A452008CE1C0 /* BusCalculations.swift */,
 				D7361C0F29DAB3CF006F78D2 /* LoopingVideo.swift */,
 				D7ABA56429DAA2CF00CDA8DE /* Interface */,
 				D7ABA55A29DAA28600CDA8DE /* Preview Content */,
@@ -160,6 +165,7 @@
 				D7F8259829DDF53400A09A2B /* MapView.swift */,
 				D705AAFA29DE7413008AC068 /* Marker.swift */,
 				D762021829E068870061A73A /* StationView.swift */,
+				D7FBAB6E29E1E84A00299635 /* BusDetailView.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -295,6 +301,8 @@
 				D762021929E068870061A73A /* StationView.swift in Sources */,
 				D7C8953629DC4D210090C97F /* LocationManager.swift in Sources */,
 				D7361C1829DAC624006F78D2 /* FavoritesScreen.swift in Sources */,
+				D7FBAB6F29E1E84A00299635 /* BusDetailView.swift in Sources */,
+				D7AE9A3429E1A452008CE1C0 /* BusCalculations.swift in Sources */,
 				D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */,
 				D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */,
 				D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */,
