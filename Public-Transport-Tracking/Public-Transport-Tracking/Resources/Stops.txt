@@ -1,0 +1,5182 @@
+[
+    {
+        "stop_id": 1,
+        "stop_name": "Disp. Clăbucet",
+        "stop_lat": 46.75144,
+        "stop_lon": 23.54292,
+        "location_type": 0
+    },
+    {
+        "stop_id": 2,
+        "stop_name": "Primăverii",
+        "stop_lat": 46.75181,
+        "stop_lon": 23.54553,
+        "location_type": 0
+    },
+    {
+        "stop_id": 3,
+        "stop_name": "Minerva",
+        "stop_lat": 46.7543,
+        "stop_lon": 23.5541,
+        "location_type": 0
+    },
+    {
+        "stop_id": 4,
+        "stop_name": "Izlazului",
+        "stop_lat": 46.755388,
+        "stop_lon": 23.561951,
+        "location_type": 0
+    },
+    {
+        "stop_id": 5,
+        "stop_name": "Calea Mănăștur",
+        "stop_lat": 46.760746,
+        "stop_lon": 23.564436,
+        "location_type": 0
+    },
+    {
+        "stop_id": 6,
+        "stop_name": "Agronomia",
+        "stop_lat": 46.76307,
+        "stop_lon": 23.57265,
+        "location_type": 0
+    },
+    {
+        "stop_id": 7,
+        "stop_name": "Calea Moților",
+        "stop_lat": 46.766114,
+        "stop_lon": 23.579605,
+        "location_type": 0
+    },
+    {
+        "stop_id": 8,
+        "stop_name": "Memorandumului Sud",
+        "stop_lat": 46.769625,
+        "stop_lon": 23.58712,
+        "location_type": 0
+    },
+    {
+        "stop_id": 9,
+        "stop_name": "Victoria",
+        "stop_lat": 46.77166,
+        "stop_lon": 23.59278,
+        "location_type": 0
+    },
+    {
+        "stop_id": 10,
+        "stop_name": "Regionala CFR",
+        "stop_lat": 46.772974,
+        "stop_lon": 23.596942,
+        "location_type": 0
+    },
+    {
+        "stop_id": 11,
+        "stop_name": "Ploiești",
+        "stop_lat": 46.776683,
+        "stop_lon": 23.597878,
+        "location_type": 0
+    },
+    {
+        "stop_id": 12,
+        "stop_name": "Paris",
+        "stop_lat": 46.782622,
+        "stop_lon": 23.600072,
+        "location_type": 0
+    },
+    {
+        "stop_id": 13,
+        "stop_name": "P-ța 1 Mai Sosire",
+        "stop_lat": 46.786269,
+        "stop_lon": 23.605687,
+        "location_type": 0
+    },
+    {
+        "stop_id": 14,
+        "stop_name": "P-ța 1 Mai",
+        "stop_lat": 46.786197,
+        "stop_lon": 23.605345,
+        "location_type": 0
+    },
+    {
+        "stop_id": 15,
+        "stop_name": "Barbu Patriciu",
+        "stop_lat": 46.783819,
+        "stop_lon": 23.601556,
+        "location_type": 0
+    },
+    {
+        "stop_id": 16,
+        "stop_name": "Ploiești Vest",
+        "stop_lat": 46.777331,
+        "stop_lon": 23.597785,
+        "location_type": 0
+    },
+    {
+        "stop_id": 17,
+        "stop_name": "Constanța",
+        "stop_lat": 46.77331,
+        "stop_lon": 23.5974,
+        "location_type": 0
+    },
+    {
+        "stop_id": 18,
+        "stop_name": "Memorandumului Nord",
+        "stop_lat": 46.769761,
+        "stop_lon": 23.586973,
+        "location_type": 0
+    },
+    {
+        "stop_id": 19,
+        "stop_name": "Spitalul de Copii",
+        "stop_lat": 46.766505,
+        "stop_lon": 23.58018,
+        "location_type": 0
+    },
+    {
+        "stop_id": 20,
+        "stop_name": "Fabrica de Bere",
+        "stop_lat": 46.763764,
+        "stop_lon": 23.573343,
+        "location_type": 0
+    },
+    {
+        "stop_id": 21,
+        "stop_name": "Grădini Mănăștur",
+        "stop_lat": 46.760893,
+        "stop_lon": 23.564105,
+        "location_type": 0
+    },
+    {
+        "stop_id": 22,
+        "stop_name": "Ion Meșter",
+        "stop_lat": 46.757138,
+        "stop_lon": 23.556415,
+        "location_type": 0
+    },
+    {
+        "stop_id": 23,
+        "stop_name": "Peana",
+        "stop_lat": 46.754602,
+        "stop_lon": 23.55472,
+        "location_type": 0
+    },
+    {
+        "stop_id": 24,
+        "stop_name": "Gârbău",
+        "stop_lat": 46.752349,
+        "stop_lon": 23.546936,
+        "location_type": 0
+    },
+    {
+        "stop_id": 25,
+        "stop_name": "P-ța Gării Vechi",
+        "stop_lat": 46.78427,
+        "stop_lon": 23.588314,
+        "location_type": 0
+    },
+    {
+        "stop_id": 26,
+        "stop_name": "Libertatea Est Tram",
+        "stop_lat": 46.788384,
+        "stop_lon": 23.59675,
+        "location_type": 0
+    },
+    {
+        "stop_id": 27,
+        "stop_name": "Primăria IRIS",
+        "stop_lat": 46.791846,
+        "stop_lon": 23.599423,
+        "location_type": 0
+    },
+    {
+        "stop_id": 28,
+        "stop_name": "IRIS Sud Tram",
+        "stop_lat": 46.795282,
+        "stop_lon": 23.602329,
+        "location_type": 0
+    },
+    {
+        "stop_id": 29,
+        "stop_name": "Oașului Sud Tram",
+        "stop_lat": 46.798725,
+        "stop_lon": 23.607031,
+        "location_type": 0
+    },
+    {
+        "stop_id": 30,
+        "stop_name": "TERAPIA Sud Tram",
+        "stop_lat": 46.797473,
+        "stop_lon": 23.613131,
+        "location_type": 0
+    },
+    {
+        "stop_id": 31,
+        "stop_name": "SINTEROM Sud Tram",
+        "stop_lat": 46.795651,
+        "stop_lon": 23.623661,
+        "location_type": 0
+    },
+    {
+        "stop_id": 32,
+        "stop_name": "TERMOROM Sud Tram",
+        "stop_lat": 46.795959,
+        "stop_lon": 23.631978,
+        "location_type": 0
+    },
+    {
+        "stop_id": 33,
+        "stop_name": "ERS CUG Sud",
+        "stop_lat": 46.79605,
+        "stop_lon": 23.63588,
+        "location_type": 0
+    },
+    {
+        "stop_id": 34,
+        "stop_name": "UNIMET Sud",
+        "stop_lat": 46.7963252,
+        "stop_lon": 23.6445177,
+        "location_type": 0
+    },
+    {
+        "stop_id": 35,
+        "stop_name": "Disp. Tram CUG",
+        "stop_lat": 46.796505,
+        "stop_lon": 23.646548,
+        "location_type": 0
+    },
+    {
+        "stop_id": 36,
+        "stop_name": "UNIMET Nord",
+        "stop_lat": 46.796411,
+        "stop_lon": 23.644727,
+        "location_type": 0
+    },
+    {
+        "stop_id": 37,
+        "stop_name": "ERS CUG Nord Tram",
+        "stop_lat": 46.796126,
+        "stop_lon": 23.637238,
+        "location_type": 0
+    },
+    {
+        "stop_id": 38,
+        "stop_name": "TERMOROM Nord Tram",
+        "stop_lat": 46.796003,
+        "stop_lon": 23.630015,
+        "location_type": 0
+    },
+    {
+        "stop_id": 39,
+        "stop_name": "SINTEROM Nord Tram",
+        "stop_lat": 46.796104,
+        "stop_lon": 23.620705,
+        "location_type": 0
+    },
+    {
+        "stop_id": 40,
+        "stop_name": "TERAPIA Nord Tram",
+        "stop_lat": 46.797571,
+        "stop_lon": 23.613399,
+        "location_type": 0
+    },
+    {
+        "stop_id": 41,
+        "stop_name": "Oașului Nord Tram",
+        "stop_lat": 46.798176,
+        "stop_lon": 23.606105,
+        "location_type": 0
+    },
+    {
+        "stop_id": 42,
+        "stop_name": "IRIS Nord Tram",
+        "stop_lat": 46.795242,
+        "stop_lon": 23.601957,
+        "location_type": 0
+    },
+    {
+        "stop_id": 43,
+        "stop_name": "P-ța Liebknecht",
+        "stop_lat": 46.79186,
+        "stop_lon": 23.599357,
+        "location_type": 0
+    },
+    {
+        "stop_id": 44,
+        "stop_name": "Libertatea Vest Tram",
+        "stop_lat": 46.787476,
+        "stop_lon": 23.596562,
+        "location_type": 0
+    },
+    {
+        "stop_id": 45,
+        "stop_name": "P-ța Gării Noi",
+        "stop_lat": 46.784092,
+        "stop_lon": 23.586912,
+        "location_type": 0
+    },
+    {
+        "stop_id": 46,
+        "stop_name": "Disp. Bucium",
+        "stop_lat": 46.7517,
+        "stop_lon": 23.54342,
+        "location_type": 0
+    },
+    {
+        "stop_id": 47,
+        "stop_name": "Baza Unirea",
+        "stop_lat": 46.751669,
+        "stop_lon": 23.544786,
+        "location_type": 0
+    },
+    {
+        "stop_id": 48,
+        "stop_name": "Parâng",
+        "stop_lat": 46.754351,
+        "stop_lon": 23.554037,
+        "location_type": 0
+    },
+    {
+        "stop_id": 49,
+        "stop_name": "Calvaria",
+        "stop_lat": 46.759248,
+        "stop_lon": 23.557351,
+        "location_type": 0
+    },
+    {
+        "stop_id": 50,
+        "stop_name": "Plopilor Sud",
+        "stop_lat": 46.762801,
+        "stop_lon": 23.560653,
+        "location_type": 0
+    },
+    {
+        "stop_id": 51,
+        "stop_name": "Uzinei Electrice",
+        "stop_lat": 46.76717,
+        "stop_lon": 23.568203,
+        "location_type": 0
+    },
+    {
+        "stop_id": 52,
+        "stop_name": "Cluj Arena",
+        "stop_lat": 46.768025,
+        "stop_lon": 23.570274,
+        "location_type": 0
+    },
+    {
+        "stop_id": 53,
+        "stop_name": "Parcul Central",
+        "stop_lat": 46.772013,
+        "stop_lon": 23.583535,
+        "location_type": 0
+    },
+    {
+        "stop_id": 54,
+        "stop_name": "G. Barițiu",
+        "stop_lat": 46.77347,
+        "stop_lon": 23.587791,
+        "location_type": 0
+    },
+    {
+        "stop_id": 55,
+        "stop_name": "Facultatea de Litere",
+        "stop_lat": 46.777704,
+        "stop_lon": 23.587212,
+        "location_type": 0
+    },
+    {
+        "stop_id": 56,
+        "stop_name": "P-ța Gării Nord",
+        "stop_lat": 46.784078,
+        "stop_lon": 23.586025,
+        "location_type": 0
+    },
+    {
+        "stop_id": 57,
+        "stop_name": "Horea",
+        "stop_lat": 46.777206,
+        "stop_lon": 23.587097,
+        "location_type": 0
+    },
+    {
+        "stop_id": 58,
+        "stop_name": "Opera Maghiară Est",
+        "stop_lat": 46.772077,
+        "stop_lon": 23.583626,
+        "location_type": 0
+    },
+    {
+        "stop_id": 59,
+        "stop_name": "Splaiul Independenței",
+        "stop_lat": 46.768039,
+        "stop_lon": 23.570164,
+        "location_type": 0
+    },
+    {
+        "stop_id": 60,
+        "stop_name": "Sala Sporturilor",
+        "stop_lat": 46.767102,
+        "stop_lon": 23.567468,
+        "location_type": 0
+    },
+    {
+        "stop_id": 61,
+        "stop_name": "Plopilor Nord",
+        "stop_lat": 46.762847,
+        "stop_lon": 23.560146,
+        "location_type": 0
+    },
+    {
+        "stop_id": 62,
+        "stop_name": "Gr. Alexandrescu",
+        "stop_lat": 46.758147,
+        "stop_lon": 23.556769,
+        "location_type": 0
+    },
+    {
+        "stop_id": 63,
+        "stop_name": "Răvașului",
+        "stop_lat": 46.753856,
+        "stop_lon": 23.551061,
+        "location_type": 0
+    },
+    {
+        "stop_id": 64,
+        "stop_name": "Clăbucet",
+        "stop_lat": 46.751695,
+        "stop_lon": 23.544688,
+        "location_type": 0
+    },
+    {
+        "stop_id": 65,
+        "stop_name": "Amberger Sud",
+        "stop_lat": 46.796805,
+        "stop_lon": 23.655544,
+        "location_type": 0
+    },
+    {
+        "stop_id": 66,
+        "stop_name": "DEPOU Vest",
+        "stop_lat": 46.796204,
+        "stop_lon": 23.658989,
+        "location_type": 0
+    },
+    {
+        "stop_id": 67,
+        "stop_name": "DEPOU_Tram",
+        "stop_lat": 46.795754,
+        "stop_lon": 23.660279,
+        "location_type": 0
+    },
+    {
+        "stop_id": 68,
+        "stop_name": "DEPOU Est",
+        "stop_lat": 46.796123,
+        "stop_lon": 23.659184,
+        "location_type": 0
+    },
+    {
+        "stop_id": 69,
+        "stop_name": "Amberger Nord",
+        "stop_lat": 46.796894,
+        "stop_lon": 23.655155,
+        "location_type": 0
+    },
+    {
+        "stop_id": 70,
+        "stop_name": "P-ța M. Viteazul Sud",
+        "stop_lat": 46.773948,
+        "stop_lon": 23.589421,
+        "location_type": 0
+    },
+    {
+        "stop_id": 71,
+        "stop_name": "Sora",
+        "stop_lat": 46.771728,
+        "stop_lon": 23.592111,
+        "location_type": 0
+    },
+    {
+        "stop_id": 72,
+        "stop_name": "Bâlea Vest",
+        "stop_lat": 46.752366,
+        "stop_lon": 23.564871,
+        "location_type": 0
+    },
+    {
+        "stop_id": 73,
+        "stop_name": "Dimitrie Gusti",
+        "stop_lat": 46.748753,
+        "stop_lon": 23.562796,
+        "location_type": 0
+    },
+    {
+        "stop_id": 74,
+        "stop_name": "E.Quinet Vest",
+        "stop_lat": 46.747346,
+        "stop_lon": 23.564256,
+        "location_type": 0
+    },
+    {
+        "stop_id": 75,
+        "stop_name": "E.Quinet Sud",
+        "stop_lat": 46.74273,
+        "stop_lon": 23.565325,
+        "location_type": 0
+    },
+    {
+        "stop_id": 76,
+        "stop_name": "E. Quinet Nord",
+        "stop_lat": 46.747922,
+        "stop_lon": 23.56341,
+        "location_type": 0
+    },
+    {
+        "stop_id": 77,
+        "stop_name": "A.N.L.",
+        "stop_lat": 46.750165,
+        "stop_lon": 23.557924,
+        "location_type": 0
+    },
+    {
+        "stop_id": 78,
+        "stop_name": "Grădinița Mehedinți",
+        "stop_lat": 46.753344,
+        "stop_lon": 23.558464,
+        "location_type": 0
+    },
+    {
+        "stop_id": 79,
+        "stop_name": "Central",
+        "stop_lat": 46.772883,
+        "stop_lon": 23.58888,
+        "location_type": 0
+    },
+    {
+        "stop_id": 80,
+        "stop_name": "P-ța M.Viteazu Sosire",
+        "stop_lat": 46.773931,
+        "stop_lon": 23.589312,
+        "location_type": 0
+    },
+    {
+        "stop_id": 81,
+        "stop_name": "Biserica Borhanci Est",
+        "stop_lat": 46.743998,
+        "stop_lon": 23.651126,
+        "location_type": 0
+    },
+    {
+        "stop_id": 82,
+        "stop_name": "Voievodul Menumorut Est",
+        "stop_lat": 46.747068,
+        "stop_lon": 23.647465,
+        "location_type": 0
+    },
+    {
+        "stop_id": 83,
+        "stop_name": "Voievodul Gelu Est",
+        "stop_lat": 46.750523,
+        "stop_lon": 23.639048,
+        "location_type": 0
+    },
+    {
+        "stop_id": 84,
+        "stop_name": "Theodor Pallady",
+        "stop_lat": 46.752671,
+        "stop_lon": 23.634129,
+        "location_type": 0
+    },
+    {
+        "stop_id": 85,
+        "stop_name": "Borhanciului",
+        "stop_lat": 46.754861,
+        "stop_lon": 23.627982,
+        "location_type": 0
+    },
+    {
+        "stop_id": 86,
+        "stop_name": "Alverna Est",
+        "stop_lat": 46.758496,
+        "stop_lon": 23.617117,
+        "location_type": 0
+    },
+    {
+        "stop_id": 87,
+        "stop_name": "Mălinului Est",
+        "stop_lat": 46.760177,
+        "stop_lon": 23.614318,
+        "location_type": 0
+    },
+    {
+        "stop_id": 88,
+        "stop_name": "C-tin Brâncoveanu Est",
+        "stop_lat": 46.76341,
+        "stop_lon": 23.608802,
+        "location_type": 0
+    },
+    {
+        "stop_id": 89,
+        "stop_name": "P-ța Cipariu Nord",
+        "stop_lat": 46.768366,
+        "stop_lon": 23.599376,
+        "location_type": 0
+    },
+    {
+        "stop_id": 90,
+        "stop_name": "P-ța Avram Iancu",
+        "stop_lat": 46.771364,
+        "stop_lon": 23.597349,
+        "location_type": 0
+    },
+    {
+        "stop_id": 92,
+        "stop_name": "Opera",
+        "stop_lat": 46.76966,
+        "stop_lon": 23.59709,
+        "location_type": 0
+    },
+    {
+        "stop_id": 93,
+        "stop_name": "P-ța Cipariu Sud",
+        "stop_lat": 46.76741,
+        "stop_lon": 23.601408,
+        "location_type": 0
+    },
+    {
+        "stop_id": 94,
+        "stop_name": "C-tin Brâncoveanu Vest",
+        "stop_lat": 46.763399,
+        "stop_lon": 23.608518,
+        "location_type": 0
+    },
+    {
+        "stop_id": 95,
+        "stop_name": "Mălinului Vest",
+        "stop_lat": 46.760187,
+        "stop_lon": 23.613899,
+        "location_type": 0
+    },
+    {
+        "stop_id": 96,
+        "stop_name": "Alverna Vest",
+        "stop_lat": 46.758116,
+        "stop_lon": 23.61752,
+        "location_type": 0
+    },
+    {
+        "stop_id": 97,
+        "stop_name": "Antim Ivireanul",
+        "stop_lat": 46.754623,
+        "stop_lon": 23.62803,
+        "location_type": 0
+    },
+    {
+        "stop_id": 98,
+        "stop_name": "Violetelor",
+        "stop_lat": 46.752529,
+        "stop_lon": 23.634521,
+        "location_type": 0
+    },
+    {
+        "stop_id": 99,
+        "stop_name": "Voievodul Gelu Vest",
+        "stop_lat": 46.750304,
+        "stop_lon": 23.639276,
+        "location_type": 0
+    },
+    {
+        "stop_id": 100,
+        "stop_name": "Voievodul Menumorut Vest",
+        "stop_lat": 46.747192,
+        "stop_lon": 23.647173,
+        "location_type": 0
+    },
+    {
+        "stop_id": 101,
+        "stop_name": "Biserica Borhanci Vest",
+        "stop_lat": 46.743789,
+        "stop_lon": 23.6511,
+        "location_type": 0
+    },
+    {
+        "stop_id": 102,
+        "stop_name": "P-ța M. Viteazul Vest",
+        "stop_lat": 46.77415,
+        "stop_lon": 23.59032,
+        "location_type": 0
+    },
+    {
+        "stop_id": 103,
+        "stop_name": "P-ța I Agârbiceanu Vest",
+        "stop_lat": 46.761734,
+        "stop_lon": 23.605711,
+        "location_type": 0
+    },
+    {
+        "stop_id": 104,
+        "stop_name": "Drapelului Vest",
+        "stop_lat": 46.757282,
+        "stop_lon": 23.608267,
+        "location_type": 0
+    },
+    {
+        "stop_id": 105,
+        "stop_name": "Becas Vest",
+        "stop_lat": 46.754373,
+        "stop_lon": 23.611265,
+        "location_type": 0
+    },
+    {
+        "stop_id": 106,
+        "stop_name": "Fagului",
+        "stop_lat": 46.752844,
+        "stop_lon": 23.610809,
+        "location_type": 0
+    },
+    {
+        "stop_id": 107,
+        "stop_name": "Trifoiului Nord",
+        "stop_lat": 46.74977,
+        "stop_lon": 23.60451,
+        "location_type": 0
+    },
+    {
+        "stop_id": 108,
+        "stop_name": "Vitacom Nord",
+        "stop_lat": 46.74893,
+        "stop_lon": 23.60102,
+        "location_type": 0
+    },
+    {
+        "stop_id": 109,
+        "stop_name": "Compl. Tempus Nord",
+        "stop_lat": 46.74789,
+        "stop_lon": 23.59653,
+        "location_type": 0
+    },
+    {
+        "stop_id": 110,
+        "stop_name": "Centrul Medical",
+        "stop_lat": 46.745514,
+        "stop_lon": 23.592468,
+        "location_type": 0
+    },
+    {
+        "stop_id": 111,
+        "stop_name": "Drum Făget",
+        "stop_lat": 46.740004,
+        "stop_lon": 23.591305,
+        "location_type": 0
+    },
+    {
+        "stop_id": 112,
+        "stop_name": "Dacia Service Sosire",
+        "stop_lat": 46.741098,
+        "stop_lon": 23.591828,
+        "location_type": 0
+    },
+    {
+        "stop_id": 113,
+        "stop_name": "Dacia Service",
+        "stop_lat": 46.741158,
+        "stop_lon": 23.591863,
+        "location_type": 0
+    },
+    {
+        "stop_id": 114,
+        "stop_name": "Compexit",
+        "stop_lat": 46.74627,
+        "stop_lon": 23.59276,
+        "location_type": 0
+    },
+    {
+        "stop_id": 115,
+        "stop_name": "Compl. Tempus Sud",
+        "stop_lat": 46.74794,
+        "stop_lon": 23.59709,
+        "location_type": 0
+    },
+    {
+        "stop_id": 116,
+        "stop_name": "Vitacom Sud",
+        "stop_lat": 46.74895,
+        "stop_lon": 23.60143,
+        "location_type": 0
+    },
+    {
+        "stop_id": 117,
+        "stop_name": "Trifoiului Sud",
+        "stop_lat": 46.750124,
+        "stop_lon": 23.6064,
+        "location_type": 0
+    },
+    {
+        "stop_id": 118,
+        "stop_name": "Becas Est",
+        "stop_lat": 46.754674,
+        "stop_lon": 23.611266,
+        "location_type": 0
+    },
+    {
+        "stop_id": 119,
+        "stop_name": "Drapelului Est",
+        "stop_lat": 46.757181,
+        "stop_lon": 23.608643,
+        "location_type": 0
+    },
+    {
+        "stop_id": 120,
+        "stop_name": "P-ța I Agârbiceanu Est",
+        "stop_lat": 46.760554,
+        "stop_lon": 23.606599,
+        "location_type": 0
+    },
+    {
+        "stop_id": 121,
+        "stop_name": "Andrei Mureșanu",
+        "stop_lat": 46.764205,
+        "stop_lon": 23.602114,
+        "location_type": 0
+    },
+    {
+        "stop_id": 122,
+        "stop_name": "PMV 2 Sosire",
+        "stop_lat": 46.77473,
+        "stop_lon": 23.589816,
+        "location_type": 0
+    },
+    {
+        "stop_id": 123,
+        "stop_name": "P-ța Gării Sud",
+        "stop_lat": 46.784159,
+        "stop_lon": 23.588321,
+        "location_type": 0
+    },
+    {
+        "stop_id": 124,
+        "stop_name": "Traian",
+        "stop_lat": 46.780757,
+        "stop_lon": 23.591662,
+        "location_type": 0
+    },
+    {
+        "stop_id": 125,
+        "stop_name": "Dacia",
+        "stop_lat": 46.77558,
+        "stop_lon": 23.58912,
+        "location_type": 0
+    },
+    {
+        "stop_id": 126,
+        "stop_name": "Ion Creangă",
+        "stop_lat": 46.763827,
+        "stop_lon": 23.587554,
+        "location_type": 0
+    },
+    {
+        "stop_id": 127,
+        "stop_name": "Hașdeu",
+        "stop_lat": 46.763148,
+        "stop_lon": 23.583673,
+        "location_type": 0
+    },
+    {
+        "stop_id": 128,
+        "stop_name": "C. Porumbescu",
+        "stop_lat": 46.761169,
+        "stop_lon": 23.581086,
+        "location_type": 0
+    },
+    {
+        "stop_id": 129,
+        "stop_name": "Boli Infecțioase Sosire",
+        "stop_lat": 46.760168,
+        "stop_lon": 23.58321,
+        "location_type": 0
+    },
+    {
+        "stop_id": 130,
+        "stop_name": "Sp. de Boli Infecțioase",
+        "stop_lat": 46.760282,
+        "stop_lon": 23.58355,
+        "location_type": 0
+    },
+    {
+        "stop_id": 131,
+        "stop_name": "V. Babeș",
+        "stop_lat": 46.763785,
+        "stop_lon": 23.58488,
+        "location_type": 0
+    },
+    {
+        "stop_id": 132,
+        "stop_name": "Cloșca",
+        "stop_lat": 46.777272,
+        "stop_lon": 23.5873,
+        "location_type": 0
+    },
+    {
+        "stop_id": 133,
+        "stop_name": "P-ța Gării Sosire",
+        "stop_lat": 46.78419,
+        "stop_lon": 23.58805,
+        "location_type": 0
+    },
+    {
+        "stop_id": 134,
+        "stop_name": "Cuza Vodă",
+        "stop_lat": 46.774092,
+        "stop_lon": 23.591412,
+        "location_type": 0
+    },
+    {
+        "stop_id": 135,
+        "stop_name": "Răsăritului",
+        "stop_lat": 46.785624,
+        "stop_lon": 23.605608,
+        "location_type": 0
+    },
+    {
+        "stop_id": 136,
+        "stop_name": "Haltă Mărăști",
+        "stop_lat": 46.785321,
+        "stop_lon": 23.61182,
+        "location_type": 0
+    },
+    {
+        "stop_id": 137,
+        "stop_name": "Bobâlnei Est",
+        "stop_lat": 46.787973,
+        "stop_lon": 23.615308,
+        "location_type": 0
+    },
+    {
+        "stop_id": 138,
+        "stop_name": "Terapia Est",
+        "stop_lat": 46.796106,
+        "stop_lon": 23.613441,
+        "location_type": 0
+    },
+    {
+        "stop_id": 139,
+        "stop_name": "SINTEROM Sud",
+        "stop_lat": 46.795774,
+        "stop_lon": 23.621411,
+        "location_type": 0
+    },
+    {
+        "stop_id": 140,
+        "stop_name": "SIETA",
+        "stop_lat": 46.795401,
+        "stop_lon": 23.627704,
+        "location_type": 0
+    },
+    {
+        "stop_id": 141,
+        "stop_name": "TERMOROM Sud",
+        "stop_lat": 46.795899,
+        "stop_lon": 23.630945,
+        "location_type": 0
+    },
+    {
+        "stop_id": 142,
+        "stop_name": "ERS CUG S.",
+        "stop_lat": 46.795851,
+        "stop_lon": 23.635392,
+        "location_type": 0
+    },
+    {
+        "stop_id": 143,
+        "stop_name": "Disp. ERS CUG",
+        "stop_lat": 46.795839,
+        "stop_lon": 23.635481,
+        "location_type": 0
+    },
+    {
+        "stop_id": 144,
+        "stop_name": "ERS CUG Nord",
+        "stop_lat": 46.7961,
+        "stop_lon": 23.63452,
+        "location_type": 0
+    },
+    {
+        "stop_id": 145,
+        "stop_name": "TERMOROM Nord",
+        "stop_lat": 46.796027,
+        "stop_lon": 23.630385,
+        "location_type": 0
+    },
+    {
+        "stop_id": 146,
+        "stop_name": "SINTEROM Nord",
+        "stop_lat": 46.796248,
+        "stop_lon": 23.620074,
+        "location_type": 0
+    },
+    {
+        "stop_id": 147,
+        "stop_name": "Terapia Vest",
+        "stop_lat": 46.796562,
+        "stop_lon": 23.612796,
+        "location_type": 0
+    },
+    {
+        "stop_id": 148,
+        "stop_name": "Bobalnei Vest",
+        "stop_lat": 46.787301,
+        "stop_lon": 23.614705,
+        "location_type": 0
+    },
+    {
+        "stop_id": 149,
+        "stop_name": "Anton Pann",
+        "stop_lat": 46.779989,
+        "stop_lon": 23.595073,
+        "location_type": 0
+    },
+    {
+        "stop_id": 150,
+        "stop_name": "DEPOU Tram Sud",
+        "stop_lat": 46.797033,
+        "stop_lon": 23.660562,
+        "location_type": 0
+    },
+    {
+        "stop_id": 151,
+        "stop_name": "Emerson Sosire",
+        "stop_lat": 46.79553,
+        "stop_lon": 23.66477,
+        "location_type": 0
+    },
+    {
+        "stop_id": 152,
+        "stop_name": "EMERSON",
+        "stop_lat": 46.79447,
+        "stop_lon": 23.6648,
+        "location_type": 0
+    },
+    {
+        "stop_id": 153,
+        "stop_name": "DEPOU Tram Nord",
+        "stop_lat": 46.797153,
+        "stop_lon": 23.660452,
+        "location_type": 0
+    },
+    {
+        "stop_id": 154,
+        "stop_name": "Disp. Unirii",
+        "stop_lat": 46.76814,
+        "stop_lon": 23.6302,
+        "location_type": 0
+    },
+    {
+        "stop_id": 155,
+        "stop_name": "Unirii",
+        "stop_lat": 46.76896,
+        "stop_lon": 23.62968,
+        "location_type": 0
+    },
+    {
+        "stop_id": 156,
+        "stop_name": "Colegiul Pedagogic",
+        "stop_lat": 46.769986,
+        "stop_lon": 23.628161,
+        "location_type": 0
+    },
+    {
+        "stop_id": 157,
+        "stop_name": "Iulius Mall Est",
+        "stop_lat": 46.771181,
+        "stop_lon": 23.626202,
+        "location_type": 0
+    },
+    {
+        "stop_id": 158,
+        "stop_name": "Campus Universitar Est",
+        "stop_lat": 46.77404,
+        "stop_lon": 23.621928,
+        "location_type": 0
+    },
+    {
+        "stop_id": 159,
+        "stop_name": "Arte Plastice",
+        "stop_lat": 46.778912,
+        "stop_lon": 23.617318,
+        "location_type": 0
+    },
+    {
+        "stop_id": 160,
+        "stop_name": "Crinului",
+        "stop_lat": 46.777896,
+        "stop_lon": 23.611691,
+        "location_type": 0
+    },
+    {
+        "stop_id": 161,
+        "stop_name": "Someș",
+        "stop_lat": 46.776001,
+        "stop_lon": 23.604771,
+        "location_type": 0
+    },
+    {
+        "stop_id": 162,
+        "stop_name": "Taberei",
+        "stop_lat": 46.758873,
+        "stop_lon": 23.550973,
+        "location_type": 0
+    },
+    {
+        "stop_id": 163,
+        "stop_name": "Calea Florești",
+        "stop_lat": 46.757718,
+        "stop_lon": 23.545813,
+        "location_type": 0
+    },
+    {
+        "stop_id": 164,
+        "stop_name": "Colina",
+        "stop_lat": 46.752803,
+        "stop_lon": 23.543384,
+        "location_type": 0
+    },
+    {
+        "stop_id": 165,
+        "stop_name": "Bucium",
+        "stop_lat": 46.752778,
+        "stop_lon": 23.543685,
+        "location_type": 0
+    },
+    {
+        "stop_id": 166,
+        "stop_name": "Ciobanului",
+        "stop_lat": 46.75767,
+        "stop_lon": 23.546532,
+        "location_type": 0
+    },
+    {
+        "stop_id": 167,
+        "stop_name": "P-ța Flora",
+        "stop_lat": 46.758616,
+        "stop_lon": 23.550912,
+        "location_type": 0
+    },
+    {
+        "stop_id": 168,
+        "stop_name": "Biserica Sf. Petru",
+        "stop_lat": 46.775881,
+        "stop_lon": 23.605046,
+        "location_type": 0
+    },
+    {
+        "stop_id": 169,
+        "stop_name": "P-ța Mărăști",
+        "stop_lat": 46.777569,
+        "stop_lon": 23.611278,
+        "location_type": 0
+    },
+    {
+        "stop_id": 170,
+        "stop_name": "Mareșal C-tin Prezan",
+        "stop_lat": 46.778392,
+        "stop_lon": 23.615791,
+        "location_type": 0
+    },
+    {
+        "stop_id": 171,
+        "stop_name": "Dorobanților",
+        "stop_lat": 46.777332,
+        "stop_lon": 23.620178,
+        "location_type": 0
+    },
+    {
+        "stop_id": 172,
+        "stop_name": "Campus Universitar Vest",
+        "stop_lat": 46.774108,
+        "stop_lon": 23.621661,
+        "location_type": 0
+    },
+    {
+        "stop_id": 173,
+        "stop_name": "Iulius Mall Vest",
+        "stop_lat": 46.771454,
+        "stop_lon": 23.625208,
+        "location_type": 0
+    },
+    {
+        "stop_id": 174,
+        "stop_name": "Valeriu Bologa",
+        "stop_lat": 46.769819,
+        "stop_lon": 23.628204,
+        "location_type": 0
+    },
+    {
+        "stop_id": 175,
+        "stop_name": "Nodul N Nord",
+        "stop_lat": 46.756427,
+        "stop_lon": 23.539941,
+        "location_type": 0
+    },
+    {
+        "stop_id": 176,
+        "stop_name": "POLUS Sosire",
+        "stop_lat": 46.752679,
+        "stop_lon": 23.533082,
+        "location_type": 0
+    },
+    {
+        "stop_id": 177,
+        "stop_name": "POLUS",
+        "stop_lat": 46.753078,
+        "stop_lon": 23.533027,
+        "location_type": 0
+    },
+    {
+        "stop_id": 178,
+        "stop_name": "Snagov Nord",
+        "stop_lat": 46.767956,
+        "stop_lon": 23.628429,
+        "location_type": 0
+    },
+    {
+        "stop_id": 179,
+        "stop_name": "Borsec Nord",
+        "stop_lat": 46.768385,
+        "stop_lon": 23.622399,
+        "location_type": 0
+    },
+    {
+        "stop_id": 180,
+        "stop_name": "Bistriței",
+        "stop_lat": 46.769125,
+        "stop_lon": 23.616744,
+        "location_type": 0
+    },
+    {
+        "stop_id": 181,
+        "stop_name": "Septimiu Albini Nord",
+        "stop_lat": 46.769257,
+        "stop_lon": 23.608112,
+        "location_type": 0
+    },
+    {
+        "stop_id": 182,
+        "stop_name": "Disp. Grigorescu",
+        "stop_lat": 46.764756,
+        "stop_lon": 23.548668,
+        "location_type": 0
+    },
+    {
+        "stop_id": 183,
+        "stop_name": "Radio România Cluj",
+        "stop_lat": 46.765554,
+        "stop_lon": 23.549114,
+        "location_type": 0
+    },
+    {
+        "stop_id": 184,
+        "stop_name": "Petuniei",
+        "stop_lat": 46.769625,
+        "stop_lon": 23.555579,
+        "location_type": 0
+    },
+    {
+        "stop_id": 185,
+        "stop_name": "Iancu de Hunedoara",
+        "stop_lat": 46.770317,
+        "stop_lon": 23.562296,
+        "location_type": 0
+    },
+    {
+        "stop_id": 186,
+        "stop_name": "P-ța 14 Iulie Sud",
+        "stop_lat": 46.770739,
+        "stop_lon": 23.566356,
+        "location_type": 0
+    },
+    {
+        "stop_id": 187,
+        "stop_name": "Hotel Napoca",
+        "stop_lat": 46.771709,
+        "stop_lon": 23.575812,
+        "location_type": 0
+    },
+    {
+        "stop_id": 188,
+        "stop_name": "Dragalina Sud",
+        "stop_lat": 46.772555,
+        "stop_lon": 23.582338,
+        "location_type": 0
+    },
+    {
+        "stop_id": 189,
+        "stop_name": "Libertatea Est",
+        "stop_lat": 46.787334,
+        "stop_lon": 23.596808,
+        "location_type": 0
+    },
+    {
+        "stop_id": 190,
+        "stop_name": "Gh. Asachi",
+        "stop_lat": 46.791379,
+        "stop_lon": 23.599237,
+        "location_type": 0
+    },
+    {
+        "stop_id": 191,
+        "stop_name": "IRIS Sud",
+        "stop_lat": 46.795601,
+        "stop_lon": 23.602924,
+        "location_type": 0
+    },
+    {
+        "stop_id": 192,
+        "stop_name": "Oașului Sud",
+        "stop_lat": 46.798262,
+        "stop_lon": 23.606476,
+        "location_type": 0
+    },
+    {
+        "stop_id": 193,
+        "stop_name": "TERAPIA Sud",
+        "stop_lat": 46.797524,
+        "stop_lon": 23.612878,
+        "location_type": 0
+    },
+    {
+        "stop_id": 194,
+        "stop_name": "TERAPIA Nord",
+        "stop_lat": 46.797442,
+        "stop_lon": 23.614097,
+        "location_type": 0
+    },
+    {
+        "stop_id": 195,
+        "stop_name": "Oașului Nord",
+        "stop_lat": 46.798388,
+        "stop_lon": 23.606363,
+        "location_type": 0
+    },
+    {
+        "stop_id": 196,
+        "stop_name": "IRIS Nord",
+        "stop_lat": 46.795726,
+        "stop_lon": 23.602794,
+        "location_type": 0
+    },
+    {
+        "stop_id": 197,
+        "stop_name": "Puieților",
+        "stop_lat": 46.79206,
+        "stop_lon": 23.599398,
+        "location_type": 0
+    },
+    {
+        "stop_id": 198,
+        "stop_name": "Libertatea Vest",
+        "stop_lat": 46.788342,
+        "stop_lon": 23.596593,
+        "location_type": 0
+    },
+    {
+        "stop_id": 199,
+        "stop_name": "P-ța Gării Vest",
+        "stop_lat": 46.782488,
+        "stop_lon": 23.587407,
+        "location_type": 0
+    },
+    {
+        "stop_id": 200,
+        "stop_name": "Școala Horea",
+        "stop_lat": 46.776683,
+        "stop_lon": 23.58698,
+        "location_type": 0
+    },
+    {
+        "stop_id": 201,
+        "stop_name": "Dragalina Nord",
+        "stop_lat": 46.772711,
+        "stop_lon": 23.582387,
+        "location_type": 0
+    },
+    {
+        "stop_id": 202,
+        "stop_name": "Octavian Goga",
+        "stop_lat": 46.771743,
+        "stop_lon": 23.574949,
+        "location_type": 0
+    },
+    {
+        "stop_id": 203,
+        "stop_name": "P-ța 14 Iulie Nord",
+        "stop_lat": 46.771027,
+        "stop_lon": 23.567771,
+        "location_type": 0
+    },
+    {
+        "stop_id": 204,
+        "stop_name": "Al. Vlahuță",
+        "stop_lat": 46.770176,
+        "stop_lon": 23.559804,
+        "location_type": 0
+    },
+    {
+        "stop_id": 205,
+        "stop_name": "Buzău",
+        "stop_lat": 46.769347,
+        "stop_lon": 23.554584,
+        "location_type": 0
+    },
+    {
+        "stop_id": 206,
+        "stop_name": "Miraslău",
+        "stop_lat": 46.7673,
+        "stop_lon": 23.550468,
+        "location_type": 0
+    },
+    {
+        "stop_id": 207,
+        "stop_name": "Fântanele",
+        "stop_lat": 46.76582,
+        "stop_lon": 23.549634,
+        "location_type": 0
+    },
+    {
+        "stop_id": 208,
+        "stop_name": "Pod Traian",
+        "stop_lat": 46.775468,
+        "stop_lon": 23.590305,
+        "location_type": 0
+    },
+    {
+        "stop_id": 209,
+        "stop_name": "CORA Sud",
+        "stop_lat": 46.761894,
+        "stop_lon": 23.545207,
+        "location_type": 0
+    },
+    {
+        "stop_id": 210,
+        "stop_name": "Bdul 1 Decembrie 1918",
+        "stop_lat": 46.765409,
+        "stop_lon": 23.549493,
+        "location_type": 0
+    },
+    {
+        "stop_id": 211,
+        "stop_name": "CORA Nord",
+        "stop_lat": 46.761907,
+        "stop_lon": 23.544942,
+        "location_type": 0
+    },
+    {
+        "stop_id": 212,
+        "stop_name": "P-ța Cipariu Est",
+        "stop_lat": 46.767866,
+        "stop_lon": 23.601986,
+        "location_type": 0
+    },
+    {
+        "stop_id": 213,
+        "stop_name": "Septimiu Albini Sud",
+        "stop_lat": 46.769205,
+        "stop_lon": 23.61016,
+        "location_type": 0
+    },
+    {
+        "stop_id": 214,
+        "stop_name": "N. Titulescu",
+        "stop_lat": 46.769087,
+        "stop_lon": 23.615772,
+        "location_type": 0
+    },
+    {
+        "stop_id": 215,
+        "stop_name": "Herculane",
+        "stop_lat": 46.768455,
+        "stop_lon": 23.619699,
+        "location_type": 0
+    },
+    {
+        "stop_id": 216,
+        "stop_name": "Borsec Sud",
+        "stop_lat": 46.76809,
+        "stop_lon": 23.62371,
+        "location_type": 0
+    },
+    {
+        "stop_id": 217,
+        "stop_name": "Snagov Sud",
+        "stop_lat": 46.767819,
+        "stop_lon": 23.627977,
+        "location_type": 0
+    },
+    {
+        "stop_id": 218,
+        "stop_name": "14 Iulie Vest",
+        "stop_lat": 46.770078,
+        "stop_lon": 23.565938,
+        "location_type": 0
+    },
+    {
+        "stop_id": 219,
+        "stop_name": "Aleea Stadionului",
+        "stop_lat": 46.766857,
+        "stop_lon": 23.569427,
+        "location_type": 0
+    },
+    {
+        "stop_id": 220,
+        "stop_name": "Hotel Sport",
+        "stop_lat": 46.76926,
+        "stop_lon": 23.57444,
+        "location_type": 0
+    },
+    {
+        "stop_id": 221,
+        "stop_name": "Siretului",
+        "stop_lat": 46.780522,
+        "stop_lon": 23.62709,
+        "location_type": 0
+    },
+    {
+        "stop_id": 222,
+        "stop_name": "Pod Someșeni",
+        "stop_lat": 46.78163,
+        "stop_lon": 23.63641,
+        "location_type": 0
+    },
+    {
+        "stop_id": 223,
+        "stop_name": "Disp. IRA",
+        "stop_lat": 46.782295,
+        "stop_lon": 23.637582,
+        "location_type": 0
+    },
+    {
+        "stop_id": 224,
+        "stop_name": "EXPO Transilvania",
+        "stop_lat": 46.781832,
+        "stop_lon": 23.636355,
+        "location_type": 0
+    },
+    {
+        "stop_id": 225,
+        "stop_name": "A. Vlaicu",
+        "stop_lat": 46.780775,
+        "stop_lon": 23.627826,
+        "location_type": 0
+    },
+    {
+        "stop_id": 226,
+        "stop_name": "Chios",
+        "stop_lat": 46.76895,
+        "stop_lon": 23.57472,
+        "location_type": 0
+    },
+    {
+        "stop_id": 227,
+        "stop_name": "Sala Polivalentă",
+        "stop_lat": 46.766875,
+        "stop_lon": 23.569601,
+        "location_type": 0
+    },
+    {
+        "stop_id": 228,
+        "stop_name": "Sigismund Toduță",
+        "stop_lat": 46.77027,
+        "stop_lon": 23.567095,
+        "location_type": 0
+    },
+    {
+        "stop_id": 229,
+        "stop_name": "P-ța M. Viteazul Est",
+        "stop_lat": 46.77556,
+        "stop_lon": 23.59073,
+        "location_type": 0
+    },
+    {
+        "stop_id": 230,
+        "stop_name": "Giordano Bruno",
+        "stop_lat": 46.786646,
+        "stop_lon": 23.58127,
+        "location_type": 0
+    },
+    {
+        "stop_id": 231,
+        "stop_name": "Făgăraș",
+        "stop_lat": 46.786407,
+        "stop_lon": 23.571948,
+        "location_type": 0
+    },
+    {
+        "stop_id": 232,
+        "stop_name": "Livezeni",
+        "stop_lat": 46.785214,
+        "stop_lon": 23.565243,
+        "location_type": 0
+    },
+    {
+        "stop_id": 233,
+        "stop_name": "T.Vladimirescu Nord",
+        "stop_lat": 46.784488,
+        "stop_lon": 23.555878,
+        "location_type": 0
+    },
+    {
+        "stop_id": 234,
+        "stop_name": "Valea Seacă",
+        "stop_lat": 46.785624,
+        "stop_lon": 23.548476,
+        "location_type": 0
+    },
+    {
+        "stop_id": 235,
+        "stop_name": "Cartier Baciu",
+        "stop_lat": 46.78515,
+        "stop_lon": 23.544653,
+        "location_type": 0
+    },
+    {
+        "stop_id": 236,
+        "stop_name": "Fabrica de Pâine Nord",
+        "stop_lat": 46.784057,
+        "stop_lon": 23.540392,
+        "location_type": 0
+    },
+    {
+        "stop_id": 237,
+        "stop_name": "Napolact Sosire",
+        "stop_lat": 46.785501,
+        "stop_lon": 23.53581,
+        "location_type": 0
+    },
+    {
+        "stop_id": 238,
+        "stop_name": "Napolact",
+        "stop_lat": 46.78546,
+        "stop_lon": 23.535983,
+        "location_type": 0
+    },
+    {
+        "stop_id": 239,
+        "stop_name": "Fabrica de Pâine Sud",
+        "stop_lat": 46.783854,
+        "stop_lon": 23.540556,
+        "location_type": 0
+    },
+    {
+        "stop_id": 240,
+        "stop_name": "Calea Baciului",
+        "stop_lat": 46.785348,
+        "stop_lon": 23.547248,
+        "location_type": 0
+    },
+    {
+        "stop_id": 241,
+        "stop_name": "T.Vladimirescu Sud",
+        "stop_lat": 46.783983,
+        "stop_lon": 23.55649,
+        "location_type": 0
+    },
+    {
+        "stop_id": 242,
+        "stop_name": "Soarelui",
+        "stop_lat": 46.785057,
+        "stop_lon": 23.565597,
+        "location_type": 0
+    },
+    {
+        "stop_id": 243,
+        "stop_name": "Trandafirilor",
+        "stop_lat": 46.786446,
+        "stop_lon": 23.573506,
+        "location_type": 0
+    },
+    {
+        "stop_id": 244,
+        "stop_name": "Autogară",
+        "stop_lat": 46.786838,
+        "stop_lon": 23.580976,
+        "location_type": 0
+    },
+    {
+        "stop_id": 245,
+        "stop_name": "PMV 1 Sosire",
+        "stop_lat": 46.77434,
+        "stop_lon": 23.5922,
+        "location_type": 0
+    },
+    {
+        "stop_id": 246,
+        "stop_name": "Disp. Alverna",
+        "stop_lat": 46.756938,
+        "stop_lon": 23.618867,
+        "location_type": 0
+    },
+    {
+        "stop_id": 247,
+        "stop_name": "Băișoara",
+        "stop_lat": 46.762581,
+        "stop_lon": 23.622377,
+        "location_type": 0
+    },
+    {
+        "stop_id": 248,
+        "stop_name": "Băița",
+        "stop_lat": 46.764793,
+        "stop_lon": 23.620381,
+        "location_type": 0
+    },
+    {
+        "stop_id": 249,
+        "stop_name": "Albac",
+        "stop_lat": 46.763831,
+        "stop_lon": 23.620591,
+        "location_type": 0
+    },
+    {
+        "stop_id": 250,
+        "stop_name": "Băișoara Sosire",
+        "stop_lat": 46.762602,
+        "stop_lon": 23.622462,
+        "location_type": 0
+    },
+    {
+        "stop_id": 251,
+        "stop_name": "Mareșal Al. Averescu",
+        "stop_lat": 46.78214,
+        "stop_lon": 23.61325,
+        "location_type": 0
+    },
+    {
+        "stop_id": 252,
+        "stop_name": "Câmpul Pâinii",
+        "stop_lat": 46.785405,
+        "stop_lon": 23.611816,
+        "location_type": 0
+    },
+    {
+        "stop_id": 253,
+        "stop_name": "Fabricii",
+        "stop_lat": 46.780388,
+        "stop_lon": 23.613743,
+        "location_type": 0
+    },
+    {
+        "stop_id": 254,
+        "stop_name": "Disp. Zorilor",
+        "stop_lat": 46.75258,
+        "stop_lon": 23.57755,
+        "location_type": 0
+    },
+    {
+        "stop_id": 255,
+        "stop_name": "Zorilor",
+        "stop_lat": 46.75291,
+        "stop_lon": 23.57872,
+        "location_type": 0
+    },
+    {
+        "stop_id": 256,
+        "stop_name": "Spitalul Recuperare Sud",
+        "stop_lat": 46.754377,
+        "stop_lon": 23.584507,
+        "location_type": 0
+    },
+    {
+        "stop_id": 257,
+        "stop_name": "Observatorului Sud",
+        "stop_lat": 46.755619,
+        "stop_lon": 23.592981,
+        "location_type": 0
+    },
+    {
+        "stop_id": 258,
+        "stop_name": "Gheorghe Doja",
+        "stop_lat": 46.760284,
+        "stop_lon": 23.598112,
+        "location_type": 0
+    },
+    {
+        "stop_id": 259,
+        "stop_name": "Silviu Dragomir",
+        "stop_lat": 46.761787,
+        "stop_lon": 23.597454,
+        "location_type": 0
+    },
+    {
+        "stop_id": 260,
+        "stop_name": "Observatorului Nord",
+        "stop_lat": 46.755834,
+        "stop_lon": 23.593557,
+        "location_type": 0
+    },
+    {
+        "stop_id": 261,
+        "stop_name": "Spitalul Recuperare Nord",
+        "stop_lat": 46.754385,
+        "stop_lon": 23.583637,
+        "location_type": 0
+    },
+    {
+        "stop_id": 262,
+        "stop_name": "Ghe. Dima",
+        "stop_lat": 46.752919,
+        "stop_lon": 23.57805,
+        "location_type": 0
+    },
+    {
+        "stop_id": 263,
+        "stop_name": "P-ța Abator",
+        "stop_lat": 46.779814,
+        "stop_lon": 23.594961,
+        "location_type": 0
+    },
+    {
+        "stop_id": 264,
+        "stop_name": "Parcul Farmec",
+        "stop_lat": 46.780796,
+        "stop_lon": 23.605974,
+        "location_type": 0
+    },
+    {
+        "stop_id": 265,
+        "stop_name": "Teilor",
+        "stop_lat": 46.788128,
+        "stop_lon": 23.62048,
+        "location_type": 0
+    },
+    {
+        "stop_id": 266,
+        "stop_name": "Câmpina Sud",
+        "stop_lat": 46.78788,
+        "stop_lon": 23.623883,
+        "location_type": 0
+    },
+    {
+        "stop_id": 267,
+        "stop_name": "Plevnei Sud",
+        "stop_lat": 46.787609,
+        "stop_lon": 23.628754,
+        "location_type": 0
+    },
+    {
+        "stop_id": 268,
+        "stop_name": "CET",
+        "stop_lat": 46.787275,
+        "stop_lon": 23.633629,
+        "location_type": 0
+    },
+    {
+        "stop_id": 269,
+        "stop_name": "Timișului",
+        "stop_lat": 46.786799,
+        "stop_lon": 23.640119,
+        "location_type": 0
+    },
+    {
+        "stop_id": 270,
+        "stop_name": "Branului Sud",
+        "stop_lat": 46.786464,
+        "stop_lon": 23.644813,
+        "location_type": 0
+    },
+    {
+        "stop_id": 271,
+        "stop_name": "Înfrățirii Sud",
+        "stop_lat": 46.788706,
+        "stop_lon": 23.646314,
+        "location_type": 0
+    },
+    {
+        "stop_id": 272,
+        "stop_name": "Pintea Viteazul Sud",
+        "stop_lat": 46.790847,
+        "stop_lon": 23.649351,
+        "location_type": 0
+    },
+    {
+        "stop_id": 273,
+        "stop_name": "Barc I",
+        "stop_lat": 46.79138,
+        "stop_lon": 23.655659,
+        "location_type": 0
+    },
+    {
+        "stop_id": 274,
+        "stop_name": "I. Ionescu Sosire",
+        "stop_lat": 46.790606,
+        "stop_lon": 23.655828,
+        "location_type": 0
+    },
+    {
+        "stop_id": 275,
+        "stop_name": "I. Ionescu",
+        "stop_lat": 46.79051,
+        "stop_lon": 23.655742,
+        "location_type": 0
+    },
+    {
+        "stop_id": 276,
+        "stop_name": "Frumoasa",
+        "stop_lat": 46.787791,
+        "stop_lon": 23.652596,
+        "location_type": 0
+    },
+    {
+        "stop_id": 277,
+        "stop_name": "Morii",
+        "stop_lat": 46.786493,
+        "stop_lon": 23.648224,
+        "location_type": 0
+    },
+    {
+        "stop_id": 278,
+        "stop_name": "Înfrățirii Nord",
+        "stop_lat": 46.78889,
+        "stop_lon": 23.646173,
+        "location_type": 0
+    },
+    {
+        "stop_id": 279,
+        "stop_name": "Rodnei",
+        "stop_lat": 46.78667,
+        "stop_lon": 23.645255,
+        "location_type": 0
+    },
+    {
+        "stop_id": 280,
+        "stop_name": "Blajului",
+        "stop_lat": 46.786791,
+        "stop_lon": 23.641792,
+        "location_type": 0
+    },
+    {
+        "stop_id": 281,
+        "stop_name": "Broda",
+        "stop_lat": 46.787363,
+        "stop_lon": 23.633646,
+        "location_type": 0
+    },
+    {
+        "stop_id": 282,
+        "stop_name": "Plevnei Nord",
+        "stop_lat": 46.787736,
+        "stop_lon": 23.628507,
+        "location_type": 0
+    },
+    {
+        "stop_id": 283,
+        "stop_name": "Câmpina Nord",
+        "stop_lat": 46.788073,
+        "stop_lon": 23.623714,
+        "location_type": 0
+    },
+    {
+        "stop_id": 284,
+        "stop_name": "Piața Oser",
+        "stop_lat": 46.788226,
+        "stop_lon": 23.620857,
+        "location_type": 0
+    },
+    {
+        "stop_id": 285,
+        "stop_name": "București",
+        "stop_lat": 46.781775,
+        "stop_lon": 23.611753,
+        "location_type": 0
+    },
+    {
+        "stop_id": 286,
+        "stop_name": "Farmec",
+        "stop_lat": 46.781146,
+        "stop_lon": 23.607396,
+        "location_type": 0
+    },
+    {
+        "stop_id": 287,
+        "stop_name": "Emil Racoviță Nord",
+        "stop_lat": 46.779977,
+        "stop_lon": 23.581779,
+        "location_type": 0
+    },
+    {
+        "stop_id": 288,
+        "stop_name": "Arena CFR Nord",
+        "stop_lat": 46.780369,
+        "stop_lon": 23.576185,
+        "location_type": 0
+    },
+    {
+        "stop_id": 289,
+        "stop_name": "Rădăuți Nord",
+        "stop_lat": 46.780279,
+        "stop_lon": 23.571926,
+        "location_type": 0
+    },
+    {
+        "stop_id": 290,
+        "stop_name": "Tiberiu Brediceanu",
+        "stop_lat": 46.780152,
+        "stop_lon": 23.566116,
+        "location_type": 0
+    },
+    {
+        "stop_id": 291,
+        "stop_name": "Bariera CFR Nord",
+        "stop_lat": 46.780437,
+        "stop_lon": 23.562753,
+        "location_type": 0
+    },
+    {
+        "stop_id": 292,
+        "stop_name": "Electrogrup",
+        "stop_lat": 46.780535,
+        "stop_lon": 23.558759,
+        "location_type": 0
+    },
+    {
+        "stop_id": 293,
+        "stop_name": "TETAROM Sosire",
+        "stop_lat": 46.779353,
+        "stop_lon": 23.55852,
+        "location_type": 0
+    },
+    {
+        "stop_id": 294,
+        "stop_name": "TETAROM",
+        "stop_lat": 46.779408,
+        "stop_lon": 23.558769,
+        "location_type": 0
+    },
+    {
+        "stop_id": 295,
+        "stop_name": "Barieră CFR Sud",
+        "stop_lat": 46.780421,
+        "stop_lon": 23.562501,
+        "location_type": 0
+    },
+    {
+        "stop_id": 296,
+        "stop_name": "Vasile Carlova",
+        "stop_lat": 46.78013,
+        "stop_lon": 23.565615,
+        "location_type": 0
+    },
+    {
+        "stop_id": 297,
+        "stop_name": "Rădăuți Sud",
+        "stop_lat": 46.780233,
+        "stop_lon": 23.572714,
+        "location_type": 0
+    },
+    {
+        "stop_id": 298,
+        "stop_name": "Stadionul CFR",
+        "stop_lat": 46.780319,
+        "stop_lon": 23.576683,
+        "location_type": 0
+    },
+    {
+        "stop_id": 299,
+        "stop_name": "Crișan",
+        "stop_lat": 46.779675,
+        "stop_lon": 23.582748,
+        "location_type": 0
+    },
+    {
+        "stop_id": 300,
+        "stop_name": "Emil Racoviță Sud",
+        "stop_lat": 46.779621,
+        "stop_lon": 23.58138,
+        "location_type": 0
+    },
+    {
+        "stop_id": 301,
+        "stop_name": "Trâmbițașului",
+        "stop_lat": 46.777856,
+        "stop_lon": 23.57732,
+        "location_type": 0
+    },
+    {
+        "stop_id": 302,
+        "stop_name": "Vânătorului Sosire",
+        "stop_lat": 46.777461,
+        "stop_lon": 23.572816,
+        "location_type": 0
+    },
+    {
+        "stop_id": 303,
+        "stop_name": "Vânătorului",
+        "stop_lat": 46.777333,
+        "stop_lon": 23.572831,
+        "location_type": 0
+    },
+    {
+        "stop_id": 304,
+        "stop_name": "Gruia",
+        "stop_lat": 46.776215,
+        "stop_lon": 23.574374,
+        "location_type": 0
+    },
+    {
+        "stop_id": 305,
+        "stop_name": "Baia Mare",
+        "stop_lat": 46.777316,
+        "stop_lon": 23.576372,
+        "location_type": 0
+    },
+    {
+        "stop_id": 306,
+        "stop_name": "Senina Sud",
+        "stop_lat": 46.789552,
+        "stop_lon": 23.582257,
+        "location_type": 0
+    },
+    {
+        "stop_id": 307,
+        "stop_name": "Dragoș Vodă Sud",
+        "stop_lat": 46.790765,
+        "stop_lon": 23.586387,
+        "location_type": 0
+    },
+    {
+        "stop_id": 308,
+        "stop_name": "Vrancea",
+        "stop_lat": 46.791517,
+        "stop_lon": 23.590431,
+        "location_type": 0
+    },
+    {
+        "stop_id": 309,
+        "stop_name": "Călugăreni Sud",
+        "stop_lat": 46.792915,
+        "stop_lon": 23.596559,
+        "location_type": 0
+    },
+    {
+        "stop_id": 310,
+        "stop_name": "Vama Chinteni",
+        "stop_lat": 46.799567,
+        "stop_lon": 23.607739,
+        "location_type": 0
+    },
+    {
+        "stop_id": 311,
+        "stop_name": "Intermediara Est",
+        "stop_lat": 46.802768,
+        "stop_lon": 23.607532,
+        "location_type": 0
+    },
+    {
+        "stop_id": 312,
+        "stop_name": "Pometului Est",
+        "stop_lat": 46.807304,
+        "stop_lon": 23.606229,
+        "location_type": 0
+    },
+    {
+        "stop_id": 313,
+        "stop_name": "Școala Est",
+        "stop_lat": 46.810895,
+        "stop_lon": 23.604777,
+        "location_type": 0
+    },
+    {
+        "stop_id": 314,
+        "stop_name": "IAS Est",
+        "stop_lat": 46.814041,
+        "stop_lon": 23.602683,
+        "location_type": 0
+    },
+    {
+        "stop_id": 315,
+        "stop_name": "POD Est",
+        "stop_lat": 46.817753,
+        "stop_lon": 23.600113,
+        "location_type": 0
+    },
+    {
+        "stop_id": 316,
+        "stop_name": "Drum Feiurd Est",
+        "stop_lat": 46.820869,
+        "stop_lon": 23.595451,
+        "location_type": 0
+    },
+    {
+        "stop_id": 317,
+        "stop_name": "Podul Fetei Est",
+        "stop_lat": 46.825274,
+        "stop_lon": 23.586627,
+        "location_type": 0
+    },
+    {
+        "stop_id": 318,
+        "stop_name": "Terra",
+        "stop_lat": 46.828469,
+        "stop_lon": 23.58251,
+        "location_type": 0
+    },
+    {
+        "stop_id": 319,
+        "stop_name": "Valea Chintăului",
+        "stop_lat": 46.82844,
+        "stop_lon": 23.582384,
+        "location_type": 0
+    },
+    {
+        "stop_id": 320,
+        "stop_name": "Podul Fetei Vest",
+        "stop_lat": 46.825399,
+        "stop_lon": 23.586273,
+        "location_type": 0
+    },
+    {
+        "stop_id": 321,
+        "stop_name": "Drum Feiurd Vest",
+        "stop_lat": 46.82076,
+        "stop_lon": 23.595363,
+        "location_type": 0
+    },
+    {
+        "stop_id": 322,
+        "stop_name": "POD Vest",
+        "stop_lat": 46.817657,
+        "stop_lon": 23.600004,
+        "location_type": 0
+    },
+    {
+        "stop_id": 323,
+        "stop_name": "IAS Vest",
+        "stop_lat": 46.81406,
+        "stop_lon": 23.602468,
+        "location_type": 0
+    },
+    {
+        "stop_id": 324,
+        "stop_name": "Școala Vest",
+        "stop_lat": 46.810958,
+        "stop_lon": 23.604509,
+        "location_type": 0
+    },
+    {
+        "stop_id": 325,
+        "stop_name": "Pometului Vest",
+        "stop_lat": 46.807315,
+        "stop_lon": 23.606004,
+        "location_type": 0
+    },
+    {
+        "stop_id": 326,
+        "stop_name": "Intermediara Vest",
+        "stop_lat": 46.803006,
+        "stop_lon": 23.607428,
+        "location_type": 0
+    },
+    {
+        "stop_id": 327,
+        "stop_name": "Călugareni Nord",
+        "stop_lat": 46.793152,
+        "stop_lon": 23.596794,
+        "location_type": 0
+    },
+    {
+        "stop_id": 328,
+        "stop_name": "Spătaru Milescu",
+        "stop_lat": 46.791631,
+        "stop_lon": 23.590444,
+        "location_type": 0
+    },
+    {
+        "stop_id": 329,
+        "stop_name": "Dragoș Vodă Nord",
+        "stop_lat": 46.790974,
+        "stop_lon": 23.586843,
+        "location_type": 0
+    },
+    {
+        "stop_id": 330,
+        "stop_name": "Senina Nord",
+        "stop_lat": 46.789625,
+        "stop_lon": 23.58214,
+        "location_type": 0
+    },
+    {
+        "stop_id": 331,
+        "stop_name": "Cluj Due Est",
+        "stop_lat": 46.83616,
+        "stop_lon": 23.570856,
+        "location_type": 0
+    },
+    {
+        "stop_id": 332,
+        "stop_name": "Lombul Mic",
+        "stop_lat": 46.840526,
+        "stop_lon": 23.563818,
+        "location_type": 0
+    },
+    {
+        "stop_id": 333,
+        "stop_name": "Cătun Est",
+        "stop_lat": 46.843612,
+        "stop_lon": 23.557922,
+        "location_type": 0
+    },
+    {
+        "stop_id": 334,
+        "stop_name": "Cătun Vest",
+        "stop_lat": 46.843554,
+        "stop_lon": 23.557812,
+        "location_type": 0
+    },
+    {
+        "stop_id": 335,
+        "stop_name": "Cluj Due Vest",
+        "stop_lat": 46.835954,
+        "stop_lon": 23.57103,
+        "location_type": 0
+    },
+    {
+        "stop_id": 336,
+        "stop_name": "Meteor",
+        "stop_lat": 46.754696,
+        "stop_lon": 23.595988,
+        "location_type": 0
+    },
+    {
+        "stop_id": 337,
+        "stop_name": "Constantin Noica",
+        "stop_lat": 46.750922,
+        "stop_lon": 23.594497,
+        "location_type": 0
+    },
+    {
+        "stop_id": 338,
+        "stop_name": "Hotel Stil Vest",
+        "stop_lat": 46.733792,
+        "stop_lon": 23.587612,
+        "location_type": 0
+    },
+    {
+        "stop_id": 339,
+        "stop_name": "Dianei Vest",
+        "stop_lat": 46.727844,
+        "stop_lon": 23.585183,
+        "location_type": 0
+    },
+    {
+        "stop_id": 340,
+        "stop_name": "D.D. Roșca Vest",
+        "stop_lat": 46.723895,
+        "stop_lon": 23.579206,
+        "location_type": 0
+    },
+    {
+        "stop_id": 341,
+        "stop_name": "Vila Tusa Sosire",
+        "stop_lat": 46.716993,
+        "stop_lon": 23.575201,
+        "location_type": 0
+    },
+    {
+        "stop_id": 342,
+        "stop_name": "Vila Tusa",
+        "stop_lat": 46.717325,
+        "stop_lon": 23.575379,
+        "location_type": 0
+    },
+    {
+        "stop_id": 343,
+        "stop_name": "D.D. Roșca Est",
+        "stop_lat": 46.724025,
+        "stop_lon": 23.579461,
+        "location_type": 0
+    },
+    {
+        "stop_id": 344,
+        "stop_name": "Dianei Est",
+        "stop_lat": 46.727839,
+        "stop_lon": 23.585579,
+        "location_type": 0
+    },
+    {
+        "stop_id": 345,
+        "stop_name": "Hotel Stil Est",
+        "stop_lat": 46.733849,
+        "stop_lon": 23.587779,
+        "location_type": 0
+    },
+    {
+        "stop_id": 346,
+        "stop_name": "Electrogroup",
+        "stop_lat": 46.748915,
+        "stop_lon": 23.59374,
+        "location_type": 0
+    },
+    {
+        "stop_id": 347,
+        "stop_name": "W.A. Mozart",
+        "stop_lat": 46.752188,
+        "stop_lon": 23.595369,
+        "location_type": 0
+    },
+    {
+        "stop_id": 348,
+        "stop_name": "Calea Turzii",
+        "stop_lat": 46.755314,
+        "stop_lon": 23.596356,
+        "location_type": 0
+    },
+    {
+        "stop_id": 349,
+        "stop_name": "Eugen Lovinescu Vest",
+        "stop_lat": 46.747765,
+        "stop_lon": 23.568113,
+        "location_type": 0
+    },
+    {
+        "stop_id": 350,
+        "stop_name": "Grigore Antipa Vest",
+        "stop_lat": 46.744182,
+        "stop_lon": 23.570384,
+        "location_type": 0
+    },
+    {
+        "stop_id": 351,
+        "stop_name": "Biserica Câmpului",
+        "stop_lat": 46.738839,
+        "stop_lon": 23.571183,
+        "location_type": 0
+    },
+    {
+        "stop_id": 352,
+        "stop_name": "Grigore Antipa Est",
+        "stop_lat": 46.744277,
+        "stop_lon": 23.570384,
+        "location_type": 0
+    },
+    {
+        "stop_id": 353,
+        "stop_name": "Eugen Lovinescu Est",
+        "stop_lat": 46.747604,
+        "stop_lon": 23.568442,
+        "location_type": 0
+    },
+    {
+        "stop_id": 354,
+        "stop_name": "Bâlea Est",
+        "stop_lat": 46.75175,
+        "stop_lon": 23.565467,
+        "location_type": 0
+    },
+    {
+        "stop_id": 355,
+        "stop_name": "Frunzișului Vest",
+        "stop_lat": 46.75386,
+        "stop_lon": 23.567519,
+        "location_type": 0
+    },
+    {
+        "stop_id": 356,
+        "stop_name": "Varianta Zorilor SUD",
+        "stop_lat": 46.749,
+        "stop_lon": 23.57279,
+        "location_type": 0
+    },
+    {
+        "stop_id": 357,
+        "stop_name": "Frunzișului",
+        "stop_lat": 46.75345,
+        "stop_lon": 23.567948,
+        "location_type": 0
+    },
+    {
+        "stop_id": 358,
+        "stop_name": "Cocoșul de Aur",
+        "stop_lat": 46.755576,
+        "stop_lon": 23.561966,
+        "location_type": 0
+    },
+    {
+        "stop_id": 359,
+        "stop_name": "Girație Drum Făget",
+        "stop_lat": 46.738229,
+        "stop_lon": 23.590309,
+        "location_type": 0
+    },
+    {
+        "stop_id": 360,
+        "stop_name": "E. Ionesco",
+        "stop_lat": 46.740199,
+        "stop_lon": 23.586552,
+        "location_type": 0
+    },
+    {
+        "stop_id": 361,
+        "stop_name": "N. Steinhardt",
+        "stop_lat": 46.744448,
+        "stop_lon": 23.584846,
+        "location_type": 0
+    },
+    {
+        "stop_id": 362,
+        "stop_name": "V. Stoica",
+        "stop_lat": 46.748356,
+        "stop_lon": 23.581947,
+        "location_type": 0
+    },
+    {
+        "stop_id": 363,
+        "stop_name": "Picasso",
+        "stop_lat": 46.749006,
+        "stop_lon": 23.58129,
+        "location_type": 0
+    },
+    {
+        "stop_id": 364,
+        "stop_name": "L. Matis",
+        "stop_lat": 46.743893,
+        "stop_lon": 23.585018,
+        "location_type": 0
+    },
+    {
+        "stop_id": 365,
+        "stop_name": "Luminii",
+        "stop_lat": 46.739805,
+        "stop_lon": 23.586375,
+        "location_type": 0
+    },
+    {
+        "stop_id": 366,
+        "stop_name": "Tribunal",
+        "stop_lat": 46.771072,
+        "stop_lon": 23.598627,
+        "location_type": 0
+    },
+    {
+        "stop_id": 367,
+        "stop_name": "S.Barnuțiu",
+        "stop_lat": 46.773409,
+        "stop_lon": 23.607221,
+        "location_type": 0
+    },
+    {
+        "stop_id": 368,
+        "stop_name": "Biblioteca Județeană",
+        "stop_lat": 46.776569,
+        "stop_lon": 23.613844,
+        "location_type": 0
+    },
+    {
+        "stop_id": 369,
+        "stop_name": "Între Lacuri",
+        "stop_lat": 46.777277,
+        "stop_lon": 23.62318,
+        "location_type": 0
+    },
+    {
+        "stop_id": 370,
+        "stop_name": "Complex Dunării Sud",
+        "stop_lat": 46.776363,
+        "stop_lon": 23.629126,
+        "location_type": 0
+    },
+    {
+        "stop_id": 371,
+        "stop_name": "Tulcea",
+        "stop_lat": 46.776764,
+        "stop_lon": 23.631636,
+        "location_type": 0
+    },
+    {
+        "stop_id": 372,
+        "stop_name": "Dunării Sud",
+        "stop_lat": 46.77752,
+        "stop_lon": 23.636418,
+        "location_type": 0
+    },
+    {
+        "stop_id": 373,
+        "stop_name": "Meșterul Manole",
+        "stop_lat": 46.77931,
+        "stop_lon": 23.64168,
+        "location_type": 0
+    },
+    {
+        "stop_id": 374,
+        "stop_name": "Jiului",
+        "stop_lat": 46.77904,
+        "stop_lon": 23.63931,
+        "location_type": 0
+    },
+    {
+        "stop_id": 375,
+        "stop_name": "Dunării Nord",
+        "stop_lat": 46.777566,
+        "stop_lon": 23.636169,
+        "location_type": 0
+    },
+    {
+        "stop_id": 376,
+        "stop_name": "Streiului",
+        "stop_lat": 46.777233,
+        "stop_lon": 23.633764,
+        "location_type": 0
+    },
+    {
+        "stop_id": 377,
+        "stop_name": "Complex Dunării Nord",
+        "stop_lat": 46.776382,
+        "stop_lon": 23.628632,
+        "location_type": 0
+    },
+    {
+        "stop_id": 378,
+        "stop_name": "Mureșului",
+        "stop_lat": 46.776983,
+        "stop_lon": 23.62363,
+        "location_type": 0
+    },
+    {
+        "stop_id": 379,
+        "stop_name": "Aiudului",
+        "stop_lat": 46.78371,
+        "stop_lon": 23.64411,
+        "location_type": 0
+    },
+    {
+        "stop_id": 380,
+        "stop_name": "Școala Someșeni",
+        "stop_lat": 46.78412,
+        "stop_lon": 23.65428,
+        "location_type": 0
+    },
+    {
+        "stop_id": 381,
+        "stop_name": "Orăștie",
+        "stop_lat": 46.782892,
+        "stop_lon": 23.661857,
+        "location_type": 0
+    },
+    {
+        "stop_id": 382,
+        "stop_name": "Ambient",
+        "stop_lat": 46.780653,
+        "stop_lon": 23.665591,
+        "location_type": 0
+    },
+    {
+        "stop_id": 383,
+        "stop_name": "Moș Ion Roată",
+        "stop_lat": 46.780346,
+        "stop_lon": 23.670275,
+        "location_type": 0
+    },
+    {
+        "stop_id": 384,
+        "stop_name": "Traian Vuia Sud",
+        "stop_lat": 46.7807,
+        "stop_lon": 23.676734,
+        "location_type": 0
+    },
+    {
+        "stop_id": 385,
+        "stop_name": "Aeroport Sud",
+        "stop_lat": 46.781174,
+        "stop_lon": 23.685342,
+        "location_type": 0
+    },
+    {
+        "stop_id": 386,
+        "stop_name": "Aeroport Nord",
+        "stop_lat": 46.781393,
+        "stop_lon": 23.686324,
+        "location_type": 0
+    },
+    {
+        "stop_id": 387,
+        "stop_name": "Traian Vuia Nord",
+        "stop_lat": 46.781058,
+        "stop_lon": 23.680227,
+        "location_type": 0
+    },
+    {
+        "stop_id": 388,
+        "stop_name": "Planoarelor",
+        "stop_lat": 46.780442,
+        "stop_lon": 23.669262,
+        "location_type": 0
+    },
+    {
+        "stop_id": 389,
+        "stop_name": "Vlad Țepeș",
+        "stop_lat": 46.78315,
+        "stop_lon": 23.661767,
+        "location_type": 0
+    },
+    {
+        "stop_id": 390,
+        "stop_name": "Cămin Someșeni",
+        "stop_lat": 46.784224,
+        "stop_lon": 23.6537,
+        "location_type": 0
+    },
+    {
+        "stop_id": 391,
+        "stop_name": "Branului",
+        "stop_lat": 46.784172,
+        "stop_lon": 23.645715,
+        "location_type": 0
+    },
+    {
+        "stop_id": 392,
+        "stop_name": "Timișului Sosire",
+        "stop_lat": 46.786567,
+        "stop_lon": 23.642239,
+        "location_type": 0
+    },
+    {
+        "stop_id": 393,
+        "stop_name": "Izlazului I Sosire",
+        "stop_lat": 46.755389,
+        "stop_lon": 23.561798,
+        "location_type": 0
+    },
+    {
+        "stop_id": 394,
+        "stop_name": "Cantonului",
+        "stop_lat": 46.781542,
+        "stop_lon": 23.691748,
+        "location_type": 0
+    },
+    {
+        "stop_id": 395,
+        "stop_name": "Electromontaj Sud",
+        "stop_lat": 46.782,
+        "stop_lon": 23.70062,
+        "location_type": 0
+    },
+    {
+        "stop_id": 396,
+        "stop_name": "Electromontaj Nord",
+        "stop_lat": 46.782008,
+        "stop_lon": 23.69711,
+        "location_type": 0
+    },
+    {
+        "stop_id": 397,
+        "stop_name": "Aviația Utilitară",
+        "stop_lat": 46.78171,
+        "stop_lon": 23.692376,
+        "location_type": 0
+    },
+    {
+        "stop_id": 398,
+        "stop_name": "Selgros",
+        "stop_lat": 46.778982,
+        "stop_lon": 23.648321,
+        "location_type": 0
+    },
+    {
+        "stop_id": 399,
+        "stop_name": "U.M. Someșeni",
+        "stop_lat": 46.778012,
+        "stop_lon": 23.658579,
+        "location_type": 0
+    },
+    {
+        "stop_id": 400,
+        "stop_name": "Dealul Borzaș",
+        "stop_lat": 46.778615,
+        "stop_lon": 23.671083,
+        "location_type": 0
+    },
+    {
+        "stop_id": 401,
+        "stop_name": "Platanilor",
+        "stop_lat": 46.777787,
+        "stop_lon": 23.683206,
+        "location_type": 0
+    },
+    {
+        "stop_id": 402,
+        "stop_name": "Henri Coandă",
+        "stop_lat": 46.779304,
+        "stop_lon": 23.693863,
+        "location_type": 0
+    },
+    {
+        "stop_id": 403,
+        "stop_name": "Halta Dezmir",
+        "stop_lat": 46.780387,
+        "stop_lon": 23.704623,
+        "location_type": 0
+    },
+    {
+        "stop_id": 404,
+        "stop_name": "Piața AGRO Sosire",
+        "stop_lat": 46.781376,
+        "stop_lon": 23.710586,
+        "location_type": 0
+    },
+    {
+        "stop_id": 405,
+        "stop_name": "AGRO Transilvania",
+        "stop_lat": 46.781554,
+        "stop_lon": 23.71058,
+        "location_type": 0
+    },
+    {
+        "stop_id": 406,
+        "stop_name": "Halta AGRO",
+        "stop_lat": 46.780432,
+        "stop_lon": 23.704454,
+        "location_type": 0
+    },
+    {
+        "stop_id": 407,
+        "stop_name": "R.A.D.P.",
+        "stop_lat": 46.779364,
+        "stop_lon": 23.693591,
+        "location_type": 0
+    },
+    {
+        "stop_id": 408,
+        "stop_name": "Poșta Română",
+        "stop_lat": 46.777808,
+        "stop_lon": 23.682992,
+        "location_type": 0
+    },
+    {
+        "stop_id": 409,
+        "stop_name": "Gara Someșeni",
+        "stop_lat": 46.778633,
+        "stop_lon": 23.67058,
+        "location_type": 0
+    },
+    {
+        "stop_id": 410,
+        "stop_name": "Mentenanței",
+        "stop_lat": 46.778108,
+        "stop_lon": 23.658451,
+        "location_type": 0
+    },
+    {
+        "stop_id": 411,
+        "stop_name": "Băi Someșeni",
+        "stop_lat": 46.779227,
+        "stop_lon": 23.648146,
+        "location_type": 0
+    },
+    {
+        "stop_id": 412,
+        "stop_name": "M-Aroma",
+        "stop_lat": 46.735699,
+        "stop_lon": 23.594121,
+        "location_type": 0
+    },
+    {
+        "stop_id": 413,
+        "stop_name": "M-DJ 71",
+        "stop_lat": 46.720641,
+        "stop_lon": 23.616169,
+        "location_type": 0
+    },
+    {
+        "stop_id": 414,
+        "stop_name": "M-Școala Feleacu V",
+        "stop_lat": 46.717995,
+        "stop_lon": 23.624653,
+        "location_type": 0
+    },
+    {
+        "stop_id": 415,
+        "stop_name": "M-Releu Sosire",
+        "stop_lat": 46.71613,
+        "stop_lon": 23.629917,
+        "location_type": 0
+    },
+    {
+        "stop_id": 416,
+        "stop_name": "M-Releu Plecare",
+        "stop_lat": 46.716187,
+        "stop_lon": 23.630138,
+        "location_type": 0
+    },
+    {
+        "stop_id": 417,
+        "stop_name": "M-Școala Feleacu E",
+        "stop_lat": 46.717815,
+        "stop_lon": 23.625114,
+        "location_type": 0
+    },
+    {
+        "stop_id": 418,
+        "stop_name": "M-Post Control",
+        "stop_lat": 46.720771,
+        "stop_lon": 23.616522,
+        "location_type": 0
+    },
+    {
+        "stop_id": 419,
+        "stop_name": "M-Dinu Lipatti",
+        "stop_lat": 46.731042,
+        "stop_lon": 23.59763,
+        "location_type": 0
+    },
+    {
+        "stop_id": 420,
+        "stop_name": "M-Gradiniță",
+        "stop_lat": 46.715029,
+        "stop_lon": 23.615418,
+        "location_type": 0
+    },
+    {
+        "stop_id": 421,
+        "stop_name": "M-Feleacu",
+        "stop_lat": 46.710561,
+        "stop_lon": 23.614506,
+        "location_type": 0
+    },
+    {
+        "stop_id": 422,
+        "stop_name": "M-Feleacu Depozit V",
+        "stop_lat": 46.707584,
+        "stop_lon": 23.614667,
+        "location_type": 0
+    },
+    {
+        "stop_id": 423,
+        "stop_name": "M-Valea Căpriorii",
+        "stop_lat": 46.704056,
+        "stop_lon": 23.615346,
+        "location_type": 0
+    },
+    {
+        "stop_id": 424,
+        "stop_name": "M-Lukoil Vâlcele S",
+        "stop_lat": 46.691825,
+        "stop_lon": 23.627231,
+        "location_type": 0
+    },
+    {
+        "stop_id": 425,
+        "stop_name": "M-Vâlcele DN1 S",
+        "stop_lat": 46.680106,
+        "stop_lon": 23.638976,
+        "location_type": 0
+    },
+    {
+        "stop_id": 426,
+        "stop_name": "M-Ramificație Vâlcele S",
+        "stop_lat": 46.674767,
+        "stop_lon": 23.646907,
+        "location_type": 0
+    },
+    {
+        "stop_id": 427,
+        "stop_name": "M-Ramificație Rediu E",
+        "stop_lat": 46.677136,
+        "stop_lon": 23.650228,
+        "location_type": 0
+    },
+    {
+        "stop_id": 428,
+        "stop_name": "M-Pogaceanu E",
+        "stop_lat": 46.682373,
+        "stop_lon": 23.65011,
+        "location_type": 0
+    },
+    {
+        "stop_id": 429,
+        "stop_name": "M-Monument E",
+        "stop_lat": 46.68588,
+        "stop_lon": 23.651601,
+        "location_type": 0
+    },
+    {
+        "stop_id": 430,
+        "stop_name": "M-Biserica Vâlcele Sos",
+        "stop_lat": 46.687542,
+        "stop_lon": 23.654291,
+        "location_type": 0
+    },
+    {
+        "stop_id": 431,
+        "stop_name": "M-Biserica Vâlcele Plecare",
+        "stop_lat": 46.687672,
+        "stop_lon": 23.654058,
+        "location_type": 0
+    },
+    {
+        "stop_id": 432,
+        "stop_name": "M-Monument",
+        "stop_lat": 46.685836,
+        "stop_lon": 23.651456,
+        "location_type": 0
+    },
+    {
+        "stop_id": 433,
+        "stop_name": "M-Pogaceanu",
+        "stop_lat": 46.682645,
+        "stop_lon": 23.650142,
+        "location_type": 0
+    },
+    {
+        "stop_id": 434,
+        "stop_name": "M-Ramificație Rediu",
+        "stop_lat": 46.677419,
+        "stop_lon": 23.650163,
+        "location_type": 0
+    },
+    {
+        "stop_id": 435,
+        "stop_name": "M-Ramificație Vâlcele",
+        "stop_lat": 46.674898,
+        "stop_lon": 23.64706,
+        "location_type": 0
+    },
+    {
+        "stop_id": 436,
+        "stop_name": "M-Vâlcele DN 1",
+        "stop_lat": 46.680259,
+        "stop_lon": 23.63911,
+        "location_type": 0
+    },
+    {
+        "stop_id": 437,
+        "stop_name": "M-Lukoil Vâlcele",
+        "stop_lat": 46.691122,
+        "stop_lon": 23.628121,
+        "location_type": 0
+    },
+    {
+        "stop_id": 438,
+        "stop_name": "M-Restaurant Cortez",
+        "stop_lat": 46.701665,
+        "stop_lon": 23.61611,
+        "location_type": 0
+    },
+    {
+        "stop_id": 439,
+        "stop_name": "M-Feleacu Depozit E",
+        "stop_lat": 46.707788,
+        "stop_lon": 23.614815,
+        "location_type": 0
+    },
+    {
+        "stop_id": 440,
+        "stop_name": "M-Feleacu V",
+        "stop_lat": 46.71093,
+        "stop_lon": 23.614414,
+        "location_type": 0
+    },
+    {
+        "stop_id": 441,
+        "stop_name": "M-Primăria Feleacu",
+        "stop_lat": 46.716007,
+        "stop_lon": 23.616212,
+        "location_type": 0
+    },
+    {
+        "stop_id": 442,
+        "stop_name": "M-Borhanci V",
+        "stop_lat": 46.738916,
+        "stop_lon": 23.650273,
+        "location_type": 0
+    },
+    {
+        "stop_id": 443,
+        "stop_name": "M-Popas V",
+        "stop_lat": 46.72107,
+        "stop_lon": 23.666304,
+        "location_type": 0
+    },
+    {
+        "stop_id": 444,
+        "stop_name": "M-Gheorgheni S",
+        "stop_lat": 46.719582,
+        "stop_lon": 23.67138,
+        "location_type": 0
+    },
+    {
+        "stop_id": 445,
+        "stop_name": "M-Dispensar S",
+        "stop_lat": 46.717898,
+        "stop_lon": 23.679276,
+        "location_type": 0
+    },
+    {
+        "stop_id": 446,
+        "stop_name": "M-Școala Gheorgheni S",
+        "stop_lat": 46.715058,
+        "stop_lon": 23.684933,
+        "location_type": 0
+    },
+    {
+        "stop_id": 447,
+        "stop_name": "M-Capăt Gheorgheni",
+        "stop_lat": 46.712202,
+        "stop_lon": 23.691593,
+        "location_type": 0
+    },
+    {
+        "stop_id": 448,
+        "stop_name": "M-Școala Gheorgheni N",
+        "stop_lat": 46.715158,
+        "stop_lon": 23.684946,
+        "location_type": 0
+    },
+    {
+        "stop_id": 449,
+        "stop_name": "M-Dispensar N",
+        "stop_lat": 46.717843,
+        "stop_lon": 23.679802,
+        "location_type": 0
+    },
+    {
+        "stop_id": 450,
+        "stop_name": "M-Gheorgheni",
+        "stop_lat": 46.719586,
+        "stop_lon": 23.671777,
+        "location_type": 0
+    },
+    {
+        "stop_id": 451,
+        "stop_name": "M-Popas",
+        "stop_lat": 46.72107,
+        "stop_lon": 23.666662,
+        "location_type": 0
+    },
+    {
+        "stop_id": 452,
+        "stop_name": "M-Borhanci E",
+        "stop_lat": 46.739361,
+        "stop_lon": 23.650239,
+        "location_type": 0
+    },
+    {
+        "stop_id": 453,
+        "stop_name": "M-Centru Vârstnici N",
+        "stop_lat": 46.679744,
+        "stop_lon": 23.532793,
+        "location_type": 0
+    },
+    {
+        "stop_id": 454,
+        "stop_name": "M-Salicea V",
+        "stop_lat": 46.67377,
+        "stop_lon": 23.524888,
+        "location_type": 0
+    },
+    {
+        "stop_id": 455,
+        "stop_name": "M-Ciurila V",
+        "stop_lat": 46.656134,
+        "stop_lon": 23.532179,
+        "location_type": 0
+    },
+    {
+        "stop_id": 456,
+        "stop_name": "M-Primăria Ciurila",
+        "stop_lat": 46.648661,
+        "stop_lon": 23.542309,
+        "location_type": 0
+    },
+    {
+        "stop_id": 457,
+        "stop_name": "M-Primăria Ciurila Plecare",
+        "stop_lat": 46.64881,
+        "stop_lon": 23.542369,
+        "location_type": 0
+    },
+    {
+        "stop_id": 458,
+        "stop_name": "M-Ciurila E",
+        "stop_lat": 46.656064,
+        "stop_lon": 23.532383,
+        "location_type": 0
+    },
+    {
+        "stop_id": 459,
+        "stop_name": "M-Sălicea E",
+        "stop_lat": 46.673923,
+        "stop_lon": 23.525017,
+        "location_type": 0
+    },
+    {
+        "stop_id": 460,
+        "stop_name": "M-Centru Vârstnici S",
+        "stop_lat": 46.679628,
+        "stop_lon": 23.532731,
+        "location_type": 0
+    },
+    {
+        "stop_id": 461,
+        "stop_name": "Metro Nord",
+        "stop_lat": 46.752134,
+        "stop_lon": 23.523733,
+        "location_type": 0
+    },
+    {
+        "stop_id": 462,
+        "stop_name": "M-Oncos N (Florești)",
+        "stop_lat": 46.747762,
+        "stop_lon": 23.505353,
+        "location_type": 0
+    },
+    {
+        "stop_id": 463,
+        "stop_name": "M-Poligonului V (Florești)",
+        "stop_lat": 46.745596,
+        "stop_lon": 23.499219,
+        "location_type": 0
+    },
+    {
+        "stop_id": 464,
+        "stop_name": "M-Tăutului N (Florești)",
+        "stop_lat": 46.742844,
+        "stop_lon": 23.49961,
+        "location_type": 0
+    },
+    {
+        "stop_id": 465,
+        "stop_name": "M-Sub Cetate V (Florești)",
+        "stop_lat": 46.739472,
+        "stop_lon": 23.496001,
+        "location_type": 0
+    },
+    {
+        "stop_id": 466,
+        "stop_name": "M-Luxor N (Florești)",
+        "stop_lat": 46.736596,
+        "stop_lon": 23.490762,
+        "location_type": 0
+    },
+    {
+        "stop_id": 467,
+        "stop_name": "M-Eroilor V (Florești)",
+        "stop_lat": 46.735668,
+        "stop_lon": 23.483832,
+        "location_type": 0
+    },
+    {
+        "stop_id": 468,
+        "stop_name": "M-Teilor (Florești)",
+        "stop_lat": 46.732548,
+        "stop_lon": 23.4834,
+        "location_type": 0
+    },
+    {
+        "stop_id": 469,
+        "stop_name": "M-Florești Cetate Sos",
+        "stop_lat": 46.72811,
+        "stop_lon": 23.484913,
+        "location_type": 0
+    },
+    {
+        "stop_id": 470,
+        "stop_name": "M-Florești Cetate Plecare",
+        "stop_lat": 46.7295,
+        "stop_lon": 23.48404,
+        "location_type": 0
+    },
+    {
+        "stop_id": 471,
+        "stop_name": "M-Stejarului (Florești)",
+        "stop_lat": 46.73268,
+        "stop_lon": 23.48361,
+        "location_type": 0
+    },
+    {
+        "stop_id": 472,
+        "stop_name": "M-Eroilor E (Florești)",
+        "stop_lat": 46.734804,
+        "stop_lon": 23.483893,
+        "location_type": 0
+    },
+    {
+        "stop_id": 473,
+        "stop_name": "M-Luxor S (Florești)",
+        "stop_lat": 46.736451,
+        "stop_lon": 23.489435,
+        "location_type": 0
+    },
+    {
+        "stop_id": 474,
+        "stop_name": "M-Sub Cetate E (Florești)",
+        "stop_lat": 46.739039,
+        "stop_lon": 23.496054,
+        "location_type": 0
+    },
+    {
+        "stop_id": 475,
+        "stop_name": "M-Tăutului S (Florești)",
+        "stop_lat": 46.742731,
+        "stop_lon": 23.499588,
+        "location_type": 0
+    },
+    {
+        "stop_id": 476,
+        "stop_name": "M-Poligonului E (Florești)",
+        "stop_lat": 46.746207,
+        "stop_lon": 23.499454,
+        "location_type": 0
+    },
+    {
+        "stop_id": 477,
+        "stop_name": "M-Oncos S (Florești)",
+        "stop_lat": 46.747649,
+        "stop_lon": 23.50547,
+        "location_type": 0
+    },
+    {
+        "stop_id": 478,
+        "stop_name": "AutoTransilvania",
+        "stop_lat": 46.750515,
+        "stop_lon": 23.517739,
+        "location_type": 0
+    },
+    {
+        "stop_id": 479,
+        "stop_name": "Metro Sud",
+        "stop_lat": 46.752477,
+        "stop_lon": 23.526178,
+        "location_type": 0
+    },
+    {
+        "stop_id": 480,
+        "stop_name": "Polus Center",
+        "stop_lat": 46.75403,
+        "stop_lon": 23.532688,
+        "location_type": 0
+    },
+    {
+        "stop_id": 481,
+        "stop_name": "M-Someșului (Florești)",
+        "stop_lat": 46.746308,
+        "stop_lon": 23.499373,
+        "location_type": 0
+    },
+    {
+        "stop_id": 482,
+        "stop_name": "M-Iuliu Hossu (Florești)",
+        "stop_lat": 46.745212,
+        "stop_lon": 23.49299,
+        "location_type": 0
+    },
+    {
+        "stop_id": 483,
+        "stop_name": "M-Primăria Florești N",
+        "stop_lat": 46.744373,
+        "stop_lon": 23.485902,
+        "location_type": 0
+    },
+    {
+        "stop_id": 484,
+        "stop_name": "M-Il Milanese (Florești)",
+        "stop_lat": 46.743945,
+        "stop_lon": 23.474614,
+        "location_type": 0
+    },
+    {
+        "stop_id": 485,
+        "stop_name": "M-Prof. Dumitru Mocanu V",
+        "stop_lat": 46.742346,
+        "stop_lon": 23.473245,
+        "location_type": 0
+    },
+    {
+        "stop_id": 486,
+        "stop_name": "M-Dumitru Tautan",
+        "stop_lat": 46.741317,
+        "stop_lon": 23.469914,
+        "location_type": 0
+    },
+    {
+        "stop_id": 487,
+        "stop_name": "M-Sesu de Sus Sosire",
+        "stop_lat": 46.741375,
+        "stop_lon": 23.466003,
+        "location_type": 0
+    },
+    {
+        "stop_id": 488,
+        "stop_name": "M-Sesu de Sus Plecare",
+        "stop_lat": 46.74128,
+        "stop_lon": 23.465847,
+        "location_type": 0
+    },
+    {
+        "stop_id": 489,
+        "stop_name": "M-Cartier Terra",
+        "stop_lat": 46.741226,
+        "stop_lon": 23.469726,
+        "location_type": 0
+    },
+    {
+        "stop_id": 490,
+        "stop_name": "M-Prof. Dumitru Mocanu E",
+        "stop_lat": 46.742467,
+        "stop_lon": 23.473352,
+        "location_type": 0
+    },
+    {
+        "stop_id": 491,
+        "stop_name": "M-Cuza Vodă (Florești)",
+        "stop_lat": 46.743666,
+        "stop_lon": 23.476744,
+        "location_type": 0
+    },
+    {
+        "stop_id": 492,
+        "stop_name": "M-Primăria Florești S",
+        "stop_lat": 46.744139,
+        "stop_lon": 23.485283,
+        "location_type": 0
+    },
+    {
+        "stop_id": 493,
+        "stop_name": "M-Complex Florești",
+        "stop_lat": 46.745321,
+        "stop_lon": 23.495816,
+        "location_type": 0
+    },
+    {
+        "stop_id": 494,
+        "stop_name": "Calvaria Auto Plecare",
+        "stop_lat": 46.759707,
+        "stop_lon": 23.557426,
+        "location_type": 0
+    },
+    {
+        "stop_id": 495,
+        "stop_name": "M-Iazului (Florești)",
+        "stop_lat": 46.744094,
+        "stop_lon": 23.467738,
+        "location_type": 0
+    },
+    {
+        "stop_id": 496,
+        "stop_name": "M-Luna 2 Nord",
+        "stop_lat": 46.744794,
+        "stop_lon": 23.448595,
+        "location_type": 0
+    },
+    {
+        "stop_id": 497,
+        "stop_name": "M-Luna 1 Nord",
+        "stop_lat": 46.744279,
+        "stop_lon": 23.440822,
+        "location_type": 0
+    },
+    {
+        "stop_id": 498,
+        "stop_name": "M-Școala Luna N",
+        "stop_lat": 46.742987,
+        "stop_lon": 23.433299,
+        "location_type": 0
+    },
+    {
+        "stop_id": 499,
+        "stop_name": "M-Bis. Ortodoxă Sos (Luna)",
+        "stop_lat": 46.740188,
+        "stop_lon": 23.429713,
+        "location_type": 0
+    },
+    {
+        "stop_id": 500,
+        "stop_name": "M-Bis. Ortodoxă (Luna)",
+        "stop_lat": 46.740155,
+        "stop_lon": 23.429723,
+        "location_type": 0
+    },
+    {
+        "stop_id": 501,
+        "stop_name": "M-Școala Luna S",
+        "stop_lat": 46.74286,
+        "stop_lon": 23.433189,
+        "location_type": 0
+    },
+    {
+        "stop_id": 502,
+        "stop_name": "M-Luna 1 Sud",
+        "stop_lat": 46.744198,
+        "stop_lon": 23.44108,
+        "location_type": 0
+    },
+    {
+        "stop_id": 503,
+        "stop_name": "M-Luna 2 Sud",
+        "stop_lat": 46.744743,
+        "stop_lon": 23.448858,
+        "location_type": 0
+    },
+    {
+        "stop_id": 504,
+        "stop_name": "M-Ferma 9 Nord",
+        "stop_lat": 46.744366,
+        "stop_lon": 23.455596,
+        "location_type": 0
+    },
+    {
+        "stop_id": 505,
+        "stop_name": "M-Zambilelor (Florești)",
+        "stop_lat": 46.743963,
+        "stop_lon": 23.467781,
+        "location_type": 0
+    },
+    {
+        "stop_id": 506,
+        "stop_name": "Calvaria Auto Sosire",
+        "stop_lat": 46.759714,
+        "stop_lon": 23.55728,
+        "location_type": 0
+    },
+    {
+        "stop_id": 507,
+        "stop_name": "M-Horea (Florești)",
+        "stop_lat": 46.747142,
+        "stop_lon": 23.494982,
+        "location_type": 0
+    },
+    {
+        "stop_id": 508,
+        "stop_name": "M-Gh. Doja (Florești)",
+        "stop_lat": 46.746303,
+        "stop_lon": 23.488183,
+        "location_type": 0
+    },
+    {
+        "stop_id": 509,
+        "stop_name": "M-Simion Bărnuțiu",
+        "stop_lat": 46.74489,
+        "stop_lon": 23.484824,
+        "location_type": 0
+    },
+    {
+        "stop_id": 510,
+        "stop_name": "M-Ferma 9 Sos (Florești)",
+        "stop_lat": 46.74439,
+        "stop_lon": 23.455263,
+        "location_type": 0
+    },
+    {
+        "stop_id": 511,
+        "stop_name": "M-Tăuțiului Vest",
+        "stop_lat": 46.740625,
+        "stop_lon": 23.505975,
+        "location_type": 0
+    },
+    {
+        "stop_id": 512,
+        "stop_name": "M-Mănăstirea Florești V",
+        "stop_lat": 46.7264,
+        "stop_lon": 23.507293,
+        "location_type": 0
+    },
+    {
+        "stop_id": 513,
+        "stop_name": "M-Cămin Vârstnici V",
+        "stop_lat": 46.721053,
+        "stop_lon": 23.50537,
+        "location_type": 0
+    },
+    {
+        "stop_id": 514,
+        "stop_name": "M-Izvor V",
+        "stop_lat": 46.716237,
+        "stop_lon": 23.50324,
+        "location_type": 0
+    },
+    {
+        "stop_id": 515,
+        "stop_name": "M-Tăuți Sosire",
+        "stop_lat": 46.709271,
+        "stop_lon": 23.510241,
+        "location_type": 0
+    },
+    {
+        "stop_id": 516,
+        "stop_name": "M-Tăuți Plecare",
+        "stop_lat": 46.709326,
+        "stop_lon": 23.510367,
+        "location_type": 0
+    },
+    {
+        "stop_id": 517,
+        "stop_name": "M-Izvor E",
+        "stop_lat": 46.71631,
+        "stop_lon": 23.503315,
+        "location_type": 0
+    },
+    {
+        "stop_id": 518,
+        "stop_name": "M-Cămin Vârstnici E",
+        "stop_lat": 46.721035,
+        "stop_lon": 23.505448,
+        "location_type": 0
+    },
+    {
+        "stop_id": 519,
+        "stop_name": "M-Mănăstirea Florești E",
+        "stop_lat": 46.726659,
+        "stop_lon": 23.507537,
+        "location_type": 0
+    },
+    {
+        "stop_id": 520,
+        "stop_name": "M-Tăuțiului Est",
+        "stop_lat": 46.740343,
+        "stop_lon": 23.50672,
+        "location_type": 0
+    },
+    {
+        "stop_id": 521,
+        "stop_name": "Hotel Sport Plecare",
+        "stop_lat": 46.767707,
+        "stop_lon": 23.575062,
+        "location_type": 0
+    },
+    {
+        "stop_id": 522,
+        "stop_name": "M-Profi V (Florești)",
+        "stop_lat": 46.738372,
+        "stop_lon": 23.483993,
+        "location_type": 0
+    },
+    {
+        "stop_id": 523,
+        "stop_name": "M-Profi E (Florești)",
+        "stop_lat": 46.738769,
+        "stop_lon": 23.48414,
+        "location_type": 0
+    },
+    {
+        "stop_id": 524,
+        "stop_name": "Mihai Eminescu",
+        "stop_lat": 46.768361,
+        "stop_lon": 23.579251,
+        "location_type": 0
+    },
+    {
+        "stop_id": 525,
+        "stop_name": "Emil Isac",
+        "stop_lat": 46.771304,
+        "stop_lon": 23.584117,
+        "location_type": 0
+    },
+    {
+        "stop_id": 526,
+        "stop_name": "Hotel Sport Sosire",
+        "stop_lat": 46.768045,
+        "stop_lon": 23.574919,
+        "location_type": 0
+    },
+    {
+        "stop_id": 527,
+        "stop_name": "Napolact Nord",
+        "stop_lat": 46.785784,
+        "stop_lon": 23.53546,
+        "location_type": 0
+    },
+    {
+        "stop_id": 528,
+        "stop_name": "M-Transilvaniei N",
+        "stop_lat": 46.789573,
+        "stop_lon": 23.52801,
+        "location_type": 0
+    },
+    {
+        "stop_id": 529,
+        "stop_name": "M-Regina",
+        "stop_lat": 46.793283,
+        "stop_lon": 23.52417,
+        "location_type": 0
+    },
+    {
+        "stop_id": 530,
+        "stop_name": "M-Poliția Baciu N",
+        "stop_lat": 46.795994,
+        "stop_lon": 23.519962,
+        "location_type": 0
+    },
+    {
+        "stop_id": 531,
+        "stop_name": "M-Complex Baciu Sos",
+        "stop_lat": 46.79718,
+        "stop_lon": 23.514492,
+        "location_type": 0
+    },
+    {
+        "stop_id": 532,
+        "stop_name": "M-Complex Baciu",
+        "stop_lat": 46.797206,
+        "stop_lon": 23.514301,
+        "location_type": 0
+    },
+    {
+        "stop_id": 533,
+        "stop_name": "M-Poliția Baciu S",
+        "stop_lat": 46.796277,
+        "stop_lon": 23.519104,
+        "location_type": 0
+    },
+    {
+        "stop_id": 534,
+        "stop_name": "M-Cart. Blocuri Baciu",
+        "stop_lat": 46.796455,
+        "stop_lon": 23.521566,
+        "location_type": 0
+    },
+    {
+        "stop_id": 535,
+        "stop_name": "M-Crinului",
+        "stop_lat": 46.794394,
+        "stop_lon": 23.524539,
+        "location_type": 0
+    },
+    {
+        "stop_id": 536,
+        "stop_name": "M-Regal",
+        "stop_lat": 46.791571,
+        "stop_lon": 23.528246,
+        "location_type": 0
+    },
+    {
+        "stop_id": 537,
+        "stop_name": "M-Transilvaniei S",
+        "stop_lat": 46.789214,
+        "stop_lon": 23.528267,
+        "location_type": 0
+    },
+    {
+        "stop_id": 538,
+        "stop_name": "Gara Mică",
+        "stop_lat": 46.78451,
+        "stop_lon": 23.588981,
+        "location_type": 0
+    },
+    {
+        "stop_id": 539,
+        "stop_name": "M-Pasaj Baciu N",
+        "stop_lat": 46.797911,
+        "stop_lon": 23.484273,
+        "location_type": 0
+    },
+    {
+        "stop_id": 540,
+        "stop_name": "M-Magazin Suceagu V",
+        "stop_lat": 46.79339,
+        "stop_lon": 23.479065,
+        "location_type": 0
+    },
+    {
+        "stop_id": 541,
+        "stop_name": "M-Suceagu V",
+        "stop_lat": 46.787966,
+        "stop_lon": 23.476354,
+        "location_type": 0
+    },
+    {
+        "stop_id": 542,
+        "stop_name": "M-Transformator N",
+        "stop_lat": 46.785263,
+        "stop_lon": 23.469805,
+        "location_type": 0
+    },
+    {
+        "stop_id": 543,
+        "stop_name": "M-Cămin Suceagu N",
+        "stop_lat": 46.784452,
+        "stop_lon": 23.464801,
+        "location_type": 0
+    },
+    {
+        "stop_id": 544,
+        "stop_name": "M-Școala Suceagu Sos",
+        "stop_lat": 46.784483,
+        "stop_lon": 23.461341,
+        "location_type": 0
+    },
+    {
+        "stop_id": 545,
+        "stop_name": "M-Școala Suceagu Plecare",
+        "stop_lat": 46.784417,
+        "stop_lon": 23.461438,
+        "location_type": 0
+    },
+    {
+        "stop_id": 546,
+        "stop_name": "M-Cămin Suceagu S",
+        "stop_lat": 46.78434,
+        "stop_lon": 23.46507,
+        "location_type": 0
+    },
+    {
+        "stop_id": 547,
+        "stop_name": "M-Transformator S",
+        "stop_lat": 46.785207,
+        "stop_lon": 23.469863,
+        "location_type": 0
+    },
+    {
+        "stop_id": 548,
+        "stop_name": "M-Suceagu E",
+        "stop_lat": 46.788202,
+        "stop_lon": 23.476844,
+        "location_type": 0
+    },
+    {
+        "stop_id": 549,
+        "stop_name": "M-Magazin Suceagu E",
+        "stop_lat": 46.793666,
+        "stop_lon": 23.47936,
+        "location_type": 0
+    },
+    {
+        "stop_id": 550,
+        "stop_name": "M-Pasaj Baciu S",
+        "stop_lat": 46.79804,
+        "stop_lon": 23.483754,
+        "location_type": 0
+    },
+    {
+        "stop_id": 551,
+        "stop_name": "M-Regina Sud",
+        "stop_lat": 46.792424,
+        "stop_lon": 23.524826,
+        "location_type": 0
+    },
+    {
+        "stop_id": 552,
+        "stop_name": "Dedeman",
+        "stop_lat": 46.785077,
+        "stop_lon": 23.585633,
+        "location_type": 0
+    },
+    {
+        "stop_id": 553,
+        "stop_name": "Liberty",
+        "stop_lat": 46.787231,
+        "stop_lon": 23.592704,
+        "location_type": 0
+    },
+    {
+        "stop_id": 554,
+        "stop_name": "Gara Mică Sosire",
+        "stop_lat": 46.784524,
+        "stop_lon": 23.589181,
+        "location_type": 0
+    },
+    {
+        "stop_id": 555,
+        "stop_name": "M-Măracineanu E",
+        "stop_lat": 46.79075,
+        "stop_lon": 23.543033,
+        "location_type": 0
+    },
+    {
+        "stop_id": 556,
+        "stop_name": "M-Terasa E",
+        "stop_lat": 46.816556,
+        "stop_lon": 23.523842,
+        "location_type": 0
+    },
+    {
+        "stop_id": 557,
+        "stop_name": "M-Popești Ramificație E",
+        "stop_lat": 46.825535,
+        "stop_lon": 23.522565,
+        "location_type": 0
+    },
+    {
+        "stop_id": 558,
+        "stop_name": "M-Comlact E",
+        "stop_lat": 46.842119,
+        "stop_lon": 23.509626,
+        "location_type": 0
+    },
+    {
+        "stop_id": 559,
+        "stop_name": "M-Monument Coruș",
+        "stop_lat": 46.847902,
+        "stop_lon": 23.50637,
+        "location_type": 0
+    },
+    {
+        "stop_id": 560,
+        "stop_name": "M-Situl Fosilier E",
+        "stop_lat": 46.852073,
+        "stop_lon": 23.502615,
+        "location_type": 0
+    },
+    {
+        "stop_id": 561,
+        "stop_name": "M-Săliștea Noua Sosire",
+        "stop_lat": 46.872892,
+        "stop_lon": 23.490159,
+        "location_type": 0
+    },
+    {
+        "stop_id": 562,
+        "stop_name": "M-Săliștea Noua Plecare",
+        "stop_lat": 46.872833,
+        "stop_lon": 23.489995,
+        "location_type": 0
+    },
+    {
+        "stop_id": 563,
+        "stop_name": "M-Situl Fosilier V",
+        "stop_lat": 46.851897,
+        "stop_lon": 23.502599,
+        "location_type": 0
+    },
+    {
+        "stop_id": 564,
+        "stop_name": "M-Biserica Coruș",
+        "stop_lat": 46.847806,
+        "stop_lon": 23.506215,
+        "location_type": 0
+    },
+    {
+        "stop_id": 565,
+        "stop_name": "M-Comlact V",
+        "stop_lat": 46.842301,
+        "stop_lon": 23.509364,
+        "location_type": 0
+    },
+    {
+        "stop_id": 566,
+        "stop_name": "M-Popești Ramificație V",
+        "stop_lat": 46.825513,
+        "stop_lon": 23.522399,
+        "location_type": 0
+    },
+    {
+        "stop_id": 567,
+        "stop_name": "M-Terasă V",
+        "stop_lat": 46.816178,
+        "stop_lon": 23.523869,
+        "location_type": 0
+    },
+    {
+        "stop_id": 568,
+        "stop_name": "M-Mărăcineanu V",
+        "stop_lat": 46.790522,
+        "stop_lon": 23.54313,
+        "location_type": 0
+    },
+    {
+        "stop_id": 569,
+        "stop_name": "M-ADRNV",
+        "stop_lat": 46.800414,
+        "stop_lon": 23.468987,
+        "location_type": 0
+    },
+    {
+        "stop_id": 570,
+        "stop_name": "M-Rădaia N",
+        "stop_lat": 46.800906,
+        "stop_lon": 23.463852,
+        "location_type": 0
+    },
+    {
+        "stop_id": 571,
+        "stop_name": "M-Mera 1 E",
+        "stop_lat": 46.806658,
+        "stop_lon": 23.455805,
+        "location_type": 0
+    },
+    {
+        "stop_id": 572,
+        "stop_name": "M-Mera 2 E",
+        "stop_lat": 46.8099,
+        "stop_lon": 23.4576,
+        "location_type": 0
+    },
+    {
+        "stop_id": 573,
+        "stop_name": "M-Biserica Mera Sosire",
+        "stop_lat": 46.815121,
+        "stop_lon": 23.453048,
+        "location_type": 0
+    },
+    {
+        "stop_id": 574,
+        "stop_name": "M-Biserica Mera Plecare",
+        "stop_lat": 46.815121,
+        "stop_lon": 23.452919,
+        "location_type": 0
+    },
+    {
+        "stop_id": 575,
+        "stop_name": "M-Mera 2 V",
+        "stop_lat": 46.809839,
+        "stop_lon": 23.457549,
+        "location_type": 0
+    },
+    {
+        "stop_id": 576,
+        "stop_name": "M-Mera 1 V",
+        "stop_lat": 46.806364,
+        "stop_lon": 23.455341,
+        "location_type": 0
+    },
+    {
+        "stop_id": 577,
+        "stop_name": "M-Rădaia S",
+        "stop_lat": 46.800805,
+        "stop_lon": 23.464179,
+        "location_type": 0
+    },
+    {
+        "stop_id": 578,
+        "stop_name": "M-Plant Extract S",
+        "stop_lat": 46.798205,
+        "stop_lon": 23.472534,
+        "location_type": 0
+    },
+    {
+        "stop_id": 579,
+        "stop_name": "M-Spicului Est",
+        "stop_lat": 46.80167,
+        "stop_lon": 23.555315,
+        "location_type": 0
+    },
+    {
+        "stop_id": 580,
+        "stop_name": "M-Popești Est",
+        "stop_lat": 46.818883,
+        "stop_lon": 23.535335,
+        "location_type": 0
+    },
+    {
+        "stop_id": 581,
+        "stop_name": "M-Monument Popești Sos",
+        "stop_lat": 46.823252,
+        "stop_lon": 23.534083,
+        "location_type": 0
+    },
+    {
+        "stop_id": 582,
+        "stop_name": "M-Monument Popești Plecare",
+        "stop_lat": 46.823338,
+        "stop_lon": 23.53397,
+        "location_type": 0
+    },
+    {
+        "stop_id": 583,
+        "stop_name": "M-Popești Vest",
+        "stop_lat": 46.818819,
+        "stop_lon": 23.535263,
+        "location_type": 0
+    },
+    {
+        "stop_id": 584,
+        "stop_name": "M-Spicului Vest",
+        "stop_lat": 46.801672,
+        "stop_lon": 23.555087,
+        "location_type": 0
+    },
+    {
+        "stop_id": 585,
+        "stop_name": "M-Dealu Fânatelor E",
+        "stop_lat": 46.840637,
+        "stop_lon": 23.607994,
+        "location_type": 0
+    },
+    {
+        "stop_id": 586,
+        "stop_name": "M-Ferma Fânate E",
+        "stop_lat": 46.848687,
+        "stop_lon": 23.60676,
+        "location_type": 0
+    },
+    {
+        "stop_id": 587,
+        "stop_name": "M-Biserica Pădureni E",
+        "stop_lat": 46.867692,
+        "stop_lon": 23.593124,
+        "location_type": 0
+    },
+    {
+        "stop_id": 588,
+        "stop_name": "M-Pădureni E",
+        "stop_lat": 46.870602,
+        "stop_lon": 23.594341,
+        "location_type": 0
+    },
+    {
+        "stop_id": 589,
+        "stop_name": "M-Feiurdeni Sosire",
+        "stop_lat": 46.880094,
+        "stop_lon": 23.626064,
+        "location_type": 0
+    },
+    {
+        "stop_id": 590,
+        "stop_name": "M-Feiurdeni Plecare",
+        "stop_lat": 46.880085,
+        "stop_lon": 23.625887,
+        "location_type": 0
+    },
+    {
+        "stop_id": 591,
+        "stop_name": "M-Pădureni V",
+        "stop_lat": 46.870631,
+        "stop_lon": 23.594226,
+        "location_type": 0
+    },
+    {
+        "stop_id": 592,
+        "stop_name": "M-Biserica Pădureni V",
+        "stop_lat": 46.867435,
+        "stop_lon": 23.59285,
+        "location_type": 0
+    },
+    {
+        "stop_id": 593,
+        "stop_name": "M-Ferma Fanate V",
+        "stop_lat": 46.848916,
+        "stop_lon": 23.606583,
+        "location_type": 0
+    },
+    {
+        "stop_id": 594,
+        "stop_name": "M-Dealu Fanatelor V",
+        "stop_lat": 46.840791,
+        "stop_lon": 23.607945,
+        "location_type": 0
+    },
+    {
+        "stop_id": 595,
+        "stop_name": "M-Garden E",
+        "stop_lat": 46.848356,
+        "stop_lon": 23.554387,
+        "location_type": 0
+    },
+    {
+        "stop_id": 596,
+        "stop_name": "M-Xamus E",
+        "stop_lat": 46.851273,
+        "stop_lon": 23.548717,
+        "location_type": 0
+    },
+    {
+        "stop_id": 597,
+        "stop_name": "M-Chinteni E",
+        "stop_lat": 46.857322,
+        "stop_lon": 23.544028,
+        "location_type": 0
+    },
+    {
+        "stop_id": 598,
+        "stop_name": "M-Primăria Chinteni",
+        "stop_lat": 46.861343,
+        "stop_lon": 23.539957,
+        "location_type": 0
+    },
+    {
+        "stop_id": 599,
+        "stop_name": "M-Habitat E",
+        "stop_lat": 46.868418,
+        "stop_lon": 23.52977,
+        "location_type": 0
+    },
+    {
+        "stop_id": 600,
+        "stop_name": "M-Chinteni Lac Sosire",
+        "stop_lat": 46.87543,
+        "stop_lon": 23.52569,
+        "location_type": 0
+    },
+    {
+        "stop_id": 601,
+        "stop_name": "M-Vechea N",
+        "stop_lat": 46.898272,
+        "stop_lon": 23.520149,
+        "location_type": 0
+    },
+    {
+        "stop_id": 602,
+        "stop_name": "M-Deusu S",
+        "stop_lat": 46.894966,
+        "stop_lon": 23.530059,
+        "location_type": 0
+    },
+    {
+        "stop_id": 603,
+        "stop_name": "M-Sânmărtin Sosire",
+        "stop_lat": 46.895708,
+        "stop_lon": 23.563651,
+        "location_type": 0
+    },
+    {
+        "stop_id": 604,
+        "stop_name": "M-Sânmărtin Plecare",
+        "stop_lat": 46.895826,
+        "stop_lon": 23.56371,
+        "location_type": 0
+    },
+    {
+        "stop_id": 605,
+        "stop_name": "M-Deusu N",
+        "stop_lat": 46.895039,
+        "stop_lon": 23.529952,
+        "location_type": 0
+    },
+    {
+        "stop_id": 606,
+        "stop_name": "M-Vechea S",
+        "stop_lat": 46.898197,
+        "stop_lon": 23.520323,
+        "location_type": 0
+    },
+    {
+        "stop_id": 607,
+        "stop_name": "M-Chinteni Lac Plecare",
+        "stop_lat": 46.87532,
+        "stop_lon": 23.52572,
+        "location_type": 0
+    },
+    {
+        "stop_id": 608,
+        "stop_name": "M-Habitat V",
+        "stop_lat": 46.868304,
+        "stop_lon": 23.529711,
+        "location_type": 0
+    },
+    {
+        "stop_id": 609,
+        "stop_name": "M-Primăria Chinteni V",
+        "stop_lat": 46.861141,
+        "stop_lon": 23.539892,
+        "location_type": 0
+    },
+    {
+        "stop_id": 610,
+        "stop_name": "M-Chinteni V",
+        "stop_lat": 46.856923,
+        "stop_lon": 23.544028,
+        "location_type": 0
+    },
+    {
+        "stop_id": 611,
+        "stop_name": "M-Xamus V",
+        "stop_lat": 46.851181,
+        "stop_lon": 23.548599,
+        "location_type": 0
+    },
+    {
+        "stop_id": 612,
+        "stop_name": "M-Garden V",
+        "stop_lat": 46.848243,
+        "stop_lon": 23.554462,
+        "location_type": 0
+    },
+    {
+        "stop_id": 613,
+        "stop_name": "M-Agro Transilvania",
+        "stop_lat": 46.782324,
+        "stop_lon": 23.707218,
+        "location_type": 0
+    },
+    {
+        "stop_id": 614,
+        "stop_name": "M-Rondocarton",
+        "stop_lat": 46.783732,
+        "stop_lon": 23.7151,
+        "location_type": 0
+    },
+    {
+        "stop_id": 615,
+        "stop_name": "M-Halta Sânnicoară S",
+        "stop_lat": 46.784473,
+        "stop_lon": 23.718963,
+        "location_type": 0
+    },
+    {
+        "stop_id": 616,
+        "stop_name": "M-Triaj Sânnicoară S",
+        "stop_lat": 46.787461,
+        "stop_lon": 23.728407,
+        "location_type": 0
+    },
+    {
+        "stop_id": 617,
+        "stop_name": "M-Gara Apahida S",
+        "stop_lat": 46.792007,
+        "stop_lon": 23.742607,
+        "location_type": 0
+    },
+    {
+        "stop_id": 618,
+        "stop_name": "M-Ramificație Cojocna",
+        "stop_lat": 46.79744,
+        "stop_lon": 23.751806,
+        "location_type": 0
+    },
+    {
+        "stop_id": 619,
+        "stop_name": "M-Blocuri Apahida E",
+        "stop_lat": 46.800777,
+        "stop_lon": 23.754104,
+        "location_type": 0
+    },
+    {
+        "stop_id": 620,
+        "stop_name": "M-Poliția Apahida",
+        "stop_lat": 46.804479,
+        "stop_lon": 23.75225,
+        "location_type": 0
+    },
+    {
+        "stop_id": 621,
+        "stop_name": "M-Tudor Vladimirescu Ap.",
+        "stop_lat": 46.811481,
+        "stop_lon": 23.751276,
+        "location_type": 0
+    },
+    {
+        "stop_id": 622,
+        "stop_name": "M-Pod Apahida E",
+        "stop_lat": 46.81377,
+        "stop_lon": 23.750756,
+        "location_type": 0
+    },
+    {
+        "stop_id": 623,
+        "stop_name": "M-Ferma Câmpenești",
+        "stop_lat": 46.815773,
+        "stop_lon": 23.744677,
+        "location_type": 0
+    },
+    {
+        "stop_id": 624,
+        "stop_name": "M-Pod Apahida V",
+        "stop_lat": 46.813855,
+        "stop_lon": 23.750567,
+        "location_type": 0
+    },
+    {
+        "stop_id": 625,
+        "stop_name": "M-Eroii Pascu",
+        "stop_lat": 46.810797,
+        "stop_lon": 23.750803,
+        "location_type": 0
+    },
+    {
+        "stop_id": 626,
+        "stop_name": "M-Primăria Apahida",
+        "stop_lat": 46.805544,
+        "stop_lon": 23.751599,
+        "location_type": 0
+    },
+    {
+        "stop_id": 627,
+        "stop_name": "M-Blocuri Apahida V",
+        "stop_lat": 46.801356,
+        "stop_lon": 23.753699,
+        "location_type": 0
+    },
+    {
+        "stop_id": 628,
+        "stop_name": "M-Pietroasa Apahida",
+        "stop_lat": 46.796566,
+        "stop_lon": 23.750495,
+        "location_type": 0
+    },
+    {
+        "stop_id": 629,
+        "stop_name": "M-Gara Apahida N",
+        "stop_lat": 46.792445,
+        "stop_lon": 23.743649,
+        "location_type": 0
+    },
+    {
+        "stop_id": 630,
+        "stop_name": "M-Triaj Sânnicoară N",
+        "stop_lat": 46.787635,
+        "stop_lon": 23.728647,
+        "location_type": 0
+    },
+    {
+        "stop_id": 631,
+        "stop_name": "M-Halta Sânnicoară N",
+        "stop_lat": 46.784664,
+        "stop_lon": 23.719139,
+        "location_type": 0
+    },
+    {
+        "stop_id": 632,
+        "stop_name": "M-RMB Inter Auto",
+        "stop_lat": 46.784092,
+        "stop_lon": 23.71647,
+        "location_type": 0
+    },
+    {
+        "stop_id": 633,
+        "stop_name": "M-EVW Holding",
+        "stop_lat": 46.782551,
+        "stop_lon": 23.707337,
+        "location_type": 0
+    },
+    {
+        "stop_id": 634,
+        "stop_name": "M-Grădinița Câmpenești S",
+        "stop_lat": 46.83087,
+        "stop_lon": 23.738373,
+        "location_type": 0
+    },
+    {
+        "stop_id": 635,
+        "stop_name": "M-Grădinița Câmpenești Plecare",
+        "stop_lat": 46.830618,
+        "stop_lon": 23.738358,
+        "location_type": 0
+    },
+    {
+        "stop_id": 636,
+        "stop_name": "M-Cămin Sânnicoară",
+        "stop_lat": 46.788298,
+        "stop_lon": 23.726944,
+        "location_type": 0
+    },
+    {
+        "stop_id": 637,
+        "stop_name": "M-1 Mai Sosire",
+        "stop_lat": 46.791818,
+        "stop_lon": 23.723892,
+        "location_type": 0
+    },
+    {
+        "stop_id": 638,
+        "stop_name": "M-1 Mai Plecare",
+        "stop_lat": 46.791903,
+        "stop_lon": 23.723825,
+        "location_type": 0
+    },
+    {
+        "stop_id": 639,
+        "stop_name": "M-Școlii Sânnicoară",
+        "stop_lat": 46.788311,
+        "stop_lon": 23.718479,
+        "location_type": 0
+    },
+    {
+        "stop_id": 640,
+        "stop_name": "M-Sub Coastă Sosire",
+        "stop_lat": 46.79775,
+        "stop_lon": 23.71691,
+        "location_type": 0
+    },
+    {
+        "stop_id": 641,
+        "stop_name": "M-Sub Coastă",
+        "stop_lat": 46.79855,
+        "stop_lon": 23.716028,
+        "location_type": 0
+    },
+    {
+        "stop_id": 642,
+        "stop_name": "M-Pepiniera",
+        "stop_lat": 46.775278,
+        "stop_lon": 23.706086,
+        "location_type": 0
+    },
+    {
+        "stop_id": 643,
+        "stop_name": "M-Trandafirilor V",
+        "stop_lat": 46.771301,
+        "stop_lon": 23.706678,
+        "location_type": 0
+    },
+    {
+        "stop_id": 644,
+        "stop_name": "M-Crișeni V",
+        "stop_lat": 46.767628,
+        "stop_lon": 23.709515,
+        "location_type": 0
+    },
+    {
+        "stop_id": 645,
+        "stop_name": "M-Tăușor V",
+        "stop_lat": 46.764917,
+        "stop_lon": 23.71105,
+        "location_type": 0
+    },
+    {
+        "stop_id": 646,
+        "stop_name": "M-Complex Dezmir S",
+        "stop_lat": 46.762912,
+        "stop_lon": 23.714998,
+        "location_type": 0
+    },
+    {
+        "stop_id": 647,
+        "stop_name": "M-Școala Dezmir S",
+        "stop_lat": 46.764369,
+        "stop_lon": 23.71842,
+        "location_type": 0
+    },
+    {
+        "stop_id": 648,
+        "stop_name": "M-Primăria Dezmir Sosire",
+        "stop_lat": 46.766408,
+        "stop_lon": 23.721003,
+        "location_type": 0
+    },
+    {
+        "stop_id": 649,
+        "stop_name": "M-Primăria Dezmir Plecare",
+        "stop_lat": 46.766373,
+        "stop_lon": 23.720832,
+        "location_type": 0
+    },
+    {
+        "stop_id": 650,
+        "stop_name": "M-Școala Dezmir N",
+        "stop_lat": 46.764334,
+        "stop_lon": 23.718337,
+        "location_type": 0
+    },
+    {
+        "stop_id": 651,
+        "stop_name": "M-Complex Dezmir N",
+        "stop_lat": 46.762974,
+        "stop_lon": 23.714974,
+        "location_type": 0
+    },
+    {
+        "stop_id": 652,
+        "stop_name": "M-Tăușor E",
+        "stop_lat": 46.764778,
+        "stop_lon": 23.711175,
+        "location_type": 0
+    },
+    {
+        "stop_id": 653,
+        "stop_name": "M-Crișeni E",
+        "stop_lat": 46.767743,
+        "stop_lon": 23.709542,
+        "location_type": 0
+    },
+    {
+        "stop_id": 654,
+        "stop_name": "M-Trandafirilor E",
+        "stop_lat": 46.771428,
+        "stop_lon": 23.706737,
+        "location_type": 0
+    },
+    {
+        "stop_id": 655,
+        "stop_name": "M-Bonas",
+        "stop_lat": 46.775615,
+        "stop_lon": 23.706146,
+        "location_type": 0
+    },
+    {
+        "stop_id": 656,
+        "stop_name": "M-Octavian Paler E",
+        "stop_lat": 46.801354,
+        "stop_lon": 23.765514,
+        "location_type": 0
+    },
+    {
+        "stop_id": 657,
+        "stop_name": "M-Ramificație Corpadea N",
+        "stop_lat": 46.804683,
+        "stop_lon": 23.840866,
+        "location_type": 0
+    },
+    {
+        "stop_id": 658,
+        "stop_name": "M-Moara V",
+        "stop_lat": 46.797347,
+        "stop_lon": 23.833393,
+        "location_type": 0
+    },
+    {
+        "stop_id": 659,
+        "stop_name": "M-Stadion V",
+        "stop_lat": 46.792632,
+        "stop_lon": 23.827857,
+        "location_type": 0
+    },
+    {
+        "stop_id": 660,
+        "stop_name": "M-Biserica Corpadea Sosire",
+        "stop_lat": 46.788575,
+        "stop_lon": 23.823946,
+        "location_type": 0
+    },
+    {
+        "stop_id": 661,
+        "stop_name": "M-Biserica Corpadea Plecare",
+        "stop_lat": 46.788515,
+        "stop_lon": 23.824059,
+        "location_type": 0
+    },
+    {
+        "stop_id": 662,
+        "stop_name": "M-Stadion E",
+        "stop_lat": 46.792737,
+        "stop_lon": 23.828053,
+        "location_type": 0
+    },
+    {
+        "stop_id": 663,
+        "stop_name": "M-Moara E",
+        "stop_lat": 46.797195,
+        "stop_lon": 23.833401,
+        "location_type": 0
+    },
+    {
+        "stop_id": 664,
+        "stop_name": "M-Ramificație Corpadea S",
+        "stop_lat": 46.804582,
+        "stop_lon": 23.84086,
+        "location_type": 0
+    },
+    {
+        "stop_id": 665,
+        "stop_name": "M-Octavian Paler V",
+        "stop_lat": 46.801323,
+        "stop_lon": 23.765359,
+        "location_type": 0
+    },
+    {
+        "stop_id": 666,
+        "stop_name": "M-Platanilor S",
+        "stop_lat": 46.733386,
+        "stop_lon": 23.738194,
+        "location_type": 0
+    },
+    {
+        "stop_id": 667,
+        "stop_name": "M-Școala Pata S",
+        "stop_lat": 46.727461,
+        "stop_lon": 23.745642,
+        "location_type": 0
+    },
+    {
+        "stop_id": 668,
+        "stop_name": "M-Primărie Pata Sosire",
+        "stop_lat": 46.725348,
+        "stop_lon": 23.749236,
+        "location_type": 0
+    },
+    {
+        "stop_id": 669,
+        "stop_name": "M-Primărie Pata Plecare",
+        "stop_lat": 46.725409,
+        "stop_lon": 23.74936,
+        "location_type": 0
+    },
+    {
+        "stop_id": 670,
+        "stop_name": "M-Școala Pata N",
+        "stop_lat": 46.727533,
+        "stop_lon": 23.745768,
+        "location_type": 0
+    },
+    {
+        "stop_id": 671,
+        "stop_name": "M-Platanilor N",
+        "stop_lat": 46.733383,
+        "stop_lon": 23.738794,
+        "location_type": 0
+    },
+    {
+        "stop_id": 672,
+        "stop_name": "M - DN1F Est",
+        "stop_lat": 46.80271,
+        "stop_lon": 23.45565,
+        "location_type": 0
+    },
+    {
+        "stop_id": 673,
+        "stop_name": "M - DN1F Est",
+        "stop_lat": 46.80271,
+        "stop_lon": 23.45565,
+        "location_type": 0
+    },
+    {
+        "stop_id": 674,
+        "stop_name": "I.P. Voitești",
+        "stop_lat": 46.774859,
+        "stop_lon": 23.59145,
+        "location_type": 0
+    },
+    {
+        "stop_id": 675,
+        "stop_name": "Poliția Est",
+        "stop_lat": 46.77994,
+        "stop_lon": 23.590009,
+        "location_type": 0
+    },
+    {
+        "stop_id": 676,
+        "stop_name": "Grupul Școlar CFR Est",
+        "stop_lat": 46.783541,
+        "stop_lon": 23.591299,
+        "location_type": 0
+    },
+    {
+        "stop_id": 677,
+        "stop_name": "Mag. CORA",
+        "stop_lat": 46.75984,
+        "stop_lon": 23.54251,
+        "location_type": 0
+    },
+    {
+        "stop_id": 678,
+        "stop_name": "Teatru",
+        "stop_lat": 46.77015,
+        "stop_lon": 23.59677,
+        "location_type": 0
+    },
+    {
+        "stop_id": 679,
+        "stop_name": "Nordului",
+        "stop_lat": 46.7522,
+        "stop_lon": 23.62339,
+        "location_type": 0
+    },
+    {
+        "stop_id": 680,
+        "stop_name": "Uranus",
+        "stop_lat": 46.748308,
+        "stop_lon": 23.63053,
+        "location_type": 0
+    },
+    {
+        "stop_id": 681,
+        "stop_name": "Rolmul Ladea",
+        "stop_lat": 46.74496,
+        "stop_lon": 23.63666,
+        "location_type": 0
+    },
+    {
+        "stop_id": 682,
+        "stop_name": "Posada",
+        "stop_lat": 46.7685,
+        "stop_lon": 23.59848,
+        "location_type": 0
+    },
+    {
+        "stop_id": 683,
+        "stop_name": "Facultatea de Construcții",
+        "stop_lat": 46.772181,
+        "stop_lon": 23.585676,
+        "location_type": 0
+    },
+    {
+        "stop_id": 684,
+        "stop_name": "Facultatea de Electronica",
+        "stop_lat": 46.77203,
+        "stop_lon": 23.585031,
+        "location_type": 0
+    },
+    {
+        "stop_id": 685,
+        "stop_name": "Liceul N. Bălcescu",
+        "stop_lat": 46.77459,
+        "stop_lon": 23.59677,
+        "location_type": 0
+    },
+    {
+        "stop_id": 686,
+        "stop_name": "Liceul Avram Iancu",
+        "stop_lat": 46.77769,
+        "stop_lon": 23.60202,
+        "location_type": 0
+    },
+    {
+        "stop_id": 687,
+        "stop_name": "Henri Barbusse Sosire",
+        "stop_lat": 46.782915,
+        "stop_lon": 23.607737,
+        "location_type": 0
+    },
+    {
+        "stop_id": 688,
+        "stop_name": "Roata Faget Plecare",
+        "stop_lat": 46.74182,
+        "stop_lon": 23.535654,
+        "location_type": 0
+    },
+    {
+        "stop_id": 689,
+        "stop_name": "Roata Faget Sosire",
+        "stop_lat": 46.742028,
+        "stop_lon": 23.535463,
+        "location_type": 0
+    },
+    {
+        "stop_id": 690,
+        "stop_name": "Henri Barbusse Plecare",
+        "stop_lat": 46.782976,
+        "stop_lon": 23.607888,
+        "location_type": 0
+    },
+    {
+        "stop_id": 691,
+        "stop_name": "M-Pasaj Luna",
+        "stop_lat": 46.73952,
+        "stop_lon": 23.42772,
+        "location_type": 0
+    },
+    {
+        "stop_id": 692,
+        "stop_name": "Str. Kogălniceanu",
+        "stop_lat": 46.76754,
+        "stop_lon": 23.59263,
+        "location_type": 0
+    },
+    {
+        "stop_id": 693,
+        "stop_name": "Str. Kogălniceanu Plecare",
+        "stop_lat": 46.7676,
+        "stop_lon": 23.59015,
+        "location_type": 0
+    },
+    {
+        "stop_id": 694,
+        "stop_name": "Ploiești",
+        "stop_lat": 46.77745,
+        "stop_lon": 23.59784,
+        "location_type": 0
+    },
+    {
+        "stop_id": 695,
+        "stop_name": "P-ța Agroalimentară IRA",
+        "stop_lat": 46.7833,
+        "stop_lon": 23.63692,
+        "location_type": 0
+    },
+    {
+        "stop_id": 696,
+        "stop_name": "Expo Transilvania Nord",
+        "stop_lat": 46.78214,
+        "stop_lon": 23.629,
+        "location_type": 0
+    },
+    {
+        "stop_id": 697,
+        "stop_name": "Expo Transilvania Sud",
+        "stop_lat": 46.782078,
+        "stop_lon": 23.628957,
+        "location_type": 0
+    },
+    {
+        "stop_id": 698,
+        "stop_name": "Campus UTCN Nord",
+        "stop_lat": 46.781016,
+        "stop_lon": 23.622997,
+        "location_type": 0
+    },
+    {
+        "stop_id": 699,
+        "stop_name": "Campus UTCN Sud",
+        "stop_lat": 46.780671,
+        "stop_lon": 23.621785,
+        "location_type": 0
+    },
+    {
+        "stop_id": 700,
+        "stop_name": "B. St. Delavrancea",
+        "stop_lat": 46.764659,
+        "stop_lon": 23.606567,
+        "location_type": 0
+    },
+    {
+        "stop_id": 701,
+        "stop_name": "Simion Bărnuțiu",
+        "stop_lat": 46.773409,
+        "stop_lon": 23.607221,
+        "location_type": 0
+    },
+    {
+        "stop_id": 702,
+        "stop_name": "Vama",
+        "stop_lat": 46.78219,
+        "stop_lon": 23.69998,
+        "location_type": 0
+    },
+    {
+        "stop_id": 703,
+        "stop_name": "M Primaria Gilau Nord",
+        "stop_lat": 46.75585,
+        "stop_lon": 23.3867,
+        "location_type": 0
+    },
+    {
+        "stop_id": 704,
+        "stop_name": "M Primaria Gilau Sud",
+        "stop_lat": 46.75562,
+        "stop_lon": 23.38665,
+        "location_type": 0
+    },
+    {
+        "stop_id": 705,
+        "stop_name": "M RAR Nord",
+        "stop_lat": 46.75129,
+        "stop_lon": 23.4082,
+        "location_type": 0
+    },
+    {
+        "stop_id": 706,
+        "stop_name": "M RAR Sud",
+        "stop_lat": 46.75108,
+        "stop_lon": 23.40837,
+        "location_type": 0
+    },
+    {
+        "stop_id": 707,
+        "stop_name": "M La Fantana Nord",
+        "stop_lat": 46.7515,
+        "stop_lon": 23.39654,
+        "location_type": 0
+    },
+    {
+        "stop_id": 708,
+        "stop_name": "M La Fantana Sud",
+        "stop_lat": 46.75134,
+        "stop_lon": 23.39731,
+        "location_type": 0
+    },
+    {
+        "stop_id": 709,
+        "stop_name": "M Statia de Tratare Est",
+        "stop_lat": 46.74501,
+        "stop_lon": 23.37684,
+        "location_type": 0
+    },
+    {
+        "stop_id": 710,
+        "stop_name": "M Statia de Tratare Vest",
+        "stop_lat": 46.74489,
+        "stop_lon": 23.37677,
+        "location_type": 0
+    },
+    {
+        "stop_id": 711,
+        "stop_name": "M Complex Somesul Rece Nord",
+        "stop_lat": 46.73233,
+        "stop_lon": 23.36147,
+        "location_type": 0
+    },
+    {
+        "stop_id": 712,
+        "stop_name": "M Complex Somesul Rece Sud",
+        "stop_lat": 46.73232,
+        "stop_lon": 23.36168,
+        "location_type": 0
+    },
+    {
+        "stop_id": 713,
+        "stop_name": "M Camin Somesul Rece",
+        "stop_lat": 46.72839,
+        "stop_lon": 23.36336,
+        "location_type": 0
+    },
+    {
+        "stop_id": 714,
+        "stop_name": "M Biserica Somesul Rece",
+        "stop_lat": 46.72828,
+        "stop_lon": 23.36358,
+        "location_type": 0
+    },
+    {
+        "stop_id": 715,
+        "stop_name": "M Gura Rastii Nord",
+        "stop_lat": 46.691788,
+        "stop_lon": 23.307974,
+        "location_type": 0
+    },
+    {
+        "stop_id": 716,
+        "stop_name": "M Gura Rastii Sud",
+        "stop_lat": 46.69154,
+        "stop_lon": 23.30772,
+        "location_type": 0
+    },
+    {
+        "stop_id": 717,
+        "stop_name": "M Uzina Electrica Nord",
+        "stop_lat": 46.68615,
+        "stop_lon": 23.28878,
+        "location_type": 0
+    },
+    {
+        "stop_id": 718,
+        "stop_name": "M Uzina Electrica Sud",
+        "stop_lat": 46.685983,
+        "stop_lon": 23.288483,
+        "location_type": 0
+    },
+    {
+        "stop_id": 719,
+        "stop_name": "M Nurcariei",
+        "stop_lat": 46.76094,
+        "stop_lon": 23.37377,
+        "location_type": 0
+    },
+    {
+        "stop_id": 720,
+        "stop_name": "M Gradinii Nord",
+        "stop_lat": 46.761365,
+        "stop_lon": 23.372803,
+        "location_type": 0
+    },
+    {
+        "stop_id": 721,
+        "stop_name": "M Peco Sud",
+        "stop_lat": 46.76421,
+        "stop_lon": 23.36099,
+        "location_type": 0
+    },
+    {
+        "stop_id": 722,
+        "stop_name": "M Peco Nord",
+        "stop_lat": 46.7646,
+        "stop_lon": 23.36061,
+        "location_type": 0
+    },
+    {
+        "stop_id": 723,
+        "stop_name": "M Ferma 9 Sud",
+        "stop_lat": 46.74419,
+        "stop_lon": 23.45559,
+        "location_type": 0
+    },
+    {
+        "stop_id": 724,
+        "stop_name": "M Gradinii Nord",
+        "stop_lat": 46.76126826,
+        "stop_lon": 23.37307303,
+        "location_type": 0
+    },
+    {
+        "stop_id": 725,
+        "stop_name": "M-Muncitorilor",
+        "stop_lat": 46.743,
+        "stop_lon": 23.49848,
+        "location_type": 0
+    },
+    {
+        "stop_id": 726,
+        "stop_name": "Pata Rat",
+        "stop_lat": 46.77138,
+        "stop_lon": 23.68534,
+        "location_type": 0
+    },
+    {
+        "stop_id": 727,
+        "stop_name": "Sere USAMV Sud",
+        "stop_lat": 46.75643,
+        "stop_lon": 23.6247,
+        "location_type": 0
+    },
+    {
+        "stop_id": 728,
+        "stop_name": "Sere USAMV Nord",
+        "stop_lat": 46.7567,
+        "stop_lon": 23.62468,
+        "location_type": 0
+    },
+    {
+        "stop_id": 729,
+        "stop_name": "Varianta Manastur",
+        "stop_lat": 46.74873,
+        "stop_lon": 23.57429,
+        "location_type": 0
+    },
+    {
+        "stop_id": 730,
+        "stop_name": "M-Centru Varstnici",
+        "stop_lat": 46.777037,
+        "stop_lon": 23.707927,
+        "location_type": 0
+    },
+    {
+        "stop_id": 731,
+        "stop_name": "M-Aerodrom",
+        "stop_lat": 46.778698,
+        "stop_lon": 23.719587,
+        "location_type": 0
+    },
+    {
+        "stop_id": 732,
+        "stop_name": "M-Av. T. Darjan",
+        "stop_lat": 46.781266,
+        "stop_lon": 23.723924,
+        "location_type": 0
+    },
+    {
+        "stop_id": 733,
+        "stop_name": "Varianta Zorilor NORD",
+        "stop_lat": 46.74857,
+        "stop_lon": 23.57462,
+        "location_type": 0
+    },
+    {
+        "stop_id": 734,
+        "stop_name": "Capela Chinteni Est",
+        "stop_lat": 46.864185,
+        "stop_lon": 23.535482,
+        "location_type": 0
+    },
+    {
+        "stop_id": 735,
+        "stop_name": "Capela Chinteni Vest",
+        "stop_lat": 46.864286,
+        "stop_lon": 23.534802,
+        "location_type": 0
+    },
+    {
+        "stop_id": 736,
+        "stop_name": "Guhring S",
+        "stop_lat": 46.798835,
+        "stop_lon": 23.735579,
+        "location_type": 0
+    },
+    {
+        "stop_id": 737,
+        "stop_name": "N. Balcescu  S",
+        "stop_lat": 46.794278,
+        "stop_lon": 23.738144,
+        "location_type": 0
+    },
+    {
+        "stop_id": 738,
+        "stop_name": "Guhring N",
+        "stop_lat": 46.79883,
+        "stop_lon": 23.73558,
+        "location_type": 0
+    },
+    {
+        "stop_id": 739,
+        "stop_name": "N. Balcescu N",
+        "stop_lat": 46.794278,
+        "stop_lon": 23.738144,
+        "location_type": 0
+    },
+    {
+        "stop_id": 740,
+        "stop_name": "CREIC Dus",
+        "stop_lat": 46.82097,
+        "stop_lon": 23.57968,
+        "location_type": 0
+    },
+    {
+        "stop_id": 741,
+        "stop_name": "CREIC Intors",
+        "stop_lat": 46.82097,
+        "stop_lon": 23.57968,
+        "location_type": 0
+    }
+]

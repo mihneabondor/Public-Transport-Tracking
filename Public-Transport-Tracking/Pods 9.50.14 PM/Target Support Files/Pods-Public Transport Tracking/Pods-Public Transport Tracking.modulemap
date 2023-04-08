@@ -1,0 +1,6 @@
+framework module Pods_Public_Transport_Tracking {
+  umbrella header "Pods-Public Transport Tracking-umbrella.h"
+
+  export *
+  module * { export * }
+}

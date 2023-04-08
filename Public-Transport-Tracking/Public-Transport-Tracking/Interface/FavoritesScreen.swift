@@ -9,16 +9,17 @@ import SwiftUI
 import MapKit
 
 struct FavoritesScreen: View {
-    @State private var availableTypes = [Int]()
-    @State private var activeIndex = -1
-    @State private var vehicles = [Vehicle]()
-    @State private var linii = [Linii]()
+    @State var availableTypes = [Int]()
+    @State var activeIndex = -1
+    @Binding var vehicles : [Vehicle]
+    @Binding var linii : [Linii]
+    @Binding var routes : [Route]
     @StateObject var locationManager = LocationManager()
-    private var vehicleTypes = ["Tramvai", "Metro", "Tren", "Autobus", "Ferry", "Cable tram", "Aerial Lift", "Funicular", "", "", "", "Troleibus", "Monorail"]
-    private var vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
-    @State private var adrese = [String]()
-    let timer = Timer.publish(every: 20, on: .main, in: .common).autoconnect()
-    
+    var vehicleTypes = ["Tramvai", "Metro", "Tren", "Autobus", "Ferry", "Cable tram", "Aerial Lift", "Funicular", "", "", "", "Troleibus", "Monorail"]
+    var vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
+    @State var adrese = [String]()
+    public var timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
+    let route = Constants.routes
     var body: some View {
         NavigationView {
             VStack{
@@ -47,28 +48,28 @@ struct FavoritesScreen: View {
                     ForEach(linii, id: \.self) {item in
                             VStack{
                                 HStack{
-                                    Text("Linia \(item.routeId) - \(item.vehicles.count) vehicule")
+                                    Text("Linia \(item.tripId) - \(item.vehicles.count) vehicule")
                                         .font(.title2)
                                         .foregroundColor(.purple)
                                         .bold()
-                                        .padding()
+                                        .padding([.leading, .trailing, .bottom])
                                     Spacer()
                                     Image(systemName: "\(vehicleTypesImages[item.vehicles.last?.vehicleType! ?? 0])")
-                                        .padding()
+                                        .padding([.leading, .trailing, .bottom])
                                 }
                                 ForEach(item.vehicles, id:\.self) {vehicle in
                                     VStack{
                                         HStack{
                                             VStack{
-                                                Text("LOCAȚIE")
-                                                    .font(.footnote)
-                                                    .foregroundColor(.secondary)
-                                                Text("\(vehicle.address ?? "Necunoscută")")
-                                                    .padding(.bottom)
                                                 Text("STAȚIE CURENTĂ")
                                                     .font(.footnote)
                                                     .foregroundColor(.secondary)
-                                                Text("Memorandumului")
+                                                Text("\(vehicle.statie ?? "Necunoscută") \(vehicle.routeId ?? 0)")
+                                                    .padding(.bottom)
+                                                Text("TUR/RETUR")
+                                                    .font(.footnote)
+                                                    .foregroundColor(.secondary)
+                                                Text(vehicle.tripId?.last! == "0" ? "Tur" : "Retur")
                                             }.padding([.trailing, .leading, .bottom])
                                             Spacer()
                                             VStack{
@@ -107,14 +108,10 @@ struct FavoritesScreen: View {
                 }
             }
             .onReceive(timer) {_ in
-                withAnimation {
-                    loadView()
-                }
+                loadView()
             }
             .onAppear {
-                withAnimation {
-                    loadView()
-                }
+                loadView()
             }
             .navigationTitle("Favorite")
         }
@@ -122,60 +119,52 @@ struct FavoritesScreen: View {
     
     func loadView() {
         Task(priority: .high) {
-            linii.removeAll()
-            vehicles.removeAll()
-            
+            var newVehicles = [Vehicle]()
             do {
-                vehicles = try await RequestManager().getVehicles()
+                newVehicles = try await RequestManager().getVehicles()
             } catch let err {
                 print(err)
             }
-            vehicles = vehicles.sorted(by: {$0.vehicleType! < $1.vehicleType!})
-            for elem in vehicles {
-                if elem.vehicleType != availableTypes.last {
-                    availableTypes.append(elem.vehicleType!)
-                }
-            }
-            vehicles = vehicles.sorted(by: {($0.routeId ?? 0) < ($1.routeId ?? 0)})
+            vehicles.removeAll()
+            vehicles = newVehicles
+            
+            vehicles = vehicles.filter({$0.latitude != nil && $0.longitude != nil && $0.tripId != nil && $0.routeId != nil && $0.speed != 0})
             
             for i in 0...vehicles.count-1 {
-                let elem = vehicles[i]
-                    if elem.speed != 0{
-                        if elem.routeId != linii.last?.routeId || (linii.isEmpty && elem.routeId != nil) {
-                            linii.append(Linii(routeId: elem.routeId!, vehicles: [], favorite: false))
-                        }
-                        if !linii.isEmpty {
-                            if linii.last?.routeId ?? 0 < 10 {
-                                var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
-                                let lat: Double = vehicles[i].latitude ?? 0
-                                let lon: Double = vehicles[i].longitude ?? 0
-                                let ceo: CLGeocoder = CLGeocoder()
-                                center.latitude = lat
-                                center.longitude = lon
-                                let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
-                                let placemarks = try? await ceo.reverseGeocodeLocation(loc)
-                                if let placemarks = placemarks {
-                                    if let street = placemarks.first?.thoroughfare {
-                                        if let number = placemarks.first?.subThoroughfare {
-                                            vehicles[i].address = street + " " + number
-                                        }
-                                    }
+                if !availableTypes.contains(vehicles[i].vehicleType ?? 0) {
+                    availableTypes.append(vehicles[i].vehicleType!)
+                }
+            }
+            vehicles = vehicles.sorted(by: {Int(($0.tripId?.components(separatedBy: "_").first)!) ?? 0 < Int(($1.tripId?.components(separatedBy: "_").first)!) ?? 0})
+            let stops = try? await RequestManager().getStops()
+            linii.removeAll()
+            for i in 0...vehicles.count-1 {
+                if route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName ?? "" != linii.last?.tripId || linii.isEmpty {
+                    linii.append(Linii(tripId: route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName ?? "", vehicles: [], favorite: false))
+                    }
+                    if !linii.isEmpty {
+                        var closestStopName = "", minimumDistance = 100.0
+                        if let stops = stops {
+                            for stop in stops {
+                                let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
+                                let distance = vehicleLocation.distance(from: CLLocation(latitude: stop.lat ?? 0, longitude: stop.long ?? 0)) / 1000
+                                if minimumDistance > distance {
+                                    minimumDistance = distance
+                                    closestStopName = stop.stopName ?? ""
                                 }
                             }
-                            let currentUserLocation = CLLocation(latitude: locationManager.lastLocation?.coordinate.latitude ?? 0, longitude: locationManager.lastLocation?.coordinate.longitude ?? 0)
-                            let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
-                            let distance = currentUserLocation.distance(from: vehicleLocation) / 1000
-                            vehicles[i].eta = Int(ceil(distance/Double((vehicles[i].speed ?? 1))*60))
-                            linii[linii.count-1].vehicles.append(vehicles[i])
                         }
+                        vehicles[i].routeShortName = route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName
+                        vehicles[i].routeLongName = route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeLongName
+                        vehicles[i].statie = closestStopName
+                        
+                        let currentUserLocation = CLLocation(latitude: locationManager.lastLocation?.coordinate.latitude ?? 0, longitude: locationManager.lastLocation?.coordinate.longitude ?? 0)
+                        let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
+                        let distance = currentUserLocation.distance(from: vehicleLocation) / 1000
+                        vehicles[i].eta = Int(ceil(distance/Double((vehicles[i].speed ?? 1))*60))
+                        linii[linii.count-1].vehicles.append(vehicles[i])
                     }
             }
         }
-    }
-}
-
-struct FavoritesScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoritesScreen()
     }
 }

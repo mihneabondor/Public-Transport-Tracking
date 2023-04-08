@@ -18,4 +18,39 @@ class RequestManager {
         let responseData = try? DecodingManager().decodeVehicles(jsonString: responseJson!)
         return responseData ?? [Vehicle]()
     }
+    
+    func getStops() async throws -> [Statie]{
+        let path = Bundle.main.path(forResource: "Stops", ofType: "txt")
+        let string = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
+        let responseData = try? DecodingManager().decodeStops(jsonString: string)
+        return responseData ?? [Statie]()
+    }
+    
+    func getRoutes() async throws -> [Route] {
+        let path = Bundle.main.path(forResource: "Routes", ofType: "txt")
+        let string = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
+        let responseData = try? DecodingManager().decodeRoutes(jsonString: string)
+        return responseData ?? [Route]()
+    }
+    
+    func getShapes() async throws -> [Shape] {
+        let path = Bundle.main.path(forResource: "Shapes", ofType: "txt")
+        let string = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
+        let responseData = try? DecodingManager().decodeShapes(jsonString: string)
+        return responseData ?? [Shape]()
+    }
+    
+    func getTrips() async throws -> [Trip] {
+        let path = Bundle.main.path(forResource: "Trips", ofType: "txt")
+        let string = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
+        let responseData = try? DecodingManager().decodeTrips(jsonString: string)
+        return responseData ?? [Trip]()
+    }
+    
+    func getStopTimes() async throws -> [StopTime] {
+        let path = Bundle.main.path(forResource: "StopTimes", ofType: "txt")
+        let string = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
+        let responseData = try? DecodingManager().decodeStopTimes(jsonString: string)
+        return responseData ?? [StopTime]()
+    }
 }

@@ -15,8 +15,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-
-   
     
     var statusString: String {
         guard let status = locationStatus else {
