@@ -12,21 +12,16 @@ struct BusDetailView: View {
     @Binding var closeView : Bool
     
     let vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
+    @State var favorites = [String()]
     var body: some View {
         VStack{
             HStack{
-                Text(" ")
-                    .padding(.leading)
-                VStack{
-                    Image(systemName: "bus.fill")
-                        .padding()
-                        .font(.title2)
-                    Text(" ")
-                        .font(.title3)
-                        .padding(.top)
-                }
+                Image(systemName: "\(vehicleTypesImages[vehicle?.vehicleType! ?? 0])")
+                    .padding()
+                    .font(.title2)
                 Text("Linia \(vehicle?.routeShortName ?? "")")
                     .padding([.trailing, .top])
+                    .font(.title2)
                     .bold()
                 Spacer()
                 
@@ -104,23 +99,29 @@ struct BusDetailView: View {
                     }
                     
                     Button {
-                        
+                        if favorites.contains(vehicle?.routeShortName ?? "") {
+                            favorites.removeAll(where: {$0 == vehicle?.routeShortName ?? ""})
+                        } else {
+                            favorites.append(vehicle?.routeShortName ?? "")
+                        }
+                        UserDefaults().set(favorites, forKey: Constants.USER_DEFAULTS_FAVORITES)
                     } label: {
-                        Image(systemName: "heart")
+                        Image(systemName: favorites.contains(vehicle?.routeShortName ?? "") ? "heart.fill" : "heart")
                             .font(.title2)
                             .foregroundColor(.white)
                             .padding([.leading, .trailing])
                     }
                 }
-                Text(" ")
-                    .padding(.bottom)
         }
         .background() {
             Rectangle()
-                .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/3.7)
+                .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/3.6)
                 .cornerRadius(20)
                 .foregroundColor(Color(UIColor.systemGray4))
                 .padding()
+        }
+        .onAppear() {
+            favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
         }
         .preferredColorScheme(.dark)
     }

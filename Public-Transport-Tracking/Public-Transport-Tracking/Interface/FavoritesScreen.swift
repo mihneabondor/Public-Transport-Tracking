@@ -23,6 +23,9 @@ struct FavoritesScreen: View {
     @State private var loadingFirstTime = true
     let route = Constants.routes
     
+    @State private var pickerSelection = 1
+    @State private var favorites = [String()]
+    
     var body: some View {
         NavigationView {
             VStack{
@@ -47,6 +50,15 @@ struct FavoritesScreen: View {
                         }
                     }
                     .padding()
+                    Picker("", selection: $pickerSelection) {
+                        Text("Toate Liniile")
+                            .tag(0)
+                        Text("Favorite")
+                            .tag(1)
+                    }
+                    .pickerStyle(.segmented)
+                    .padding(.bottom)
+                    
                     
                     ForEach(linii, id: \.self) {item in
                             VStack{
@@ -60,6 +72,39 @@ struct FavoritesScreen: View {
                                     Image(systemName: "\(vehicleTypesImages[item.vehicles.last?.vehicleType! ?? 0])")
                                         .padding([.leading, .trailing, .bottom])
                                 }
+                                HStack{
+                                    Button {
+                                        
+                                    } label: {
+                                        Image(systemName: "calendar")
+                                            .font(.title2)
+                                            .foregroundColor(.white)
+                                            .padding([.leading, .trailing])
+                                    }
+                                    
+                                    Button {
+                                        UIApplication.shared.open(URL(string: "sms:open?addresses=7479&body=\(item.tripId)")!, options: [:], completionHandler: nil)
+                                    } label: {
+                                        Image(systemName: "ticket.fill")
+                                            .font(.title2)
+                                            .foregroundColor(.white)
+                                            .padding([.leading, .trailing])
+                                    }
+                                    
+                                    Button {
+                                        if favorites.contains(item.tripId) {
+                                            favorites.removeAll(where: {$0 == item.tripId})
+                                        } else {
+                                            favorites.append(item.tripId)
+                                        }
+                                        UserDefaults().set(favorites, forKey: Constants.USER_DEFAULTS_FAVORITES)
+                                    } label: {
+                                        Image(systemName: favorites.contains(item.tripId) ? "heart.fill" : "heart")
+                                            .font(.title2)
+                                            .foregroundColor(.white)
+                                            .padding([.leading, .trailing])
+                                    }
+                                }.padding(.bottom)
                                 ForEach(item.vehicles, id:\.self) {vehicle in
                                     VStack{
                                         HStack{
@@ -72,7 +117,11 @@ struct FavoritesScreen: View {
                                                 Text("SPRE")
                                                     .font(.footnote)
                                                     .foregroundColor(.secondary)
-                                                Text(trips.first(where: {$0.tripId == vehicle.tripId ?? ""})?.tripHeadsign ?? "")
+                                                if vehicle.routeLongName?.components(separatedBy: "- ").count ?? 0 > 1 {
+                                                    Text(vehicle.routeLongName?.components(separatedBy: "- ")[1] ?? "")
+                                                } else {
+                                                    Text(vehicle.routeLongName ?? "")
+                                                }
                                             }.padding([.trailing, .leading, .bottom])
                                             Spacer()
                                             VStack{
@@ -110,26 +159,38 @@ struct FavoritesScreen: View {
                     Spacer()
                 }
             }
-            .onReceive(timer) {_ in
-                loadView()
-            }
-            .onAppear {
-                loadView()
-            }
-            .onChange(of: loadingFirstTime, perform: { _ in
-                Task(priority: .high) {
-                    for j in 0..<linii.count {
-                        let tripid = linii[j].tripId
-                        let schedule = try! await RequestManager().getSchedule(line: tripid)
-                        let goodSchedule = BusCalculations().getGoodSchedules(schedule: schedule)
-                        for i in 0..<linii[j].vehicles.count {
-                            if i < goodSchedule.count {
-                                linii[j].vehicles[i].currentSchedule = goodSchedule
-                            }
-                        }
+            .onAppear() {
+                favorites = UserDefaults.standard.value(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
+                for i in 0..<vehicles.count {
+                    if !availableTypes.contains(vehicles[i].vehicleType ?? 0) {
+                        availableTypes.append(vehicles[i].vehicleType!)
                     }
                 }
+                linii = linii.filter({favorites.contains($0.tripId)})
+            }
+            .onChange(of: pickerSelection, perform: { newVal in
+                if newVal == 0 {
+                    loadView()
+                } else {
+                    let favorites = UserDefaults.standard.value(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
+                    linii = linii.filter({favorites.contains($0.tripId)})
+                }
             })
+            .onChange(of: vehicles) {_ in
+                if pickerSelection == 1 {
+                    let favorites = UserDefaults.standard.value(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
+                    linii = linii.filter({favorites.contains($0.tripId)})
+                    vehicles = vehicles.filter({favorites.contains($0.routeShortName ?? "")})
+                }
+                for i in 0..<vehicles.count {
+                    if !availableTypes.contains(vehicles[i].vehicleType ?? 0) {
+                        availableTypes.append(vehicles[i].vehicleType!)
+                    }
+                }
+                if activeIndex != -1 {
+                    linii = linii.filter({$0.vehicles.last?.vehicleType == activeIndex})
+                }
+            }
             .navigationTitle("Favorite")
         }
     }
@@ -146,19 +207,20 @@ struct FavoritesScreen: View {
             vehicles.removeAll()
             vehicles = newVehicles
             
-            vehicles = vehicles.filter({$0.latitude != nil && $0.longitude != nil && $0.tripId != nil && $0.routeId != nil && $0.speed != 0})
+            vehicles = vehicles.filter({$0.latitude != nil && $0.longitude != nil && $0.tripId != nil && $0.routeId != nil && $0.speed != 0 && $0.speed != nil})
             
-            for i in 0...vehicles.count-1 {
+            for i in 0..<vehicles.count {
                 if !availableTypes.contains(vehicles[i].vehicleType ?? 0) {
                     availableTypes.append(vehicles[i].vehicleType!)
                 }
             }
+            
             vehicles = vehicles.sorted(by: {Int(($0.tripId?.components(separatedBy: "_").first)!) ?? 0 < Int(($1.tripId?.components(separatedBy: "_").first)!) ?? 0})
             let stops = try? await RequestManager().getStops()
             linii.removeAll()
             let currentUserLocation = CLLocation(latitude: locationManager.lastLocation?.coordinate.latitude ?? 0, longitude: locationManager.lastLocation?.coordinate.longitude ?? 0)
             
-            for i in 0...vehicles.count-1 {
+            for i in 0..<vehicles.count {
                 if route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName ?? "" != linii.last?.tripId || linii.isEmpty {
                     linii.append(Linii(tripId: route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName ?? "", vehicles: [], favorite: false))
                     }
@@ -180,8 +242,9 @@ struct FavoritesScreen: View {
                         
                         let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
                         let distance = currentUserLocation.distance(from: vehicleLocation) / 1000
+                        
                         vehicles[i].eta = Int(ceil(distance/Double((vehicles[i].speed ?? 1))*60))
-                        if vehicles[i].eta ?? 0 > 100 {
+                        if vehicles[i].eta ?? 1 > 100 {
                             vehicles[i].eta = 6
                         }
                         

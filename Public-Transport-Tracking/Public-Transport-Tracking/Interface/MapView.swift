@@ -156,11 +156,11 @@ struct MapView: View {
                 Spacer()
                 ZStack{
                     BusDetailView(vehicle: $selectedVehicled, closeView: $showBusDetail)
-                        .offset(y: showBusDetail ? 10 : 500)
+                        .offset(y: showBusDetail ? -30 : 500)
                         .padding()
                     
                     StationView(statie: $statieStationDetail, systemImage: $systemImgStationDetail, closeView: $showStationDetail)
-                        .offset(y: showStationDetail ? UIScreen.main.bounds.height/9 : 500)
+                        .offset(y: showStationDetail ? 50 : 500)
                         .padding()
                 }
             }
@@ -221,7 +221,7 @@ struct MapView: View {
         }
         .onAppear() {
             let location = LocationManager().lastLocation
-            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location?.coordinate.latitude ?? 0, longitude: location?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location?.coordinate.latitude ?? 46.7712, longitude: location?.coordinate.longitude ?? 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
             DispatchQueue.main.async {
                 for elem in vehicles {
                     annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
