@@ -10,6 +10,10 @@ import SwiftUI
 struct BusDetailView: View {
     @Binding var vehicle : Vehicle?
     @Binding var closeView : Bool
+    @Binding var selectedTab : Int
+    @Binding var orareSelection : String
+    
+    @State var trips = [Trip]()
     
     let vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
     @State var favorites = [String()]
@@ -50,7 +54,7 @@ struct BusDetailView: View {
                         Text("SPRE")
                             .font(.footnote)
                             .foregroundColor(.secondary)
-                        Text(vehicle?.routeLongName?.components(separatedBy: "- ")[1] ?? "")
+                        Text(trips.first(where: {$0.tripId == vehicle?.tripId ?? ""})?.tripHeadsign ?? "")
                     }.padding([.trailing, .leading, .bottom])
                     Spacer()
                     VStack{
@@ -81,7 +85,8 @@ struct BusDetailView: View {
                 }
                 HStack{
                     Button {
-                        
+                        orareSelection = vehicle?.routeShortName ?? ""
+                        selectedTab = 1
                     } label: {
                         Image(systemName: "calendar")
                             .font(.title2)
@@ -122,6 +127,9 @@ struct BusDetailView: View {
         }
         .onAppear() {
             favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
+            Task {
+                trips = try! await RequestManager().getTrips()
+            }
         }
         .preferredColorScheme(.dark)
     }

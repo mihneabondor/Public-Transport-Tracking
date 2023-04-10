@@ -12,6 +12,7 @@
 		D72023F529E009D10021E66B /* Shapes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F429E009D10021E66B /* Shapes.txt */; };
 		D72023F729E00E2F0021E66B /* Trips.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F629E00E2F0021E66B /* Trips.txt */; };
 		D72023F929E020800021E66B /* StopTimes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F829E020800021E66B /* StopTimes.txt */; };
+		D72B525729E3F4700048AF1C /* OrareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B525629E3F4700048AF1C /* OrareView.swift */; };
 		D72E343D29DDE04B002974CE /* Stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72E343C29DDE04B002974CE /* Stops.txt */; };
 		D72E343F29DDF121002974CE /* AddFavoriteLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72E343E29DDF121002974CE /* AddFavoriteLineView.swift */; };
 		D7361C1029DAB3CF006F78D2 /* LoopingVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C0F29DAB3CF006F78D2 /* LoopingVideo.swift */; };
@@ -42,6 +43,7 @@
 		D72023F429E009D10021E66B /* Shapes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Shapes.txt; sourceTree = "<group>"; };
 		D72023F629E00E2F0021E66B /* Trips.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Trips.txt; sourceTree = "<group>"; };
 		D72023F829E020800021E66B /* StopTimes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = StopTimes.txt; sourceTree = "<group>"; };
+		D72B525629E3F4700048AF1C /* OrareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrareView.swift; sourceTree = "<group>"; };
 		D72E343B29DDE035002974CE /* splashScreen-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "splashScreen-video.mp4"; sourceTree = "<group>"; };
 		D72E343C29DDE04B002974CE /* Stops.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Stops.txt; sourceTree = "<group>"; };
 		D72E343E29DDF121002974CE /* AddFavoriteLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteLineView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				D72E343E29DDF121002974CE /* AddFavoriteLineView.swift */,
 				D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */,
 				D7361C1529DAC50A006F78D2 /* SplitterView.swift */,
+				D72B525629E3F4700048AF1C /* OrareView.swift */,
 				D7361C1729DAC624006F78D2 /* FavoritesScreen.swift */,
 				D7F8259829DDF53400A09A2B /* MapView.swift */,
 				D705AAFA29DE7413008AC068 /* Marker.swift */,
@@ -307,6 +310,7 @@
 				D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */,
 				D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */,
 				D705AAFB29DE7413008AC068 /* Marker.swift in Sources */,
+				D72B525729E3F4700048AF1C /* OrareView.swift in Sources */,
 				D7ABA55529DAA28500CDA8DE /* Public_Transport_TrackingApp.swift in Sources */,
 				D72E343F29DDF121002974CE /* AddFavoriteLineView.swift in Sources */,
 				D7ABA56629DAA33600CDA8DE /* Constants.swift in Sources */,

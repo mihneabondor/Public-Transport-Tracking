@@ -11,19 +11,25 @@ import MapKit
 struct FavoritesScreen: View {
     @State var availableTypes = [Int]()
     @State var activeIndex = -1
+    
     @Binding var vehicles : [Vehicle]
     @Binding var linii : [Linii]
     @Binding var routes : [Route]
+    @Binding var selectedTab : Int
+    @Binding var orareSelection : String
+    
     @StateObject var locationManager = LocationManager()
     @State var trips = [Trip]()
+    
     var vehicleTypes = ["Tramvai", "Metro", "Tren", "Autobus", "Ferry", "Cable tram", "Aerial Lift", "Funicular", "", "", "", "Troleibus", "Monorail"]
     var vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
+    
     @State var adrese = [String]()
     public var timer = Timer.publish(every: 20, on: .main, in: .common).autoconnect()
     @State private var loadingFirstTime = true
     let route = Constants.routes
     
-    @State private var pickerSelection = 1
+    @State var pickerSelection = 1
     @State private var favorites = [String()]
     
     var body: some View {
@@ -57,7 +63,7 @@ struct FavoritesScreen: View {
                             .tag(1)
                     }
                     .pickerStyle(.segmented)
-                    .padding(.bottom)
+                    .padding([.bottom, .leading, .trailing])
                     
                     
                     ForEach(linii, id: \.self) {item in
@@ -74,7 +80,8 @@ struct FavoritesScreen: View {
                                 }
                                 HStack{
                                     Button {
-                                        
+                                        orareSelection = item.tripId
+                                        selectedTab = 1
                                     } label: {
                                         Image(systemName: "calendar")
                                             .font(.title2)
@@ -117,10 +124,10 @@ struct FavoritesScreen: View {
                                                 Text("SPRE")
                                                     .font(.footnote)
                                                     .foregroundColor(.secondary)
-                                                if vehicle.routeLongName?.components(separatedBy: "- ").count ?? 0 > 1 {
-                                                    Text(vehicle.routeLongName?.components(separatedBy: "- ")[1] ?? "")
+                                                if vehicle.tripId?.components(separatedBy: "_").last ?? "" == "1" {
+                                                    Text(vehicle.routeLongName?.components(separatedBy: " - ").last ?? "")
                                                 } else {
-                                                    Text(vehicle.routeLongName ?? "")
+                                                    Text(vehicle.routeLongName?.components(separatedBy: " - ").first ?? "")
                                                 }
                                             }.padding([.trailing, .leading, .bottom])
                                             Spacer()
@@ -160,6 +167,7 @@ struct FavoritesScreen: View {
                 }
             }
             .onAppear() {
+                pickerSelection = 1
                 favorites = UserDefaults.standard.value(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
                 for i in 0..<vehicles.count {
                     if !availableTypes.contains(vehicles[i].vehicleType ?? 0) {
@@ -191,6 +199,9 @@ struct FavoritesScreen: View {
                     linii = linii.filter({$0.vehicles.last?.vehicleType == activeIndex})
                 }
             }
+            .onDisappear {
+                pickerSelection = 0
+            }
             .navigationTitle("Favorite")
         }
     }
@@ -207,7 +218,7 @@ struct FavoritesScreen: View {
             vehicles.removeAll()
             vehicles = newVehicles
             
-            vehicles = vehicles.filter({$0.latitude != nil && $0.longitude != nil && $0.tripId != nil && $0.routeId != nil && $0.speed != 0 && $0.speed != nil})
+            vehicles = vehicles.filter({$0.latitude != nil && $0.longitude != nil && $0.tripId != nil && $0.routeId != nil})
             
             for i in 0..<vehicles.count {
                 if !availableTypes.contains(vehicles[i].vehicleType ?? 0) {
@@ -218,7 +229,6 @@ struct FavoritesScreen: View {
             vehicles = vehicles.sorted(by: {Int(($0.tripId?.components(separatedBy: "_").first)!) ?? 0 < Int(($1.tripId?.components(separatedBy: "_").first)!) ?? 0})
             let stops = try? await RequestManager().getStops()
             linii.removeAll()
-            let currentUserLocation = CLLocation(latitude: locationManager.lastLocation?.coordinate.latitude ?? 0, longitude: locationManager.lastLocation?.coordinate.longitude ?? 0)
             
             for i in 0..<vehicles.count {
                 if route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName ?? "" != linii.last?.tripId || linii.isEmpty {
@@ -241,13 +251,14 @@ struct FavoritesScreen: View {
                         vehicles[i].statie = closestStopName
                         
                         let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
-                        let distance = currentUserLocation.distance(from: vehicleLocation) / 1000
+                        let distance = (locationManager.lastLocation?.distance(from: vehicleLocation) ?? 0) / 1000
                         
-                        vehicles[i].eta = Int(ceil(distance/Double((vehicles[i].speed ?? 1))*60))
-                        if vehicles[i].eta ?? 1 > 100 {
-                            vehicles[i].eta = 6
+                        if vehicles[i].speed != 0 {
+                            vehicles[i].eta = Int(ceil(distance/Double((vehicles[i].speed ?? 1))*60))
                         }
-                        
+                        if vehicles[i].speed == 0 || vehicles[i].eta ?? 0 > 100 {
+                            vehicles[i].eta = Int(ceil((distance/25.0)))
+                        }
                         linii[linii.count-1].vehicles.append(vehicles[i])
                     }
             }

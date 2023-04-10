@@ -9,16 +9,41 @@ import Foundation
 
 
 class BusCalculations {
+    public func earlierTime(time1: String, time2: String) -> Bool {
+        var filtTime1 = time1, filtTime2 = time2
+        if time1.count == 6 {
+            filtTime1 = String(time1.dropLast())
+        }
+        if(time2.count == 6) {
+            filtTime2 = String(time2.dropLast())
+        }
+        
+        guard let start = Formatter.today.date(from: filtTime1),
+              let end = Formatter.today.date(from: filtTime2) else {
+            return false
+        }
+        let currentDate = Date()
+        return currentDate > start && currentDate > end
+    }
+    
+    public func earlierTimeOneTime(time: String) -> Bool {
+        var filtTime = time
+        if time.count == 6 {
+            filtTime = String(time.dropLast())
+        }
+        guard let mutatedDate = Formatter.today.date(from: filtTime) else {return false}
+        return Date() > mutatedDate
+    }
     
     public func getGoodSchedules(schedule : Schedule) -> [[String]] {
         let date = Date().dayNumberOfWeek()
         var lines = [[String()]]
         if date == 1 {
-            lines = schedule.station?.d.lines ?? [[String()]]
+            lines = schedule.station?.d?.lines ?? [[String()]]
         } else if date == 7 {
-            lines = schedule.station?.s.lines ?? [[String()]]
+            lines = schedule.station?.s?.lines ?? [[String()]]
         } else {
-            lines = schedule.station?.lv.lines ?? [[String()]]
+            lines = schedule.station?.lv?.lines ?? [[String()]]
         }
         
         var goodSchedules = [[String()]]

@@ -147,9 +147,9 @@ struct Schedule: Codable {
     var station: Station?
     
     struct Station: Codable {
-        var lv: Line
-        var s: Line
-        var d: Line
+        var lv: Line?
+        var s: Line?
+        var d: Line?
         
         struct Line: Codable {
             let serviceStart: String

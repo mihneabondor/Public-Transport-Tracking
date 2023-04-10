@@ -11,7 +11,13 @@ import MapKit
 struct MapView: View {
     @Binding var vehicles : [Vehicle]
     @Binding var linii : [Linii]
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 46.7712, longitude: 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.4, longitudeDelta: 0.4))
+    @Binding var routes : [Route]
+    @Binding var selectedTab : Int
+    @Binding var orareSelection : String
+    
+    @StateObject var location = LocationManager()
+    
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: LocationManager().lastLocation?.coordinate.latitude ?? 0, longitude: LocationManager().lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
     var vehicleTypes = ["Tramvai", "Metro", "Tren","Autobus", "Ferry", "Cable tram", "Aerial Lift", "Funicular", "", "", "", "Troleibus", "Monorail"]
     var vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
     @State var searchText = ""
@@ -27,7 +33,7 @@ struct MapView: View {
     
     @State var showBusDetail = false
     @State var selectedVehicled : Vehicle?
-    
+    @State private var favorites = [String]()
     var body: some View {
         ZStack{
             Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: annotations, annotationContent: { location in
@@ -58,7 +64,7 @@ struct MapView: View {
                             .background (
                                 Rectangle()
                                     .frame(width: 35, height: 40)
-                                    .foregroundColor(.purple)
+                                    .foregroundColor(favorites.contains(location.vehicle?.routeShortName ?? "") ? .indigo : .purple)
                                     .cornerRadius(5)
                             )
                         }
@@ -119,7 +125,7 @@ struct MapView: View {
                             Text(" ")
                                 .font(.footnote)
                             Button {
-                                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: result.latitude ?? 0, longitude: result.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+                                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: result.latitude ?? 0, longitude: result.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
                                 searchFieldFocus = false
                                 searchText = ""
                                 searchResults = [Vehicle]()
@@ -155,13 +161,15 @@ struct MapView: View {
                 }
                 Spacer()
                 ZStack{
-                    BusDetailView(vehicle: $selectedVehicled, closeView: $showBusDetail)
-                        .offset(y: showBusDetail ? -30 : 500)
-                        .padding()
-                    
-                    StationView(statie: $statieStationDetail, systemImage: $systemImgStationDetail, closeView: $showStationDetail)
-                        .offset(y: showStationDetail ? 50 : 500)
-                        .padding()
+                    if showBusDetail {
+                        BusDetailView(vehicle: $selectedVehicled, closeView: $showBusDetail, selectedTab: $selectedTab, orareSelection: $orareSelection)
+                            .offset(y: -30)
+                            .padding()
+                    }
+                    if showStationDetail{
+                        StationView(statie: $statieStationDetail, systemImage: $systemImgStationDetail, closeView: $showStationDetail)
+                            .padding()
+                    }
                 }
             }
         }
@@ -220,8 +228,9 @@ struct MapView: View {
             }
         }
         .onAppear() {
-            let location = LocationManager().lastLocation
-            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location?.coordinate.latitude ?? 46.7712, longitude: location?.coordinate.longitude ?? 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.lastLocation?.coordinate.latitude ?? 0, longitude: location.lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+            FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
+            favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String]()
             DispatchQueue.main.async {
                 for elem in vehicles {
                     annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
