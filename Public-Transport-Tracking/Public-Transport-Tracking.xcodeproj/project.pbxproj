@@ -21,6 +21,7 @@
 		D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C1929DADC35006F78D2 /* RequestManager.swift */; };
 		D7361C2229DB2D3B006F78D2 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C2129DB2D3B006F78D2 /* Structs.swift */; };
 		D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */; };
+		D73E579329E5D7160044A955 /* OrarIntermediarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E579229E5D7160044A955 /* OrarIntermediarView.swift */; };
 		D762021929E068870061A73A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762021829E068870061A73A /* StationView.swift */; };
 		D778901C29DB56C200044D10 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D778901B29DB56C200044D10 /* Alamofire */; };
 		D784169829E49A9C009F4F2C /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = D784169729E49A9C009F4F2C /* FeedKit */; };
@@ -55,6 +56,7 @@
 		D7361C1929DADC35006F78D2 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		D7361C2129DB2D3B006F78D2 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingManager.swift; sourceTree = "<group>"; };
+		D73E579229E5D7160044A955 /* OrarIntermediarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrarIntermediarView.swift; sourceTree = "<group>"; };
 		D762021829E068870061A73A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		D784169929E49B9A009F4F2C /* ComunicateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComunicateView.swift; sourceTree = "<group>"; };
 		D7A966E229DF1C8A00005AB2 /* Routes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Routes.txt; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				D762021829E068870061A73A /* StationView.swift */,
 				D7FBAB6E29E1E84A00299635 /* BusDetailView.swift */,
 				D784169929E49B9A009F4F2C /* ComunicateView.swift */,
+				D73E579229E5D7160044A955 /* OrarIntermediarView.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */,
 				D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */,
 				D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */,
+				D73E579329E5D7160044A955 /* OrarIntermediarView.swift in Sources */,
 				D705AAFB29DE7413008AC068 /* Marker.swift in Sources */,
 				D72B525729E3F4700048AF1C /* OrareView.swift in Sources */,
 				D7ABA55529DAA28500CDA8DE /* Public_Transport_TrackingApp.swift in Sources */,
@@ -456,7 +460,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Public-Transport-Tracking/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = RouteEase;
+				INFOPLIST_KEY_CFBundleDisplayName = Busify;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationUsageDescription = ETA;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ETA;
@@ -494,7 +498,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Public-Transport-Tracking/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = RouteEase;
+				INFOPLIST_KEY_CFBundleDisplayName = Busify;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationUsageDescription = ETA;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ETA;

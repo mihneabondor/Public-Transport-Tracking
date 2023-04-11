@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct OrareView: View {
-    @Binding var pickerSelection : String
+    @State var pickerSelection : String
     @State private var pageSelection = "LV"
     @State private var schedule = Schedule(name: "", type: "", route: "")
     var body: some View {
-        NavigationView {
             VStack{
                 HStack{
                     Text("Orarul liniei ")
@@ -88,7 +87,6 @@ struct OrareView: View {
                 }.tabViewStyle(.page)
                 Spacer()
             }
-            .navigationTitle("Orare")
             .preferredColorScheme(.dark)
             .onChange(of: pickerSelection, perform: { _ in
                 Task {
@@ -106,7 +104,6 @@ struct OrareView: View {
                     schedule = try! await RequestManager().getSchedule(line: pickerSelection)
                 }
             }
-        }
     }
 }
 
@@ -169,6 +166,6 @@ struct ScheduleTable : View {
 
 struct OrareView_Previews: PreviewProvider {
     static var previews: some View {
-        OrareView(pickerSelection: .constant("1"))
+        OrareView(pickerSelection: "1")
     }
 }

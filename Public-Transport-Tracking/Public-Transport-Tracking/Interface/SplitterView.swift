@@ -15,7 +15,7 @@ struct SplitterView: View {
     @State var selectedTab = 0
     public var timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
     
-    @State var orarePicker = "1"
+    @State var orarePicker = ""
     var body: some View {
         TabView(selection: $selectedTab) {
             FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker)
@@ -24,12 +24,21 @@ struct SplitterView: View {
                     Text("Favorite")
             }
                 .tag(0)
-            OrareView(pickerSelection: $orarePicker)
-                .tabItem{
-                    Image(systemName: "calendar")
-                    Text("Orare")
-                }
-                .tag(1)
+            if orarePicker == "" {
+                OrarIntermediarView()
+                    .tabItem{
+                        Image(systemName: "calendar")
+                        Text("Orare")
+                    }
+                    .tag(1)
+            } else {
+                OrareView(pickerSelection: orarePicker)
+                    .tabItem{
+                        Image(systemName: "calendar")
+                        Text("Orare")
+                    }
+                    .tag(1)
+            }
             MapView(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker)
                 .tabItem {
                     Image(systemName: "mappin.circle.fill")
@@ -65,6 +74,11 @@ struct SplitterView: View {
                 DispatchQueue.main.async {
                     FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
                 }
+            }
+        }
+        .onChange(of: selectedTab) { val in
+            if val != 1 {
+                orarePicker = ""
             }
         }
     }

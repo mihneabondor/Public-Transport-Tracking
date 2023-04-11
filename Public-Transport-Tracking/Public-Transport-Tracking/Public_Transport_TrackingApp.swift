@@ -11,11 +11,7 @@ import SwiftUI
 struct Public_Transport_TrackingApp: App {
     var body: some Scene {
         WindowGroup {
-            if(!UserDefaults.standard.bool(forKey: Constants.USER_DEFAULTS_SPLASHSCREEN)) {
-                SplashScreen()
-            } else {
-                SplitterView()
-            }
+            SplitterView()
         }
     }
 }
