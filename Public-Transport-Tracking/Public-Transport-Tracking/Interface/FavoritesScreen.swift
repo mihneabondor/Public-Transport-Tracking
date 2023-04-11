@@ -31,7 +31,6 @@ struct FavoritesScreen: View {
     
     @State var pickerSelection = 1
     @State private var favorites = [String()]
-    
     var body: some View {
         NavigationView {
             VStack{
@@ -65,7 +64,11 @@ struct FavoritesScreen: View {
                     .pickerStyle(.segmented)
                     .padding([.bottom, .leading, .trailing])
                     
-                    
+                    if Connectivity.isConnectedToInternet == false  {
+                        Text("Fără conexiune la internet")
+                            .bold()
+                        Text("Verifică conexiunea și reîncearcă.")
+                    }
                     ForEach(linii, id: \.self) {item in
                             VStack{
                                 HStack{
@@ -199,6 +202,21 @@ struct FavoritesScreen: View {
                     linii = linii.filter({$0.vehicles.last?.vehicleType == activeIndex})
                 }
             }
+            .onChange(of: linii, perform: { _ in
+                for j in 0..<linii.count {
+                    for i in 0..<linii[j].vehicles.count {
+                        let vehicleLocation = CLLocation(latitude: linii[j].vehicles[i].latitude ?? 0, longitude: linii[j].vehicles[i].longitude ?? 0)
+                        let distance = (locationManager.lastLocation?.distance(from: vehicleLocation) ?? 0) / 1000
+
+                        if linii[j].vehicles[i].speed != 0 {
+                            linii[j].vehicles[i].eta = Int(ceil(distance/Double((linii[j].vehicles[i].speed ?? 1))*60))
+                        }
+                        if linii[j].vehicles[i].speed == 0 || linii[j].vehicles[i].eta ?? 0 > 100 {
+                            linii[j].vehicles[i].eta = Int(ceil((distance/15.0)))
+                        }
+                    }
+                }
+            })
             .onDisappear {
                 pickerSelection = 0
             }
@@ -249,20 +267,10 @@ struct FavoritesScreen: View {
                         vehicles[i].routeShortName = route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName
                         vehicles[i].routeLongName = route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeLongName
                         vehicles[i].statie = closestStopName
-                        
-                        let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
-                        let distance = (locationManager.lastLocation?.distance(from: vehicleLocation) ?? 0) / 1000
-                        
-                        if vehicles[i].speed != 0 {
-                            vehicles[i].eta = Int(ceil(distance/Double((vehicles[i].speed ?? 1))*60))
-                        }
-                        if vehicles[i].speed == 0 || vehicles[i].eta ?? 0 > 100 {
-                            vehicles[i].eta = Int(ceil((distance/25.0)))
-                        }
+
                         linii[linii.count-1].vehicles.append(vehicles[i])
                     }
             }
-            loadingFirstTime = false
         }
     }
 }

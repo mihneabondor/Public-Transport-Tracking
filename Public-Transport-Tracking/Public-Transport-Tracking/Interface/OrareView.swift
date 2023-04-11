@@ -79,11 +79,11 @@ struct OrareView: View {
                 .padding()
                 .background(Color(UIColor.systemGray5))
                 TabView(selection: $pageSelection) {
-                    ScheduleTable(schedule: $schedule, filter: "LV")
+                    ScheduleTable(schedule: $schedule, pageFilter: $pageSelection, filter: "LV")
                         .tag("LV")
-                    ScheduleTable(schedule: $schedule, filter: "S")
+                    ScheduleTable(schedule: $schedule, pageFilter: $pageSelection, filter: "S")
                         .tag("S")
-                    ScheduleTable(schedule: $schedule, filter: "D")
+                    ScheduleTable(schedule: $schedule, pageFilter: $pageSelection, filter: "D")
                         .tag("D")
                 }.tabViewStyle(.page)
                 Spacer()
@@ -96,6 +96,12 @@ struct OrareView: View {
                 }
             })
             .onAppear{
+                let weekday = Calendar.current.component(.weekday, from: Date())
+                if weekday == 1 {
+                    pageSelection = "D"
+                } else if weekday == 7 {
+                    pageSelection = "S"
+                }
                 Task {
                     schedule = try! await RequestManager().getSchedule(line: pickerSelection)
                 }
@@ -106,6 +112,7 @@ struct OrareView: View {
 
 struct ScheduleTable : View {
     @Binding var schedule : Schedule
+    @Binding var pageFilter : String
     @State var filter : String
     @State var matrix = [[String()]]
     var body : some View {
@@ -126,6 +133,17 @@ struct ScheduleTable : View {
                     .background((matrix.firstIndex(where: {$0 == row}) ?? 0)%2 == 0 ? Color(UIColor.systemGray6) : .clear)
                 }
             }
+            .onChange(of: pageFilter) {_ in
+                if filter == "LV" {
+                    matrix = schedule.station?.lv?.lines ?? [[String()]]
+                }
+                if filter == "S" {
+                    matrix = schedule.station?.s?.lines ?? [[String()]]
+                }
+                if filter == "D" {
+                    matrix = schedule.station?.d?.lines ?? [[String()]]
+                }
+            }
             .onChange(of: matrix) {_ in
                 var currentSchedule = [String]()
                 for row in matrix {
@@ -138,9 +156,11 @@ struct ScheduleTable : View {
         }.onChange(of: schedule.station?.lv?.lines){ _ in
             if filter == "LV" {
                 matrix = schedule.station?.lv?.lines ?? [[String()]]
-            } else if filter == "S" {
+            }
+            if filter == "S" {
                 matrix = schedule.station?.s?.lines ?? [[String()]]
-            } else {
+            }
+            if filter == "D" {
                 matrix = schedule.station?.d?.lines ?? [[String()]]
             }
         }

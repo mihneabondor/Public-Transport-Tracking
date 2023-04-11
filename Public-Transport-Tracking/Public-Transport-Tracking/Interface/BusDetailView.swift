@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import MapKit
+import CoreLocation
 
 struct BusDetailView: View {
     @Binding var vehicle : Vehicle?
     @Binding var closeView : Bool
     @Binding var selectedTab : Int
     @Binding var orareSelection : String
+    
+    @StateObject var locationManager = LocationManager()
     
     @State var trips = [Trip]()
     
@@ -131,6 +135,19 @@ struct BusDetailView: View {
                 trips = try! await RequestManager().getTrips()
             }
         }
+        .onChange(of: vehicle, perform: { _ in
+            DispatchQueue.main.async {
+                let vehicleLocation = CLLocation(latitude: vehicle?.latitude ?? 0, longitude: vehicle?.longitude ?? 0)
+                let distance = (locationManager.lastLocation?.distance(from: vehicleLocation) ?? 0) / 1000
+                
+                if vehicle?.speed != 0 {
+                    vehicle?.eta = Int(ceil(distance/Double((vehicle?.speed ?? 1))*60))
+                }
+                if vehicle?.speed == 0 || vehicle?.eta ?? 0 > 100 {
+                    vehicle?.eta = Int(ceil((distance/15.0)))
+                }
+            }
+        })
         .preferredColorScheme(.dark)
     }
 }

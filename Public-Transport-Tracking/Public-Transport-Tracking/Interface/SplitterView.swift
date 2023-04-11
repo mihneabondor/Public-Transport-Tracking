@@ -36,7 +36,7 @@ struct SplitterView: View {
                     Text("Hartă")
             }
                 .tag(2)
-            Text("Comunicate")
+            ComunicateView()
                 .tabItem {
                     Image(systemName: "newspaper")
                     Text("Comunicate")
@@ -47,10 +47,25 @@ struct SplitterView: View {
         .tint(.purple)
         .preferredColorScheme(.dark)
         .onReceive(timer) { _ in
-            FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
+            if Connectivity.isConnectedToInternet {
+                DispatchQueue.main.async {
+                    FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
+                }
+            }
         }
+        .onChange(of: Connectivity.isConnectedToInternet, perform: { _ in
+            if Connectivity.isConnectedToInternet {
+                DispatchQueue.main.async {
+                    FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
+                }
+            }
+        })
         .onAppear() {
-            FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
+            if Connectivity.isConnectedToInternet {
+                DispatchQueue.main.async {
+                    FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
+                }
+            }
         }
     }
 }

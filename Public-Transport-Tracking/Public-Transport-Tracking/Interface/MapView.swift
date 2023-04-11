@@ -17,7 +17,7 @@ struct MapView: View {
     
     @StateObject var location = LocationManager()
     
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: LocationManager().lastLocation?.coordinate.latitude ?? 0, longitude: LocationManager().lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: LocationManager().lastLocation?.coordinate.latitude ?? 0, longitude: LocationManager().lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     var vehicleTypes = ["Tramvai", "Metro", "Tren","Autobus", "Ferry", "Cable tram", "Aerial Lift", "Funicular", "", "", "", "Troleibus", "Monorail"]
     var vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
     @State var searchText = ""
@@ -90,7 +90,7 @@ struct MapView: View {
                         }
                     }
                 }
-            })
+            }).edgesIgnoringSafeArea(.top)
             
             VStack{
                 HStack{
@@ -117,6 +117,24 @@ struct MapView: View {
                         }
                         .foregroundColor(.white)
                         .padding(.trailing)
+                    }
+                }
+                if !searchFieldFocus {
+                    HStack {
+                        Spacer()
+                        Button {
+                            withAnimation {
+                                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.lastLocation?.coordinate.latitude ?? 0, longitude: location.lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                            }
+                        } label: {
+                            Image(systemName: "location.viewfinder")
+                                .font(.title2)
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color(UIColor.systemGray4))
+                                .cornerRadius(10)
+                        }
+                        Text(" ")
                     }
                 }
                 if !searchResults.isEmpty{
@@ -228,7 +246,7 @@ struct MapView: View {
             }
         }
         .onAppear() {
-            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.lastLocation?.coordinate.latitude ?? 0, longitude: location.lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.lastLocation?.coordinate.latitude ?? 0, longitude: location.lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
             favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String]()
             DispatchQueue.main.async {

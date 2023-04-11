@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import Alamofire
 
 
 struct Vehicle: Codable, Hashable, Identifiable {
@@ -167,3 +168,15 @@ struct Schedule: Codable {
     }
 }
 
+struct News : Hashable {
+    var link : String?
+    var title : String?
+    var description : String?
+}
+
+struct Connectivity {
+  static let sharedInstance = NetworkReachabilityManager()!
+  static var isConnectedToInternet:Bool {
+      return self.sharedInstance.isReachable
+    }
+}
