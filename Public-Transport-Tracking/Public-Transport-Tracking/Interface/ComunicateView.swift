@@ -49,6 +49,7 @@ struct ComunicateView: View {
                     newFeedItem.description = newFeedItem.description?.replacingOccurrences(of: "<h5>", with: "")
                     newFeedItem.description = newFeedItem.description?.replacingOccurrences(of: "</h5>", with: "")
                     newFeedItem.description = newFeedItem.description?.replacingOccurrences(of: "<p>", with: "")
+                    newFeedItem.description = newFeedItem.description?.replacingOccurrences(of: "</p>", with: "")
                     newFeedItem.description = newFeedItem.description?.replacingOccurrences(of: "În atenția publicului călător  !", with: "")
                     newFeedItem.description = newFeedItem.description?.trimmingCharacters(in: .whitespacesAndNewlines)
                     feed.append(newFeedItem)

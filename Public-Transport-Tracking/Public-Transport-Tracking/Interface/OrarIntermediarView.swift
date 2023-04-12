@@ -9,11 +9,12 @@ import SwiftUI
 
 struct OrarIntermediarView: View {
     @State var routes = Constants.linii
-    @State var outsideNavigationLinkActive = false
     let columns = [
         GridItem(.adaptive(minimum: 80))
     ]
-
+    @Binding var selectedRoute : String
+    @State private var activeNavigationView = false
+    @State private var favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String?] ?? [String()]
     var body: some View {
         NavigationStack{
             VStack{
@@ -22,15 +23,34 @@ struct OrarIntermediarView: View {
                 ScrollView{
                     LazyVGrid(columns: columns) {
                         ForEach(routes, id: \.self) { route in
-                            NavigationLink(route, value: route)
-                                .foregroundColor(.white)
-                                .font(.title3)
-                                .padding()
-                                .bold()
-                                .background(Rectangle()
-                                    .frame(width: 75)
-                                    .foregroundColor(Color(UIColor.systemGray4))
-                                    .cornerRadius(10))
+                            if favorites.contains(route) {
+                                NavigationLink(destination: OrareView(pickerSelection: route)) {
+                                    Text(route)
+                                        .foregroundColor(.white)
+                                        .font(.title3)
+                                        .padding()
+                                        .bold()
+                                        .background(Rectangle()
+                                            .frame(width: 75)
+                                            .foregroundColor(Color(UIColor.systemGray4))
+                                            .cornerRadius(10))
+                                }
+                            }
+                        }
+                    }.padding()
+                    LazyVGrid(columns: columns) {
+                        ForEach(routes, id: \.self) { route in
+                            NavigationLink(destination: OrareView(pickerSelection: route)) {
+                                Text(route)
+                                    .foregroundColor(.white)
+                                    .font(.title3)
+                                    .padding()
+                                    .bold()
+                                    .background(Rectangle()
+                                        .frame(width: 75)
+                                        .foregroundColor(Color(UIColor.systemGray4))
+                                        .cornerRadius(10))
+                            }
                         }
                     }
                     .navigationDestination(for: String.self, destination: { route in
@@ -38,19 +58,31 @@ struct OrarIntermediarView: View {
                     })
                     .padding()
                 }
-            }.navigationTitle("Orare")
+            }
+            .navigationDestination(isPresented: $activeNavigationView, destination: {
+                OrareView(pickerSelection: selectedRoute)
+            })
+            .navigationTitle("Orare")
         }
         .preferredColorScheme(.dark)
+        .onChange(of: selectedRoute) {_ in
+            print(selectedRoute)
+        }
         .onAppear {
+            print(selectedRoute)
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                if selectedRoute != "" {
+                    activeNavigationView = true
+                    print("Da")
+                }
+            }
             routes = routes.sorted(by: {$1 > $0})
-            let favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String?] ?? [String()]
-            routes = routes.sorted(by: {favorites.contains($0) && favorites.contains($1)})
         }
     }
 }
 
 struct OrarIntermediarView_Previews: PreviewProvider {
     static var previews: some View {
-        OrarIntermediarView()
+        OrarIntermediarView(selectedRoute: .constant("1"))
     }
 }

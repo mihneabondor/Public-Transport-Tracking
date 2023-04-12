@@ -84,4 +84,11 @@ extension Formatter {
         return dateFormatter
         
     }()
+    
+    static let todayForNews: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.defaultDate = Calendar.current.startOfDay(for: Date())
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss Z"
+        return dateFormatter
+    }()
 }
