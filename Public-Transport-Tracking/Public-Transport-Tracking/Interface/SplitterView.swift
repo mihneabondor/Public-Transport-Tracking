@@ -17,7 +17,7 @@ struct SplitterView: View {
     @State private var routes = [Route]()
     @State var selectedTab = 0
     public var timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
-    @State var orarePicker = "1"
+    @State var orarePicker = ""
     
     @StateObject var locationManager = LocationManager()
     

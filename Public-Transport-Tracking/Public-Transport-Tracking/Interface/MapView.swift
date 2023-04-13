@@ -192,15 +192,17 @@ struct MapView: View {
             }
         }
         .onChange(of: showStationDetail, perform: { _ in
-            showBusDetail = false
-            
+            withAnimation {
+                showBusDetail = false
+            }
             if showStationDetail == false {
-                annotations.removeAll()
-                for elem in vehicles {
-                    annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+                withAnimation {
+                    showBusDetail = true
                 }
-                focusedVehicleTripId = ""
-                focusedVehicleNearestStop = ""
+//                annotations.removeAll()
+//                for elem in vehicles {
+//                    annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+//                }
             }
         })
         .onChange(of: showBusDetail, perform: { value in
@@ -213,20 +215,25 @@ struct MapView: View {
             Task(priority: .high) {
                 if focusedVehicleTripId == "" {
                     showStationDetail = false
-                    annotations.removeAll()
-                    for elem in vehicles {
-                        annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+                    DispatchQueue.main.async {
+                        annotations.removeAll()
+                        for elem in vehicles {
+                            annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+                        }
                     }
                 } else {
-                    annotations = annotations.filter({$0.vehicle?.tripId == focusedVehicleTripId && focusedVehicleNearestStop == $0.vehicle?.statie})
-                    let stops = try! await RequestManager().getStops()
-                    var stopTimes = try! await RequestManager().getStopTimes()
-                    stopTimes = stopTimes.filter({$0.tripId == tripId})
-                    
-                    for i in 0..<stopTimes.count {
-                        let stopTime = stopTimes[i]
-                        let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
-                        annotations.append(Annotation(type: 1, coordinates: CLLocationCoordinate2D(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0), vehicle: nil, statie: stop))
+                    DispatchQueue.main.async {
+                        annotations = annotations.filter({$0.vehicle?.tripId == focusedVehicleTripId && focusedVehicleNearestStop == $0.vehicle?.statie})
+                    }
+                        let stops = try! await RequestManager().getStops()
+                        var stopTimes = try! await RequestManager().getStopTimes()
+                        stopTimes = stopTimes.filter({$0.tripId == tripId})
+                    DispatchQueue.main.async {
+                        for i in 0..<stopTimes.count {
+                            let stopTime = stopTimes[i]
+                            let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
+                            annotations.append(Annotation(type: 1, coordinates: CLLocationCoordinate2D(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0), vehicle: nil, statie: stop))
+                        }
                     }
                 }
             }
@@ -234,14 +241,18 @@ struct MapView: View {
         .onChange(of: vehicles) {_ in
             DispatchQueue.main.async {
                 if focusedVehicleTripId == "" {
-                    annotations.removeAll()
-                    for elem in vehicles {
-                        annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+                    DispatchQueue.main.async {
+                        annotations.removeAll()
+                        for elem in vehicles {
+                            annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+                        }
                     }
                 } else {
                     let elem = vehicles.first(where: {$0.tripId == focusedVehicleTripId})
-                    annotations.removeAll(where: {$0.type == 0})
-                    annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem?.latitude ?? 0, longitude: elem?.longitude ?? 0), vehicle: elem, statie: nil))
+                    DispatchQueue.main.async {
+                        annotations.removeAll(where: {$0.type == 0})
+                        annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem?.latitude ?? 0, longitude: elem?.longitude ?? 0), vehicle: elem, statie: nil))
+                    }
                 }
             }
         }

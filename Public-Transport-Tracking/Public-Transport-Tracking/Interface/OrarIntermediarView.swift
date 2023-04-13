@@ -14,12 +14,11 @@ struct OrarIntermediarView: View {
     ]
     @Binding var selectedRoute : String
     @State private var activeNavigationView = false
-    @State private var favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String?] ?? [String()]
+    @State private var favorites = [String]()
     var body: some View {
         NavigationStack{
             VStack{
                 Text(" ")
-                    .padding()
                 ScrollView{
                     LazyVGrid(columns: columns) {
                         ForEach(routes, id: \.self) { route in
@@ -69,7 +68,7 @@ struct OrarIntermediarView: View {
             print(selectedRoute)
         }
         .onAppear {
-            print(selectedRoute)
+            favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
             DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
                 if selectedRoute != "" {
                     activeNavigationView = true

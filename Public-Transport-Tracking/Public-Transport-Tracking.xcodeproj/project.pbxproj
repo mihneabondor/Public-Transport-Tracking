@@ -464,7 +464,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Public-Transport-Tracking/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Busify;
+				INFOPLIST_KEY_CFBundleDisplayName = Busy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationUsageDescription = ETA;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ETA;
@@ -502,7 +502,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Public-Transport-Tracking/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Busify;
+				INFOPLIST_KEY_CFBundleDisplayName = Busy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationUsageDescription = ETA;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ETA;

@@ -11,6 +11,7 @@ struct OrareView: View {
     @State var pickerSelection : String
     @State private var pageSelection = "LV"
     @State private var schedule = Schedule(name: "", type: "", route: "")
+    @State private var statii = [[String]]()
     var body: some View {
             VStack{
                 HStack{
@@ -45,7 +46,7 @@ struct OrareView: View {
                             pageSelection = "S"
                         }
                     } label: {
-                        Text("Sambata")
+                        Text("Sâmbătă")
                             .foregroundColor(.white)
                             .underline(pageSelection == "S")
                             .bold()
@@ -56,10 +57,21 @@ struct OrareView: View {
                             pageSelection = "D"
                         }
                     } label: {
-                        Text("Duminica")
+                        Text("Duminică")
                             .foregroundColor(.white)
                             .bold()
                             .underline(pageSelection == "D")
+                    }
+                    Spacer()
+                    Button {
+                        withAnimation {
+                            pageSelection = "Statii"
+                        }
+                    } label: {
+                        Text("Stații")
+                            .foregroundColor(.white)
+                            .bold()
+                            .underline(pageSelection == "Statii")
                     }
                     Spacer()
                 }   .padding()
@@ -84,6 +96,8 @@ struct OrareView: View {
                         .tag("S")
                     ScheduleTable(schedule: $schedule, pageFilter: $pageSelection, filter: "D")
                         .tag("D")
+                    StatiiView(statii: statii)
+                        .tag("Statii")
                 }.tabViewStyle(.page)
                 Spacer()
             }
@@ -102,6 +116,43 @@ struct OrareView: View {
                 }
                 Task {
                     schedule = try! await RequestManager().getSchedule(line: pickerSelection)
+                    let routes = try! await RequestManager().getRoutes()
+                    let routeId = routes.first(where: {$0.routeShortName == pickerSelection})?.routeId!
+                    let idTur : String = "\(routeId ?? 0)_0", idRetur = "\(routeId ?? 0)_1"
+                    
+                    let stops = try! await RequestManager().getStops()
+                    let stopTimes = try! await RequestManager().getStopTimes()
+                    let stopTimesTur = stopTimes.filter({$0.tripId == idTur}), stopTimesRetur = stopTimes.filter({$0.tripId == idRetur})
+                    
+                    for stopTimeTur in stopTimesTur {
+                        let stopId = stopTimeTur.stopId
+                        let statie = stops.first(where: {$0.stopId == Int(stopId!)})?.stopName
+                        var array = [String]()
+                        array.append(statie!)
+                        statii.append(array)
+                    }
+                    
+                    var index = 0
+                    for stopTimeRetur in stopTimesRetur {
+                        let stopId = stopTimeRetur.stopId
+                        let statie = stops.first(where: {$0.stopId == Int(stopId!)})?.stopName
+                        if statii.count > index {
+                            var array = [String]()
+                            array.append("SPATIU2")
+                            statii.append(array)
+                        } else if statii[index].count == 0 {
+                            statii[index].append("SPATIU2")
+                        }
+                        statii[index].append(statie!)
+                        index += 1
+                            
+                    }
+                    
+                    for i in 0..<statii.count {
+                        if statii[i].count == 1 {
+                            statii[i].insert("SPATIU1", at: 0)
+                        }
+                    }
                 }
             }
     }
@@ -159,6 +210,26 @@ struct ScheduleTable : View {
             }
             if filter == "D" {
                 matrix = schedule.station?.d?.lines ?? [[String()]]
+            }
+        }
+    }
+}
+
+struct StatiiView : View {
+    @State var statii : [[String]]
+    var body : some View {
+        ScrollView {
+            ForEach(statii, id: \.self) {row in
+                HStack{
+                    ForEach(Array(row.enumerated()), id: \.element) { index, statie in
+                        if statie != "SPATIU1" && statie != "SPATIU2" {
+                            Text(statie)
+                                .frame(maxWidth: .infinity, alignment: index == 0 ? .leading : .trailing)
+                                .padding()
+                        }
+                    }
+                }
+                .background((statii.firstIndex(where: {$0 == row}) ?? 0)%2 == 0 ? Color(UIColor.systemGray6) : .clear)
             }
         }
     }

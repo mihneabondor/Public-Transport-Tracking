@@ -84,7 +84,7 @@ struct FavoritesScreen: View {
                             Text("Poți adauga noi favorite din ecranul Toate Liniile")
                                 .multilineTextAlignment(.center)
                         }
-
+                        
                         if vehicles.isEmpty && Connectivity.isConnectedToInternet{
                             ProgressView()
                         }
@@ -216,25 +216,25 @@ struct FavoritesScreen: View {
                     linii = linii.filter({favorites.contains($0.tripId)})
                 }
             })
-//            .onChange(of: vehicles) {_ in
-//                if pickerSelection == 1 {
-//                    let favorites = UserDefaults.standard.value(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String?] ?? [String()]
-//                    linii = linii.filter({favorites.contains($0.tripId)})
-//                    vehicles = vehicles.filter({favorites.contains($0.routeShortName ?? "")})
-//                }
-//
-//                for i in 0..<vehicles.count {
-//                    let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
-//                    let distance = (locationManager.lastLocation?.distance(from: vehicleLocation) ?? 0) / 1000
-//
-//                    if vehicles[i].speed != 0 {
-//                        vehicles[i].eta = Int(floor(distance/Double((vehicles[i].speed ?? 1))*60))
-//                    }
-//                    if vehicles[i].speed == 0 || vehicles[i].eta ?? 0 > 100 {
-//                        vehicles[i].eta = Int(floor((distance/15.0)))
-//                    }
-//                }
-//            }
+            //            .onChange(of: vehicles) {_ in
+            //                if pickerSelection == 1 {
+            //                    let favorites = UserDefaults.standard.value(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String?] ?? [String()]
+            //                    linii = linii.filter({favorites.contains($0.tripId)})
+            //                    vehicles = vehicles.filter({favorites.contains($0.routeShortName ?? "")})
+            //                }
+            //
+            //                for i in 0..<vehicles.count {
+            //                    let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
+            //                    let distance = (locationManager.lastLocation?.distance(from: vehicleLocation) ?? 0) / 1000
+            //
+            //                    if vehicles[i].speed != 0 {
+            //                        vehicles[i].eta = Int(floor(distance/Double((vehicles[i].speed ?? 1))*60))
+            //                    }
+            //                    if vehicles[i].speed == 0 || vehicles[i].eta ?? 0 > 100 {
+            //                        vehicles[i].eta = Int(floor((distance/15.0)))
+            //                    }
+            //                }
+            //            }
             .onChange(of: linii, perform: { _ in
                 if pickerSelection == 1 {
                     let favorites = UserDefaults.standard.value(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String?] ?? [String()]
@@ -277,17 +277,24 @@ struct FavoritesScreen: View {
             
             vehicles = vehicles.filter({$0.latitude != nil && $0.longitude != nil && $0.tripId != nil && $0.routeId != nil})
             
-//            for i in 0..<vehicles.count {
-//                if !availableTypes.contains(vehicles[i].vehicleType ?? 0) {
-//                    availableTypes.append(vehicles[i].vehicleType!)
-//                }
-//            }
+            //            for i in 0..<vehicles.count {
+            //                if !availableTypes.contains(vehicles[i].vehicleType ?? 0) {
+            //                    availableTypes.append(vehicles[i].vehicleType!)
+            //                }
+            //            }
             
             vehicles = vehicles.sorted(by: {Int(($0.tripId?.components(separatedBy: "_").first)!) ?? 0 < Int(($1.tripId?.components(separatedBy: "_").first)!) ?? 0})
             let stops = try? await RequestManager().getStops()
-            
+            let stopTimes = try! await RequestManager().getStopTimes()
             
             linii.removeAll()
+            
+            //            stopTimes = stopTimes.filter({$0.tripId == tripId})
+            
+            //            for i in 0..<stopTimes.count {
+            //                let stopTime = stopTimes[i]
+            //                let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
+            //            }
             
             for i in 0..<vehicles.count {
                 if route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName ?? "" != linii.last?.tripId || linii.isEmpty {
@@ -296,20 +303,35 @@ struct FavoritesScreen: View {
                 if !linii.isEmpty {
                     var closestStopName = "", minimumDistance = 100.0
                     if let stops = stops {
-                        for stop in stops {
+                        let vehicleSpecificStopTime = stopTimes.filter({$0.tripId == vehicles[i].tripId})
+                        for k in 0..<vehicleSpecificStopTime.count {
+                            let stopTime = vehicleSpecificStopTime[k]
+                            let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
+                            let stopLocation = CLLocation(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0)
                             let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
-                            let distance = vehicleLocation.distance(from: CLLocation(latitude: stop.lat ?? 0, longitude: stop.long ?? 0)) / 1000
+                            let distance = vehicleLocation.distance(from: stopLocation) / 1000
                             if minimumDistance > distance {
                                 minimumDistance = distance
-                                closestStopName = stop.stopName ?? ""
+                                closestStopName = stop?.stopName ?? ""
                             }
                         }
+                        //                        let vehicleSpecificStops = stops
+                        //                        for stop in stops {
+                        //                            let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
+                        //                            let distance = vehicleLocation.distance(from: CLLocation(latitude: stop.lat ?? 0, longitude: stop.long ?? 0)) / 1000
+                        //                            if minimumDistance > distance {
+                        //                                minimumDistance = distance
+                        //                                closestStopName = stop.stopName ?? ""
+                        //                            }
+                        
+                        //                        }
+                        //                    }
+                        vehicles[i].routeShortName = route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName
+                        vehicles[i].routeLongName = route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeLongName
+                        vehicles[i].statie = closestStopName
+                        
+                        linii[linii.count-1].vehicles.append(vehicles[i])
                     }
-                    vehicles[i].routeShortName = route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName
-                    vehicles[i].routeLongName = route[route.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeLongName
-                    vehicles[i].statie = closestStopName
-                    
-                    linii[linii.count-1].vehicles.append(vehicles[i])
                 }
             }
         }
