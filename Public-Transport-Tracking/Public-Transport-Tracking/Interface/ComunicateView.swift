@@ -32,6 +32,7 @@ struct ComunicateView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .multilineTextAlignment(.leading)
                             Divider()
+                                .tint(.purple)
                                 .foregroundColor(.purple)
                         }
                     }

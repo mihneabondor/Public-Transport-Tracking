@@ -17,6 +17,15 @@
         "revision" : "68493a33d862c33c9a9f67ec729b3b7df1b20ade",
         "version" : "9.1.2"
       }
+    },
+    {
+      "identity" : "sstoastmessage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SimformSolutionsPvtLtd/SSToastMessage",
+      "state" : {
+        "revision" : "6f8c15ae5347655a22651c94ed29a651c172e6ce",
+        "version" : "1.0.0"
+      }
     }
   ],
   "version" : 2

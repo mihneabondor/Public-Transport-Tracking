@@ -22,6 +22,7 @@
 		D7361C2229DB2D3B006F78D2 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C2129DB2D3B006F78D2 /* Structs.swift */; };
 		D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */; };
 		D73E579329E5D7160044A955 /* OrarIntermediarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E579229E5D7160044A955 /* OrarIntermediarView.swift */; };
+		D74065D929E81E0200E1E3AF /* SSToastMessage in Frameworks */ = {isa = PBXBuildFile; productRef = D74065D829E81E0200E1E3AF /* SSToastMessage */; };
 		D762021929E068870061A73A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762021829E068870061A73A /* StationView.swift */; };
 		D778901C29DB56C200044D10 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D778901B29DB56C200044D10 /* Alamofire */; };
 		D784169829E49A9C009F4F2C /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = D784169729E49A9C009F4F2C /* FeedKit */; };
@@ -78,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D74065D929E81E0200E1E3AF /* SSToastMessage in Frameworks */,
 				D784169829E49A9C009F4F2C /* FeedKit in Frameworks */,
 				D778901C29DB56C200044D10 /* Alamofire in Frameworks */,
 				481D351902FF5E7DB4030604 /* libPods-Public Transport Tracking.a in Frameworks */,
@@ -202,6 +204,7 @@
 			packageProductDependencies = (
 				D778901B29DB56C200044D10 /* Alamofire */,
 				D784169729E49A9C009F4F2C /* FeedKit */,
+				D74065D829E81E0200E1E3AF /* SSToastMessage */,
 			);
 			productName = "Public Transport Tracking";
 			productReference = D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */;
@@ -234,6 +237,7 @@
 			packageReferences = (
 				D778901A29DB56C200044D10 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				D784169629E49A9C009F4F2C /* XCRemoteSwiftPackageReference "FeedKit" */,
+				D74065D729E81E0200E1E3AF /* XCRemoteSwiftPackageReference "SSToastMessage" */,
 			);
 			productRefGroup = D7ABA55229DAA28500CDA8DE /* Products */;
 			projectDirPath = "";
@@ -547,6 +551,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D74065D729E81E0200E1E3AF /* XCRemoteSwiftPackageReference "SSToastMessage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimformSolutionsPvtLtd/SSToastMessage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		D778901A29DB56C200044D10 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -566,6 +578,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D74065D829E81E0200E1E3AF /* SSToastMessage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D74065D729E81E0200E1E3AF /* XCRemoteSwiftPackageReference "SSToastMessage" */;
+			productName = SSToastMessage;
+		};
 		D778901B29DB56C200044D10 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D778901A29DB56C200044D10 /* XCRemoteSwiftPackageReference "Alamofire" */;

@@ -124,6 +124,7 @@ struct FavoritesScreen: View {
                                     Button {
                                         if favorites.contains(item.tripId) {
                                             favorites.removeAll(where: {$0 == item.tripId})
+                                            loadView()
                                         } else {
                                             favorites.append(item.tripId)
                                         }
@@ -246,10 +247,10 @@ struct FavoritesScreen: View {
                         let distance = (locationManager.lastLocation?.distance(from: vehicleLocation) ?? 0) / 1000
                         
                         if linii[j].vehicles[i].speed != 0 {
-                            linii[j].vehicles[i].eta = Int(ceil(distance/Double((linii[j].vehicles[i].speed ?? 1))*60))
+                            linii[j].vehicles[i].eta = Int(floor(distance/Double((linii[j].vehicles[i].speed ?? 1))*60))
                         }
                         if linii[j].vehicles[i].speed == 0 || linii[j].vehicles[i].eta ?? 0 > 100 {
-                            linii[j].vehicles[i].eta = Int(ceil((distance/15.0)))
+                            linii[j].vehicles[i].eta = Int((distance/15)*60)
                         }
                     }
                 }
