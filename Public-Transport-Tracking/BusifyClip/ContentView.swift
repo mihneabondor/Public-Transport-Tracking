@@ -1,24 +1,24 @@
 //
-//  MapView.swift
-//  Public Transport Tracking
+//  ContentView.swift
+//  BusifyClip
 //
-//  Created by Mihnea on 4/5/23.
+//  Created by Mihnea on 4/14/23.
 //
 
 import SwiftUI
-import MapKit
 import CoreLocation
+import MapKit
 
-struct MapView: View {
-    @Binding var vehicles : [Vehicle]
-    @Binding var linii : [Linii]
-    @Binding var routes : [Route]
-    @Binding var selectedTab : Int
-    @Binding var orareSelection : String
+struct ContentView: View {
+    @State var vehicles : [Vehicle]?
+    @State var linii = [Linii]()
+    @State var routes = [Route]()
+    @State var selectedTab = 1
+    @State var orareSelection = "1"
+    @State var trips : [Trip]!
+    @StateObject var location = LocationManager()
     
-    @StateObject var userLocation = LocationManager()
-    
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: LocationManager().lastLocation?.coordinate.latitude ?? 0, longitude: LocationManager().lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: LocationManager().lastLocation?.coordinate.latitude ?? 46.7712, longitude: LocationManager().lastLocation?.coordinate.longitude ?? 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     var vehicleTypes = ["Tramvai", "Metro", "Tren","Autobus", "Ferry", "Cable tram", "Aerial Lift", "Funicular", "", "", "", "Troleibus", "Monorail"]
     var vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
     @State var searchText = ""
@@ -27,7 +27,6 @@ struct MapView: View {
     @State private var annotations = [Annotation]()
     @State private var focusedVehicleNearestStop = ""
     @State private var focusedVehicleTripId = ""
-    @State private var focusedVechile : Vehicle?
     
     @State var showStationDetail = false
     @State var statieStationDetail = ""
@@ -36,23 +35,19 @@ struct MapView: View {
     @State var stationDetails = [StationDetails]()
     
     @State var showBusDetail = false
-    @State var selectedVehicle : Vehicle?
+    @State var selectedVehicled : Vehicle?
     @State private var favorites = [String]()
+    let timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
     var body: some View {
         ZStack{
             Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: annotations, annotationContent: { location in
                 MapAnnotation(coordinate: location.coordinates) {
                     if location.type == 0  && location.vehicle != nil{
                         Button {
-                            let midCenter = CLLocationCoordinate2D(latitude: (location.coordinates.latitude + (userLocation.lastLocation?.coordinate.latitude ?? 0))/2, longitude: (location.coordinates.longitude + (userLocation.lastLocation?.coordinate.longitude ?? 0))/2)
-                            let midSpan = MKCoordinateSpan(latitudeDelta: abs((location.coordinates.latitude - (userLocation.lastLocation?.coordinate.latitude ?? 0)))*2, longitudeDelta: abs((location.coordinates.longitude - (userLocation.lastLocation?.coordinate.longitude ?? 0))*2))
                             withAnimation {
                                 showBusDetail = true
                             }
-                            withAnimation {
-                                region = MKCoordinateRegion(center: midCenter, span: midSpan)
-                            }
-                            selectedVehicle = location.vehicle
+                            selectedVehicled = location.vehicle
                             if focusedVehicleTripId == ""{
                                 focusedVehicleNearestStop = location.vehicle?.statie ?? ""
                                 focusedVehicleTripId = location.vehicle?.tripId ?? ""
@@ -82,6 +77,7 @@ struct MapView: View {
                             statieStationDetail = location.statie?.stopName ?? ""
                             systemImgStationDetail = "bus.fill"
                             selectedStation = location.statie!
+                            
                             withAnimation {
                                 showStationDetail.toggle()
                             }
@@ -112,7 +108,7 @@ struct MapView: View {
                         .onChange(of: searchText) { text in
                             searchResults.removeAll()
                             withAnimation {
-                                searchResults = vehicles.filter({$0.routeShortName?.contains(text) == true})
+                                searchResults = vehicles?.filter({$0.routeShortName?.contains(text) == true}) ?? [Vehicle]()
                             }
                         }
                     
@@ -133,7 +129,7 @@ struct MapView: View {
                         Spacer()
                         Button {
                             withAnimation {
-                                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.lastLocation?.coordinate.latitude ?? 0, longitude: userLocation.lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.lastLocation?.coordinate.latitude ?? 0, longitude: location.lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
                             }
                         } label: {
                             Image(systemName: "location.viewfinder")
@@ -167,8 +163,8 @@ struct MapView: View {
                                     VStack{
                                         HStack{
                                             Text("Linia \(result.routeShortName ?? "") de la \(result.statie ?? "")")
-                                                .foregroundColor(.white)
                                                 .bold()
+                                                .foregroundColor(.white)
                                             Spacer()
                                         }
                                         HStack{
@@ -191,28 +187,18 @@ struct MapView: View {
                 Spacer()
                 ZStack{
                     if showBusDetail {
-                        BusDetailView(vehicle: $selectedVehicle, closeView: $showBusDetail, selectedTab: $selectedTab, orareSelection: $orareSelection)
+                        BusDetailView(vehicle: $selectedVehicled, closeView: $showBusDetail, selectedTab: $selectedTab, orareSelection: $orareSelection)
                             .offset(y: -30)
                             .padding()
                     }
                     if showStationDetail{
-                        StationView(statie: $statieStationDetail, systemImage: $systemImgStationDetail, closeView: $showStationDetail, stop: selectedStation, vehicles: vehicles, details: $stationDetails)
+                        StationView(statie: $statieStationDetail, systemImage: $systemImgStationDetail, closeView: $showStationDetail, stop: selectedStation, vehicles: vehicles ?? [Vehicle](), details: $stationDetails)
                             .padding()
                     }
                 }
             }
         }
-        .onChange(of: stationDetails, perform: { _ in
-            annotations.removeAll()
-            for stationDetail in stationDetails {
-                let location = CLLocationCoordinate2D(latitude: stationDetail.vehicle.latitude ?? 0, longitude: stationDetail.vehicle.longitude ?? 0)
-                annotations.append(Annotation(type: 0, coordinates: location, vehicle: stationDetail.vehicle, statie: nil))
-            }
-            let location = CLLocationCoordinate2D(latitude: selectedStation.lat ?? 0, longitude: selectedStation.long ?? 0)
-            annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
-        })
         .onChange(of: showStationDetail, perform: { _ in
-            stationDetails.removeAll()
             withAnimation {
                 showBusDetail = false
             }
@@ -220,6 +206,10 @@ struct MapView: View {
                 withAnimation {
                     showBusDetail = true
                 }
+//                annotations.removeAll()
+//                for elem in vehicles {
+//                    annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+//                }
             }
         })
         .onChange(of: showBusDetail, perform: { value in
@@ -227,104 +217,139 @@ struct MapView: View {
                 focusedVehicleTripId = ""
                 focusedVehicleNearestStop = ""
             }
-            
-            if value {
-                loadFocusedVehicle()
-            }
         })
-        .onChange(of: focusedVehicleTripId, perform: { _ in
-            loadFocusedVehicle()
+        .onChange(of: focusedVehicleTripId, perform: { tripId in
+            Task(priority: .high) {
+                if focusedVehicleTripId == "" {
+                    showStationDetail = false
+                    DispatchQueue.main.async {
+                        annotations.removeAll()
+                        for elem in vehicles! {
+                            annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        annotations = annotations.filter({$0.vehicle?.tripId == focusedVehicleTripId && focusedVehicleNearestStop == $0.vehicle?.statie})
+                    }
+                        let stops = try! await RequestManager().getStops()
+                        var stopTimes = try! await RequestManager().getStopTimes()
+                        stopTimes = stopTimes.filter({$0.tripId == tripId})
+                    DispatchQueue.main.async {
+                        for i in 0..<stopTimes.count {
+                            let stopTime = stopTimes[i]
+                            let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
+                            annotations.append(Annotation(type: 1, coordinates: CLLocationCoordinate2D(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0), vehicle: nil, statie: stop))
+                        }
+                    }
+                }
+            }
         })
         .onChange(of: vehicles) {_ in
             DispatchQueue.main.async {
                 if focusedVehicleTripId == "" {
                     DispatchQueue.main.async {
                         annotations.removeAll()
-                        for elem in vehicles {
+                        for elem in vehicles! {
                             annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
                         }
                     }
                 } else {
-                    if stationDetails.isEmpty {
-                        let elem = vehicles.first(where: {$0.label == selectedVehicle?.label})
-                        DispatchQueue.main.async {
-                            annotations.removeAll(where: {$0.type == 0})
-                            annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem?.latitude ?? 0, longitude: elem?.longitude ?? 0), vehicle: elem, statie: nil))
-                        }
-                    } else {
-                        annotations.removeAll()
-                        for elem in vehicles {
-                            if stationDetails.contains(where: {$0.vehicle == elem}) {
-                                let location = CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0)
-                                annotations.append(Annotation(type: 0, coordinates: location, vehicle: elem, statie: nil))
-                            }
-                        }
-                        let location = CLLocationCoordinate2D(latitude: selectedStation.lat ?? 0, longitude: selectedStation.long ?? 0)
-                        annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
+                    let elem = vehicles!.first(where: {$0.tripId == focusedVehicleTripId})
+                    DispatchQueue.main.async {
+                        annotations.removeAll(where: {$0.type == 0})
+                        annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem?.latitude ?? 0, longitude: elem?.longitude ?? 0), vehicle: elem, statie: nil))
                     }
-                }
-                if !stationDetails.isEmpty {
-                    annotations.removeAll()
-                    for elem in vehicles {
-                            if stationDetails.contains(where: {$0.vehicle.label == elem.label}) {
-                            let location = CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0)
-                            annotations.append(Annotation(type: 0, coordinates: location, vehicle: elem, statie: nil))
-                        }
-                    }
-                    let location = CLLocationCoordinate2D(latitude: selectedStation.lat ?? 0, longitude: selectedStation.long ?? 0)
-                    annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
                 }
             }
         }
+        .onChange(of: location.locationStatus) {_ in
+            if location.locationStatus == CLAuthorizationStatus.authorizedWhenInUse {
+                DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                    region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.lastLocation?.coordinate.latitude ?? 46.7712, longitude: location.lastLocation?.coordinate.longitude ?? 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                }
+            }
+        }
+        .onReceive(timer, perform: { _ in
+            loadView() {
+                favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String]()
+                DispatchQueue.main.async {
+                    for elem in vehicles! {
+                        annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+                    }
+                }
+            }
+        })
         .onAppear() {
-            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.lastLocation?.coordinate.latitude ?? 46.7712, longitude: userLocation.lastLocation?.coordinate.longitude ?? 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
-            favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String]()
-            DispatchQueue.main.async {
-                for elem in vehicles {
-                    annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+            DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.lastLocation?.coordinate.latitude ?? 46.7712, longitude: location.lastLocation?.coordinate.longitude ?? 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            }
+            loadView() {
+                favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String]()
+                DispatchQueue.main.async {
+                    for elem in vehicles! {
+                        annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+                    }
                 }
             }
         }
     }
     
-    func loadFocusedVehicle() {
+    private func loadView(finisher: () -> Void) {
         Task(priority: .high) {
-            if focusedVehicleTripId == "" {
-                showStationDetail = false
-                DispatchQueue.main.async {
-                    annotations.removeAll()
-                    for elem in vehicles {
-                        annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
-                    }
+            var newVehicles = [Vehicle]()
+            do {
+                newVehicles = try await RequestManager().getVehicles()
+                trips = try await RequestManager().getTrips()
+                routes = try await RequestManager().getRoutes()
+            } catch let err {
+                print(err)
+            }
+            vehicles?.removeAll()
+            vehicles = newVehicles
+            
+            vehicles = vehicles!.filter({$0.latitude != nil && $0.longitude != nil && $0.tripId != nil && $0.routeId != nil})
+            
+            vehicles = vehicles!.sorted(by: {Int(($0.tripId?.components(separatedBy: "_").first)!) ?? 0 < Int(($1.tripId?.components(separatedBy: "_").first)!) ?? 0})
+            let stops = try? await RequestManager().getStops()
+            let stopTimes = try! await RequestManager().getStopTimes()
+            
+            linii.removeAll()
+            
+            for i in 0..<vehicles!.count {
+                if routes[routes.firstIndex{$0.routeId == vehicles![i].routeId} ?? 0].routeShortName ?? "" != linii.last?.tripId || linii.isEmpty {
+                    linii.append(Linii(tripId: routes[routes.firstIndex{$0.routeId == vehicles![i].routeId} ?? 0].routeShortName ?? "", vehicles: [], favorite: false))
                 }
-            } else {
-                DispatchQueue.main.async {
-                    annotations = annotations.filter({$0.vehicle?.tripId == focusedVehicleTripId && focusedVehicleNearestStop == $0.vehicle?.statie})
-                }
-                
-                var stops = [Statie]()
-                do {
-                    stops = try await RequestManager().getStops()
-                } catch let err {
-                    print(err)
-                }
-                var stopTimes = [StopTime]()
-                do {
-                    stopTimes = try await RequestManager().getStopTimes()
-                } catch let err {
-                    print(err)
-                }
-                
-                stopTimes = stopTimes.filter({$0.tripId == focusedVehicleTripId})
-                DispatchQueue.main.async {
-                    for i in 0..<stopTimes.count {
-                        let stopTime = stopTimes[i]
-                        let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
-                        annotations.append(Annotation(type: 1, coordinates: CLLocationCoordinate2D(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0), vehicle: nil, statie: stop))
+                if !linii.isEmpty {
+                    var closestStopName = "", minimumDistance = 100.0
+                    if let stops = stops {
+                        let vehicleSpecificStopTime = stopTimes.filter({$0.tripId == vehicles![i].tripId})
+                        for k in 0..<vehicleSpecificStopTime.count {
+                            let stopTime = vehicleSpecificStopTime[k]
+                            let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
+                            let stopLocation = CLLocation(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0)
+                            let vehicleLocation = CLLocation(latitude: vehicles![i].latitude ?? 0, longitude: vehicles![i].longitude ?? 0)
+                            let distance = vehicleLocation.distance(from: stopLocation) / 1000
+                            if minimumDistance > distance {
+                                minimumDistance = distance
+                                closestStopName = stop?.stopName ?? ""
+                            }
+                        }
+                        vehicles![i].routeShortName = routes[routes.firstIndex{$0.routeId == vehicles![i].routeId} ?? 0].routeShortName
+                        vehicles![i].routeLongName = routes[routes.firstIndex{$0.routeId == vehicles![i].routeId} ?? 0].routeLongName
+                        vehicles![i].statie = closestStopName
+                        
+                        linii[linii.count-1].vehicles.append(vehicles![i])
                     }
                 }
             }
         }
     }
 }
+
+
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

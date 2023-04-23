@@ -60,7 +60,7 @@ class RequestManager {
         } catch let err{
             print(err)
         }
-        let responseData = try? DecodingManager().decodeVehicles(jsonString: responseJson!)
+        let responseData = try? DecodingManager().decodeVehicles(jsonString: responseJson ?? "")
         return responseData ?? [Vehicle]()
     }
     
@@ -107,7 +107,7 @@ class RequestManager {
         } catch let err{
             print(err)
         }
-        let responseData = try? DecodingManager().decodeSchedule(jsonString: responseJson!)
+        let responseData = try? DecodingManager().decodeSchedule(jsonString: responseJson ?? "")
         return responseData ?? Schedule(name: nil, type: nil, route: nil, station: nil)
     }
     

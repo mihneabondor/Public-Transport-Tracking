@@ -42,8 +42,8 @@ struct ComunicateView: View {
         }
         .onAppear() {
             Task {
-                let decodedFeed = try! await RequestManager().getNews()
-                for item in decodedFeed.items ?? [] {
+                let decodedFeed = try? await RequestManager().getNews()
+                for item in decodedFeed?.items ?? [] {
                     var newFeedItem = News(link: item.link, title: item.title, description: item.description)
                     newFeedItem.description = newFeedItem.description?.replacingOccurrences(of: "<b>", with: "")
                     newFeedItem.description = newFeedItem.description?.replacingOccurrences(of: "</b>", with: "")

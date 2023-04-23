@@ -180,3 +180,8 @@ struct Connectivity {
       return self.sharedInstance.isReachable
     }
 }
+
+struct StationDetails : Hashable {
+    var vehicle : Vehicle
+    var stationETA : Int
+}

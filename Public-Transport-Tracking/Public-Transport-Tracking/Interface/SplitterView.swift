@@ -26,9 +26,11 @@ struct SplitterView: View {
     @State private var news = RSSFeed()
     @State private var comunicateSystemImage = "newspaper"
     @State private var showNewsAlert = false
+    @State private var showVinereaAlert = false
     @State private var stire = ""
+    let currentDate = Date()
     var progressInterval: ClosedRange<Date> {
-        let start = Date()
+        let start = currentDate
         let end = start.addingTimeInterval(7)
         return start...end
     }
@@ -77,12 +79,20 @@ struct SplitterView: View {
             }
         })
         .onAppear() {
+            let weekday = Calendar.current.component(.weekday, from: Date())
+            if weekday == 6 {
+                showVinereaAlert = true
+            }
             if Connectivity.isConnectedToInternet {
                 DispatchQueue.main.async {
                     FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
                 }
                 Task {
-                    news = try! await RequestManager().getNews()
+                    do {
+                        news = try await RequestManager().getNews()
+                    } catch let err {
+                        print(err)
+                    }
                 }
             }
         }
@@ -108,7 +118,7 @@ struct SplitterView: View {
                 UserDefaults.standard.set(firstItem, forKey: Constants.USER_DEFAULTS_NEWS_LAST_DATE)
             }
         })
-        .present(isPresented: $showNewsAlert, type: .toast, position: .top, autohideDuration: 6, onTap: {selectedTab = 3}) {
+        .present(isPresented: $showNewsAlert, type: .toast, position: .top, autohideDuration: 6.5, onTap: {selectedTab = 3}) {
             VStack{
                 Spacer(minLength: 20)
                 HStack {
@@ -134,6 +144,32 @@ struct SplitterView: View {
             .frame(width: UIScreen.main.bounds.width, height: 140)
             .background(Color(UIColor.systemGray4))
         }
+        .present(isPresented: $showVinereaAlert, type: .toast, position: .top, autohideDuration: 6.5, closeOnTap: true) {
+            VStack{
+                Spacer(minLength: 20)
+                HStack {
+                    Image(systemName: "tag.slash.fill")
+                        .padding()
+                        .font(.title2)
+                    VStack{
+                        HStack{
+                            Text("Vinerea verde")
+                                .bold()
+                            Spacer()
+                        }
+                        HStack{
+                            Text("Nu este nevoie să îți validezi abonamentul.")
+                            Spacer()
+                        }
+                    }
+                }
+                
+                ProgressView(timerInterval: progressInterval) {} currentValueLabel: {}
+                    .tint(.purple)
+            }
+            .frame(width: UIScreen.main.bounds.width, height: 140)
+            .background(Color(UIColor.systemGray4))
+        }
         .onChange(of: scenePhase) { _ in
             if scenePhase == .background {
                 Alamofire.Session.default.session.getTasksWithCompletionHandler({ dataTasks, uploadTasks, downloadTasks in
@@ -143,19 +179,6 @@ struct SplitterView: View {
                         })
             }
         }
-//        .onChange(of: vehicles) { _ in
-//            for i in 0..<vehicles.count {
-//                let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
-//                let distance = (locationManager.lastLocation?.distance(from: vehicleLocation) ?? 0) / 1000
-//
-//                if vehicles[i].speed != 0 {
-//                    vehicles[i].eta = Int(floor(distance/Double((vehicles[i].speed ?? 1))*60))
-//                }
-//                if vehicles[i].speed == 0 || vehicles[i].eta ?? 0 > 100 {
-//                    vehicles[i].eta = Int(floor((distance/15.0)))
-//                }
-//            }
-//        }
     }
 }
 

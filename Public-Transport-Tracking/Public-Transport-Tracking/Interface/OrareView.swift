@@ -35,7 +35,7 @@ struct OrareView: View {
                             pageSelection = "LV"
                         }
                     } label: {
-                        Text("Luni-Vineri")
+                        Text("L-V")
                             .foregroundColor(.white)
                             .underline(pageSelection == "LV")
                             .bold()
@@ -46,7 +46,7 @@ struct OrareView: View {
                             pageSelection = "S"
                         }
                     } label: {
-                        Text("Sâmbătă")
+                        Text("S")
                             .foregroundColor(.white)
                             .underline(pageSelection == "S")
                             .bold()
@@ -57,7 +57,7 @@ struct OrareView: View {
                             pageSelection = "D"
                         }
                     } label: {
-                        Text("Duminică")
+                        Text("D")
                             .foregroundColor(.white)
                             .bold()
                             .underline(pageSelection == "D")
@@ -104,7 +104,11 @@ struct OrareView: View {
             .preferredColorScheme(.dark)
             .onChange(of: pickerSelection, perform: { _ in
                 Task {
-                    schedule = try! await RequestManager().getSchedule(line: pickerSelection)
+                    do {
+                        schedule = try await RequestManager().getSchedule(line: pickerSelection)
+                    } catch let err {
+                        print(err)
+                    }
                 }
             })
             .onAppear{
@@ -115,13 +119,36 @@ struct OrareView: View {
                     pageSelection = "S"
                 }
                 Task {
-                    schedule = try! await RequestManager().getSchedule(line: pickerSelection)
-                    let routes = try! await RequestManager().getRoutes()
+                    do {
+                        schedule = try await RequestManager().getSchedule(line: pickerSelection)
+                    } catch let err {
+                        print(err)
+                    }
+                    
+                    var routes = [Route]()
+                    do {
+                        routes = try await RequestManager().getRoutes()
+                    } catch let err {
+                        print(err)
+                    }
+                    
                     let routeId = routes.first(where: {$0.routeShortName == pickerSelection})?.routeId!
                     let idTur : String = "\(routeId ?? 0)_0", idRetur = "\(routeId ?? 0)_1"
                     
-                    let stops = try! await RequestManager().getStops()
-                    let stopTimes = try! await RequestManager().getStopTimes()
+                    var stops = [Statie]()
+                    do {
+                        stops = try await RequestManager().getStops()
+                    } catch let err {
+                        print(err)
+                    }
+                    
+                    var stopTimes = [StopTime]()
+                    do {
+                        stopTimes = try await RequestManager().getStopTimes()
+                    } catch let err {
+                        print(err)
+                    }
+                    
                     let stopTimesTur = stopTimes.filter({$0.tripId == idTur}), stopTimesRetur = stopTimes.filter({$0.tripId == idRetur})
                     
                     for stopTimeTur in stopTimesTur {

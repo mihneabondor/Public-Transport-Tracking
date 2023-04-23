@@ -75,7 +75,6 @@ struct OrarIntermediarView: View {
                     print("Da")
                 }
             }
-            routes = routes.sorted(by: {$1 > $0})
         }
     }
 }

@@ -46,81 +46,83 @@ struct BusDetailView: View {
                 Text(" ")
                     .font(.title)
             }
-                HStack{
-                    Text(" ")
-                        .font(.title)
-                    VStack{
-                        Text("STAȚIE CURENTĂ")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                        Text("\(vehicle?.statie ?? "Necunoscută")")
-                            .padding(.bottom)
-                        Text("SPRE")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                        Text(trips.first(where: {$0.tripId == vehicle?.tripId ?? ""})?.tripHeadsign ?? "")
-                    }.padding([.trailing, .leading, .bottom])
-                    Spacer()
-                    VStack{
-                        Text("ETA")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                        Text(String(vehicle?.eta ?? 0))
-                            .padding(.bottom)
-                        
-                        Text("SERVICII")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                        HStack{
-                            if vehicle?.bikeAccessible == "BIKE_ACCESSIBLE"{
-                                Image(systemName: "bicycle")
-                            } else {
-                                Text("-")
-                            }
-                            if vehicle?.wheelchairAccessible == "WHEELCHAIR_ACCESSIBLE"{
-                                Image(systemName: "figure.roll")
-                            } else {
-                                Text("-")
-                            }
-                        }
-                    }.padding([.trailing, .leading, .bottom])
-                    Text(" ")
-                        .font(.title)
-                }
-                HStack{
-                    Button {
-                        orareSelection = vehicle?.routeShortName ?? ""
-                        selectedTab = 1
-                    } label: {
-                        Image(systemName: "calendar")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .padding([.leading, .trailing])
-                    }
+            HStack{
+                Text(" ")
+                    .font(.title)
+                VStack{
+                    Text("STAȚIE CURENTĂ")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                    Text("\(vehicle?.statie ?? "Necunoscută")")
+                        .padding(.bottom)
+                    Text("SPRE")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                    Text(trips.first(where: {$0.tripId == vehicle?.tripId ?? ""})?.tripHeadsign ?? "")
+                }.padding([.trailing, .leading, .bottom])
+                Spacer()
+                VStack{
+                    Text("ETA")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                    Text("\(vehicle?.eta ?? 0) min")
+                        .padding(.bottom)
                     
-                    Button {
-                        UIApplication.shared.open(URL(string: "sms:open?addresses=7479&body=\(vehicle?.routeShortName ?? "")")!, options: [:], completionHandler: nil)
-                    } label: {
-                        Image(systemName: "ticket.fill")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .padding([.leading, .trailing])
-                    }
-                    
-                    Button {
-                        if favorites.contains(vehicle?.routeShortName ?? "") {
-                            favorites.removeAll(where: {$0 == vehicle?.routeShortName ?? ""})
+                    Text("SERVICII")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                    HStack{
+                        if vehicle?.bikeAccessible == "BIKE_ACCESSIBLE"{
+                            Image(systemName: "bicycle")
                         } else {
-                            favorites.append(vehicle?.routeShortName ?? "")
+                            Text("-")
                         }
-                        UserDefaults().set(favorites, forKey: Constants.USER_DEFAULTS_FAVORITES)
-                    } label: {
-                        Image(systemName: favorites.contains(vehicle?.routeShortName ?? "") ? "heart.fill" : "heart")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .padding([.leading, .trailing])
+                        if vehicle?.wheelchairAccessible == "WHEELCHAIR_ACCESSIBLE"{
+                            Image(systemName: "figure.roll")
+                        } else {
+                            Text("-")
+                        }
                     }
+                }.padding([.trailing, .leading, .bottom])
+                Text(" ")
+                    .font(.title)
+            }
+#if !APPCLIP
+            HStack{
+                Button {
+                    orareSelection = vehicle?.routeShortName ?? ""
+                    selectedTab = 1
+                } label: {
+                    Image(systemName: "calendar")
+                        .font(.title2)
+                        .foregroundColor(.white)
+                        .padding([.leading, .trailing])
                 }
+                
+                Button {
+                    UIApplication.shared.open(URL(string: "sms:open?addresses=7479&body=\(vehicle?.routeShortName ?? "")")!, options: [:], completionHandler: nil)
+                } label: {
+                    Image(systemName: "ticket.fill")
+                        .font(.title2)
+                        .foregroundColor(.white)
+                        .padding([.leading, .trailing])
+                }
+                
+                Button {
+                    if favorites.contains(vehicle?.routeShortName ?? "") {
+                        favorites.removeAll(where: {$0 == vehicle?.routeShortName ?? ""})
+                    } else {
+                        favorites.append(vehicle?.routeShortName ?? "")
+                    }
+                    UserDefaults().set(favorites, forKey: Constants.USER_DEFAULTS_FAVORITES)
+                } label: {
+                    Image(systemName: favorites.contains(vehicle?.routeShortName ?? "") ? "heart.fill" : "heart")
+                        .font(.title2)
+                        .foregroundColor(.white)
+                        .padding([.leading, .trailing])
+                }
+            }
+#endif
         }
         .background() {
             Rectangle()
@@ -132,7 +134,11 @@ struct BusDetailView: View {
         .onAppear() {
             favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
             Task {
-                trips = try! await RequestManager().getTrips()
+                do {
+                    trips = try await RequestManager().getTrips()
+                } catch let err {
+                    print(err)
+                }
             }
         }
         .onChange(of: vehicle, perform: { _ in
