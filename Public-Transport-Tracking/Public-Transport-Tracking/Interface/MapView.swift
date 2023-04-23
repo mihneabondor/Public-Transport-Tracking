@@ -85,6 +85,10 @@ struct MapView: View {
                             withAnimation {
                                 showStationDetail.toggle()
                             }
+                            if showStationDetail == false {
+                                focusedVehicleTripId = ""
+                                focusedVehicleNearestStop = ""
+                            }
                         } label: {
                             Image(systemName: "door.garage.open")
                                 .foregroundColor(.white)
@@ -196,7 +200,7 @@ struct MapView: View {
                             .padding()
                     }
                     if showStationDetail{
-                        StationView(statie: $statieStationDetail, systemImage: $systemImgStationDetail, closeView: $showStationDetail, stop: selectedStation, vehicles: vehicles, details: $stationDetails)
+                        StationView(statie: $statieStationDetail, systemImage: $systemImgStationDetail, closeView: $showStationDetail, stop: $selectedStation, vehicles: $vehicles, details: $stationDetails)
                             .padding()
                     }
                 }
@@ -217,9 +221,8 @@ struct MapView: View {
                 showBusDetail = false
             }
             if showStationDetail == false {
-                withAnimation {
-                    showBusDetail = true
-                }
+                focusedVehicleTripId = ""
+                focusedVehicleNearestStop = ""
             }
         })
         .onChange(of: showBusDetail, perform: { value in

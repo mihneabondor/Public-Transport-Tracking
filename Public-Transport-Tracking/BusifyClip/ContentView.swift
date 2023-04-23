@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 
 struct ContentView: View {
-    @State var vehicles : [Vehicle]?
+    @State var vehicles = [Vehicle]()
     @State var linii = [Linii]()
     @State var routes = [Route]()
     @State var selectedTab = 1
@@ -108,7 +108,7 @@ struct ContentView: View {
                         .onChange(of: searchText) { text in
                             searchResults.removeAll()
                             withAnimation {
-                                searchResults = vehicles?.filter({$0.routeShortName?.contains(text) == true}) ?? [Vehicle]()
+                                searchResults = vehicles.filter({$0.routeShortName?.contains(text) == true})
                             }
                         }
                     
@@ -191,8 +191,8 @@ struct ContentView: View {
                             .offset(y: -30)
                             .padding()
                     }
-                    if showStationDetail{
-                        StationView(statie: $statieStationDetail, systemImage: $systemImgStationDetail, closeView: $showStationDetail, stop: selectedStation, vehicles: vehicles ?? [Vehicle](), details: $stationDetails)
+                    if showStationDetail {
+                        StationView(statie: $statieStationDetail, systemImage: $systemImgStationDetail, closeView: $showStationDetail, stop: $selectedStation, vehicles: $vehicles, details: $stationDetails)
                             .padding()
                     }
                 }
@@ -224,7 +224,7 @@ struct ContentView: View {
                     showStationDetail = false
                     DispatchQueue.main.async {
                         annotations.removeAll()
-                        for elem in vehicles! {
+                        for elem in vehicles {
                             annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
                         }
                     }
@@ -250,12 +250,12 @@ struct ContentView: View {
                 if focusedVehicleTripId == "" {
                     DispatchQueue.main.async {
                         annotations.removeAll()
-                        for elem in vehicles! {
+                        for elem in vehicles {
                             annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
                         }
                     }
                 } else {
-                    let elem = vehicles!.first(where: {$0.tripId == focusedVehicleTripId})
+                    let elem = vehicles.first(where: {$0.tripId == focusedVehicleTripId})
                     DispatchQueue.main.async {
                         annotations.removeAll(where: {$0.type == 0})
                         annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem?.latitude ?? 0, longitude: elem?.longitude ?? 0), vehicle: elem, statie: nil))
@@ -274,7 +274,7 @@ struct ContentView: View {
             loadView() {
                 favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String]()
                 DispatchQueue.main.async {
-                    for elem in vehicles! {
+                    for elem in vehicles {
                         annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
                     }
                 }
@@ -287,7 +287,7 @@ struct ContentView: View {
             loadView() {
                 favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String]()
                 DispatchQueue.main.async {
-                    for elem in vehicles! {
+                    for elem in vehicles {
                         annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
                     }
                 }
@@ -305,41 +305,41 @@ struct ContentView: View {
             } catch let err {
                 print(err)
             }
-            vehicles?.removeAll()
+            vehicles.removeAll()
             vehicles = newVehicles
             
-            vehicles = vehicles!.filter({$0.latitude != nil && $0.longitude != nil && $0.tripId != nil && $0.routeId != nil})
+            vehicles = vehicles.filter({$0.latitude != nil && $0.longitude != nil && $0.tripId != nil && $0.routeId != nil})
             
-            vehicles = vehicles!.sorted(by: {Int(($0.tripId?.components(separatedBy: "_").first)!) ?? 0 < Int(($1.tripId?.components(separatedBy: "_").first)!) ?? 0})
+            vehicles = vehicles.sorted(by: {Int(($0.tripId?.components(separatedBy: "_").first)!) ?? 0 < Int(($1.tripId?.components(separatedBy: "_").first)!) ?? 0})
             let stops = try? await RequestManager().getStops()
             let stopTimes = try! await RequestManager().getStopTimes()
             
             linii.removeAll()
             
-            for i in 0..<vehicles!.count {
-                if routes[routes.firstIndex{$0.routeId == vehicles![i].routeId} ?? 0].routeShortName ?? "" != linii.last?.tripId || linii.isEmpty {
-                    linii.append(Linii(tripId: routes[routes.firstIndex{$0.routeId == vehicles![i].routeId} ?? 0].routeShortName ?? "", vehicles: [], favorite: false))
+            for i in 0..<vehicles.count {
+                if routes[routes.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName ?? "" != linii.last?.tripId || linii.isEmpty {
+                    linii.append(Linii(tripId: routes[routes.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName ?? "", vehicles: [], favorite: false))
                 }
                 if !linii.isEmpty {
                     var closestStopName = "", minimumDistance = 100.0
                     if let stops = stops {
-                        let vehicleSpecificStopTime = stopTimes.filter({$0.tripId == vehicles![i].tripId})
+                        let vehicleSpecificStopTime = stopTimes.filter({$0.tripId == vehicles[i].tripId})
                         for k in 0..<vehicleSpecificStopTime.count {
                             let stopTime = vehicleSpecificStopTime[k]
                             let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
                             let stopLocation = CLLocation(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0)
-                            let vehicleLocation = CLLocation(latitude: vehicles![i].latitude ?? 0, longitude: vehicles![i].longitude ?? 0)
+                            let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
                             let distance = vehicleLocation.distance(from: stopLocation) / 1000
                             if minimumDistance > distance {
                                 minimumDistance = distance
                                 closestStopName = stop?.stopName ?? ""
                             }
                         }
-                        vehicles![i].routeShortName = routes[routes.firstIndex{$0.routeId == vehicles![i].routeId} ?? 0].routeShortName
-                        vehicles![i].routeLongName = routes[routes.firstIndex{$0.routeId == vehicles![i].routeId} ?? 0].routeLongName
-                        vehicles![i].statie = closestStopName
+                        vehicles[i].routeShortName = routes[routes.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName
+                        vehicles[i].routeLongName = routes[routes.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeLongName
+                        vehicles[i].statie = closestStopName
                         
-                        linii[linii.count-1].vehicles.append(vehicles![i])
+                        linii[linii.count-1].vehicles.append(vehicles[i])
                     }
                 }
             }

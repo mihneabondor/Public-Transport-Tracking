@@ -12,8 +12,8 @@ struct StationView: View {
     @Binding var statie : String
     @Binding var systemImage : String
     @Binding var closeView : Bool
-    @State var stop : Statie
-    @State var vehicles : [Vehicle]
+    @Binding var stop : Statie
+    @Binding var vehicles : [Vehicle]
     
     @State private var filteredVehicles = [Vehicle]()
     @Binding var details : [StationDetails]
@@ -69,11 +69,13 @@ struct StationView: View {
                 .padding()
         }
         .preferredColorScheme(.dark)
-        .onChange(of: vehicles, perform: { _ in loadDetails()})
+        .onChange(of: vehicles, perform: { _ in print("sdfopskfopdsjoid")
+            loadDetails()})
         .onAppear {loadDetails()}
     }
     
     func loadDetails() {
+        details.removeAll()
         Task {
             var stopTimes = [StopTime](), unfilteredStopTimes = [StopTime]()
             do {
@@ -101,7 +103,7 @@ struct StationView: View {
             }
             
             for filteredVehicle in filteredVehicles {
-                if filteredVehicle.speed != 0 {
+//                if filteredVehicle.speed != 0 {
                     let currentStopId = stops.first(where: {$0.stopName ?? "" ==  filteredVehicle.statie})?.stopId
                     let currentStopSq = unfilteredStopTimes.first(where: {Int($0.stopId ?? "0")! == currentStopId && $0.tripId == filteredVehicle.tripId})?.sq
                     let stationStopSq = stopTimes.first(where: {$0.tripId == filteredVehicle.tripId})?.sq
@@ -111,15 +113,22 @@ struct StationView: View {
                         let vehicleCoords = CLLocation(latitude: filteredVehicle.latitude ?? 0, longitude: filteredVehicle.longitude ?? 0)
                         let distance = statieCoords.distance(from: vehicleCoords)/1000
                         
-                        var eta = Int(Int(distance)/(filteredVehicle.speed ?? 15)*60)
+                        var eta = 0
+                        if filteredVehicle.speed != 0 {
+                            eta = Int(Int(distance)/(filteredVehicle.speed ?? 15)*60)
+                        }
                         if eta > 100 || eta == 0 {
                             eta = Int(distance/15*60)
                         }
-                        details.append(StationDetails(vehicle: filteredVehicle, stationETA: eta))
+                        
+                        if eta < 30 {
+                            details.append(StationDetails(vehicle: filteredVehicle, stationETA: eta))
+                        }
                     }
-                }
+//                }
             }
             details = details.sorted(by: {$0.stationETA < $1.stationETA})
+            print(details)
         }
     }
 }
