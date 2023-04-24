@@ -50,9 +50,10 @@ class RSSParser: NSObject, XMLParserDelegate {
 
 class RequestManager {
     func getVehicles() async throws -> [Vehicle]{
+        let randomKey = Constants.keys.randomElement()
         let _headers : HTTPHeaders = ["Content-Type" : "application/json",
                                       "X-Agency-Id" : "2",
-                                      "X-API-KEY" : "ZneVtEgE4PaLRwkd0HGid36HRx1bhLVs42tTtNol"]
+                                      "X-API-KEY" : randomKey ?? "aSVGUmECaW8VbAPYnzJFM21KeFiz1suP2z55ZZhL"]
         let getRequest = AF.request("https://api.tranzy.dev/v1/opendata/vehicles", method: .get, parameters: [:], encoding: URLEncoding.default, headers: _headers)
         var responseJson : String!
         do {
