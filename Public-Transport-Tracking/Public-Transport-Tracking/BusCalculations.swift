@@ -9,6 +9,27 @@ import Foundation
 
 
 class BusCalculations {
+    public func laterThanCurrentTime(time1:  String) -> Bool {
+        var filteredTime = time1;
+        if time1.count == 6 {
+            filteredTime = String(time1.dropLast())
+        }
+        
+        guard let start = Formatter.today.date(from: filteredTime) else {return false}
+        let currenDate = Date()
+        return start > currenDate
+    }
+    
+    public func timeIntervalFromCurrentTime(time: String) -> Bool {
+        var filteredTime = time
+        if time.count == 6 {
+            filteredTime = String(filteredTime.dropLast())
+        }
+        
+        guard let start = Formatter.today.date(from: filteredTime) else {return false}
+        return Int(start.timeIntervalSinceNow) < 15*60
+    }
+    
     public func earlierTime(time1: String, time2: String) -> Bool {
         var filtTime1 = time1, filtTime2 = time2
         if time1.count == 6 {

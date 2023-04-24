@@ -12,6 +12,8 @@ struct OrareView: View {
     @State private var pageSelection = "LV"
     @State private var schedule = Schedule(name: "", type: "", route: "")
     @State private var statii = [[String]]()
+    
+    @State private var savedSchedule : Schedule?
     var body: some View {
             VStack{
                 HStack{
@@ -27,6 +29,20 @@ struct OrareView: View {
                     .tint(.purple)
                     .pickerStyle(.menu)
                     Spacer()
+                    
+                    Button {
+                        if let encoded = try? JSONEncoder().encode(schedule) {
+                            UserDefaults.standard.set(encoded, forKey: "com.Busify.schedule.\(pickerSelection)")
+                        }
+                        savedSchedule = schedule
+                    } label: {
+                        if let _ = savedSchedule {
+                            Label("Descărcat", systemImage: "checkmark")
+                        } else {
+                            Label("Descarcă", systemImage: "square.and.arrow.down")
+                                .foregroundColor(.purple)
+                        }
+                    }
                 }.padding()
                 HStack {
                     Spacer()
@@ -112,72 +128,89 @@ struct OrareView: View {
                 }
             })
             .onAppear{
+                if let data = UserDefaults.standard.object(forKey: "com.Busify.schedule.\(pickerSelection)") as? Data,
+                   let category = try? JSONDecoder().decode(Schedule.self, from: data) {
+                    savedSchedule = category
+                    if !Connectivity.isConnectedToInternet {
+                        DispatchQueue.main.async {
+                            schedule = category
+                        }
+                    }
+                }
                 let weekday = Calendar.current.component(.weekday, from: Date())
                 if weekday == 1 {
                     pageSelection = "D"
                 } else if weekday == 7 {
                     pageSelection = "S"
                 }
-                Task {
-                    do {
-                        schedule = try await RequestManager().getSchedule(line: pickerSelection)
-                    } catch let err {
-                        print(err)
-                    }
-                    
-                    var routes = [Route]()
-                    do {
-                        routes = try await RequestManager().getRoutes()
-                    } catch let err {
-                        print(err)
-                    }
-                    
-                    let routeId = routes.first(where: {$0.routeShortName == pickerSelection})?.routeId!
-                    let idTur : String = "\(routeId ?? 0)_0", idRetur = "\(routeId ?? 0)_1"
-                    
-                    var stops = [Statie]()
-                    do {
-                        stops = try await RequestManager().getStops()
-                    } catch let err {
-                        print(err)
-                    }
-                    
-                    var stopTimes = [StopTime]()
-                    do {
-                        stopTimes = try await RequestManager().getStopTimes()
-                    } catch let err {
-                        print(err)
-                    }
-                    
-                    let stopTimesTur = stopTimes.filter({$0.tripId == idTur}), stopTimesRetur = stopTimes.filter({$0.tripId == idRetur})
-                    
-                    for stopTimeTur in stopTimesTur {
-                        let stopId = stopTimeTur.stopId
-                        let statie = stops.first(where: {$0.stopId == Int(stopId!)})?.stopName
-                        var array = [String]()
-                        array.append(statie!)
-                        statii.append(array)
-                    }
-                    
-                    var index = 0
-                    for stopTimeRetur in stopTimesRetur {
-                        let stopId = stopTimeRetur.stopId
-                        let statie = stops.first(where: {$0.stopId == Int(stopId!)})?.stopName
-                        if statii.count > index {
-                            var array = [String]()
-                            array.append("SPATIU2")
-                            statii.append(array)
-                        } else if statii[index].count == 0 {
-                            statii[index].append("SPATIU2")
+                
+                if Connectivity.isConnectedToInternet {
+                    Task {
+                        do {
+                            schedule = try await RequestManager().getSchedule(line: pickerSelection)
+                        } catch let err {
+                            print(err)
                         }
-                        statii[index].append(statie!)
-                        index += 1
+                        if let _ = savedSchedule {
+                            if let encoded = try? JSONEncoder().encode(schedule) {
+                                UserDefaults.standard.set(encoded, forKey: "com.Busify.schedule.\(pickerSelection)")
+                            }
+                        }
+                        
+                        var routes = [Route]()
+                        do {
+                            routes = try await RequestManager().getRoutes()
+                        } catch let err {
+                            print(err)
+                        }
+                        
+                        let routeId = routes.first(where: {$0.routeShortName == pickerSelection})?.routeId!
+                        let idTur : String = "\(routeId ?? 0)_0", idRetur = "\(routeId ?? 0)_1"
+                        
+                        var stops = [Statie]()
+                        do {
+                            stops = try await RequestManager().getStops()
+                        } catch let err {
+                            print(err)
+                        }
+                        
+                        var stopTimes = [StopTime]()
+                        do {
+                            stopTimes = try await RequestManager().getStopTimes()
+                        } catch let err {
+                            print(err)
+                        }
+                        
+                        let stopTimesTur = stopTimes.filter({$0.tripId == idTur}), stopTimesRetur = stopTimes.filter({$0.tripId == idRetur})
+                        
+                        for stopTimeTur in stopTimesTur {
+                            let stopId = stopTimeTur.stopId
+                            let statie = stops.first(where: {$0.stopId == Int(stopId!)})?.stopName
+                            var array = [String]()
+                            array.append(statie!)
+                            statii.append(array)
+                        }
+                        
+                        var index = 0
+                        for stopTimeRetur in stopTimesRetur {
+                            let stopId = stopTimeRetur.stopId
+                            let statie = stops.first(where: {$0.stopId == Int(stopId!)})?.stopName
+                            if statii.count > index {
+                                var array = [String]()
+                                array.append("SPATIU2")
+                                statii.append(array)
+                            } else if statii[index].count == 0 {
+                                statii[index].append("SPATIU2")
+                            }
+                            statii[index].append(statie!)
+                            index += 1
                             
-                    }
-                    
-                    for i in 0..<statii.count {
-                        if statii[i].count == 1 {
-                            statii[i].insert("SPATIU1", at: 0)
+                        }
+                        
+                        for i in 0..<statii.count {
+                            if statii[i].count == 1 {
+                                statii[i].insert("SPATIU1", at: 0)
+                            }
                         }
                     }
                 }
@@ -198,12 +231,12 @@ struct ScheduleTable : View {
                         ForEach(row, id: \.self) {schedule in
                             Spacer()
                             Text(schedule)
-                                .foregroundColor(BusCalculations().earlierTime(time1: row.first ?? "", time2: row.last ?? "") ? Color(UIColor.systemGray) : .white)
+                                .foregroundColor(BusCalculations().earlierTimeOneTime(time: schedule) ? Color(UIColor.systemGray) : .white)
+                                .strikethrough(BusCalculations().earlierTimeOneTime(time: schedule))
+                                .bold(BusCalculations().timeIntervalFromCurrentTime(time: schedule) && !BusCalculations().earlierTimeOneTime(time: schedule))
                             Spacer()
                         }
                     }
-                    .bold((BusCalculations().earlierTimeOneTime(time: row.first ?? "") && BusCalculations().earlierTimeOneTime(time: row.last ?? "") == false) || (BusCalculations().earlierTimeOneTime(time: row.first ?? "") == false && BusCalculations().earlierTimeOneTime(time: row.last ?? "")))
-                    .strikethrough(BusCalculations().earlierTime(time1: row.first ?? "", time2: row.last ?? ""))
                     .padding()
                     .background((matrix.firstIndex(where: {$0 == row}) ?? 0)%2 == 0 ? Color(UIColor.systemGray6) : .clear)
                 }
