@@ -18,7 +18,7 @@ struct MapView: View {
     
     @StateObject var userLocation = LocationManager()
     
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: LocationManager().lastLocation?.coordinate.latitude ?? 0, longitude: LocationManager().lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: LocationManager().lastLocation?.coordinate.latitude ?? 46.7712, longitude: LocationManager().lastLocation?.coordinate.longitude ?? 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     var vehicleTypes = ["Tramvai", "Metro", "Tren","Autobus", "Ferry", "Cable tram", "Aerial Lift", "Funicular", "", "", "", "Troleibus", "Monorail"]
     var vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
     @State var searchText = ""
@@ -69,11 +69,12 @@ struct MapView: View {
                                     .bold()
                                     .font(.footnote)
                                     .foregroundColor(.white)
-                            }
+                            }.opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.6)
                             .background (
                                 Rectangle()
                                     .frame(width: 35, height: 40)
                                     .foregroundColor(favorites.contains(location.vehicle?.routeShortName ?? "") ? .indigo : .purple)
+                                    .opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.6)
                                     .cornerRadius(5)
                             )
                         }
@@ -176,7 +177,7 @@ struct MapView: View {
                                             Spacer()
                                         }
                                         HStack{
-                                            Text(result.routeLongName ?? "")
+                                            Text("Spre: \(result.headsign ?? "")")
                                                 .foregroundColor(.white)
                                             Spacer()
                                         }
@@ -240,6 +241,10 @@ struct MapView: View {
         })
         .onChange(of: vehicles) {_ in
             DispatchQueue.main.async {
+                searchResults.removeAll()
+                withAnimation {
+                    searchResults = vehicles.filter({$0.routeShortName?.contains(searchText) == true})
+                }
                 if focusedVehicleTripId == "" {
                     DispatchQueue.main.async {
                         annotations.removeAll()

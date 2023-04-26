@@ -29,6 +29,8 @@ struct Vehicle: Codable, Hashable, Identifiable {
     var routeShortName : String?
     var routeLongName : String?
     var currentSchedule = [[String()]]
+    var userBetweenVehicleAndDestination = false
+    var headsign : String?
     
     enum CodingKeys: String, CodingKey {
         case xProvider = "x_provider"
@@ -51,6 +53,7 @@ struct Linii : Codable, Hashable {
     let tripId : String
     var vehicles : [Vehicle]
     let favorite : Bool
+    var showMenu : Bool = false
 }
 
 struct Statie : Codable, Hashable {

@@ -36,28 +36,6 @@ struct FavoritesScreen: View {
     var body: some View {
         NavigationView {
             VStack{
-                //                ScrollView(.vertical) {
-                //                    ScrollViewReader {reader in
-                //                    ScrollView(.horizontal, showsIndicators: false) {
-                //                        HStack{
-                //                            ForEach(Array(availableTypes.enumerated()), id: \.offset) {index, type in
-                //                                Label("\(vehicleTypes[type])", systemImage: "\(vehicleTypesImages[type])")
-                //                                    .padding()
-                //                                    .background(activeIndex == -1 || activeIndex == type ? Color("Gray") : Color(.placeholderText))
-                //                                    .cornerRadius(20)
-                //                                    .onTapGesture {
-                //                                        if activeIndex == type {
-                //                                            activeIndex = -1
-                //                                            loadView()
-                //                                        } else {
-                //                                            activeIndex = type
-                //                                            linii = linii.filter({$0.vehicles.last?.vehicleType == type})
-                //                                        }
-                //                                    }
-                //                            }
-                //                        }
-                //                    }
-                //                    .padding()
                 ScrollViewReader {proxy in
                     ScrollView {
                         Picker("", selection: $pickerSelection) {
@@ -98,8 +76,16 @@ struct FavoritesScreen: View {
                                         .bold()
                                         .padding([.leading, .trailing, .bottom])
                                     Spacer()
-                                    Image(systemName: "\(vehicleTypesImages[item.vehicles.last?.vehicleType! ?? 0])")
-                                        .padding([.leading, .trailing, .bottom])
+                                    
+                                    if item.vehicles.count > 0 {
+                                        Button {
+                                            withAnimation {
+                                                linii[linii.firstIndex(where: {$0 == item}) ?? 0].showMenu.toggle()
+                                            }
+                                        } label: {
+                                            Image(systemName: item.showMenu ? "chevron.down" : "chevron.left")
+                                        }.padding(.trailing)
+                                    }
                                 }
                                 HStack{
                                     Button {
@@ -136,52 +122,51 @@ struct FavoritesScreen: View {
                                             .padding([.leading, .trailing])
                                     }
                                 }.padding(.bottom)
-                                ForEach(item.vehicles, id:\.self) {vehicle in
-                                    VStack{
-                                        HStack{
-                                            VStack{
-                                                Text("STAȚIE CURENTĂ")
-                                                    .font(.footnote)
-                                                    .foregroundColor(.secondary)
-                                                Text("\(vehicle.statie ?? "Necunoscută")")
-                                                    .padding(.bottom)
-                                                Text("SPRE")
-                                                    .font(.footnote)
-                                                    .foregroundColor(.secondary)
-                                                if vehicle.tripId?.components(separatedBy: "_").last ?? "" == "1" {
-                                                    Text(vehicle.routeLongName?.components(separatedBy: " - ").last ?? "")
-                                                } else {
-                                                    Text(vehicle.routeLongName?.components(separatedBy: " - ").first ?? "")
-                                                }
-                                            }.padding([.trailing, .leading, .bottom])
-                                            Spacer()
-                                            VStack{
-                                                Text("ETA")
-                                                    .font(.footnote)
-                                                    .foregroundColor(.secondary)
-                                                Text("\(vehicle.eta ?? 0) min")
-                                                    .padding(.bottom)
-                                                
-                                                Text("SERVICII")
-                                                    .font(.footnote)
-                                                    .foregroundColor(.secondary)
-                                                HStack{
-                                                    if vehicle.bikeAccessible == "BIKE_ACCESSIBLE"{
-                                                        Image(systemName: "bicycle")
-                                                    } else {
-                                                        Text("-")
+                                
+                                if item.showMenu {
+                                    ForEach(item.vehicles, id:\.self) {vehicle in
+                                        VStack{
+                                            HStack{
+                                                VStack{
+                                                    Text("STAȚIE CURENTĂ")
+                                                        .font(.footnote)
+                                                        .foregroundColor(.secondary)
+                                                    Text("\(vehicle.statie ?? "Necunoscută")")
+                                                        .padding(.bottom)
+                                                    Text("SPRE")
+                                                        .font(.footnote)
+                                                        .foregroundColor(.secondary)
+                                                    Text(vehicle.headsign ?? "Necunoscut")
+                                                }.padding([.trailing, .leading, .bottom])
+                                                Spacer()
+                                                VStack{
+                                                    Text("ETA")
+                                                        .font(.footnote)
+                                                        .foregroundColor(.secondary)
+                                                    Text("\(vehicle.eta ?? 0) min")
+                                                        .padding(.bottom)
+                                                    
+                                                    Text("SERVICII")
+                                                        .font(.footnote)
+                                                        .foregroundColor(.secondary)
+                                                    HStack{
+                                                        if vehicle.bikeAccessible == "BIKE_ACCESSIBLE"{
+                                                            Image(systemName: "bicycle")
+                                                        } else {
+                                                            Text("-")
+                                                        }
+                                                        if vehicle.wheelchairAccessible == "WHEELCHAIR_ACCESSIBLE"{
+                                                            Image(systemName: "figure.roll")
+                                                        } else {
+                                                            Text("-")
+                                                        }
                                                     }
-                                                    if vehicle.wheelchairAccessible == "WHEELCHAIR_ACCESSIBLE"{
-                                                        Image(systemName: "figure.roll")
-                                                    } else {
-                                                        Text("-")
-                                                    }
-                                                }
-                                            }.padding([.trailing, .leading, .bottom])
+                                                }.padding([.trailing, .leading, .bottom])
+                                            }
                                         }
+                                        Divider()
+                                            .background(Color.purple)
                                     }
-                                    Divider()
-                                        .background(Color.purple)
                                 }
                             }.id(item)
                             Text(" ")
@@ -238,6 +223,24 @@ struct FavoritesScreen: View {
                         }
                     }
                 }
+                
+                Task {
+                    var stops = [Statie]()
+                    
+                    do {
+                        stops = try await RequestManager().getStops()
+                    } catch let err {
+                        print(err)
+                    }
+                    
+                    for i in 0..<vehicles.count {
+                        let headsign = stops.first(where: {$0.stopName == vehicles[i].headsign ?? ""})
+                        
+                        if BusCalculations().isPointBetweenPoints(x1: headsign?.lat ?? 0, y1: headsign?.long ?? 0, x2: vehicles[i].latitude ?? 0, y2: vehicles[i].longitude ?? 0, x3: locationManager.lastLocation?.coordinate.latitude ?? 0, y3: locationManager.lastLocation?.coordinate.longitude ?? 0) {
+                            vehicles[i].userBetweenVehicleAndDestination = true
+                        }
+                    }
+                }
             })
             .onDisappear {
                 pickerSelection = 0
@@ -257,10 +260,10 @@ struct FavoritesScreen: View {
             } catch let err {
                 print(err)
             }
-            vehicles.removeAll()
-            vehicles = newVehicles
             
-            vehicles = vehicles.filter({vehicle in vehicle.latitude != nil && vehicle.longitude != nil && vehicle.tripId != nil && vehicle.routeId != nil && routes.contains(where: {route in route.routeId == vehicle.routeId})})
+            if newVehicles.isEmpty {
+                loadView()
+            }
             
             var stops = [Statie]()
             do {
@@ -275,6 +278,11 @@ struct FavoritesScreen: View {
             } catch let err {
                 print(err)
             }
+            
+            vehicles.removeAll()
+            vehicles = newVehicles
+            
+            vehicles = vehicles.filter({vehicle in vehicle.latitude != nil && vehicle.longitude != nil && vehicle.tripId != nil && vehicle.routeId != nil && routes.contains(where: {route in route.routeId == vehicle.routeId})})
             
             linii.removeAll()
             let constantLinii = Constants.linii
@@ -300,6 +308,12 @@ struct FavoritesScreen: View {
                 print("\n")
                 vehicles[i].routeLongName = routes.first(where: {$0.routeId == vehicles[i].routeId})?.routeLongName
                 vehicles[i].statie = closestStopName
+                
+                if vehicles[i].tripId?.components(separatedBy: "_").last ?? "" == "1" {
+                    vehicles[i].headsign = vehicles[i].routeLongName?.components(separatedBy: " - ").last
+                } else {
+                    vehicles[i].headsign = vehicles[i].routeLongName?.components(separatedBy: " - ").first
+                }
                 
                 let indexCoresp = linii.firstIndex(where: {$0.tripId == vehicles[i].routeShortName})
                 

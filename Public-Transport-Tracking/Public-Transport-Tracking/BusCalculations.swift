@@ -30,6 +30,21 @@ class BusCalculations {
         return Int(start.timeIntervalSinceNow) < 15*60
     }
     
+    public func isPointBetweenPoints(x1: Double, y1: Double, x2: Double, y2: Double, x3: Double, y3: Double) -> Bool {
+        let ABx = x2 - x1
+        let ABy = y2 - y1
+        let ACx = x3 - x1
+        let ACy = y3 - y1
+
+        let dotProduct = ABx * ACx + ABy * ACy
+
+        if dotProduct >= 0 && dotProduct <= (ABx * ABx + ABy * ABy) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     public func earlierTime(time1: String, time2: String) -> Bool {
         var filtTime1 = time1, filtTime2 = time2
         if time1.count == 6 {
