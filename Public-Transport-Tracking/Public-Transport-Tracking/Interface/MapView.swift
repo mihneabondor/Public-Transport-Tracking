@@ -69,12 +69,12 @@ struct MapView: View {
                                     .bold()
                                     .font(.footnote)
                                     .foregroundColor(.white)
-                            }.opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.6)
+                            }.opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.7)
                             .background (
                                 Rectangle()
                                     .frame(width: 35, height: 40)
                                     .foregroundColor(favorites.contains(location.vehicle?.routeShortName ?? "") ? .indigo : .purple)
-                                    .opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.6)
+                                    .opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.7)
                                     .cornerRadius(5)
                             )
                         }

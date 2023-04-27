@@ -27,12 +27,13 @@ struct FavoritesScreen: View {
     @State var adrese = [String]()
     public var timer = Timer.publish(every: 20, on: .main, in: .common).autoconnect()
     @State private var loadingFirstTime = true
-//    let route = Constants.routes
     
     @State var pickerSelection = 1
     @State private var favorites = [String()]
     @State private var searchText = ""
     @State private var loading = false
+    
+    @State private var userNearestStop = ""
     var body: some View {
         NavigationView {
             VStack{
@@ -226,18 +227,38 @@ struct FavoritesScreen: View {
                 
                 Task {
                     var stops = [Statie]()
-                    
                     do {
                         stops = try await RequestManager().getStops()
                     } catch let err {
                         print(err)
                     }
                     
-                    for i in 0..<vehicles.count {
-                        let headsign = stops.first(where: {$0.stopName == vehicles[i].headsign ?? ""})
+                    stops = stops.sorted(by: {stop1, stop2 in
+                        let stopCoord1 = CLLocation(latitude: stop1.lat ?? 0, longitude: stop1.long ?? 0)
+                        let stopCoord2 = CLLocation(latitude: stop2.lat ?? 0, longitude: stop2.long ?? 0)
                         
-                        if BusCalculations().isPointBetweenPoints(x1: headsign?.lat ?? 0, y1: headsign?.long ?? 0, x2: vehicles[i].latitude ?? 0, y2: vehicles[i].longitude ?? 0, x3: locationManager.lastLocation?.coordinate.latitude ?? 0, y3: locationManager.lastLocation?.coordinate.longitude ?? 0) {
-                            vehicles[i].userBetweenVehicleAndDestination = true
+                        let distance1 = (locationManager.lastLocation?.distance(from: stopCoord1) ?? 0) / 1000
+                        let distance2 = (locationManager.lastLocation?.distance(from: stopCoord2) ?? 0) / 1000
+                        return distance1 < distance2
+                    })
+                    
+                    let nearestStop = stops[0]
+                    var stopTimes = [StopTime]()
+                    do {
+                        stopTimes = try await RequestManager().getStopTimes()
+                    } catch let err {
+                        print(err)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        for i in 0..<vehicles.count {
+                            let vehicleStopTimes = stopTimes.filter({$0.tripId == vehicles[i].tripId})
+                            let stopSqRelativeToUser = vehicleStopTimes.first(where: {Int($0.stopId ?? "0") == nearestStop.stopId})?.sq
+                            let currentStopId = stops.first(where: {$0.stopName == vehicles[i].statie})?.stopId
+                            let stopSqCurrent = vehicleStopTimes.first(where: {Int($0.stopId ?? "0") == currentStopId})?.sq
+                            if vehicleStopTimes.contains(where: {Int($0.stopId ?? "0") == nearestStop.stopId}) && stopSqCurrent ?? 0 <= stopSqRelativeToUser ?? 0{
+                                vehicles[i].userBetweenVehicleAndDestination = true
+                            }
                         }
                     }
                 }
