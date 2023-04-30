@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		481D351902FF5E7DB4030604 /* libPods-Public Transport Tracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74711926E0972860670C9C25 /* libPods-Public Transport Tracking.a */; };
 		D705AAFB29DE7413008AC068 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D705AAFA29DE7413008AC068 /* Marker.swift */; };
+		D7129A2629FC2B11002A690B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7129A2529FC2B11002A690B /* Extensions.swift */; };
+		D7129A2829FC2E55002A690B /* MapToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7129A2729FC2E55002A690B /* MapToolbar.swift */; };
 		D72023F529E009D10021E66B /* Shapes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F429E009D10021E66B /* Shapes.txt */; };
 		D72023F729E00E2F0021E66B /* Trips.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F629E00E2F0021E66B /* Trips.txt */; };
 		D72023F929E020800021E66B /* StopTimes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F829E020800021E66B /* StopTimes.txt */; };
@@ -89,6 +91,8 @@
 		74711926E0972860670C9C25 /* libPods-Public Transport Tracking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Public Transport Tracking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAF1E4B3DCAA2FAA1F6B47B /* Pods-Public Transport Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Public Transport Tracking.release.xcconfig"; path = "Target Support Files/Pods-Public Transport Tracking/Pods-Public Transport Tracking.release.xcconfig"; sourceTree = "<group>"; };
 		D705AAFA29DE7413008AC068 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
+		D7129A2529FC2B11002A690B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D7129A2729FC2E55002A690B /* MapToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapToolbar.swift; sourceTree = "<group>"; };
 		D72023F429E009D10021E66B /* Shapes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Shapes.txt; sourceTree = "<group>"; };
 		D72023F629E00E2F0021E66B /* Trips.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Trips.txt; sourceTree = "<group>"; };
 		D72023F829E020800021E66B /* StopTimes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = StopTimes.txt; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 				D7ABA56529DAA33600CDA8DE /* Constants.swift */,
 				D7361C2129DB2D3B006F78D2 /* Structs.swift */,
 				D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */,
+				D7129A2529FC2B11002A690B /* Extensions.swift */,
 			);
 			path = "Public-Transport-Tracking";
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 				D7FBAB6E29E1E84A00299635 /* BusDetailView.swift */,
 				D784169929E49B9A009F4F2C /* ComunicateView.swift */,
 				D73E579229E5D7160044A955 /* OrarIntermediarView.swift */,
+				D7129A2729FC2E55002A690B /* MapToolbar.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -465,10 +471,12 @@
 				D7AE9A3429E1A452008CE1C0 /* BusCalculations.swift in Sources */,
 				D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */,
 				D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */,
+				D7129A2829FC2E55002A690B /* MapToolbar.swift in Sources */,
 				D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */,
 				D73E579329E5D7160044A955 /* OrarIntermediarView.swift in Sources */,
 				D705AAFB29DE7413008AC068 /* Marker.swift in Sources */,
 				D72B525729E3F4700048AF1C /* OrareView.swift in Sources */,
+				D7129A2629FC2B11002A690B /* Extensions.swift in Sources */,
 				D7ABA55529DAA28500CDA8DE /* Public_Transport_TrackingApp.swift in Sources */,
 				D72E343F29DDF121002974CE /* AddFavoriteLineView.swift in Sources */,
 				D7ABA56629DAA33600CDA8DE /* Constants.swift in Sources */,

@@ -15,4 +15,5 @@ class Constants {
     public static let linii = ["1", "2", "3", "4", "5", "6", "7", "8L", "8", "9", "10", "14", "18", "19", "20", "M21", "21", "M22", "22", "23", "24B", "M24", "24", "25N", "25", "26L", "M26", "26", "27", "28B", "28", "29S", "29", "30", "M31", "31", "32B", "32", "33", "34", "35", "36L", "36B", "37", "38", "39L", "M39", "39", "40S", "40", "M41", "41", "42", "M43", "43P", "43B", "43", "44", "45", "46L", "46B", "46", "47", "48L", "48", "50L", "50D", "50", "52L", "52", "53", "100L", "100", "101", "102L", "102"]
     public static let vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
     public static let keys = ["RqLxPgpNIJ4VfvXQCJ2eh10ZJ5Sppa4QaamWEmmu", "ZneVtEgE4PaLRwkd0HGid36HRx1bhLVs42tTtNol", "CGKMc5bsdz8SkRzHLg8MU4O4I19XwexO8NKTMBzB", "PHi9G7A06660ToNAsRgkh1YKjeqfjUCS9h6W22oB", "aSVGUmECaW8VbAPYnzJFM21KeFiz1suP2z55ZZhL"]
+    public static let directionsKey = "AIzaSyAW0rKcBmVtEZ12-9oUmjSHDyvdy-6fr3w"
 }

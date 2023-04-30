@@ -15,6 +15,7 @@ struct MapView: View {
     @Binding var routes : [Route]
     @Binding var selectedTab : Int
     @Binding var orareSelection : String
+    @State var busView : Bool = true
     
     @StateObject var userLocation = LocationManager()
     
@@ -38,6 +39,8 @@ struct MapView: View {
     @State var showBusDetail = false
     @State var selectedVehicle : Vehicle?
     @State private var favorites = [String]()
+    
+    @State private var showDirectionsScreen = false
     var body: some View {
         ZStack{
             Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: annotations, annotationContent: { location in
@@ -105,7 +108,6 @@ struct MapView: View {
                     }
                 }
             }).edgesIgnoringSafeArea(.top)
-            
             VStack{
                 HStack{
                     TextField("Cauta o linie", text: $searchText)
@@ -136,21 +138,62 @@ struct MapView: View {
                 if !searchFieldFocus {
                     HStack {
                         Spacer()
-                        Button {
-                            withAnimation {
-                                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.lastLocation?.coordinate.latitude ?? 0, longitude: userLocation.lastLocation?.coordinate.longitude ?? 0), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                        VStack {
+                            Button{
+                                withAnimation{
+                                    region = MKCoordinateRegion(center: userLocation.lastLocation?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                                }
+                            } label: {
+                                Image(systemName: "location")
+                                    .padding(10)
+                                    .font(.title3)
+                                    .foregroundColor(.white)
+                                    .background(Color(UIColor.systemGray4))
+                                    .cornerRadius(5)
                             }
-                        } label: {
-                            Image(systemName: "location.viewfinder")
-                                .font(.title2)
-                                .padding()
-                                .foregroundColor(.white)
-                                .background(Color(UIColor.systemGray4))
-                                .cornerRadius(10)
+                            Button{
+                                showDirectionsScreen.toggle()
+                            } label: {
+                                Image(systemName: "signpost.right.and.left")
+                                    .padding(10)
+                                    .font(.title3)
+                                    .foregroundColor(.white)
+                                    .background(Color(UIColor.systemGray4))
+                                    .cornerRadius(5)
+                            }
+                            Button{
+                                busView.toggle()
+                                annotations.removeAll()
+                                
+                                if !busView {
+                                    Task {
+                                        var stops = [Statie]()
+                                        do {
+                                            stops = try await RequestManager().getStops()
+                                        } catch let err {
+                                            print(err)
+                                        }
+                                        for stop in stops {
+                                            let location = CLLocationCoordinate2D(latitude: stop.lat ?? 0, longitude: stop.long ?? 0)
+                                            annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: stop))
+                                        }
+                                    }
+                                } else {
+                                    FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
+                                }
+                            } label: {
+                                Image(systemName: busView ? "bus.fill" : "door.garage.open")
+                                    .padding(10)
+                                    .font(.title3)
+                                    .foregroundColor(.white)
+                                    .background(Color(UIColor.systemGray4))
+                                    .cornerRadius(5)
+                            }
                         }
-                        Text(" ")
                     }
+                    .padding(.trailing, 20)
                 }
+                
                 if !searchResults.isEmpty{
                     ScrollView {
                         ForEach(searchResults) { result in
@@ -208,13 +251,15 @@ struct MapView: View {
             }
         }
         .onChange(of: stationDetails, perform: { _ in
-            annotations.removeAll()
-            for stationDetail in stationDetails {
-                let location = CLLocationCoordinate2D(latitude: stationDetail.vehicle.latitude ?? 0, longitude: stationDetail.vehicle.longitude ?? 0)
-                annotations.append(Annotation(type: 0, coordinates: location, vehicle: stationDetail.vehicle, statie: nil))
+            if busView {
+                annotations.removeAll()
+                for stationDetail in stationDetails {
+                    let location = CLLocationCoordinate2D(latitude: stationDetail.vehicle.latitude ?? 0, longitude: stationDetail.vehicle.longitude ?? 0)
+                    annotations.append(Annotation(type: 0, coordinates: location, vehicle: stationDetail.vehicle, statie: nil))
+                }
+                let location = CLLocationCoordinate2D(latitude: selectedStation.lat ?? 0, longitude: selectedStation.long ?? 0)
+                annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
             }
-            let location = CLLocationCoordinate2D(latitude: selectedStation.lat ?? 0, longitude: selectedStation.long ?? 0)
-            annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
         })
         .onChange(of: showStationDetail, perform: { _ in
             stationDetails.removeAll()
@@ -240,29 +285,42 @@ struct MapView: View {
             loadFocusedVehicle()
         })
         .onChange(of: vehicles) {_ in
-            DispatchQueue.main.async {
-                searchResults.removeAll()
-                withAnimation {
-                    searchResults = vehicles.filter({$0.routeShortName?.contains(searchText) == true})
-                }
-                if focusedVehicleTripId == "" {
-                    DispatchQueue.main.async {
-                        annotations.removeAll()
-                        for elem in vehicles {
-                            annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
-                        }
+            if busView {
+                DispatchQueue.main.async {
+                    searchResults.removeAll()
+                    withAnimation {
+                        searchResults = vehicles.filter({$0.routeShortName?.contains(searchText) == true})
                     }
-                } else {
-                    if stationDetails.isEmpty {
-                        let elem = vehicles.first(where: {$0.label == selectedVehicle?.label})
+                    if focusedVehicleTripId == "" {
                         DispatchQueue.main.async {
-                            annotations.removeAll(where: {$0.type == 0})
-                            annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem?.latitude ?? 0, longitude: elem?.longitude ?? 0), vehicle: elem, statie: nil))
+                            annotations.removeAll()
+                            for elem in vehicles {
+                                annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+                            }
                         }
                     } else {
+                        if stationDetails.isEmpty {
+                            let elem = vehicles.first(where: {$0.label == selectedVehicle?.label})
+                            DispatchQueue.main.async {
+                                annotations.removeAll(where: {$0.type == 0})
+                                annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem?.latitude ?? 0, longitude: elem?.longitude ?? 0), vehicle: elem, statie: nil))
+                            }
+                        } else {
+                            annotations.removeAll()
+                            for elem in vehicles {
+                                if stationDetails.contains(where: {$0.vehicle == elem}) {
+                                    let location = CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0)
+                                    annotations.append(Annotation(type: 0, coordinates: location, vehicle: elem, statie: nil))
+                                }
+                            }
+                            let location = CLLocationCoordinate2D(latitude: selectedStation.lat ?? 0, longitude: selectedStation.long ?? 0)
+                            annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
+                        }
+                    }
+                    if !stationDetails.isEmpty {
                         annotations.removeAll()
                         for elem in vehicles {
-                            if stationDetails.contains(where: {$0.vehicle == elem}) {
+                            if stationDetails.contains(where: {$0.vehicle.label == elem.label}) {
                                 let location = CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0)
                                 annotations.append(Annotation(type: 0, coordinates: location, vehicle: elem, statie: nil))
                             }
@@ -270,17 +328,6 @@ struct MapView: View {
                         let location = CLLocationCoordinate2D(latitude: selectedStation.lat ?? 0, longitude: selectedStation.long ?? 0)
                         annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
                     }
-                }
-                if !stationDetails.isEmpty {
-                    annotations.removeAll()
-                    for elem in vehicles {
-                            if stationDetails.contains(where: {$0.vehicle.label == elem.label}) {
-                            let location = CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0)
-                            annotations.append(Annotation(type: 0, coordinates: location, vehicle: elem, statie: nil))
-                        }
-                    }
-                    let location = CLLocationCoordinate2D(latitude: selectedStation.lat ?? 0, longitude: selectedStation.long ?? 0)
-                    annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
                 }
             }
         }
@@ -293,6 +340,10 @@ struct MapView: View {
                     annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
                 }
             }
+        }
+        .sheet(isPresented: $showDirectionsScreen) {
+            MapToolbar(region: $region)
+                .presentationDetents([.medium, .large])
         }
     }
     

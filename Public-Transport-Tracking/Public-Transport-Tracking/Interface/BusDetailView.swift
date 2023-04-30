@@ -58,7 +58,7 @@ struct BusDetailView: View {
                     Text("SPRE")
                         .font(.footnote)
                         .foregroundColor(.secondary)
-                    Text(trips.first(where: {$0.tripId == vehicle?.tripId ?? ""})?.tripHeadsign ?? "")
+                    Text(vehicle?.headsign ?? "")
                 }.padding([.trailing, .leading, .bottom])
                 Spacer()
                 VStack{
@@ -133,13 +133,6 @@ struct BusDetailView: View {
         }
         .onAppear() {
             favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
-            Task {
-                do {
-                    trips = try await RequestManager().getTrips()
-                } catch let err {
-                    print(err)
-                }
-            }
         }
         .onChange(of: vehicle, perform: { _ in
             DispatchQueue.main.async {

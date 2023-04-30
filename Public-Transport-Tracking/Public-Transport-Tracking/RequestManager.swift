@@ -126,4 +126,16 @@ class RequestManager {
         }
         return RSSFeed()
     }
+    
+    func getDirections(origin: String, destination: String) async throws -> Directions {
+        let getRequest = AF.request("https://maps.googleapis.com/maps/api/directions/json?destination=\(destination)&mode=transit&origin=\(origin)&key=AIzaSyAW0rKcBmVtEZ12-9oUmjSHDyvdy-6fr3w", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [])
+        var responseJson : String!
+        do {
+            responseJson = try await getRequest.serializingString().value
+        } catch let err{
+            print(err)
+        }
+        let responseData = try? DecodingManager().decodeDirections(jsonString: responseJson ?? "")
+        return responseData ?? Directions(geocodedWaypoints: nil, routes: nil, status: nil)
+    }
 }

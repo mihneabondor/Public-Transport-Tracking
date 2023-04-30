@@ -188,3 +188,192 @@ struct StationDetails : Hashable {
     var vehicle : Vehicle
     var stationETA : Int
 }
+
+struct Directions: Codable {
+    let geocodedWaypoints: [GeocodedWaypoint]?
+    let routes: [CustomRoute]?
+    let status: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case geocodedWaypoints = "geocoded_waypoints"
+        case routes
+        case status
+    }
+}
+
+struct GeocodedWaypoint: Codable {
+    let geocoderStatus, placeId: String?
+    let types: [String]?
+    
+    enum CodingKeys: String, CodingKey {
+        case geocoderStatus = "geocoder_status"
+        case placeId = "place_id"
+        case types
+    }
+}
+
+struct CustomRoute: Codable {
+    let bounds: CustomBounds?
+    let copyrights: String?
+    let legs: [CustomLeg]?
+    let overviewPolyline: CustomPolyline?
+    let summary: String?
+    let warnings: [String]?
+    let waypointOrder: [JSONAny]?
+    
+    enum CodingKeys: String, CodingKey {
+        case bounds
+        case copyrights
+        case legs
+        case overviewPolyline = "overview_polyline"
+        case summary
+        case warnings
+        case waypointOrder = "waypoint_order"
+    }
+}
+
+struct CustomBounds: Codable {
+    let northeast, southwest: CustomLocation?
+}
+
+struct CustomLocation: Codable {
+    let lat, lng: Double?
+}
+
+struct CustomLeg: Codable {
+    let arrivalTime, departureTime: CustomTime?
+    let distance, duration: CustomDistance?
+    let endAddress: String?
+    let endLocation: CustomLocation?
+    let startAddress: String?
+    let startLocation: CustomLocation?
+    let steps: [CustomStep]?
+    let trafficSpeedEntry, viaWaypoint: [JSONAny]?
+    
+    enum CodingKeys: String, CodingKey {
+        case arrivalTime = "arrival_time"
+        case departureTime = "departure_time"
+        case distance
+        case duration
+        case endAddress = "end_address"
+        case endLocation = "end_location"
+        case startAddress = "start_address"
+        case startLocation = "start_location"
+        case steps
+        case trafficSpeedEntry = "traffic_speed_entry"
+        case viaWaypoint = "via_waypoint"
+    }
+}
+
+struct CustomTime: Codable {
+    let text, timeZone: String?
+    let value: Int?
+    
+    enum CodingKeys : String, CodingKey {
+        case timeZone = "time_zone"
+        case value, text
+    }
+}
+
+struct CustomDistance: Codable {
+    let text: String?
+    let value: Int?
+}
+
+struct CustomStep: Codable, Identifiable {
+    var id = UUID()
+    let distance, duration: CustomDistance?
+    let endLocation: CustomLocation?
+    let htmlInstructions: String?
+    let polyline: CustomPolyline?
+    let startLocation: CustomLocation?
+    let steps: [CustomStep]?
+    let travel: CustomTravelMode?
+    let transitDetails: CustomTransitDetails?
+    let maneuver: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case distance, duration, endLocation = "end_location", htmlInstructions = "html_instructions", polyline, startLocation = "start_location", steps, travel = "travel_mode", transitDetails = "transit_details", maneuver
+    }
+}
+
+struct DecodedSteps : Identifiable {
+    var id = UUID()
+    let distance, duration: CustomDistance?
+    let endLocation: CustomLocation?
+    let htmlInstructions: String?
+    let polyline: CustomPolyline?
+    let startLocation: CustomLocation?
+    let travel: CustomTravelMode?
+    let transitDetails: CustomTransitDetails?
+    let maneuver: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case distance, duration
+        case endLocation = "end_location"
+        case htmlInstructions = "html_instructions"
+        case polyline
+        case startLocation = "start_location"
+        case travel
+        case transitDetails = "transit_details"
+        case maneuver
+    }
+}
+
+struct CustomPolyline: Codable {
+    let points: String?
+}
+
+struct CustomTransitDetails: Codable {
+    let arrivalStop: CustomStop?
+    let arrivalTime: CustomTime?
+    let departureStop: CustomStop?
+    let departureTime: CustomTime?
+    let headsign: String?
+    let line: CustomLine?
+    let numStops: Int?
+    
+    enum CodingKeys : String, CodingKey {
+        case arrivalStop = "arrival_stop"
+        case arrivalTime = "arrival_time"
+        case departureStop = "departure_stop"
+        case departureTime = "depature_time"
+        case headsign
+        case line
+        case numStops = "num_stops"
+    }
+}
+
+struct CustomStop: Codable {
+    let location: CustomLocation?
+    let name: String?
+}
+
+struct CustomLine: Codable {
+    let agencies: [CustomAgency]?
+    let name, shortName: String?
+    let vehicle: CustomVehicle?
+    
+        enum CodingKeys: String, CodingKey {
+        case agencies
+        case name
+        case shortName = "short_name"
+        case vehicle
+    }
+}
+
+struct CustomAgency: Codable {
+    let name, phone: String?
+    let url: String?
+}
+
+struct CustomVehicle: Codable {
+    let icon, name, type: String?
+}
+
+enum CustomTravelMode: String, Codable {
+    case transit = "TRANSIT"
+    case walking = "WALKING"
+}
+
+struct JSONAny: Codable {}

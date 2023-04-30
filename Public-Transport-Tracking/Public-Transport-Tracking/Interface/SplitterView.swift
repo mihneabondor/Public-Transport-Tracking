@@ -28,6 +28,7 @@ struct SplitterView: View {
     @State private var showNewsAlert = false
     @State private var showVinereaAlert = false
     @State private var stire = ""
+    
     let currentDate = Date()
     var progressInterval: ClosedRange<Date> {
         let start = currentDate
