@@ -242,8 +242,11 @@ struct MapToolbar: View {
                         Task {
                             directions = try await RequestManager().getDirections(origin: origin, destination: destination)
                             print(directions)
-                            traverseSteps(step: directions.routes?.first?.legs?.first?.steps)
-                            print(steps)
+                            let customSteps = directions.routes?.first?.legs?.first?.steps
+                            for customStep in customSteps ?? [] {
+                                let decodedStep = DecodedSteps(distance: CustomDistance(text: customStep.distance?.text ?? "", value: customStep.distance?.value ?? 0), duration: CustomDistance(text: customStep.duration?.text ?? "", value: customStep.duration?.value ?? 0), endLocation: CustomLocation(lat: customStep.endLocation?.lat ?? 0, lng: customStep.endLocation?.lng ?? 0), htmlInstructions: customStep.htmlInstructions ?? "", polyline: CustomPolyline(points: customStep.polyline?.points ?? ""), startLocation: customStep.startLocation ?? CustomLocation(lat: 0, lng: 0), travel: customStep.travel ?? CustomTravelMode.walking, transitDetails: customStep.transitDetails ?? CustomTransitDetails(arrivalStop: CustomStop(location: CustomLocation(lat: 0, lng: 0), name: ""), arrivalTime: CustomTime(text: "", timeZone: "", value: 0), departureStop: CustomStop(location: CustomLocation(lat: 0, lng: 0), name: ""), departureTime: CustomTime(text: "", timeZone: "", value: 0), headsign: "", line: CustomLine(agencies: [], name: "", shortName: "", vehicle: CustomVehicle(icon: "", name: "", type: "")), numStops: 0), maneuver: customStep.maneuver ?? "")
+                                steps.append(decodedStep)
+                            }
                         }
                     }
                 }
@@ -270,15 +273,22 @@ struct MapToolbar: View {
     
     private func traverseSteps(step : [CustomStep]?) {
         guard let step = step else {return}
-        print("spofjdsofdsjifo")
         print(step)
-        for step in step {
-            steps.append(DecodedSteps(distance: step.distance ?? CustomDistance(text: "", value: 0), duration: step.duration ?? CustomDistance(text: "", value: 0), endLocation: step.endLocation, htmlInstructions: step.htmlInstructions?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) ?? "", polyline: step.polyline ?? CustomPolyline(points: ""), startLocation: step.startLocation, travel: step.travel ?? CustomTravelMode(rawValue: ""), transitDetails: step.transitDetails ?? CustomTransitDetails(arrivalStop: CustomStop(location: CustomLocation(lat: 0, lng: 0), name: ""), arrivalTime: CustomTime(text: "", timeZone: "", value: 0), departureStop: CustomStop(location: CustomLocation(lat: 0, lng: 0), name: ""), departureTime: CustomTime(text: "", timeZone: "", value: 0), headsign: "", line: CustomLine(agencies: [], name: "", shortName: "", vehicle: CustomVehicle(icon: "", name: "", type: "")), numStops: 0), maneuver: step.maneuver ?? ""))
-        }
+        
         var index = 0
         while step[0].steps == nil && index < step.count-1 {
             index += 1
         }
+        
+        for step in step {
+            let newStep = DecodedSteps(distance: step.distance ?? CustomDistance(text: "", value: 0), duration: step.duration ?? CustomDistance(text: "", value: 0), endLocation: step.endLocation, htmlInstructions: step.htmlInstructions?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil) ?? "", polyline: step.polyline ?? CustomPolyline(points: ""), startLocation: step.startLocation, travel: step.travel ?? CustomTravelMode(rawValue: ""), transitDetails: step.transitDetails ?? CustomTransitDetails(arrivalStop: CustomStop(location: CustomLocation(lat: 0, lng: 0), name: ""), arrivalTime: CustomTime(text: "", timeZone: "", value: 0), departureStop: CustomStop(location: CustomLocation(lat: 0, lng: 0), name: ""), departureTime: CustomTime(text: "", timeZone: "", value: 0), headsign: "", line: CustomLine(agencies: [], name: "", shortName: "", vehicle: CustomVehicle(icon: "", name: "", type: "")), numStops: 0), maneuver: step.maneuver ?? "")
+            if index-1 > steps.count || index-1 < 0 {
+                steps.append(newStep)
+            } else {
+                steps.insert(newStep, at: index-1)
+            }
+        }
+
         traverseSteps(step: step[index].steps)
     }
 }

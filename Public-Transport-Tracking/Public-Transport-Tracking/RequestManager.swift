@@ -128,7 +128,7 @@ class RequestManager {
     }
     
     func getDirections(origin: String, destination: String) async throws -> Directions {
-        let getRequest = AF.request("https://maps.googleapis.com/maps/api/directions/json?destination=\(destination)&mode=transit&origin=\(origin)&key=AIzaSyAW0rKcBmVtEZ12-9oUmjSHDyvdy-6fr3w", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [])
+        let getRequest = AF.request("https://maps.googleapis.com/maps/api/directions/json?destination=\(destination)&mode=transit&origin=\(origin)&key=AIzaSyAW0rKcBmVtEZ12-9oUmjSHDyvdy-6fr3w&language=ro", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [])
         var responseJson : String!
         do {
             responseJson = try await getRequest.serializingString().value

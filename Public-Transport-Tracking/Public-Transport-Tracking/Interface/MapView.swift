@@ -16,6 +16,7 @@ struct MapView: View {
     @Binding var selectedTab : Int
     @Binding var orareSelection : String
     @State var busView : Bool = true
+    @State var stops = [Statie]()
     
     @StateObject var userLocation = LocationManager()
     
@@ -119,7 +120,9 @@ struct MapView: View {
                         .onChange(of: searchText) { text in
                             searchResults.removeAll()
                             withAnimation {
-                                searchResults = vehicles.filter({$0.routeShortName?.contains(text) == true})
+                                if busView {
+                                    searchResults = vehicles.filter({$0.routeShortName?.contains(text) == true})
+                                }
                             }
                         }
                     
@@ -338,6 +341,13 @@ struct MapView: View {
             DispatchQueue.main.async {
                 for elem in vehicles {
                     annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+                }
+            }
+            Task {
+                do {
+                    stops = try await RequestManager().getStops()
+                } catch let err {
+                    print(err)
                 }
             }
         }
