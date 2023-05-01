@@ -41,6 +41,9 @@ struct MapView: View {
     @State var selectedVehicle : Vehicle?
     @State private var favorites = [String]()
     
+    @State var selectedDetent : PresentationDetent = .medium
+    @State var directionSteps = [DecodedSteps]()
+    
     @State private var showDirectionsScreen = false
     var body: some View {
         ZStack{
@@ -48,21 +51,23 @@ struct MapView: View {
                 MapAnnotation(coordinate: location.coordinates) {
                     if location.type == 0  && location.vehicle != nil{
                         Button {
-                            let midCenter = CLLocationCoordinate2D(latitude: (location.coordinates.latitude + (userLocation.lastLocation?.coordinate.latitude ?? 0))/2, longitude: (location.coordinates.longitude + (userLocation.lastLocation?.coordinate.longitude ?? 0))/2)
-                            let midSpan = MKCoordinateSpan(latitudeDelta: abs((location.coordinates.latitude - (userLocation.lastLocation?.coordinate.latitude ?? 0)))*2, longitudeDelta: abs((location.coordinates.longitude - (userLocation.lastLocation?.coordinate.longitude ?? 0))*2))
-                            withAnimation {
-                                showBusDetail = true
-                            }
-                            withAnimation {
-                                region = MKCoordinateRegion(center: midCenter, span: midSpan)
-                            }
-                            selectedVehicle = location.vehicle
-                            if focusedVehicleTripId == ""{
-                                focusedVehicleNearestStop = location.vehicle?.statie ?? ""
-                                focusedVehicleTripId = location.vehicle?.tripId ?? ""
-                            } else {
-                                focusedVehicleTripId = ""
-                                focusedVehicleNearestStop = ""
+                            if directionSteps.isEmpty {
+                                let midCenter = CLLocationCoordinate2D(latitude: (location.coordinates.latitude + (userLocation.lastLocation?.coordinate.latitude ?? 0))/2, longitude: (location.coordinates.longitude + (userLocation.lastLocation?.coordinate.longitude ?? 0))/2)
+                                let midSpan = MKCoordinateSpan(latitudeDelta: abs((location.coordinates.latitude - (userLocation.lastLocation?.coordinate.latitude ?? 0)))*2, longitudeDelta: abs((location.coordinates.longitude - (userLocation.lastLocation?.coordinate.longitude ?? 0))*2))
+                                withAnimation {
+                                    showBusDetail = true
+                                }
+                                withAnimation {
+                                    region = MKCoordinateRegion(center: midCenter, span: midSpan)
+                                }
+                                selectedVehicle = location.vehicle
+                                if focusedVehicleTripId == ""{
+                                    focusedVehicleNearestStop = location.vehicle?.statie ?? ""
+                                    focusedVehicleTripId = location.vehicle?.tripId ?? ""
+                                } else {
+                                    focusedVehicleTripId = ""
+                                    focusedVehicleNearestStop = ""
+                                }
                             }
                         } label: {
                             VStack {
@@ -73,26 +78,28 @@ struct MapView: View {
                                     .bold()
                                     .font(.footnote)
                                     .foregroundColor(.white)
-                            }.opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.7)
+                            }.opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.6)
                             .background (
                                 Rectangle()
                                     .frame(width: 35, height: 40)
                                     .foregroundColor(favorites.contains(location.vehicle?.routeShortName ?? "") ? .indigo : .purple)
-                                    .opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.7)
+                                    .opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.6)
                                     .cornerRadius(5)
                             )
                         }
                     } else if location.type == 1 && location.statie != nil{
                         Button {
-                            statieStationDetail = location.statie?.stopName ?? ""
-                            systemImgStationDetail = "bus.fill"
-                            selectedStation = location.statie!
-                            withAnimation {
-                                showStationDetail.toggle()
-                            }
-                            if showStationDetail == false {
-                                focusedVehicleTripId = ""
-                                focusedVehicleNearestStop = ""
+                            if directionSteps.isEmpty {
+                                statieStationDetail = location.statie?.stopName ?? ""
+                                systemImgStationDetail = "bus.fill"
+                                selectedStation = location.statie!
+                                withAnimation {
+                                    showStationDetail.toggle()
+                                }
+                                if showStationDetail == false {
+                                    focusedVehicleTripId = ""
+                                    focusedVehicleNearestStop = ""
+                                }
                             }
                         } label: {
                             Image(systemName: "door.garage.open")
@@ -106,9 +113,29 @@ struct MapView: View {
                                         .cornerRadius(5)
                                 )
                         }
+                    } else if location.type == 2 {
+                        Image(systemName: "house.fill")
+                            .foregroundColor(.white)
+                            .font(.footnote)
+                            .background (
+                                Rectangle()
+                                    .frame(width: 25, height: 30)
+                                    .foregroundColor(.indigo)
+                                    .cornerRadius(5)
+                            )
+                    } else if location.type == 3 {
+                        Image(systemName: "flag.checkered")
+                            .foregroundColor(.white)
+                            .font(.footnote)
+                            .background (
+                                Rectangle()
+                                    .frame(width: 25, height: 30)
+                                    .foregroundColor(.indigo)
+                                    .cornerRadius(5)
+                            )
                     }
                 }
-            }).edgesIgnoringSafeArea(.top)
+            })
             VStack{
                 HStack{
                     TextField("Cauta o linie", text: $searchText)
@@ -196,7 +223,6 @@ struct MapView: View {
                     }
                     .padding(.trailing, 20)
                 }
-                
                 if !searchResults.isEmpty{
                     ScrollView {
                         ForEach(searchResults) { result in
@@ -235,7 +261,7 @@ struct MapView: View {
                                         .foregroundColor(Color(UIColor.systemGray5))
                                         .cornerRadius(20)
                                 )
-                            }
+                            }.transition(.move(edge: .bottom))
                         }
                     }
                 }
@@ -243,11 +269,13 @@ struct MapView: View {
                 ZStack{
                     if showBusDetail {
                         BusDetailView(vehicle: $selectedVehicle, closeView: $showBusDetail, selectedTab: $selectedTab, orareSelection: $orareSelection)
+                            .transition(.move(edge: .bottom))
                             .offset(y: -30)
                             .padding()
                     }
                     if showStationDetail{
                         StationView(statie: $statieStationDetail, systemImage: $systemImgStationDetail, closeView: $showStationDetail, stop: $selectedStation, vehicles: $vehicles, details: $stationDetails)
+                            .transition(.move(edge: .bottom))
                             .padding()
                     }
                 }
@@ -288,6 +316,19 @@ struct MapView: View {
             loadFocusedVehicle()
         })
         .onChange(of: vehicles) {_ in
+            if !directionSteps.isEmpty {
+                DispatchQueue.main.async {
+                    let oldAnnotations = annotations
+                    annotations.removeAll(where: {$0.type == 0})
+                    for vehicle in vehicles {
+                        if oldAnnotations.contains(where: {annotation in annotation.vehicle?.label ?? "0" == vehicle.label ?? "0"}) == true {
+                            let location = CLLocationCoordinate2D(latitude: vehicle.latitude ?? 0, longitude: vehicle.longitude ?? 0)
+                            let annotation = Annotation(type: 0, coordinates: location, vehicle: vehicle, statie: nil)
+                            annotations.append(annotation)
+                        }
+                    }
+                }
+            } else
             if busView {
                 DispatchQueue.main.async {
                     searchResults.removeAll()
@@ -334,6 +375,10 @@ struct MapView: View {
                 }
             }
         }
+        .onChange(of: showDirectionsScreen, perform: { _ in
+            showBusDetail = false
+            showStationDetail = false
+        })
         .onAppear() {
             region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.lastLocation?.coordinate.latitude ?? 46.7712, longitude: userLocation.lastLocation?.coordinate.longitude ?? 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
@@ -351,9 +396,11 @@ struct MapView: View {
                 }
             }
         }
-        .sheet(isPresented: $showDirectionsScreen) {
-            MapToolbar(region: $region)
-                .presentationDetents([.medium, .large])
+        .bottomSheet(presentationDetents: [.fraction(0.25), .medium, .large], selectedDetent: $selectedDetent, isPresented: $showDirectionsScreen, dragIndicator: .visible, sheetCornerRadius: 20) {
+            MapToolbar(region: $region, selectedDetent: $selectedDetent, annotations: $annotations, vehicles: $vehicles, stops: $stops, steps: $directionSteps)
+        } onDismiss: {
+            selectedDetent = .medium
+            directionSteps.removeAll()
         }
     }
     
