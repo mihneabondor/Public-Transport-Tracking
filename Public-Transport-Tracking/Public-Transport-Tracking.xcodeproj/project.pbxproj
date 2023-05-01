@@ -57,6 +57,10 @@
 		D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */; };
 		D7ABA56629DAA33600CDA8DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA56529DAA33600CDA8DE /* Constants.swift */; };
 		D7AE9A3429E1A452008CE1C0 /* BusCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE9A3329E1A452008CE1C0 /* BusCalculations.swift */; };
+		D7B4A19029FFC2C7003AF5D4 /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = D7B4A18F29FFC2C7003AF5D4 /* OneSignal */; };
+		D7B4A19229FFC2C7003AF5D4 /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = D7B4A19129FFC2C7003AF5D4 /* OneSignalExtension */; };
+		D7B4A19A29FFC300003AF5D4 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4A19929FFC300003AF5D4 /* NotificationService.swift */; };
+		D7B4A19E29FFC300003AF5D4 /* BusifyPushNotifications.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D7B4A19729FFC300003AF5D4 /* BusifyPushNotifications.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D7C8953629DC4D210090C97F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C8953529DC4D210090C97F /* LocationManager.swift */; };
 		D7F8259929DDF53400A09A2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F8259829DDF53400A09A2B /* MapView.swift */; };
 		D7FBAB6F29E1E84A00299635 /* BusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FBAB6E29E1E84A00299635 /* BusDetailView.swift */; };
@@ -70,6 +74,13 @@
 			remoteGlobalIDString = D779FFBE29E96C6700DF3AB8;
 			remoteInfo = BusifyClip;
 		};
+		D7B4A19C29FFC300003AF5D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7ABA54929DAA28400CDA8DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7B4A19629FFC300003AF5D4;
+			remoteInfo = BusifyPushNotifications;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -82,6 +93,17 @@
 				D779FFCE29E96C6800DF3AB8 /* BusifyClip.app in Embed App Clips */,
 			);
 			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7B4A1A229FFC300003AF5D4 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D7B4A19E29FFC300003AF5D4 /* BusifyPushNotifications.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -123,6 +145,11 @@
 		D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		D7ABA56529DAA33600CDA8DE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D7AE9A3329E1A452008CE1C0 /* BusCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCalculations.swift; sourceTree = "<group>"; };
+		D7B4A18D29FFBC87003AF5D4 /* Public Transport Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Public Transport Tracking.entitlements"; sourceTree = "<group>"; };
+		D7B4A19729FFC300003AF5D4 /* BusifyPushNotifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BusifyPushNotifications.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7B4A19929FFC300003AF5D4 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		D7B4A19B29FFC300003AF5D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7B4A1A329FFC477003AF5D4 /* BusifyPushNotifications.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BusifyPushNotifications.entitlements; sourceTree = "<group>"; };
 		D7C8953529DC4D210090C97F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D7C8953729DC4D8D0090C97F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Public-Transport-Tracking/Info.plist"; sourceTree = "<group>"; };
 		D7F8259829DDF53400A09A2B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -144,10 +171,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7B4A19029FFC2C7003AF5D4 /* OneSignal in Frameworks */,
+				D7B4A19229FFC2C7003AF5D4 /* OneSignalExtension in Frameworks */,
 				D74065D929E81E0200E1E3AF /* SSToastMessage in Frameworks */,
 				D784169829E49A9C009F4F2C /* FeedKit in Frameworks */,
 				D778901C29DB56C200044D10 /* Alamofire in Frameworks */,
 				481D351902FF5E7DB4030604 /* libPods-Public Transport Tracking.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7B4A19429FFC300003AF5D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,9 +244,11 @@
 		D7ABA54829DAA28400CDA8DE = {
 			isa = PBXGroup;
 			children = (
+				D7B4A18D29FFBC87003AF5D4 /* Public Transport Tracking.entitlements */,
 				D7C8953729DC4D8D0090C97F /* Info.plist */,
 				D7ABA55329DAA28500CDA8DE /* Public-Transport-Tracking */,
 				D779FFC029E96C6700DF3AB8 /* BusifyClip */,
+				D7B4A19829FFC300003AF5D4 /* BusifyPushNotifications */,
 				D7ABA55229DAA28500CDA8DE /* Products */,
 				558C1DCC0FE2C123DAB3C3FB /* Pods */,
 				8639244BCD7A12547562CDEC /* Frameworks */,
@@ -222,6 +260,7 @@
 			children = (
 				D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */,
 				D779FFBF29E96C6700DF3AB8 /* BusifyClip.app */,
+				D7B4A19729FFC300003AF5D4 /* BusifyPushNotifications.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -272,6 +311,16 @@
 			path = Interface;
 			sourceTree = "<group>";
 		};
+		D7B4A19829FFC300003AF5D4 /* BusifyPushNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				D7B4A1A329FFC477003AF5D4 /* BusifyPushNotifications.entitlements */,
+				D7B4A19929FFC300003AF5D4 /* NotificationService.swift */,
+				D7B4A19B29FFC300003AF5D4 /* Info.plist */,
+			);
+			path = BusifyPushNotifications;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -307,21 +356,42 @@
 				D7ABA54F29DAA28500CDA8DE /* Resources */,
 				FD387E33196FF3694F9408EB /* [CP] Copy Pods Resources */,
 				D779FFCF29E96C6800DF3AB8 /* Embed App Clips */,
+				D7B4A1A229FFC300003AF5D4 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D779FFCD29E96C6800DF3AB8 /* PBXTargetDependency */,
+				D7B4A19D29FFC300003AF5D4 /* PBXTargetDependency */,
 			);
 			name = "Public Transport Tracking";
 			packageProductDependencies = (
 				D778901B29DB56C200044D10 /* Alamofire */,
 				D784169729E49A9C009F4F2C /* FeedKit */,
 				D74065D829E81E0200E1E3AF /* SSToastMessage */,
+				D7B4A18F29FFC2C7003AF5D4 /* OneSignal */,
+				D7B4A19129FFC2C7003AF5D4 /* OneSignalExtension */,
 			);
 			productName = "Public Transport Tracking";
 			productReference = D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D7B4A19629FFC300003AF5D4 /* BusifyPushNotifications */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7B4A19F29FFC300003AF5D4 /* Build configuration list for PBXNativeTarget "BusifyPushNotifications" */;
+			buildPhases = (
+				D7B4A19329FFC300003AF5D4 /* Sources */,
+				D7B4A19429FFC300003AF5D4 /* Frameworks */,
+				D7B4A19529FFC300003AF5D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BusifyPushNotifications;
+			productName = BusifyPushNotifications;
+			productReference = D7B4A19729FFC300003AF5D4 /* BusifyPushNotifications.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -330,7 +400,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					D779FFBE29E96C6700DF3AB8 = {
@@ -338,6 +408,9 @@
 					};
 					D7ABA55029DAA28500CDA8DE = {
 						CreatedOnToolsVersion = 14.1;
+					};
+					D7B4A19629FFC300003AF5D4 = {
+						CreatedOnToolsVersion = 14.3;
 					};
 				};
 			};
@@ -354,6 +427,7 @@
 				D778901A29DB56C200044D10 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				D784169629E49A9C009F4F2C /* XCRemoteSwiftPackageReference "FeedKit" */,
 				D74065D729E81E0200E1E3AF /* XCRemoteSwiftPackageReference "SSToastMessage" */,
+				D7B4A18E29FFC2C7003AF5D4 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
 			);
 			productRefGroup = D7ABA55229DAA28500CDA8DE /* Products */;
 			projectDirPath = "";
@@ -361,6 +435,7 @@
 			targets = (
 				D7ABA55029DAA28500CDA8DE /* Public Transport Tracking */,
 				D779FFBE29E96C6700DF3AB8 /* BusifyClip */,
+				D7B4A19629FFC300003AF5D4 /* BusifyPushNotifications */,
 			);
 		};
 /* End PBXProject section */
@@ -391,6 +466,13 @@
 				D72023F529E009D10021E66B /* Shapes.txt in Resources */,
 				D7ABA55C29DAA28600CDA8DE /* Preview Assets.xcassets in Resources */,
 				D7ABA55929DAA28600CDA8DE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7B4A19529FFC300003AF5D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +566,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D7B4A19329FFC300003AF5D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7B4A19A29FFC300003AF5D4 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -491,6 +581,11 @@
 			isa = PBXTargetDependency;
 			target = D779FFBE29E96C6700DF3AB8 /* BusifyClip */;
 			targetProxy = D779FFCC29E96C6800DF3AB8 /* PBXContainerItemProxy */;
+		};
+		D7B4A19D29FFC300003AF5D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7B4A19629FFC300003AF5D4 /* BusifyPushNotifications */;
+			targetProxy = D7B4A19C29FFC300003AF5D4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -700,6 +795,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Public Transport Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Public-Transport-Tracking/Preview Content\"";
@@ -739,6 +835,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Public Transport Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Public-Transport-Tracking/Preview Content\"";
@@ -765,6 +862,60 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D7B4A1A029FFC300003AF5D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BusifyPushNotifications/BusifyPushNotifications.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = MTH43FS33M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BusifyPushNotifications/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BusifyPushNotifications;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyPushNotifications;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D7B4A1A129FFC300003AF5D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BusifyPushNotifications/BusifyPushNotifications.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = MTH43FS33M;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BusifyPushNotifications/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BusifyPushNotifications;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyPushNotifications;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -801,6 +952,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		D7B4A19F29FFC300003AF5D4 /* Build configuration list for PBXNativeTarget "BusifyPushNotifications" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7B4A1A029FFC300003AF5D4 /* Debug */,
+				D7B4A1A129FFC300003AF5D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -826,6 +986,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 9.0.0;
+			};
+		};
+		D7B4A18E29FFC2C7003AF5D4 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -860,6 +1028,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D784169629E49A9C009F4F2C /* XCRemoteSwiftPackageReference "FeedKit" */;
 			productName = FeedKit;
+		};
+		D7B4A18F29FFC2C7003AF5D4 /* OneSignal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D7B4A18E29FFC2C7003AF5D4 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignal;
+		};
+		D7B4A19129FFC2C7003AF5D4 /* OneSignalExtension */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D7B4A18E29FFC2C7003AF5D4 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalExtension;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

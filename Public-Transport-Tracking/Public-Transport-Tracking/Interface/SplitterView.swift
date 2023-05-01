@@ -159,7 +159,7 @@ struct SplitterView: View {
                             Spacer()
                         }
                         HStack{
-                            Text("Nu este nevoie să îți validezi abonamentul.")
+                            Text("Azi nu este nevoie să îți validezi abonamentul sau biletul.")
                             Spacer()
                         }
                     }

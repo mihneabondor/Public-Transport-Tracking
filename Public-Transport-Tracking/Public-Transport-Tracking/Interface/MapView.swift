@@ -135,7 +135,7 @@ struct MapView: View {
                             )
                     }
                 }
-            })
+            }).edgesIgnoringSafeArea([.top, .bottom])
             VStack{
                 HStack{
                     TextField("Cauta o linie", text: $searchText)
