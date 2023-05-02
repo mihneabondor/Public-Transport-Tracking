@@ -7,14 +7,22 @@
 
 import SwiftUI
 import OneSignal
+import RevenueCat
 
 @main
 struct Public_Transport_TrackingApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject var userViewModel = UserViewModel()
     var body: some Scene {
         WindowGroup {
             SplitterView()
+                .environmentObject(userViewModel)
         }
+    }
+    
+    init() {
+        Purchases.logLevel = .debug
+        Purchases.configure(withAPIKey: "appl_ProbKATZoesuBOEyOqQczGWXoYp")
     }
 }
 

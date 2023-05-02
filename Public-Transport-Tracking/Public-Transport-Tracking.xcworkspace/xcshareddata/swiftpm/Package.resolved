@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "purchases-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RevenueCat/purchases-ios.git",
+      "state" : {
+        "revision" : "3ad7fab62d44dd7053d6531d5b0bc90e0e4724a7",
+        "version" : "4.18.0"
+      }
+    },
+    {
       "identity" : "sstoastmessage",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SimformSolutionsPvtLtd/SSToastMessage",

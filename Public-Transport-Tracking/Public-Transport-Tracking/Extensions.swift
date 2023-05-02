@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import RevenueCat
 
 extension View {
     @ViewBuilder
@@ -24,7 +25,7 @@ extension View {
         } content: {
             if #available(iOS 16.4, *){
                 content()
-                    .presentationBackgroundInteraction(.enabled)
+                    .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.25)))
                     .presentationDetents (presentationDetents, selection: selectedDetent)
                     .presentationDragIndicator(dragIndicator)
                     .onAppear {
@@ -49,5 +50,23 @@ extension View {
                     }
             }
         }
+    }
+}
+
+extension SubscriptionPeriod {
+    var durationTitle: String {
+        switch self.unit {
+        case .day: return "day"
+        case .week: return "week"
+        case .month: return "month"
+        case .year: return "year"
+        @unknown default: return "Unknown"
+        }
+    }
+    
+    var periodTitle: String {
+        let periodString = "\(self.value) \(self.durationTitle)"
+        let pluralized = self.value > 1 ? periodString + "s" : periodString
+        return pluralized
     }
 }

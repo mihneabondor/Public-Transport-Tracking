@@ -49,6 +49,9 @@ struct SplitterView: View {
                     Text("Orare")
                 }
                 .tag(1)
+                .onTapGesture {
+                    orarePicker = ""
+                }
             MapView(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker)
                 .tabItem {
                     Image(systemName: "map.fill")

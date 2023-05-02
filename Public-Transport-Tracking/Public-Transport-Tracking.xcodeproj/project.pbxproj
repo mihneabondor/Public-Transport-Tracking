@@ -50,6 +50,11 @@
 		D779FFE629E9788A00DF3AB8 /* StopTimes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F829E020800021E66B /* StopTimes.txt */; };
 		D784169829E49A9C009F4F2C /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = D784169729E49A9C009F4F2C /* FeedKit */; };
 		D784169A29E49B9A009F4F2C /* ComunicateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784169929E49B9A009F4F2C /* ComunicateView.swift */; };
+		D78DE7762A00227E00983F24 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = D78DE7752A00227E00983F24 /* ReceiptParser */; };
+		D78DE7782A00227E00983F24 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = D78DE7772A00227E00983F24 /* RevenueCat */; };
+		D78DE77C2A00228500983F24 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78DE77B2A00228500983F24 /* StoreKit.framework */; };
+		D78DE7802A00288100983F24 /* SubscriptionPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78DE77F2A00288100983F24 /* SubscriptionPaywallView.swift */; };
+		D78DE7822A00327000983F24 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78DE7812A00327000983F24 /* UserViewModel.swift */; };
 		D7A966E329DF1C8A00005AB2 /* Routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D7A966E229DF1C8A00005AB2 /* Routes.txt */; };
 		D7ABA55529DAA28500CDA8DE /* Public_Transport_TrackingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA55429DAA28500CDA8DE /* Public_Transport_TrackingApp.swift */; };
 		D7ABA55929DAA28600CDA8DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7ABA55829DAA28600CDA8DE /* Assets.xcassets */; };
@@ -137,6 +142,9 @@
 		D779FFCA29E96C6800DF3AB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D779FFCB29E96C6800DF3AB8 /* BusifyClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BusifyClip.entitlements; sourceTree = "<group>"; };
 		D784169929E49B9A009F4F2C /* ComunicateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComunicateView.swift; sourceTree = "<group>"; };
+		D78DE77B2A00228500983F24 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D78DE77F2A00288100983F24 /* SubscriptionPaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPaywallView.swift; sourceTree = "<group>"; };
+		D78DE7812A00327000983F24 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		D7A966E229DF1C8A00005AB2 /* Routes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Routes.txt; sourceTree = "<group>"; };
 		D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Public Transport Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7ABA55429DAA28500CDA8DE /* Public_Transport_TrackingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Public_Transport_TrackingApp.swift; sourceTree = "<group>"; };
@@ -174,7 +182,10 @@
 				D7B4A19029FFC2C7003AF5D4 /* OneSignal in Frameworks */,
 				D7B4A19229FFC2C7003AF5D4 /* OneSignalExtension in Frameworks */,
 				D74065D929E81E0200E1E3AF /* SSToastMessage in Frameworks */,
+				D78DE7762A00227E00983F24 /* ReceiptParser in Frameworks */,
+				D78DE7782A00227E00983F24 /* RevenueCat in Frameworks */,
 				D784169829E49A9C009F4F2C /* FeedKit in Frameworks */,
+				D78DE77C2A00228500983F24 /* StoreKit.framework in Frameworks */,
 				D778901C29DB56C200044D10 /* Alamofire in Frameworks */,
 				481D351902FF5E7DB4030604 /* libPods-Public Transport Tracking.a in Frameworks */,
 			);
@@ -202,6 +213,7 @@
 		8639244BCD7A12547562CDEC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D78DE77B2A00228500983F24 /* StoreKit.framework */,
 				74711926E0972860670C9C25 /* libPods-Public Transport Tracking.a */,
 			);
 			name = Frameworks;
@@ -307,6 +319,8 @@
 				D784169929E49B9A009F4F2C /* ComunicateView.swift */,
 				D73E579229E5D7160044A955 /* OrarIntermediarView.swift */,
 				D7129A2729FC2E55002A690B /* MapToolbar.swift */,
+				D78DE77F2A00288100983F24 /* SubscriptionPaywallView.swift */,
+				D78DE7812A00327000983F24 /* UserViewModel.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -371,6 +385,8 @@
 				D74065D829E81E0200E1E3AF /* SSToastMessage */,
 				D7B4A18F29FFC2C7003AF5D4 /* OneSignal */,
 				D7B4A19129FFC2C7003AF5D4 /* OneSignalExtension */,
+				D78DE7752A00227E00983F24 /* ReceiptParser */,
+				D78DE7772A00227E00983F24 /* RevenueCat */,
 			);
 			productName = "Public Transport Tracking";
 			productReference = D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */;
@@ -428,6 +444,7 @@
 				D784169629E49A9C009F4F2C /* XCRemoteSwiftPackageReference "FeedKit" */,
 				D74065D729E81E0200E1E3AF /* XCRemoteSwiftPackageReference "SSToastMessage" */,
 				D7B4A18E29FFC2C7003AF5D4 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+				D78DE7742A00227E00983F24 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = D7ABA55229DAA28500CDA8DE /* Products */;
 			projectDirPath = "";
@@ -550,7 +567,9 @@
 				D7361C1829DAC624006F78D2 /* FavoritesScreen.swift in Sources */,
 				D784169A29E49B9A009F4F2C /* ComunicateView.swift in Sources */,
 				D7FBAB6F29E1E84A00299635 /* BusDetailView.swift in Sources */,
+				D78DE7802A00288100983F24 /* SubscriptionPaywallView.swift in Sources */,
 				D7AE9A3429E1A452008CE1C0 /* BusCalculations.swift in Sources */,
+				D78DE7822A00327000983F24 /* UserViewModel.swift in Sources */,
 				D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */,
 				D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */,
 				D7129A2829FC2E55002A690B /* MapToolbar.swift in Sources */,
@@ -599,10 +618,11 @@
 				CODE_SIGN_ENTITLEMENTS = BusifyClip/BusifyClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"BusifyClip/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BusifyClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Busify;
@@ -641,10 +661,11 @@
 				CODE_SIGN_ENTITLEMENTS = BusifyClip/BusifyClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"BusifyClip/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BusifyClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Busify;
@@ -797,10 +818,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Public Transport Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Public-Transport-Tracking/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Public-Transport-Tracking/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Busify;
@@ -837,10 +859,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Public Transport Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Public-Transport-Tracking/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Public-Transport-Tracking/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Busify;
@@ -873,8 +896,9 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BusifyPushNotifications/BusifyPushNotifications.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = MTH43FS33M;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BusifyPushNotifications/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BusifyPushNotifications;
@@ -900,8 +924,9 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BusifyPushNotifications/BusifyPushNotifications.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = MTH43FS33M;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BusifyPushNotifications/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BusifyPushNotifications;
@@ -988,6 +1013,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		D78DE7742A00227E00983F24 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		D7B4A18E29FFC2C7003AF5D4 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
@@ -1028,6 +1061,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D784169629E49A9C009F4F2C /* XCRemoteSwiftPackageReference "FeedKit" */;
 			productName = FeedKit;
+		};
+		D78DE7752A00227E00983F24 /* ReceiptParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D78DE7742A00227E00983F24 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = ReceiptParser;
+		};
+		D78DE7772A00227E00983F24 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D78DE7742A00227E00983F24 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
 		};
 		D7B4A18F29FFC2C7003AF5D4 /* OneSignal */ = {
 			isa = XCSwiftPackageProductDependency;

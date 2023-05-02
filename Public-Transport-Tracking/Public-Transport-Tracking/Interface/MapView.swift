@@ -43,8 +43,10 @@ struct MapView: View {
     
     @State var selectedDetent : PresentationDetent = .medium
     @State var directionSteps = [DecodedSteps]()
-    
     @State private var showDirectionsScreen = false
+    
+    @EnvironmentObject var userViewModel : UserViewModel
+    
     var body: some View {
         ZStack{
             Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: annotations, annotationContent: { location in
@@ -281,6 +283,10 @@ struct MapView: View {
                 }
             }
         }
+        .onChange(of: searchFieldFocus) {_ in
+            showBusDetail = false
+            showStationDetail = false
+        }
         .onChange(of: stationDetails, perform: { _ in
             if busView {
                 annotations.removeAll()
@@ -396,11 +402,17 @@ struct MapView: View {
                 }
             }
         }
-        .bottomSheet(presentationDetents: [.fraction(0.25), .medium, .large], selectedDetent: $selectedDetent, isPresented: $showDirectionsScreen, dragIndicator: .visible, sheetCornerRadius: 20) {
-            MapToolbar(region: $region, selectedDetent: $selectedDetent, annotations: $annotations, vehicles: $vehicles, stops: $stops, steps: $directionSteps)
+        .bottomSheet(presentationDetents: userViewModel.isSubscriptionAcitve ? [.fraction(0.25), .medium, .large] : [.large], selectedDetent: $selectedDetent, isPresented: $showDirectionsScreen, dragIndicator: .visible, sheetCornerRadius: 20) {
+            if userViewModel.isSubscriptionAcitve {
+                MapToolbar(region: $region, selectedDetent: $selectedDetent, annotations: $annotations, vehicles: $vehicles, stops: $stops, steps: $directionSteps)
+            } else {
+                SubscriptionPaywallView()
+            }
         } onDismiss: {
             selectedDetent = .medium
             directionSteps.removeAll()
+            annotations.removeAll()
+            FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
         }
     }
     
