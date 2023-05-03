@@ -15,11 +15,11 @@ struct FavoritesScreen: View {
     @Binding var vehicles : [Vehicle]
     @Binding var linii : [Linii]
     @Binding var routes : [Route]
+    @Binding var trips : [Trip]
     @Binding var selectedTab : Int
     @Binding var orareSelection : String
     
     @StateObject var locationManager = LocationManager()
-    @State var trips = [Trip]()
     
     var vehicleTypes = ["Tramvai", "Metro", "Tren", "Autobus", "Ferry", "Cable tram", "Aerial Lift", "Funicular", "", "", "", "Troleibus", "Monorail"]
     var vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
@@ -278,8 +278,8 @@ struct FavoritesScreen: View {
             var newVehicles = [Vehicle]()
             do {
                 newVehicles = try await RequestManager().getVehicles()
-                trips = try await RequestManager().getTrips()
-                routes = try await RequestManager().getRoutes()
+//                trips = try await RequestManager().getTrips()
+//                routes = try await RequestManager().getRoutes()
             } catch let err {
                 print(err)
             }
@@ -328,10 +328,9 @@ struct FavoritesScreen: View {
                     }
                 }
                 vehicles[i].routeShortName = routes.first(where: {$0.routeId == vehicles[i].routeId})?.routeShortName
-                print("\n")
                 vehicles[i].routeLongName = routes.first(where: {$0.routeId == vehicles[i].routeId})?.routeLongName
                 vehicles[i].statie = closestStopName
-                vehicles[i].headsign = trips.first(where: {$0.tripId == vehicles[i].tripId})?.tripHeadsign ?? ""
+                vehicles[i].headsign = trips.first(where: {$0.tripId == vehicles[i].tripId})?.tripHeadsign ?? "-"
                 
                 let indexCoresp = linii.firstIndex(where: {$0.tripId == vehicles[i].routeShortName})
                 

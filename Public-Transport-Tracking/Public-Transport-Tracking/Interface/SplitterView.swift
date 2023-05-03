@@ -14,7 +14,10 @@ import SSToastMessage
 struct SplitterView: View {
     @State private var vehicles = [Vehicle]()
     @State private var linii = [Linii]()
+    @State private var trips = [Trip]()
     @State private var routes = [Route]()
+    @State private var stops = [Statie]()
+    @State private var stopTimes = [StopTime]()
     @State var selectedTab = 0
     public var timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
     @State var orarePicker = ""
@@ -37,7 +40,7 @@ struct SplitterView: View {
     }
     var body: some View {
         TabView(selection: $selectedTab) {
-            FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker)
+            FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, trips: $trips, selectedTab: $selectedTab, orareSelection: $orarePicker)
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("Favorite")
@@ -52,7 +55,7 @@ struct SplitterView: View {
                 .onTapGesture {
                     orarePicker = ""
                 }
-            MapView(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker)
+            MapView(vehicles: $vehicles, linii: $linii, routes: $routes, trips: $trips, selectedTab: $selectedTab, orareSelection: $orarePicker)
                 .tabItem {
                     Image(systemName: "map.fill")
                     Text("Hartă")
@@ -71,14 +74,14 @@ struct SplitterView: View {
         .onReceive(timer) { _ in
             if Connectivity.isConnectedToInternet {
                 DispatchQueue.main.async {
-                    FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
+                    FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, trips: $trips, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
                 }
             }
         }
         .onChange(of: Connectivity.isConnectedToInternet, perform: { _ in
             if Connectivity.isConnectedToInternet {
                 DispatchQueue.main.async {
-                    FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
+                    FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, trips: $trips, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
                 }
             }
         })
@@ -89,7 +92,8 @@ struct SplitterView: View {
             }
             if Connectivity.isConnectedToInternet {
                 DispatchQueue.main.async {
-                    FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
+                    initialFetch()
+                    FavoritesScreen(vehicles: $vehicles, linii: $linii, routes: $routes, trips: $trips, selectedTab: $selectedTab, orareSelection: $orarePicker).loadView()
                 }
                 Task {
                     do {
@@ -181,6 +185,40 @@ struct SplitterView: View {
                             uploadTasks.forEach { $0.cancel() }
                             downloadTasks.forEach { $0.cancel() }
                         })
+            }
+        }
+    }
+    
+    func initialFetch() {
+        Task(priority: .high) {
+            do {
+                trips = try await RequestManager().getTrips()
+            } catch let err{
+                print(err)
+            }
+        }
+        
+        Task(priority: .high) {
+            do {
+                routes = try await RequestManager().getRoutes()
+            } catch let err {
+                print(err)
+            }
+        }
+        
+        Task(priority: .high) {
+            do {
+                stops = try await RequestManager().getStops()
+            } catch let err {
+                print(err)
+            }
+        }
+        
+        Task(priority: .high) {
+            do {
+                stopTimes = try await RequestManager().getStopTimes()
+            } catch let err {
+                print(err)
             }
         }
     }

@@ -13,6 +13,7 @@ struct MapView: View {
     @Binding var vehicles : [Vehicle]
     @Binding var linii : [Linii]
     @Binding var routes : [Route]
+    @Binding var trips : [Trip]
     @Binding var selectedTab : Int
     @Binding var orareSelection : String
     @State var busView : Bool = true
@@ -211,7 +212,7 @@ struct MapView: View {
                                         }
                                     }
                                 } else {
-                                    FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
+                                    FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, trips: $trips, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
                                 }
                             } label: {
                                 Image(systemName: busView ? "bus.fill" : "door.garage.open")
@@ -401,7 +402,7 @@ struct MapView: View {
         })
         .onAppear() {
             region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.lastLocation?.coordinate.latitude ?? 46.7712, longitude: userLocation.lastLocation?.coordinate.longitude ?? 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
+            FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, trips: $trips, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
             favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String]()
             DispatchQueue.main.async {
                 for elem in vehicles {
@@ -426,7 +427,7 @@ struct MapView: View {
             selectedDetent = .medium
             directionSteps.removeAll()
             annotations.removeAll()
-            FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
+            FavoritesScreen.init(vehicles: $vehicles, linii: $linii, routes: $routes, trips: $trips, selectedTab: $selectedTab, orareSelection: $orareSelection, pickerSelection: 0).loadView()
         }
     }
     
