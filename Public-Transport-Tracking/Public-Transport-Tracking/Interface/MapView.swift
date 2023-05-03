@@ -44,7 +44,7 @@ struct MapView: View {
     @State var selectedDetent : PresentationDetent = .medium
     @State var directionSteps = [DecodedSteps]()
     @State private var showDirectionsScreen = false
-    
+    @State private var showDonationsScreen = false
     @EnvironmentObject var userViewModel : UserViewModel
     
     var body: some View {
@@ -221,6 +221,17 @@ struct MapView: View {
                                     .background(Color(UIColor.systemGray4))
                                     .cornerRadius(5)
                             }
+                            
+                            Button{
+                                showDonationsScreen = true
+                            } label: {
+                                Image(systemName: "cup.and.saucer.fill")
+                                    .padding(10)
+                                    .font(.title3)
+                                    .foregroundColor(.white)
+                                    .background(Color(UIColor.systemGray4))
+                                    .cornerRadius(5)
+                            }
                         }
                     }
                     .padding(.trailing, 20)
@@ -384,6 +395,9 @@ struct MapView: View {
         .onChange(of: showDirectionsScreen, perform: { _ in
             showBusDetail = false
             showStationDetail = false
+        })
+        .sheet(isPresented: $showDonationsScreen, onDismiss: {}, content: {
+            DonationsView().presentationDetents([.medium])
         })
         .onAppear() {
             region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.lastLocation?.coordinate.latitude ?? 46.7712, longitude: userLocation.lastLocation?.coordinate.longitude ?? 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))

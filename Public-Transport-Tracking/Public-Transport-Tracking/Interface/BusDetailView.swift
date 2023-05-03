@@ -21,6 +21,7 @@ struct BusDetailView: View {
     
     let vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
     @State var favorites = [String()]
+    @EnvironmentObject var userViewModel : UserViewModel
     var body: some View {
         VStack{
             HStack{
@@ -116,11 +117,11 @@ struct BusDetailView: View {
                     }
                     UserDefaults().set(favorites, forKey: Constants.USER_DEFAULTS_FAVORITES)
                 } label: {
-                    Image(systemName: favorites.contains(vehicle?.routeShortName ?? "") ? "heart.fill" : "heart")
+                    Image(systemName: favorites.contains(vehicle?.tripId ?? "") ? "heart.fill" : !userViewModel.isSubscriptionAcitve && favorites.count > 2 ? "heart.slash" : "heart")
                         .font(.title2)
                         .foregroundColor(.white)
                         .padding([.leading, .trailing])
-                }
+                }.disabled(!favorites.contains(vehicle?.tripId ?? "") && !userViewModel.isSubscriptionAcitve && favorites.count > 2)
             }
 #endif
         }

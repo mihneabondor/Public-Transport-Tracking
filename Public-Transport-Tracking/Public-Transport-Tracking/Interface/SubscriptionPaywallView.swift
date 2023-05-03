@@ -36,7 +36,22 @@ struct SubscriptionPaywallView: View {
             }.padding()
             
             HStack{
-                Image(systemName: "heart.fill")
+                Image(systemName: "plus.square.fill")
+                    .font(.title)
+                    .foregroundColor(.purple)
+                    .padding()
+                VStack{
+                    Text("Mai multe favorite")
+                        .bold()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("Poți adăuga mai mult de 2 vehicule la favorite")
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }.padding()
+            
+            HStack{
+                Image(systemName: "bolt.heart.fill")
                     .font(.title)
                     .foregroundColor(.purple)
                     .padding()
@@ -64,6 +79,16 @@ struct SubscriptionPaywallView: View {
                 }
             }
             
+            Button("Alege tu cu cât să contribui") {
+                if let url = URL(string: "https://buymeacoffee.com/mihneabondor") {
+                    UIApplication.shared.open(url)
+                }
+            }.buttonStyle(.borderedProminent)
+            
+            Text("Veniturile din optiunea Buy Me a Coffee sunt considerate donații și nu aduc beneficiile menționate mai sus. Acestea sunt strict pentru contribuirea la dezvoltarea Busify. Abonamentele și donațiile sunt supuse [termenilor și condițiilor Busify](https://busify-cluj.web.app/termeni).")
+                .padding([.bottom, .leading, .trailing])
+                .font(.footnote)
+                .foregroundColor(.secondary)
             Spacer()
         }
         .onAppear {

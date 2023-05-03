@@ -34,6 +34,8 @@ struct FavoritesScreen: View {
     @State private var loading = false
     
     @State private var userNearestStop = ""
+    
+    @EnvironmentObject var userViewModel : UserViewModel
     var body: some View {
         NavigationView {
             VStack{
@@ -117,11 +119,11 @@ struct FavoritesScreen: View {
                                         }
                                         UserDefaults().set(favorites, forKey: Constants.USER_DEFAULTS_FAVORITES)
                                     } label: {
-                                        Image(systemName: favorites.contains(item.tripId) ? "heart.fill" : "heart")
+                                        Image(systemName: favorites.contains(item.tripId) ? "heart.fill" : !userViewModel.isSubscriptionAcitve && favorites.count > 2 ? "heart.slash" : "heart")
                                             .font(.title2)
                                             .foregroundColor(.white)
                                             .padding([.leading, .trailing])
-                                    }
+                                    }.disabled(!favorites.contains(item.tripId) && !userViewModel.isSubscriptionAcitve && favorites.count > 2)
                                 }.padding(.bottom)
                                 
                                 if item.showMenu {
@@ -329,12 +331,7 @@ struct FavoritesScreen: View {
                 print("\n")
                 vehicles[i].routeLongName = routes.first(where: {$0.routeId == vehicles[i].routeId})?.routeLongName
                 vehicles[i].statie = closestStopName
-                
-                if vehicles[i].tripId?.components(separatedBy: "_").last ?? "" == "1" {
-                    vehicles[i].headsign = vehicles[i].routeLongName?.components(separatedBy: " - ").last
-                } else {
-                    vehicles[i].headsign = vehicles[i].routeLongName?.components(separatedBy: " - ").first
-                }
+                vehicles[i].headsign = trips.first(where: {$0.tripId == vehicles[i].tripId})?.tripHeadsign ?? ""
                 
                 let indexCoresp = linii.firstIndex(where: {$0.tripId == vehicles[i].routeShortName})
                 
