@@ -79,11 +79,9 @@ struct SubscriptionPaywallView: View {
                 }
             }
             
-            Button("Alege tu cu cât să contribui") {
-                if let url = URL(string: "https://buymeacoffee.com/mihneabondor") {
-                    UIApplication.shared.open(url)
-                }
-            }.buttonStyle(.borderedProminent)
+            Button("Restituie abonamentul") {
+                Purchases.shared.restorePurchases { customerInfo, error in}
+            }.buttonStyle(.bordered)
             
             Text("Veniturile din optiunea Buy Me a Coffee sunt considerate donații și nu aduc beneficiile menționate mai sus. Acestea sunt strict pentru contribuirea la dezvoltarea Busify. Abonamentele și donațiile sunt supuse [termenilor și condițiilor Busify](https://busify-cluj.web.app/termeni).")
                 .padding([.bottom, .leading, .trailing])

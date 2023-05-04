@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import RevenueCat
 
 struct DonationsView: View {
+    @State var currentOffering : Offering?
+    @State var selectedOffering : Package?
     var body: some View {
         VStack {
             Spacer()
@@ -17,15 +20,33 @@ struct DonationsView: View {
                 .padding()
             Text("Alege tu cât să contribui la costurile de întreținere ale serverelor pe care rulează Busify.")
                 .padding()
-            Button("Donează") {
-                if let url = URL(string: "https://buymeacoffee.com/mihneabondor") {
-                    UIApplication.shared.open(url)
+
+            if currentOffering != nil {
+                HStack{
+                    ForEach(currentOffering!.availablePackages) {pkg in
+                        Button(pkg.localizedPriceString) {
+                            Purchases.shared.purchase(package: pkg) { transaction, customerInfo, err, userCancelled in
+                                if customerInfo?.entitlements.all["donations"]?.isActive == true {}
+                            }
+                        }.buttonStyle(.bordered).padding(5)
+                    }
                 }
-            }.buttonStyle(.borderedProminent)
+            }
             Spacer()
             Text("Abonamentele și donațiile sunt supuse [termenilor și condițiilor Busify](https://busify-cluj.web.app/termeni).")
                 .font(.footnote)
                 .foregroundColor(.secondary)
+        }
+        .onAppear {
+            Purchases.shared.getOfferings { offerings, err in
+                if let offer = offerings?.all , err == nil {
+                    if offer.keys.contains("donations") {
+                        currentOffering = Array(offer.values).first!
+                        print(currentOffering!.id)
+//                        selectedOffering = currentOffering!.availablePackages.first!
+                    }
+                }
+            }
         }
     }
 }
