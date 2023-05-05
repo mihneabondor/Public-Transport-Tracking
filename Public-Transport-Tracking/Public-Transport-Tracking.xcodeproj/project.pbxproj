@@ -636,7 +636,7 @@
 				CODE_SIGN_ENTITLEMENTS = BusifyClip/BusifyClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"BusifyClip/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;
@@ -679,7 +679,7 @@
 				CODE_SIGN_ENTITLEMENTS = BusifyClip/BusifyClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"BusifyClip/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;
@@ -836,7 +836,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Public Transport Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Public-Transport-Tracking/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;
@@ -877,7 +877,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Public Transport Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Public-Transport-Tracking/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;

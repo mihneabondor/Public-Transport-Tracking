@@ -43,7 +43,7 @@ struct DonationsView: View {
                 ProgressView()
             }
             Spacer()
-            Text("Abonamentele și donațiile sunt supuse [termenilor și condițiilor Busify](https://busify-cluj.web.app/termeni).")
+            Text("Abonamentele și donațiile sunt supuse [termenilor, condițiilor și politica de confidențialitate Busify](https://busify-cluj.web.app/termeni).")
                 .font(.footnote)
                 .foregroundColor(.secondary)
         }
