@@ -11,6 +11,7 @@ import RevenueCat
 struct DonationsView: View {
     @State var currentOffering : Offering?
     @State var selectedOffering : Package?
+    @State private var isLoading = false
     var body: some View {
         VStack {
             Spacer()
@@ -25,12 +26,21 @@ struct DonationsView: View {
                 HStack{
                     ForEach(currentOffering!.availablePackages) {pkg in
                         Button(pkg.localizedPriceString) {
+                            isLoading = true
                             Purchases.shared.purchase(package: pkg) { transaction, customerInfo, err, userCancelled in
-                                if customerInfo?.entitlements.all["donations"]?.isActive == true {}
+                                if customerInfo?.entitlements.all["donations"]?.isActive == true {
+                                    isLoading = false
+                                }
+                                if userCancelled {
+                                    isLoading = false
+                                }
                             }
                         }.buttonStyle(.bordered).padding(5)
                     }
                 }
+            }
+            if isLoading {
+                ProgressView()
             }
             Spacer()
             Text("Abonamentele și donațiile sunt supuse [termenilor și condițiilor Busify](https://busify-cluj.web.app/termeni).")
@@ -40,10 +50,11 @@ struct DonationsView: View {
         .onAppear {
             Purchases.shared.getOfferings { offerings, err in
                 if let offer = offerings?.all , err == nil {
-                    if offer.keys.contains("donations") {
-                        currentOffering = Array(offer.values).first!
-                        print(currentOffering!.id)
-//                        selectedOffering = currentOffering!.availablePackages.first!
+                    for elem in offer {
+                        if elem.key.contains("donations") {
+                            currentOffering = elem.value
+                            print(elem)
+                        }
                     }
                 }
             }

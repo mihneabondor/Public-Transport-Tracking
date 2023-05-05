@@ -10,6 +10,7 @@ import RevenueCat
 
 struct SubscriptionPaywallView: View {
     @State var currentOffering : Offering?
+    @State private var isLoading = false
     var body: some View {
         VStack {
             Text("Premium")
@@ -69,10 +70,14 @@ struct SubscriptionPaywallView: View {
             
             if currentOffering != nil {
                 ForEach(currentOffering!.availablePackages) {pkg in
-                    Button("\(pkg.storeProduct.subscriptionPeriod!.periodTitle) \(pkg.storeProduct.localizedPriceString)") {
+                    Button(isLoading ? "Se încarcă..." : "\(pkg.storeProduct.subscriptionPeriod!.periodTitle) \(pkg.storeProduct.localizedPriceString)") {
+                        isLoading = true
                         Purchases.shared.purchase(package: pkg) { transaction, customerInfo, err, userCancelled in
                             if customerInfo?.entitlements.all["premium"]?.isActive == true {
-                                
+                                isLoading = false
+                            }
+                            if userCancelled {
+                                isLoading = false
                             }
                         }
                     }.buttonStyle(.borderedProminent)
