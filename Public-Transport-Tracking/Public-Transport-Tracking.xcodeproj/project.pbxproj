@@ -47,6 +47,8 @@
 		D779FFE429E9788A00DF3AB8 /* Shapes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F429E009D10021E66B /* Shapes.txt */; };
 		D779FFE529E9788A00DF3AB8 /* Trips.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F629E00E2F0021E66B /* Trips.txt */; };
 		D779FFE629E9788A00DF3AB8 /* StopTimes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F829E020800021E66B /* StopTimes.txt */; };
+		D77B96E42A07F5CB005C565E /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77B96E32A07F5CB005C565E /* MotionManager.swift */; };
+		D77B96E52A07F5CB005C565E /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77B96E32A07F5CB005C565E /* MotionManager.swift */; };
 		D77DA2682A02C079009E56BA /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78DE7812A00327000983F24 /* UserViewModel.swift */; };
 		D77DA2692A02C081009E56BA /* SubscriptionPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78DE77F2A00288100983F24 /* SubscriptionPaywallView.swift */; };
 		D77DA26C2A02C104009E56BA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7129A2529FC2B11002A690B /* Extensions.swift */; };
@@ -148,6 +150,7 @@
 		D779FFC829E96C6800DF3AB8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D779FFCA29E96C6800DF3AB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D779FFCB29E96C6800DF3AB8 /* BusifyClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BusifyClip.entitlements; sourceTree = "<group>"; };
+		D77B96E32A07F5CB005C565E /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		D77DA2742A02C535009E56BA /* DonationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationsView.swift; sourceTree = "<group>"; };
 		D784169929E49B9A009F4F2C /* ComunicateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComunicateView.swift; sourceTree = "<group>"; };
 		D78DE77B2A00228500983F24 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -302,6 +305,7 @@
 				D7361C2129DB2D3B006F78D2 /* Structs.swift */,
 				D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */,
 				D7129A2529FC2B11002A690B /* Extensions.swift */,
+				D77B96E32A07F5CB005C565E /* MotionManager.swift */,
 			);
 			path = "Public-Transport-Tracking";
 			sourceTree = "<group>";
@@ -556,6 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D77DA2682A02C079009E56BA /* UserViewModel.swift in Sources */,
+				D77B96E52A07F5CB005C565E /* MotionManager.swift in Sources */,
 				D779FFD429E9758700DF3AB8 /* BusCalculations.swift in Sources */,
 				D779FFDF29E976BF00DF3AB8 /* StationView.swift in Sources */,
 				D779FFD329E9758700DF3AB8 /* Structs.swift in Sources */,
@@ -587,6 +592,7 @@
 				D77DA2752A02C535009E56BA /* DonationsView.swift in Sources */,
 				D78DE7802A00288100983F24 /* SubscriptionPaywallView.swift in Sources */,
 				D7AE9A3429E1A452008CE1C0 /* BusCalculations.swift in Sources */,
+				D77B96E42A07F5CB005C565E /* MotionManager.swift in Sources */,
 				D78DE7822A00327000983F24 /* UserViewModel.swift in Sources */,
 				D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */,
 				D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */,

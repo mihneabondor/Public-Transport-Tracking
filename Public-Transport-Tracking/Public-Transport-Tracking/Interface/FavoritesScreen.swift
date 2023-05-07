@@ -278,8 +278,6 @@ struct FavoritesScreen: View {
             var newVehicles = [Vehicle]()
             do {
                 newVehicles = try await RequestManager().getVehicles()
-//                trips = try await RequestManager().getTrips()
-//                routes = try await RequestManager().getRoutes()
             } catch let err {
                 print(err)
             }

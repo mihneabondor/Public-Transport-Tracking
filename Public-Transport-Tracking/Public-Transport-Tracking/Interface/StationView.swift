@@ -17,6 +17,8 @@ struct StationView: View {
     
     @State private var filteredVehicles = [Vehicle]()
     @Binding var details : [StationDetails]
+    
+    @StateObject private var motion = MotionManager()
     var body: some View {
         VStack{
             HStack{
@@ -66,6 +68,7 @@ struct StationView: View {
                 .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/4)
                 .cornerRadius(20)
                 .foregroundColor(Color(UIColor.systemGray4))
+                .shadow(color: .black, radius: 3, x: motion.x * 50, y: motion.y * 50)
                 .padding()
         }
         .preferredColorScheme(.dark)

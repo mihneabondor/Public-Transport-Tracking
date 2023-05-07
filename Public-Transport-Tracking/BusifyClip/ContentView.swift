@@ -64,11 +64,12 @@ struct ContentView: View {
                                     .bold()
                                     .font(.footnote)
                                     .foregroundColor(.white)
-                            }
+                            }.opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.6)
                             .background (
                                 Rectangle()
                                     .frame(width: 35, height: 40)
                                     .foregroundColor(favorites.contains(location.vehicle?.routeShortName ?? "") ? .indigo : .purple)
+                                    .opacity(location.vehicle?.userBetweenVehicleAndDestination == true ? 1 : 0.6)
                                     .cornerRadius(5)
                             )
                         }
@@ -95,7 +96,7 @@ struct ContentView: View {
                         }
                     }
                 }
-            }).edgesIgnoringSafeArea(.top)
+            }).edgesIgnoringSafeArea(.top).tint(.purple)
             
             VStack{
                 HStack{
@@ -262,6 +263,43 @@ struct ContentView: View {
                     }
                 }
             }
+            Task {
+                var stops = [Statie]()
+                do {
+                    stops = try await RequestManager().getStops()
+                } catch let err {
+                    print(err)
+                }
+                
+                stops = stops.sorted(by: {stop1, stop2 in
+                    let stopCoord1 = CLLocation(latitude: stop1.lat ?? 0, longitude: stop1.long ?? 0)
+                    let stopCoord2 = CLLocation(latitude: stop2.lat ?? 0, longitude: stop2.long ?? 0)
+                    
+                    let distance1 = (location.lastLocation?.distance(from: stopCoord1) ?? 0) / 1000
+                    let distance2 = (location.lastLocation?.distance(from: stopCoord2) ?? 0) / 1000
+                    return distance1 < distance2
+                })
+                
+                let nearestStop = stops[0]
+                var stopTimes = [StopTime]()
+                do {
+                    stopTimes = try await RequestManager().getStopTimes()
+                } catch let err {
+                    print(err)
+                }
+                
+                DispatchQueue.main.async {
+                    for i in 0..<vehicles.count {
+                        let vehicleStopTimes = stopTimes.filter({$0.tripId == vehicles[i].tripId})
+                        let stopSqRelativeToUser = vehicleStopTimes.first(where: {Int($0.stopId ?? "0") == nearestStop.stopId})?.sq
+                        let currentStopId = stops.first(where: {$0.stopName == vehicles[i].statie})?.stopId
+                        let stopSqCurrent = vehicleStopTimes.first(where: {Int($0.stopId ?? "0") == currentStopId})?.sq
+                        if vehicleStopTimes.contains(where: {Int($0.stopId ?? "0") == nearestStop.stopId}) && stopSqCurrent ?? 0 <= stopSqRelativeToUser ?? 0{
+                            vehicles[i].userBetweenVehicleAndDestination = true
+                        }
+                    }
+                }
+            }
         }
         .onChange(of: location.locationStatus) {_ in
             if location.locationStatus == CLAuthorizationStatus.authorizedWhenInUse {
@@ -338,6 +376,7 @@ struct ContentView: View {
                         vehicles[i].routeShortName = routes[routes.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeShortName
                         vehicles[i].routeLongName = routes[routes.firstIndex{$0.routeId == vehicles[i].routeId} ?? 0].routeLongName
                         vehicles[i].statie = closestStopName
+                        vehicles[i].headsign = trips.first(where: {$0.tripId ?? "" == vehicles[i].tripId ?? ""})?.tripHeadsign
                         
                         linii[linii.count-1].vehicles.append(vehicles[i])
                     }

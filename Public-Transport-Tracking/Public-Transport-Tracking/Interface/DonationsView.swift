@@ -44,6 +44,7 @@ struct DonationsView: View {
             }
             Spacer()
             Text("Abonamentele și donațiile sunt supuse [termenilor, condițiilor și politica de confidențialitate Busify](https://busify-cluj.web.app/termeni).")
+                .padding()
                 .font(.footnote)
                 .foregroundColor(.secondary)
         }

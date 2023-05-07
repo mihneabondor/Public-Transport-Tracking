@@ -22,6 +22,8 @@ struct BusDetailView: View {
     let vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
     @State var favorites = [String()]
     @EnvironmentObject var userViewModel : UserViewModel
+    
+    @StateObject private var motion = MotionManager()
     var body: some View {
         VStack{
             HStack{
@@ -130,6 +132,7 @@ struct BusDetailView: View {
                 .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/3.6)
                 .cornerRadius(20)
                 .foregroundColor(Color(UIColor.systemGray4))
+                .shadow(color: .black, radius: 3, x: motion.x * 10, y: motion.y * 10)
                 .padding()
         }
         .onAppear() {
