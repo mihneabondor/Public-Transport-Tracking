@@ -14,13 +14,13 @@ struct BusDetailView: View {
     @Binding var closeView : Bool
     @Binding var selectedTab : Int
     @Binding var orareSelection : String
+    @Binding var favorites : [String]
     
     @StateObject var locationManager = LocationManager()
     
     @State var trips = [Trip]()
     
     let vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
-    @State var favorites = [String()]
     @EnvironmentObject var userViewModel : UserViewModel
     
     @StateObject private var motion = MotionManager()
@@ -105,7 +105,7 @@ struct BusDetailView: View {
                 Button {
                     UIApplication.shared.open(URL(string: "sms:open?addresses=7479&body=\(vehicle?.routeShortName ?? "")")!, options: [:], completionHandler: nil)
                 } label: {
-                    Image(systemName: "ticket.fill")
+                    Image(systemName: "ticket")
                         .font(.title2)
                         .foregroundColor(.white)
                         .padding([.leading, .trailing])
@@ -119,11 +119,11 @@ struct BusDetailView: View {
                     }
                     UserDefaults().set(favorites, forKey: Constants.USER_DEFAULTS_FAVORITES)
                 } label: {
-                    Image(systemName: favorites.contains(vehicle?.tripId ?? "") ? "heart.fill" : !userViewModel.isSubscriptionAcitve && favorites.count > 2 ? "heart.slash" : "heart")
+                    Image(systemName: favorites.contains(vehicle?.routeShortName ?? "") ? "heart.fill" : !userViewModel.isSubscriptionAcitve && favorites.count > 2 ? "heart.slash" : "heart")
                         .font(.title2)
                         .foregroundColor(.white)
                         .padding([.leading, .trailing])
-                }.disabled(!favorites.contains(vehicle?.tripId ?? "") && !userViewModel.isSubscriptionAcitve && favorites.count > 2)
+                }.disabled(!favorites.contains(vehicle?.routeShortName ?? "") && !userViewModel.isSubscriptionAcitve && favorites.count > 2)
             }
 #endif
         }
@@ -132,12 +132,12 @@ struct BusDetailView: View {
                 .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/3.6)
                 .cornerRadius(20)
                 .foregroundColor(Color(UIColor.systemGray4))
-                .shadow(color: .black, radius: 3, x: motion.x * 10, y: motion.y * 10)
+                .shadow(color: .black, radius: 3, x: -motion.x * 10, y: -motion.y * 10)
                 .padding()
         }
-        .onAppear() {
-            favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
-        }
+//        .onAppear() {
+//            favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
+//        }
         .onChange(of: vehicle, perform: { _ in
             DispatchQueue.main.async {
                 let vehicleLocation = CLLocation(latitude: vehicle?.latitude ?? 0, longitude: vehicle?.longitude ?? 0)

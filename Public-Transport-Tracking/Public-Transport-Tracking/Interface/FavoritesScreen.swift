@@ -11,11 +11,8 @@ import MapKit
 struct FavoritesScreen: View {
     @State var availableTypes = [Int]()
     @State var activeIndex = -1
+    @State var linii = [Linii]()
     
-    @Binding var vehicles : [Vehicle]
-    @Binding var linii : [Linii]
-    @Binding var routes : [Route]
-    @Binding var trips : [Trip]
     @Binding var selectedTab : Int
     @Binding var orareSelection : String
     
@@ -25,7 +22,6 @@ struct FavoritesScreen: View {
     var vehicleTypesImages = ["tram.fill", "train.side.front.car", "train.side.front.car", "bus.fill", "ferry.fill", "cablecar.fill", "helicopter.fill", "bus.fill", "", "", "", "bus.doubledecker.fill", "bus.fill"]
     
     @State var adrese = [String]()
-    public var timer = Timer.publish(every: 20, on: .main, in: .common).autoconnect()
     @State private var loadingFirstTime = true
     
     @State var pickerSelection = 1
@@ -36,6 +32,7 @@ struct FavoritesScreen: View {
     @State private var userNearestStop = ""
     
     @EnvironmentObject var userViewModel : UserViewModel
+    @EnvironmentObject var transitModel : TransitViewModel
     var body: some View {
         NavigationView {
             VStack{
@@ -66,8 +63,9 @@ struct FavoritesScreen: View {
                                 .multilineTextAlignment(.center)
                         }
                         
-                        if vehicles.isEmpty && Connectivity.isConnectedToInternet{
+                        if transitModel.vehicles.isEmpty && Connectivity.isConnectedToInternet{
                             ProgressView()
+                                .padding()
                         }
                         
                         ForEach(linii, id: \.self) {item in
@@ -104,7 +102,7 @@ struct FavoritesScreen: View {
                                     Button {
                                         UIApplication.shared.open(URL(string: "sms:open?addresses=7479&body=\(item.tripId)")!, options: [:], completionHandler: nil)
                                     } label: {
-                                        Image(systemName: "ticket.fill")
+                                        Image(systemName: "ticket")
                                             .font(.title2)
                                             .foregroundColor(.white)
                                             .padding([.leading, .trailing])
@@ -113,7 +111,7 @@ struct FavoritesScreen: View {
                                     Button {
                                         if favorites.contains(item.tripId) {
                                             favorites.removeAll(where: {$0 == item.tripId})
-                                            loadView()
+                                            createLines()
                                         } else {
                                             favorites.append(item.tripId)
                                         }
@@ -169,6 +167,7 @@ struct FavoritesScreen: View {
                                         }
                                         Divider()
                                             .background(Color.purple)
+                                            .transition(.move(edge: .top))
                                     }
                                 }
                             }.id(item)
@@ -189,153 +188,201 @@ struct FavoritesScreen: View {
                     }
                 }
             }
-            .onAppear() {
+            .onAppear {
                 pickerSelection = 1
-                favorites = UserDefaults.standard.value(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
-                for i in 0..<vehicles.count {
-                    if !availableTypes.contains(vehicles[i].vehicleType ?? 0) {
-                        availableTypes.append(vehicles[i].vehicleType!)
-                    }
-                }
-                linii = linii.filter({favorites.contains($0.tripId)})
             }
             .onChange(of: pickerSelection, perform: { newVal in
                 if newVal == 0 {
-                    loadView()
+                    linii.removeAll()
+                    createLines()
                 } else {
                     let favorites = UserDefaults.standard.value(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String?] ?? [String()]
                     linii = linii.filter({favorites.contains($0.tripId)})
                 }
             })
-            .onChange(of: linii, perform: { _ in
+            .onDisappear {
+                pickerSelection = 0
+            }
+            .onChange(of: transitModel.vehicles) { _ in
+//                linii.removeAll()
+                createLines()
+                
                 if pickerSelection == 1 {
                     let favorites = UserDefaults.standard.value(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String?] ?? [String()]
                     linii = linii.filter({favorites.contains($0.tripId)})
                 }
-                
-                for j in 0..<linii.count {
-                    for i in 0..<linii[j].vehicles.count {
-                        let vehicleLocation = CLLocation(latitude: linii[j].vehicles[i].latitude ?? 0, longitude: linii[j].vehicles[i].longitude ?? 0)
-                        let distance = (locationManager.lastLocation?.distance(from: vehicleLocation) ?? 0) / 1000
-                        
-                        if linii[j].vehicles[i].speed != 0 {
-                            linii[j].vehicles[i].eta = Int(floor(distance/Double((linii[j].vehicles[i].speed ?? 1))*60))
-                        }
-                        if linii[j].vehicles[i].speed == 0 || linii[j].vehicles[i].eta ?? 0 > 100 {
-                            linii[j].vehicles[i].eta = Int((distance/15)*60)
-                        }
-                    }
-                }
-                
-                Task {
-                    var stops = [Statie]()
-                    do {
-                        stops = try await RequestManager().getStops()
-                    } catch let err {
-                        print(err)
-                    }
-                    
-                    stops = stops.sorted(by: {stop1, stop2 in
-                        let stopCoord1 = CLLocation(latitude: stop1.lat ?? 0, longitude: stop1.long ?? 0)
-                        let stopCoord2 = CLLocation(latitude: stop2.lat ?? 0, longitude: stop2.long ?? 0)
-                        
-                        let distance1 = (locationManager.lastLocation?.distance(from: stopCoord1) ?? 0) / 1000
-                        let distance2 = (locationManager.lastLocation?.distance(from: stopCoord2) ?? 0) / 1000
-                        return distance1 < distance2
-                    })
-                    
-                    let nearestStop = stops[0]
-                    var stopTimes = [StopTime]()
-                    do {
-                        stopTimes = try await RequestManager().getStopTimes()
-                    } catch let err {
-                        print(err)
-                    }
-                    
-                    DispatchQueue.main.async {
-                        for i in 0..<vehicles.count {
-                            let vehicleStopTimes = stopTimes.filter({$0.tripId == vehicles[i].tripId})
-                            let stopSqRelativeToUser = vehicleStopTimes.first(where: {Int($0.stopId ?? "0") == nearestStop.stopId})?.sq
-                            let currentStopId = stops.first(where: {$0.stopName == vehicles[i].statie})?.stopId
-                            let stopSqCurrent = vehicleStopTimes.first(where: {Int($0.stopId ?? "0") == currentStopId})?.sq
-                            if vehicleStopTimes.contains(where: {Int($0.stopId ?? "0") == nearestStop.stopId}) && stopSqCurrent ?? 0 <= stopSqRelativeToUser ?? 0{
-                                vehicles[i].userBetweenVehicleAndDestination = true
-                            }
-                        }
-                    }
-                }
-            })
-            .onDisappear {
-                pickerSelection = 0
+
+//                for j in 0..<linii.count {
+//                    for i in 0..<linii[j].vehicles.count {
+//                        let vehicleLocation = CLLocation(latitude: linii[j].vehicles[i].latitude ?? 0, longitude: linii[j].vehicles[i].longitude ?? 0)
+//                        let distance = (locationManager.lastLocation?.distance(from: vehicleLocation) ?? 0) / 1000
+//
+//                        if linii[j].vehicles[i].speed != 0 {
+//                            linii[j].vehicles[i].eta = Int(floor(distance/Double((linii[j].vehicles[i].speed ?? 1))*60))
+//                        }
+//                        if linii[j].vehicles[i].speed == 0 || linii[j].vehicles[i].eta ?? 0 > 100 {
+//                            linii[j].vehicles[i].eta = Int((distance/15)*60)
+//                        }
+//                    }
+//                }
+//
+//                let stops = transitModel.stops.sorted(by: {stop1, stop2 in
+//                    let stopCoord1 = CLLocation(latitude: stop1.lat ?? 0, longitude: stop1.long ?? 0)
+//                    let stopCoord2 = CLLocation(latitude: stop2.lat ?? 0, longitude: stop2.long ?? 0)
+//
+//                    let distance1 = (locationManager.lastLocation?.distance(from: stopCoord1) ?? 0) / 1000
+//                    let distance2 = (locationManager.lastLocation?.distance(from: stopCoord2) ?? 0) / 1000
+//                    return distance1 < distance2
+//                })
+//
+//                let nearestStop = stops.first ?? nil
+//
+//                if let nearestStop = nearestStop {
+//                    DispatchQueue.main.async {
+//                        for i in 0..<transitModel.vehicles.count {
+//                            let vehicleStopTimes = transitModel.stopTimes.filter({$0.tripId == transitModel.vehicles[i].tripId})
+//                            let stopSqRelativeToUser = vehicleStopTimes.first(where: {Int($0.stopId ?? "0") == nearestStop.stopId})?.sq
+//                            let currentStopId = stops.first(where: {$0.stopName == transitModel.vehicles[i].statie})?.stopId
+//                            let stopSqCurrent = vehicleStopTimes.first(where: {Int($0.stopId ?? "0") == currentStopId})?.sq
+//                            if vehicleStopTimes.contains(where: {Int($0.stopId ?? "0") == nearestStop.stopId}) && stopSqCurrent ?? 0 <= stopSqRelativeToUser ?? 0{
+//                                transitModel.vehicles[i].userBetweenVehicleAndDestination = true
+//                            }
+//                        }
+//                    }
+//                }
             }
             .navigationTitle("Favorite")
             .searchable(text: $searchText, prompt: "Caută o linie")
         }
     }
     
-    func loadView() {
-        Task(priority: .high) {
-            var newVehicles = [Vehicle]()
-            do {
-                newVehicles = try await RequestManager().getVehicles()
-            } catch let err {
-                print(err)
-            }
-            
-            if newVehicles.isEmpty {
-                loadView()
-            }
-            
-            var stops = [Statie]()
-            do {
-                stops = try await RequestManager().getStops()
-            } catch let err {
-                print(err)
-            }
-            
-            var stopTimes = [StopTime]()
-            do {
-                stopTimes = try await RequestManager().getStopTimes()
-            } catch let err {
-                print(err)
-            }
-            
-            vehicles.removeAll()
-            vehicles = newVehicles
-            
-            vehicles = vehicles.filter({vehicle in vehicle.latitude != nil && vehicle.longitude != nil && vehicle.tripId != nil && vehicle.routeId != nil && routes.contains(where: {route in route.routeId == vehicle.routeId})})
-            
-            linii.removeAll()
+    func createLines() {
+        if linii.isEmpty {
             let constantLinii = Constants.linii
             for elem in constantLinii {
                 linii.append(Linii(tripId: elem, vehicles: [Vehicle](), favorite: false))
             }
             
-            for i in 0..<vehicles.count {
-                var closestStopName = "", minimumDistance = 100.0
-                let vehicleSpecificStopTime = stopTimes.filter({$0.tripId == vehicles[i].tripId})
-                for k in 0..<vehicleSpecificStopTime.count {
-                    let stopTime = vehicleSpecificStopTime[k]
-                    let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
-                    let stopLocation = CLLocation(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0)
-                    let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
-                    let distance = vehicleLocation.distance(from: stopLocation) / 1000
-                    if minimumDistance > distance {
-                        minimumDistance = distance
-                        closestStopName = stop?.stopName ?? ""
+            for i in 0..<transitModel.vehicles.count {
+                let indexCoresp = linii.firstIndex(where: {$0.tripId == transitModel.vehicles[i].routeShortName})
+                if let indexCoresp = indexCoresp {
+                    linii[indexCoresp].vehicles.append(transitModel.vehicles[i])
+                }
+            }
+        } else {
+            for i in 0..<linii.count {
+                for j in 0..<linii[i].vehicles.count {
+                    let correspondingVehicle = transitModel.vehicles.first(where: {$0.id ?? 0 == linii[i].vehicles[j].id ?? 0}) ?? nil
+                    if let correspondingVehicle = correspondingVehicle {
+                        linii[i].vehicles[j] = correspondingVehicle
                     }
                 }
-                vehicles[i].routeShortName = routes.first(where: {$0.routeId == vehicles[i].routeId})?.routeShortName
-                vehicles[i].routeLongName = routes.first(where: {$0.routeId == vehicles[i].routeId})?.routeLongName
-                vehicles[i].statie = closestStopName
-                vehicles[i].headsign = trips.first(where: {$0.tripId == vehicles[i].tripId})?.tripHeadsign ?? "-"
-                
-                let indexCoresp = linii.firstIndex(where: {$0.tripId == vehicles[i].routeShortName})
-                
-                if let indexCoresp = indexCoresp {
-                    linii[indexCoresp].vehicles.append(vehicles[i])
+            }
+        }
+        
+        for j in 0..<linii.count {
+            for i in 0..<linii[j].vehicles.count {
+                let vehicleLocation = CLLocation(latitude: linii[j].vehicles[i].latitude ?? 0, longitude: linii[j].vehicles[i].longitude ?? 0)
+                let distance = (locationManager.lastLocation?.distance(from: vehicleLocation) ?? 0) / 1000
+
+                if linii[j].vehicles[i].speed != 0 {
+                    linii[j].vehicles[i].eta = Int(floor(distance/Double((linii[j].vehicles[i].speed ?? 1))*60))
+                }
+                if linii[j].vehicles[i].speed == 0 || linii[j].vehicles[i].eta ?? 0 > 100 {
+                    linii[j].vehicles[i].eta = Int((distance/15)*60)
+                }
+            }
+        }
+        
+        let stops = transitModel.stops.sorted(by: {stop1, stop2 in
+            let stopCoord1 = CLLocation(latitude: stop1.lat ?? 0, longitude: stop1.long ?? 0)
+            let stopCoord2 = CLLocation(latitude: stop2.lat ?? 0, longitude: stop2.long ?? 0)
+
+            let distance1 = (locationManager.lastLocation?.distance(from: stopCoord1) ?? 0) / 1000
+            let distance2 = (locationManager.lastLocation?.distance(from: stopCoord2) ?? 0) / 1000
+            return distance1 < distance2
+        })
+
+        let nearestStop = stops.first ?? nil
+
+        if let nearestStop = nearestStop {
+            DispatchQueue.main.async {
+                for i in 0..<transitModel.vehicles.count {
+                    let vehicleStopTimes = transitModel.stopTimes.filter({$0.tripId == transitModel.vehicles[i].tripId})
+                    let stopSqRelativeToUser = vehicleStopTimes.first(where: {Int($0.stopId ?? "0") == nearestStop.stopId})?.sq
+                    let currentStopId = stops.first(where: {$0.stopName == transitModel.vehicles[i].statie})?.stopId
+                    let stopSqCurrent = vehicleStopTimes.first(where: {Int($0.stopId ?? "0") == currentStopId})?.sq
+                    if vehicleStopTimes.contains(where: {Int($0.stopId ?? "0") == nearestStop.stopId}) && stopSqCurrent ?? 0 <= stopSqRelativeToUser ?? 0{
+                        transitModel.vehicles[i].userBetweenVehicleAndDestination = true
+                    }
                 }
             }
         }
     }
+    
+//    func loadView() {
+//        Task(priority: .high) {
+//            var newVehicles = [Vehicle]()
+//            do {
+//                newVehicles = try await RequestManager().getVehicles()
+//            } catch let err {
+//                print(err)
+//            }
+//
+//            if newVehicles.isEmpty {
+//                loadView()
+//            }
+//
+//            var stops = [Statie]()
+//            do {
+//                stops = try await RequestManager().getStops()
+//            } catch let err {
+//                print(err)
+//            }
+//
+//            var stopTimes = [StopTime]()
+//            do {
+//                stopTimes = try await RequestManager().getStopTimes()
+//            } catch let err {
+//                print(err)
+//            }
+//
+//            vehicles.removeAll()
+//            vehicles = newVehicles
+//
+//            vehicles = vehicles.filter({vehicle in vehicle.latitude != nil && vehicle.longitude != nil && vehicle.tripId != nil && vehicle.routeId != nil && routes.contains(where: {route in route.routeId == vehicle.routeId})})
+//
+//            linii.removeAll()
+//            let constantLinii = Constants.linii
+//            for elem in constantLinii {
+//                linii.append(Linii(tripId: elem, vehicles: [Vehicle](), favorite: false))
+//            }
+//
+//            for i in 0..<vehicles.count {
+//                var closestStopName = "", minimumDistance = 100.0
+//                let vehicleSpecificStopTime = stopTimes.filter({$0.tripId == vehicles[i].tripId})
+//                for k in 0..<vehicleSpecificStopTime.count {
+//                    let stopTime = vehicleSpecificStopTime[k]
+//                    let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
+//                    let stopLocation = CLLocation(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0)
+//                    let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
+//                    let distance = vehicleLocation.distance(from: stopLocation) / 1000
+//                    if minimumDistance > distance {
+//                        minimumDistance = distance
+//                        closestStopName = stop?.stopName ?? ""
+//                    }
+//                }
+//                vehicles[i].routeShortName = routes.first(where: {$0.routeId == vehicles[i].routeId})?.routeShortName
+//                vehicles[i].routeLongName = routes.first(where: {$0.routeId == vehicles[i].routeId})?.routeLongName
+//                vehicles[i].statie = closestStopName
+//                vehicles[i].headsign = trips.first(where: {$0.tripId == vehicles[i].tripId})?.tripHeadsign ?? "-"
+//
+//                let indexCoresp = linii.firstIndex(where: {$0.tripId == vehicles[i].routeShortName})
+//
+//                if let indexCoresp = indexCoresp {
+//                    linii[indexCoresp].vehicles.append(vehicles[i])
+//                }
+//            }
+//        }
+//    }
 }

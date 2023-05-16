@@ -15,11 +15,28 @@ struct OrarIntermediarView: View {
     @Binding var selectedRoute : String
     @State private var activeNavigationView = false
     @State private var favorites = [String]()
+    
+    @State private var specialSchedule : SpecialSchedule?
+    @State private var showSpecialScheduleDetail = false
     var body: some View {
         NavigationStack{
             VStack{
                 Text(" ")
                 ScrollView{
+                    if specialSchedule?.text != nil && specialSchedule?.dateTo ?? Date() > Date() {
+                        VStack {
+                            Text("Orar special în efect")
+                                .bold()
+                            Text("Momentan vehiculele circulă pe un program diferit. Apasă pentru mai multe detalii.")
+                        }
+                        .padding()
+                        .background(Color(UIColor.systemGray4))
+                        .cornerRadius(10)
+                        .onTapGesture {
+                            showSpecialScheduleDetail.toggle()
+                        }
+                    }
+                    
                     LazyVGrid(columns: columns) {
                         ForEach(routes, id: \.self) { route in
                             if favorites.contains(route) {
@@ -64,6 +81,10 @@ struct OrarIntermediarView: View {
             .navigationTitle("Orare")
         }
         .preferredColorScheme(.dark)
+        .sheet(isPresented: $showSpecialScheduleDetail, content: {
+            SpecialScheduleDetailView(specialSchedule: specialSchedule ?? SpecialSchedule(motiv: nil, text: nil, to: nil))
+                .presentationDetents([.medium, .large])
+        })
         .onChange(of: selectedRoute) {_ in
             print(selectedRoute)
         }
@@ -73,6 +94,13 @@ struct OrarIntermediarView: View {
                 if selectedRoute != "" {
                     activeNavigationView = true
                     print("Da")
+                }
+            }
+            Task {
+                do {
+                    specialSchedule = try await RequestManager().getSpecialSchedule()
+                } catch let err {
+                    print(err)
                 }
             }
         }

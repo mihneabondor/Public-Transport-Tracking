@@ -11,6 +11,8 @@
 		D705AAFB29DE7413008AC068 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D705AAFA29DE7413008AC068 /* Marker.swift */; };
 		D7129A2629FC2B11002A690B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7129A2529FC2B11002A690B /* Extensions.swift */; };
 		D7129A2829FC2E55002A690B /* MapToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7129A2729FC2E55002A690B /* MapToolbar.swift */; };
+		D71684372A0EB5E4001E598E /* SpecialScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71684362A0EB5E4001E598E /* SpecialScheduleDetailView.swift */; };
+		D71684382A0EB5E4001E598E /* SpecialScheduleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71684362A0EB5E4001E598E /* SpecialScheduleDetailView.swift */; };
 		D72023F529E009D10021E66B /* Shapes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F429E009D10021E66B /* Shapes.txt */; };
 		D72023F729E00E2F0021E66B /* Trips.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F629E00E2F0021E66B /* Trips.txt */; };
 		D72023F929E020800021E66B /* StopTimes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D72023F829E020800021E66B /* StopTimes.txt */; };
@@ -64,6 +66,8 @@
 		D78DE77C2A00228500983F24 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78DE77B2A00228500983F24 /* StoreKit.framework */; };
 		D78DE7802A00288100983F24 /* SubscriptionPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78DE77F2A00288100983F24 /* SubscriptionPaywallView.swift */; };
 		D78DE7822A00327000983F24 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78DE7812A00327000983F24 /* UserViewModel.swift */; };
+		D7A1F1782A1348A9004CF09C /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A1F1772A1348A9004CF09C /* LaunchView.swift */; };
+		D7A1F1792A1348A9004CF09C /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A1F1772A1348A9004CF09C /* LaunchView.swift */; };
 		D7A966E329DF1C8A00005AB2 /* Routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D7A966E229DF1C8A00005AB2 /* Routes.txt */; };
 		D7ABA55529DAA28500CDA8DE /* Public_Transport_TrackingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA55429DAA28500CDA8DE /* Public_Transport_TrackingApp.swift */; };
 		D7ABA55929DAA28600CDA8DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7ABA55829DAA28600CDA8DE /* Assets.xcassets */; };
@@ -76,6 +80,8 @@
 		D7B4A19A29FFC300003AF5D4 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4A19929FFC300003AF5D4 /* NotificationService.swift */; };
 		D7B4A19E29FFC300003AF5D4 /* BusifyPushNotifications.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D7B4A19729FFC300003AF5D4 /* BusifyPushNotifications.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D7C8953629DC4D210090C97F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C8953529DC4D210090C97F /* LocationManager.swift */; };
+		D7CDD5AE2A1297E2001D3ED8 /* TransitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CDD5AD2A1297E2001D3ED8 /* TransitViewModel.swift */; };
+		D7CDD5AF2A1297E2001D3ED8 /* TransitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CDD5AD2A1297E2001D3ED8 /* TransitViewModel.swift */; };
 		D7F8259929DDF53400A09A2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F8259829DDF53400A09A2B /* MapView.swift */; };
 		D7FBAB6F29E1E84A00299635 /* BusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FBAB6E29E1E84A00299635 /* BusDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -129,6 +135,7 @@
 		D705AAFA29DE7413008AC068 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		D7129A2529FC2B11002A690B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D7129A2729FC2E55002A690B /* MapToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapToolbar.swift; sourceTree = "<group>"; };
+		D71684362A0EB5E4001E598E /* SpecialScheduleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialScheduleDetailView.swift; sourceTree = "<group>"; };
 		D72023F429E009D10021E66B /* Shapes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Shapes.txt; sourceTree = "<group>"; };
 		D72023F629E00E2F0021E66B /* Trips.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Trips.txt; sourceTree = "<group>"; };
 		D72023F829E020800021E66B /* StopTimes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = StopTimes.txt; sourceTree = "<group>"; };
@@ -156,6 +163,7 @@
 		D78DE77B2A00228500983F24 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D78DE77F2A00288100983F24 /* SubscriptionPaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPaywallView.swift; sourceTree = "<group>"; };
 		D78DE7812A00327000983F24 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		D7A1F1772A1348A9004CF09C /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		D7A966E229DF1C8A00005AB2 /* Routes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Routes.txt; sourceTree = "<group>"; };
 		D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Public Transport Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7ABA55429DAA28500CDA8DE /* Public_Transport_TrackingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Public_Transport_TrackingApp.swift; sourceTree = "<group>"; };
@@ -171,6 +179,7 @@
 		D7B4A1A329FFC477003AF5D4 /* BusifyPushNotifications.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BusifyPushNotifications.entitlements; sourceTree = "<group>"; };
 		D7C8953529DC4D210090C97F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D7C8953729DC4D8D0090C97F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Public-Transport-Tracking/Info.plist"; sourceTree = "<group>"; };
+		D7CDD5AD2A1297E2001D3ED8 /* TransitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewModel.swift; sourceTree = "<group>"; };
 		D7F8259829DDF53400A09A2B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D7FBAB6E29E1E84A00299635 /* BusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -306,6 +315,7 @@
 				D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */,
 				D7129A2529FC2B11002A690B /* Extensions.swift */,
 				D77B96E32A07F5CB005C565E /* MotionManager.swift */,
+				D7CDD5AD2A1297E2001D3ED8 /* TransitViewModel.swift */,
 			);
 			path = "Public-Transport-Tracking";
 			sourceTree = "<group>";
@@ -336,6 +346,8 @@
 				D78DE77F2A00288100983F24 /* SubscriptionPaywallView.swift */,
 				D78DE7812A00327000983F24 /* UserViewModel.swift */,
 				D77DA2742A02C535009E56BA /* DonationsView.swift */,
+				D71684362A0EB5E4001E598E /* SpecialScheduleDetailView.swift */,
+				D7A1F1772A1348A9004CF09C /* LaunchView.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -561,10 +573,13 @@
 			files = (
 				D77DA2682A02C079009E56BA /* UserViewModel.swift in Sources */,
 				D77B96E52A07F5CB005C565E /* MotionManager.swift in Sources */,
+				D7A1F1792A1348A9004CF09C /* LaunchView.swift in Sources */,
+				D7CDD5AF2A1297E2001D3ED8 /* TransitViewModel.swift in Sources */,
 				D779FFD429E9758700DF3AB8 /* BusCalculations.swift in Sources */,
 				D779FFDF29E976BF00DF3AB8 /* StationView.swift in Sources */,
 				D779FFD329E9758700DF3AB8 /* Structs.swift in Sources */,
 				D779FFD529E9758700DF3AB8 /* LocationManager.swift in Sources */,
+				D71684382A0EB5E4001E598E /* SpecialScheduleDetailView.swift in Sources */,
 				D77DA2692A02C081009E56BA /* SubscriptionPaywallView.swift in Sources */,
 				D779FFD629E9758700DF3AB8 /* RequestManager.swift in Sources */,
 				D77DA26C2A02C104009E56BA /* Extensions.swift in Sources */,
@@ -581,6 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7A1F1782A1348A9004CF09C /* LaunchView.swift in Sources */,
 				D7361C2229DB2D3B006F78D2 /* Structs.swift in Sources */,
 				D7F8259929DDF53400A09A2B /* MapView.swift in Sources */,
 				D7361C1029DAB3CF006F78D2 /* LoopingVideo.swift in Sources */,
@@ -598,6 +614,7 @@
 				D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */,
 				D7129A2829FC2E55002A690B /* MapToolbar.swift in Sources */,
 				D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */,
+				D7CDD5AE2A1297E2001D3ED8 /* TransitViewModel.swift in Sources */,
 				D73E579329E5D7160044A955 /* OrarIntermediarView.swift in Sources */,
 				D705AAFB29DE7413008AC068 /* Marker.swift in Sources */,
 				D72B525729E3F4700048AF1C /* OrareView.swift in Sources */,
@@ -605,6 +622,7 @@
 				D7ABA55529DAA28500CDA8DE /* Public_Transport_TrackingApp.swift in Sources */,
 				D72E343F29DDF121002974CE /* AddFavoriteLineView.swift in Sources */,
 				D7ABA56629DAA33600CDA8DE /* Constants.swift in Sources */,
+				D71684372A0EB5E4001E598E /* SpecialScheduleDetailView.swift in Sources */,
 				D7361C1629DAC50A006F78D2 /* SplitterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -642,7 +660,7 @@
 				CODE_SIGN_ENTITLEMENTS = BusifyClip/BusifyClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BusifyClip/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;
@@ -662,7 +680,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyClip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -685,7 +703,7 @@
 				CODE_SIGN_ENTITLEMENTS = BusifyClip/BusifyClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BusifyClip/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;
@@ -705,7 +723,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyClip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -842,7 +860,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Public Transport Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Public-Transport-Tracking/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;
@@ -852,7 +870,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Busify;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationUsageDescription = ETA;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ETA;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used for calculating the ETA, centering the map view and for marketing purposes (cannot be used to directly identify you).";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -862,7 +880,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -883,7 +901,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Public Transport Tracking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Public-Transport-Tracking/Preview Content\"";
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				ENABLE_PREVIEWS = YES;
@@ -893,7 +911,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Busify;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationUsageDescription = ETA;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ETA;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used for calculating the ETA, centering the map view and for marketing purposes (cannot be used to directly identify you).";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -903,7 +921,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -920,7 +938,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BusifyPushNotifications/BusifyPushNotifications.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -933,7 +951,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyPushNotifications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -948,7 +966,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BusifyPushNotifications/BusifyPushNotifications.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MTH43FS33M;
 				GCC_NO_COMMON_BLOCKS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -961,7 +979,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyPushNotifications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

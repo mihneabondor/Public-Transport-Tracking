@@ -138,4 +138,25 @@ class RequestManager {
         let responseData = try? DecodingManager().decodeDirections(jsonString: responseJson ?? "")
         return responseData ?? Directions(geocodedWaypoints: nil, routes: nil, status: nil)
     }
+    
+    func getSpecialSchedule() async throws -> SpecialSchedule {
+        let getRequest = AF.request("https://busify-cluj.web.app/in-app-news", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [])
+        var responseJson : String!
+        do {
+            responseJson = try await getRequest.serializingString().value
+        } catch let err{
+            print(err)
+        }
+        
+        var responseData = try? DecodingManager().decodeSpecialSchedule(jsonString: responseJson ?? "")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let formattedDate = dateFormatter.date(from: responseData?.to ?? "")
+        responseData?.dateTo = formattedDate
+        
+        let formattedText = responseData?.text?.replacingOccurrences(of: "/", with: "\n")
+        responseData?.text = formattedText
+        return responseData ?? SpecialSchedule(motiv: nil, text: nil, to: nil, dateTo: nil)
+    }
 }

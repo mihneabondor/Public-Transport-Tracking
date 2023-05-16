@@ -135,4 +135,19 @@ class DecodingManager {
         return directions
     }
     
+    public func decodeSpecialSchedule(jsonString: String) throws -> SpecialSchedule {
+        let jsonData = jsonString.data(using: .utf8)!
+        let decoder = JSONDecoder()
+        var specialSchedule : SpecialSchedule
+        
+        do {
+            specialSchedule = try decoder.decode(SpecialSchedule.self, from: jsonData)
+        } catch let err {
+            print(err)
+            throw err
+        }
+        
+        return specialSchedule
+    }
+    
 }

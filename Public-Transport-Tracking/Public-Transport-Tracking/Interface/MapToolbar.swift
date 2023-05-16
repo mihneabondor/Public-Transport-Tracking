@@ -13,8 +13,6 @@ struct MapToolbar: View {
     @Binding var region : MKCoordinateRegion
     @Binding var selectedDetent : PresentationDetent
     @Binding var annotations : [Annotation]
-    @Binding var vehicles : [Vehicle]
-    @Binding var stops : [Statie]
     @Binding var steps : [DecodedSteps]
     
     @State private var startText = ""
@@ -31,6 +29,7 @@ struct MapToolbar: View {
     @FocusState private var startFieldFocused : Bool
     @FocusState private var destFieldFocused : Bool
     
+    @EnvironmentObject var transitModel : TransitViewModel
     var body: some View {
         VStack {
             Text(" ")
@@ -297,8 +296,8 @@ struct MapToolbar: View {
     
     private func setAnnotations(steps : [DecodedSteps]) {
         annotations.removeAll()
-        let filteredVehicles = vehicles.filter({vehicle in steps.contains(where: {step in step.transitDetails?.line?.shortName?.contains(vehicle.routeShortName ?? "") == true})})
-        let filteredStops = stops.filter({stop in steps.contains(where: {step in step.htmlInstructions?.contains(stop.stopName ?? "") == true || step.transitDetails?.arrivalStop?.name?.contains(stop.stopName ?? "") == true})})
+        let filteredVehicles = transitModel.vehicles.filter({vehicle in steps.contains(where: {step in step.transitDetails?.line?.shortName?.contains(vehicle.routeShortName ?? "") == true})})
+        let filteredStops = transitModel.stops.filter({stop in steps.contains(where: {step in step.htmlInstructions?.contains(stop.stopName ?? "") == true || step.transitDetails?.arrivalStop?.name?.contains(stop.stopName ?? "") == true})})
         
         for filteredVehicle in filteredVehicles {
             let location = CLLocationCoordinate2D(latitude: filteredVehicle.latitude ?? 0, longitude: filteredVehicle.longitude ?? 0)

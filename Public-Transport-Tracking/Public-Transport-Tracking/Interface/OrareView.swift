@@ -16,6 +16,8 @@ struct OrareView: View {
     @State private var savedSchedule : Schedule?
     var body: some View {
             VStack{
+                Text(" ")
+                    .padding(UIScreen.main.bounds.height/20)
                 HStack{
                     Text("Orarul liniei ")
                         .font(.title2)
@@ -117,6 +119,7 @@ struct OrareView: View {
                 }.tabViewStyle(.page)
                 Spacer()
             }
+            .edgesIgnoringSafeArea(.top)
             .preferredColorScheme(.dark)
             .onChange(of: pickerSelection, perform: { _ in
                 Task {

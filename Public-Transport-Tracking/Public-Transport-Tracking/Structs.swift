@@ -377,3 +377,10 @@ enum CustomTravelMode: String, Codable {
 }
 
 struct JSONAny: Codable {}
+
+struct SpecialSchedule : Codable {
+    let motiv : String?
+    var text : String?
+    let to: String?
+    var dateTo: Date?
+}

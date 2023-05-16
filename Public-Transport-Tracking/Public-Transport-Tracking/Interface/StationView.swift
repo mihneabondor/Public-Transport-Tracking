@@ -13,12 +13,13 @@ struct StationView: View {
     @Binding var systemImage : String
     @Binding var closeView : Bool
     @Binding var stop : Statie
-    @Binding var vehicles : [Vehicle]
     
     @State private var filteredVehicles = [Vehicle]()
     @Binding var details : [StationDetails]
     
     @StateObject private var motion = MotionManager()
+    
+    @EnvironmentObject var transitModel : TransitViewModel
     var body: some View {
         VStack{
             HStack{
@@ -68,11 +69,11 @@ struct StationView: View {
                 .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/4)
                 .cornerRadius(20)
                 .foregroundColor(Color(UIColor.systemGray4))
-                .shadow(color: .black, radius: 3, x: motion.x * 50, y: motion.y * 50)
+                .shadow(color: .black, radius: 3, x: -motion.x * 10, y: -motion.y * 10)
                 .padding()
         }
         .preferredColorScheme(.dark)
-        .onChange(of: vehicles, perform: { _ in print("sdfopskfopdsjoid")
+        .onChange(of: transitModel.vehicles, perform: { _ in print("sdfopskfopdsjoid")
             loadDetails()})
         .onAppear {loadDetails()}
     }
@@ -96,7 +97,7 @@ struct StationView: View {
                 print(err)
             }
             let filteredRoutes = routes.filter({route in stopTimes.contains(where: {stopTime in Int((stopTime.tripId?.components(separatedBy: "_").first!)!)! == route.routeId})})
-            filteredVehicles = vehicles.filter({vehicle in filteredRoutes.contains(where: {route in route.routeShortName == vehicle.routeShortName})})
+            filteredVehicles = transitModel.vehicles.filter({vehicle in filteredRoutes.contains(where: {route in route.routeShortName == vehicle.routeShortName})})
             
             var stops = [Statie]()
             do {

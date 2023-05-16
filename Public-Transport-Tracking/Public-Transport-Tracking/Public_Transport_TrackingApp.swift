@@ -13,15 +13,27 @@ import RevenueCat
 struct Public_Transport_TrackingApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var userViewModel = UserViewModel()
+    @StateObject var transitViewModel = TransitViewModel()
+    
+    @State private var loadedFirstTime = false
     var body: some Scene {
         WindowGroup {
-            SplitterView()
-                .environmentObject(userViewModel)
+            if !loadedFirstTime && Connectivity.isConnectedToInternet {
+                LaunchView()
+                    .onChange(of: transitViewModel.vehicles) { _ in
+                        withAnimation {
+                            loadedFirstTime = true
+                        }
+                    }
+            } else {
+                SplitterView()
+                    .environmentObject(userViewModel)
+                    .environmentObject(transitViewModel)
+            }
         }
     }
     
     init() {
-        Purchases.logLevel = .debug
         Purchases.configure(withAPIKey: "appl_ProbKATZoesuBOEyOqQczGWXoYp")
     }
 }
@@ -29,7 +41,7 @@ struct Public_Transport_TrackingApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
        // Remove this method to stop OneSignal Debugging
-       OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
+//       OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
         
        OneSignal.initWithLaunchOptions(launchOptions)
        OneSignal.setAppId("85dc58eb-db58-4bb2-80b8-4330136ead93")
