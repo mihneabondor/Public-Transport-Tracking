@@ -9,7 +9,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     var unpublishedLocation : CLLocation?
     @Published var locationStatus: CLAuthorizationStatus?
     @Published var lastLocation: CLLocation?
-    @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 46.7712, longitude: 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    @Published var region : MKCoordinateRegion?
 
     override init() {
         super.init()
@@ -43,12 +43,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         lastLocation = location
         unpublishedLocation = location
-        
-        if !regionUpdatedFirstTime {
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            region = MKCoordinateRegion(center: center, span: span)
-            regionUpdatedFirstTime = true
-        }
+        regionUpdatedFirstTime = true
+//        if !regionUpdatedFirstTime {
+//            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+//            self.region = MKCoordinateRegion(center: center, span: span)
+//            regionUpdatedFirstTime = true
+//        }
     }
 }

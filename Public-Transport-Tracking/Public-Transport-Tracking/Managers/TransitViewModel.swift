@@ -8,7 +8,9 @@
 import Foundation
 import CoreLocation
 
-@MainActor class TransitViewModel : ObservableObject {
+
+@MainActor
+class TransitViewModel : ObservableObject {
     @Published var vehicles = [Vehicle]()
     @Published var trips = [Trip]()
     @Published var routes = [Route]()
@@ -19,15 +21,17 @@ import CoreLocation
     var timer : Timer?
     init() {
         if Connectivity.isConnectedToInternet {
-            Task(priority: .high) { @MainActor in
+            Task(priority: .high) {
                 await self.setup()
+                self.createAnnotations()
             }
-            timer = Timer.scheduledTimer(withTimeInterval: 20, repeats: true, block: { _ in
-                Task(priority: .high) { @MainActor in
+            timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true, block: { _ in
+                Task(priority: .high) {
                     await self.setup()
-                    while self.vehicles.isEmpty {
+                    while await self.vehicles.isEmpty {
                         await self.setup()
                     }
+                    await self.createAnnotations()
                 }
             })
         }
@@ -96,10 +100,9 @@ import CoreLocation
     }
     
     public func createAnnotations() {
-        DispatchQueue.main.async { @MainActor in
+        self.annotations.removeAll()
             for elem in self.vehicles {
                 self.annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
             }
-        }
     }
 }

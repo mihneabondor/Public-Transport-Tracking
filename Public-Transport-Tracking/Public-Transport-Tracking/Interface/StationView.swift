@@ -32,14 +32,15 @@ struct StationView: View {
                         .padding([.leading, .trailing, .top])
                 }
                 Text(statie)
-                    .padding([.trailing, .top])
                     .bold()
+                    .padding([.trailing, .top])
                 Spacer()
                 
                 Button {
                     withAnimation {
                         closeView.toggle()
                     }
+                    details.removeAll()
                 } label: {
                     Image(systemName: "xmark")
                         .foregroundColor(.gray)
@@ -58,7 +59,7 @@ struct StationView: View {
                         Spacer()
                         Text("\(detail.stationETA) min")
                             .padding([.leading, .trailing])
-                    }.backgroundStyle(index%2 == 0 ? Color(UIColor.systemGray3) : .clear)
+                    }
                     Divider()
                 }
             }
@@ -73,7 +74,7 @@ struct StationView: View {
                 .padding()
         }
         .preferredColorScheme(.dark)
-        .onChange(of: transitModel.vehicles, perform: { _ in print("sdfopskfopdsjoid")
+        .onChange(of: transitModel.vehicles, perform: { _ in
             loadDetails()})
         .onAppear {loadDetails()}
     }

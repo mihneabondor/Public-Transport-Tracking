@@ -13,8 +13,8 @@ struct SpecialScheduleDetailView: View {
         ScrollView{
             VStack {
                 Text("Orar special - \(specialSchedule.motiv ?? "")")
-                    .padding(.top)
                     .bold()
+                    .padding(.top)
                     .font(.title3)
                 Text(specialSchedule.text ?? "")
                     .padding()
@@ -30,6 +30,6 @@ struct SpecialScheduleDetailView: View {
 
 struct SpecialScheduleDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SpecialScheduleDetailView(specialSchedule: SpecialSchedule(motiv: nil, text: nil, to: nil))
+        SpecialScheduleDetailView(specialSchedule: SpecialSchedule(motiv: nil, text: nil, from: nil, to: nil))
     }
 }

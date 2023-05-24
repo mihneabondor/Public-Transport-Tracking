@@ -27,6 +27,7 @@
 		D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */; };
 		D73E579329E5D7160044A955 /* OrarIntermediarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E579229E5D7160044A955 /* OrarIntermediarView.swift */; };
 		D74065D929E81E0200E1E3AF /* SSToastMessage in Frameworks */ = {isa = PBXBuildFile; productRef = D74065D829E81E0200E1E3AF /* SSToastMessage */; };
+		D74922CD2A14B65400A6A56F /* Map in Frameworks */ = {isa = PBXBuildFile; productRef = D74922CC2A14B65400A6A56F /* Map */; };
 		D762021929E068870061A73A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762021829E068870061A73A /* StationView.swift */; };
 		D778901C29DB56C200044D10 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D778901B29DB56C200044D10 /* Alamofire */; };
 		D779FFC229E96C6700DF3AB8 /* BusifyClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779FFC129E96C6700DF3AB8 /* BusifyClipApp.swift */; };
@@ -80,6 +81,9 @@
 		D7B4A19A29FFC300003AF5D4 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4A19929FFC300003AF5D4 /* NotificationService.swift */; };
 		D7B4A19E29FFC300003AF5D4 /* BusifyPushNotifications.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D7B4A19729FFC300003AF5D4 /* BusifyPushNotifications.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D7C8953629DC4D210090C97F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C8953529DC4D210090C97F /* LocationManager.swift */; };
+		D7CB3C9A2A13657E00166D6A /* LoopingVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C0F29DAB3CF006F78D2 /* LoopingVideo.swift */; };
+		D7CB3C9C2A13659B00166D6A /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB3C9B2A13659B00166D6A /* NotificationManager.swift */; };
+		D7CB3C9D2A13659B00166D6A /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB3C9B2A13659B00166D6A /* NotificationManager.swift */; };
 		D7CDD5AE2A1297E2001D3ED8 /* TransitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CDD5AD2A1297E2001D3ED8 /* TransitViewModel.swift */; };
 		D7CDD5AF2A1297E2001D3ED8 /* TransitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CDD5AD2A1297E2001D3ED8 /* TransitViewModel.swift */; };
 		D7F8259929DDF53400A09A2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F8259829DDF53400A09A2B /* MapView.swift */; };
@@ -179,6 +183,7 @@
 		D7B4A1A329FFC477003AF5D4 /* BusifyPushNotifications.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BusifyPushNotifications.entitlements; sourceTree = "<group>"; };
 		D7C8953529DC4D210090C97F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D7C8953729DC4D8D0090C97F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Public-Transport-Tracking/Info.plist"; sourceTree = "<group>"; };
+		D7CB3C9B2A13659B00166D6A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		D7CDD5AD2A1297E2001D3ED8 /* TransitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewModel.swift; sourceTree = "<group>"; };
 		D7F8259829DDF53400A09A2B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D7FBAB6E29E1E84A00299635 /* BusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusDetailView.swift; sourceTree = "<group>"; };
@@ -208,6 +213,7 @@
 				D78DE7782A00227E00983F24 /* RevenueCat in Frameworks */,
 				D784169829E49A9C009F4F2C /* FeedKit in Frameworks */,
 				D78DE77C2A00228500983F24 /* StoreKit.framework in Frameworks */,
+				D74922CD2A14B65400A6A56F /* Map in Frameworks */,
 				D778901C29DB56C200044D10 /* Alamofire in Frameworks */,
 				481D351902FF5E7DB4030604 /* libPods-Public Transport Tracking.a in Frameworks */,
 			);
@@ -302,20 +308,14 @@
 		D7ABA55329DAA28500CDA8DE /* Public-Transport-Tracking */ = {
 			isa = PBXGroup;
 			children = (
+				D7CB3C992A13655400166D6A /* Managers */,
 				D7ABA55429DAA28500CDA8DE /* Public_Transport_TrackingApp.swift */,
 				D72E343A29DDE02D002974CE /* Resources */,
-				D7C8953529DC4D210090C97F /* LocationManager.swift */,
-				D7361C1929DADC35006F78D2 /* RequestManager.swift */,
-				D7AE9A3329E1A452008CE1C0 /* BusCalculations.swift */,
-				D7361C0F29DAB3CF006F78D2 /* LoopingVideo.swift */,
 				D7ABA56429DAA2CF00CDA8DE /* Interface */,
 				D7ABA55A29DAA28600CDA8DE /* Preview Content */,
 				D7ABA56529DAA33600CDA8DE /* Constants.swift */,
 				D7361C2129DB2D3B006F78D2 /* Structs.swift */,
-				D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */,
 				D7129A2529FC2B11002A690B /* Extensions.swift */,
-				D77B96E32A07F5CB005C565E /* MotionManager.swift */,
-				D7CDD5AD2A1297E2001D3ED8 /* TransitViewModel.swift */,
 			);
 			path = "Public-Transport-Tracking";
 			sourceTree = "<group>";
@@ -360,6 +360,21 @@
 				D7B4A19B29FFC300003AF5D4 /* Info.plist */,
 			);
 			path = BusifyPushNotifications;
+			sourceTree = "<group>";
+		};
+		D7CB3C992A13655400166D6A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D7361C0F29DAB3CF006F78D2 /* LoopingVideo.swift */,
+				D7CDD5AD2A1297E2001D3ED8 /* TransitViewModel.swift */,
+				D77B96E32A07F5CB005C565E /* MotionManager.swift */,
+				D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */,
+				D7AE9A3329E1A452008CE1C0 /* BusCalculations.swift */,
+				D7361C1929DADC35006F78D2 /* RequestManager.swift */,
+				D7C8953529DC4D210090C97F /* LocationManager.swift */,
+				D7CB3C9B2A13659B00166D6A /* NotificationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,6 +431,7 @@
 				D7B4A19129FFC2C7003AF5D4 /* OneSignalExtension */,
 				D78DE7752A00227E00983F24 /* ReceiptParser */,
 				D78DE7772A00227E00983F24 /* RevenueCat */,
+				D74922CC2A14B65400A6A56F /* Map */,
 			);
 			productName = "Public Transport Tracking";
 			productReference = D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */;
@@ -474,6 +490,8 @@
 				D74065D729E81E0200E1E3AF /* XCRemoteSwiftPackageReference "SSToastMessage" */,
 				D7B4A18E29FFC2C7003AF5D4 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
 				D78DE7742A00227E00983F24 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				D74922CB2A14B65400A6A56F /* XCRemoteSwiftPackageReference "Map" */,
+				D7D24F8A2A162B3300CAF2A5 /* XCRemoteSwiftPackageReference "EasyTipView" */,
 			);
 			productRefGroup = D7ABA55229DAA28500CDA8DE /* Products */;
 			projectDirPath = "";
@@ -573,9 +591,11 @@
 			files = (
 				D77DA2682A02C079009E56BA /* UserViewModel.swift in Sources */,
 				D77B96E52A07F5CB005C565E /* MotionManager.swift in Sources */,
+				D7CB3C9D2A13659B00166D6A /* NotificationManager.swift in Sources */,
 				D7A1F1792A1348A9004CF09C /* LaunchView.swift in Sources */,
 				D7CDD5AF2A1297E2001D3ED8 /* TransitViewModel.swift in Sources */,
 				D779FFD429E9758700DF3AB8 /* BusCalculations.swift in Sources */,
+				D7CB3C9A2A13657E00166D6A /* LoopingVideo.swift in Sources */,
 				D779FFDF29E976BF00DF3AB8 /* StationView.swift in Sources */,
 				D779FFD329E9758700DF3AB8 /* Structs.swift in Sources */,
 				D779FFD529E9758700DF3AB8 /* LocationManager.swift in Sources */,
@@ -623,6 +643,7 @@
 				D72E343F29DDF121002974CE /* AddFavoriteLineView.swift in Sources */,
 				D7ABA56629DAA33600CDA8DE /* Constants.swift in Sources */,
 				D71684372A0EB5E4001E598E /* SpecialScheduleDetailView.swift in Sources */,
+				D7CB3C9C2A13659B00166D6A /* NotificationManager.swift in Sources */,
 				D7361C1629DAC50A006F78D2 /* SplitterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -676,11 +697,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyClip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -719,11 +741,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyClip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -876,11 +899,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -917,11 +941,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -951,7 +976,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyPushNotifications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -979,7 +1004,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyPushNotifications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1039,6 +1064,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		D74922CB2A14B65400A6A56F /* XCRemoteSwiftPackageReference "Map" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pauljohanneskraft/Map.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
 		D778901A29DB56C200044D10 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1071,6 +1104,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		D7D24F8A2A162B3300CAF2A5 /* XCRemoteSwiftPackageReference "EasyTipView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/teodorpatras/EasyTipView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1078,6 +1119,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D74065D729E81E0200E1E3AF /* XCRemoteSwiftPackageReference "SSToastMessage" */;
 			productName = SSToastMessage;
+		};
+		D74922CC2A14B65400A6A56F /* Map */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D74922CB2A14B65400A6A56F /* XCRemoteSwiftPackageReference "Map" */;
+			productName = Map;
 		};
 		D778901B29DB56C200044D10 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

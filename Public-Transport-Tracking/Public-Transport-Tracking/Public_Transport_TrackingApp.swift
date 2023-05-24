@@ -14,6 +14,7 @@ struct Public_Transport_TrackingApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var userViewModel = UserViewModel()
     @StateObject var transitViewModel = TransitViewModel()
+    @StateObject var locationManager = LocationManager()
     
     @State private var loadedFirstTime = false
     var body: some Scene {
@@ -29,6 +30,7 @@ struct Public_Transport_TrackingApp: App {
                 SplitterView()
                     .environmentObject(userViewModel)
                     .environmentObject(transitViewModel)
+                    .environmentObject(locationManager)
             }
         }
     }

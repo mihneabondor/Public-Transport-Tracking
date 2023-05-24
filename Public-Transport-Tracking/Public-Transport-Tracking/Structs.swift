@@ -8,9 +8,11 @@
 import Foundation
 import CoreLocation
 import Alamofire
+import Map
+import MapKit
 
 
-struct Vehicle: Codable, Hashable, Identifiable {
+struct Vehicle: Codable, Hashable, Identifiable, Equatable {
     let xProvider: Int?
     let xRand: Double?
     let id: Int?
@@ -56,7 +58,7 @@ struct Linii : Codable, Hashable {
     var showMenu : Bool = false
 }
 
-struct Statie : Codable, Hashable {
+struct Statie : Codable, Hashable, Equatable {
     let stopId : Int?
     let stopName : String?
     let stopDesc : String?
@@ -136,12 +138,16 @@ struct StopTime : Codable, Hashable{
     }
 }
 
-struct Annotation : Identifiable {
+struct Annotation : Identifiable, Equatable {
+    static func == (lhs: Annotation, rhs: Annotation) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let id = UUID()
-    var type : Int?
-    var coordinates : CLLocationCoordinate2D
-    var vehicle : Vehicle?
-    var statie : Statie?
+    let type : Int?
+    let coordinates : CLLocationCoordinate2D
+    let vehicle : Vehicle?
+    let statie : Statie?
 }
 
 struct Schedule: Codable {
@@ -378,9 +384,11 @@ enum CustomTravelMode: String, Codable {
 
 struct JSONAny: Codable {}
 
-struct SpecialSchedule : Codable {
+struct SpecialSchedule : Codable, Hashable {
     let motiv : String?
     var text : String?
+    let from: String?
     let to: String?
     var dateTo: Date?
+    var dateFrom : Date?
 }

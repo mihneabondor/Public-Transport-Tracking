@@ -31,9 +31,9 @@ struct BusDetailView: View {
                     .padding()
                     .font(.title2)
                 Text("Linia \(vehicle?.routeShortName ?? "")")
+                    .bold()
                     .padding([.trailing, .top])
                     .font(.title2)
-                    .bold()
                 Spacer()
                 
                 Button {
@@ -114,8 +114,12 @@ struct BusDetailView: View {
                 Button {
                     if favorites.contains(vehicle?.routeShortName ?? "") {
                         favorites.removeAll(where: {$0 == vehicle?.routeShortName ?? ""})
+                        let generator = UINotificationFeedbackGenerator()
+                        generator.notificationOccurred(.success)
                     } else {
                         favorites.append(vehicle?.routeShortName ?? "")
+                        let generator = UINotificationFeedbackGenerator()
+                        generator.notificationOccurred(.success)
                     }
                     UserDefaults().set(favorites, forKey: Constants.USER_DEFAULTS_FAVORITES)
                 } label: {

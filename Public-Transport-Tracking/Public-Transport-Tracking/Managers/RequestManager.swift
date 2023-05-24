@@ -139,7 +139,7 @@ class RequestManager {
         return responseData ?? Directions(geocodedWaypoints: nil, routes: nil, status: nil)
     }
     
-    func getSpecialSchedule() async throws -> SpecialSchedule {
+    func getSpecialSchedule() async throws -> [SpecialSchedule] {
         let getRequest = AF.request("https://busify-cluj.web.app/in-app-news", method: .get, parameters: [:], encoding: URLEncoding.default, headers: [])
         var responseJson : String!
         do {
@@ -150,13 +150,19 @@ class RequestManager {
         
         var responseData = try? DecodingManager().decodeSpecialSchedule(jsonString: responseJson ?? "")
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let formattedDate = dateFormatter.date(from: responseData?.to ?? "")
-        responseData?.dateTo = formattedDate
+        for i in 0..<(responseData?.count ?? 0) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let formattedToDate = dateFormatter.date(from: responseData?[i].to ?? "")
+            responseData?[i].dateTo = formattedToDate
+            
+            let formattedFromDate = dateFormatter.date(from: responseData?[i].from ?? "")
+            responseData?[i].dateFrom = formattedFromDate
+            
+            let formattedText = responseData?[i].text?.replacingOccurrences(of: "/", with: "\n")
+            responseData?[i].text = formattedText
+        }
         
-        let formattedText = responseData?.text?.replacingOccurrences(of: "/", with: "\n")
-        responseData?.text = formattedText
-        return responseData ?? SpecialSchedule(motiv: nil, text: nil, to: nil, dateTo: nil)
+        return responseData ?? []
     }
 }

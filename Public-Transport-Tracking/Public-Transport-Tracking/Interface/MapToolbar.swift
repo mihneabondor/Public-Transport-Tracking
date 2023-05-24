@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 import CoreLocation
 
+@available(iOS 16.0, *)
 struct MapToolbar: View {
     @Binding var region : MKCoordinateRegion
     @Binding var selectedDetent : PresentationDetent
@@ -323,8 +324,8 @@ struct MapToolbar: View {
             region = MKCoordinateRegion(center: midCenter, span: midSpan)
         }
         
-        annotations.append(Annotation(type: 2, coordinates: startLocation))
-        annotations.append(Annotation(type: 3, coordinates: endLocation))
+        annotations.append(Annotation(type: 2, coordinates: startLocation, vehicle: nil, statie: nil))
+        annotations.append(Annotation(type: 3, coordinates: endLocation, vehicle: nil, statie: nil))
     }
 }
 

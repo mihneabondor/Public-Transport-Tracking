@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 16.0, *)
 struct OrarIntermediarView: View {
     @State var routes = Constants.linii
     let columns = [
@@ -16,24 +17,28 @@ struct OrarIntermediarView: View {
     @State private var activeNavigationView = false
     @State private var favorites = [String]()
     
-    @State private var specialSchedule : SpecialSchedule?
+    @State private var specialSchedule = [SpecialSchedule]()
     @State private var showSpecialScheduleDetail = false
+    @State private var selectedSpecialSchedule = SpecialSchedule(motiv: nil, from: nil, to: nil)
     var body: some View {
         NavigationStack{
             VStack{
                 Text(" ")
                 ScrollView{
-                    if specialSchedule?.text != nil && specialSchedule?.dateTo ?? Date() > Date() {
-                        VStack {
-                            Text("Orar special în efect")
-                                .bold()
-                            Text("Momentan vehiculele circulă pe un program diferit. Apasă pentru mai multe detalii.")
-                        }
-                        .padding()
-                        .background(Color(UIColor.systemGray4))
-                        .cornerRadius(10)
-                        .onTapGesture {
-                            showSpecialScheduleDetail.toggle()
+                    ForEach(specialSchedule, id: \.self) {schedule in
+                        if schedule.text != nil && schedule.dateTo ?? Date() > Date() && schedule.dateFrom ?? Date() < Date() {
+                            VStack {
+                                Text("Orar special în efect - \(schedule.motiv ?? "")")
+                                    .bold()
+                                Text("Momentan vehiculele circulă pe un program diferit. Apasă pentru mai multe detalii.")
+                            }
+                            .padding()
+                            .background(Color(UIColor.systemGray4))
+                            .cornerRadius(10)
+                            .onTapGesture {
+                                selectedSpecialSchedule = schedule
+                                showSpecialScheduleDetail.toggle()
+                            }
                         }
                     }
                     
@@ -82,7 +87,7 @@ struct OrarIntermediarView: View {
         }
         .preferredColorScheme(.dark)
         .sheet(isPresented: $showSpecialScheduleDetail, content: {
-            SpecialScheduleDetailView(specialSchedule: specialSchedule ?? SpecialSchedule(motiv: nil, text: nil, to: nil))
+            SpecialScheduleDetailView(specialSchedule: selectedSpecialSchedule)
                 .presentationDetents([.medium, .large])
         })
         .onChange(of: selectedRoute) {_ in

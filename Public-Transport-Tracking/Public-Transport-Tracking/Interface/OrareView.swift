@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct OrareView: View {
     @State var pickerSelection : String
     @State private var pageSelection = "LV"
@@ -125,6 +126,29 @@ struct OrareView: View {
                 Task {
                     do {
                         schedule = try await RequestManager().getSchedule(line: pickerSelection)
+                        for i in 0..<(schedule.station?.lv?.lines.count ?? 0) {
+                            for j in 0..<(schedule.station?.lv?.lines[i].count ?? 0){
+                                if schedule.station?.lv?.lines[i][j].count == 6 {
+                                    schedule.station?.lv?.lines[i][j] = String(schedule.station?.lv?.lines[i][j].dropLast() ?? "")
+                                }
+                            }
+                        }
+                        
+                        for i in 0..<(schedule.station?.s?.lines.count ?? 0) {
+                            for j in 0..<(schedule.station?.s?.lines[i].count ?? 0){
+                                if schedule.station?.s?.lines[i][j].count == 6 {
+                                    schedule.station?.s?.lines[i][j] = String(schedule.station?.s?.lines[i][j].dropLast() ?? "")
+                                }
+                            }
+                        }
+                        
+                        for i in 0..<(schedule.station?.d?.lines.count ?? 0) {
+                            for j in 0..<(schedule.station?.d?.lines[i].count ?? 0){
+                                if schedule.station?.d?.lines[i][j].count == 6 {
+                                    schedule.station?.d?.lines[i][j] = String(schedule.station?.d?.lines[i][j].dropLast() ?? "")
+                                }
+                            }
+                        }
                     } catch let err {
                         print(err)
                     }
@@ -231,12 +255,38 @@ struct ScheduleTable : View {
             ScrollView{
                 ForEach(matrix, id: \.self) {row in
                     HStack{
-                        ForEach(row, id: \.self) {schedule in
+                        ForEach(row, id: \.self) {time in
                             Spacer()
-                            Text(schedule)
-                                .foregroundColor(BusCalculations().earlierTimeOneTime(time: schedule) ? Color(UIColor.systemGray) : .white)
-                                .strikethrough(BusCalculations().earlierTimeOneTime(time: schedule))
-                                .bold(BusCalculations().timeIntervalFromCurrentTime(time: schedule) && !BusCalculations().earlierTimeOneTime(time: schedule))
+                            Text(time)
+                                .foregroundColor(BusCalculations().earlierTimeOneTime(time: time) ? Color(UIColor.systemGray) : .white)
+                                .strikethrough(BusCalculations().earlierTimeOneTime(time: time))
+                                .bold(BusCalculations().timeIntervalFromCurrentTime(time: time) && !BusCalculations().earlierTimeOneTime(time: time))
+                                .contextMenu {
+                                    Button {
+                                        var capat = ""
+                                        if time == row[0] {
+                                            capat = schedule.station?.lv?.inStopName ?? ""
+                                            if pageFilter == "LV" {
+                                                capat = schedule.station?.lv?.inStopName ?? ""
+                                            } else if pageFilter == "S" {
+                                                capat = schedule.station?.s?.inStopName ?? ""
+                                            } else {
+                                                capat = schedule.station?.d?.inStopName ?? ""
+                                            }
+                                        } else {
+                                            if pageFilter == "LV" {
+                                                capat = schedule.station?.lv?.outStopName ?? ""
+                                            } else if pageFilter == "S" {
+                                                capat = schedule.station?.s?.outStopName ?? ""
+                                            } else {
+                                                capat = schedule.station?.d?.outStopName ?? ""
+                                            }
+                                        }
+                                        NotificationManager().nextStartNotification(line: schedule.name ?? "", capat: capat, time: time, repeats: false)
+                                    } label: {
+                                        Label("Notifică", systemImage: "bell.badge.fill")
+                                    }
+                                }
                             Spacer()
                         }
                     }
