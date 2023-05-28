@@ -15,7 +15,6 @@ class DecodingManager {
         let decoder = JSONDecoder()
         var vehicle : [Vehicle]
         
-        
         do {
             vehicle = try decoder.decode([Vehicle].self, from: jsonData)
         } catch let err {

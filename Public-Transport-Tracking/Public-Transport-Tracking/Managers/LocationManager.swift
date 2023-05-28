@@ -44,11 +44,5 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         lastLocation = location
         unpublishedLocation = location
         regionUpdatedFirstTime = true
-//        if !regionUpdatedFirstTime {
-//            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-//            self.region = MKCoordinateRegion(center: center, span: span)
-//            regionUpdatedFirstTime = true
-//        }
     }
 }
