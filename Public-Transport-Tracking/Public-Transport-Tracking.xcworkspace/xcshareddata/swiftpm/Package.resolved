@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "arkit-corelocation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AndrewHartAR/ARKit-CoreLocation.git",
+      "state" : {
+        "revision" : "42abf4f47b191b153d4bfe4509f15617aadd837d",
+        "version" : "1.3.0"
+      }
+    },
+    {
       "identity" : "easytipview",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/teodorpatras/EasyTipView.git",
@@ -34,6 +43,15 @@
       "state" : {
         "revision" : "3eed43ceaf7892a4021a34f87da2e6561e50318c",
         "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "mirador",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/HyperARCo/Mirador.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a4fea037056e113ae9c9e65688abe38ace07471b"
       }
     },
     {

@@ -49,6 +49,8 @@ struct MapView: View {
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 46.7712, longitude: 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     @State private var annotations = [Annotation]()
     
+    @State var showARScreen = false
+    
     var body: some View {
         ZStack{
             Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, annotationItems: annotations, annotationContent: { location in
@@ -245,9 +247,9 @@ struct MapView: View {
                             }
                             
                             Button{
-                                showDonationsScreen = true
+                                showARScreen = true
                             } label: {
-                                Image(systemName: "cup.and.saucer.fill")
+                                Image(systemName: "arkit")
                                     .padding(10)
                                     .font(.title3)
                                     .foregroundColor(.white)
@@ -413,6 +415,9 @@ struct MapView: View {
         .onChange(of: showDirectionsScreen, perform: { _ in
             showBusDetail = false
             showStationDetail = false
+        })
+        .sheet(isPresented: $showARScreen, onDismiss: {}, content: {
+            ARStationView()
         })
         .sheet(isPresented: $showDonationsScreen, onDismiss: {}, content: {
             DonationsView().presentationDetents([.medium])

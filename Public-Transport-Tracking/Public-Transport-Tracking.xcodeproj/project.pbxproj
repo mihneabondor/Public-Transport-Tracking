@@ -62,6 +62,7 @@
 		D77DA2762A02C535009E56BA /* DonationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DA2742A02C535009E56BA /* DonationsView.swift */; };
 		D784169829E49A9C009F4F2C /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = D784169729E49A9C009F4F2C /* FeedKit */; };
 		D784169A29E49B9A009F4F2C /* ComunicateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784169929E49B9A009F4F2C /* ComunicateView.swift */; };
+		D78D04B72A26222900408752 /* Mirador in Frameworks */ = {isa = PBXBuildFile; productRef = D78D04B62A26222900408752 /* Mirador */; };
 		D78DE7762A00227E00983F24 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = D78DE7752A00227E00983F24 /* ReceiptParser */; };
 		D78DE7782A00227E00983F24 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = D78DE7772A00227E00983F24 /* RevenueCat */; };
 		D78DE77C2A00228500983F24 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78DE77B2A00228500983F24 /* StoreKit.framework */; };
@@ -76,6 +77,11 @@
 		D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */; };
 		D7ABA56629DAA33600CDA8DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABA56529DAA33600CDA8DE /* Constants.swift */; };
 		D7AE9A3429E1A452008CE1C0 /* BusCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE9A3329E1A452008CE1C0 /* BusCalculations.swift */; };
+		D7B17E342A2660C300DDAD19 /* ARStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B17E332A2660C300DDAD19 /* ARStationView.swift */; };
+		D7B17E382A2674C600DDAD19 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = D7B17E372A2674C600DDAD19 /* ARCL */; };
+		D7B17E3A2A2674CF00DDAD19 /* ARManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B17E392A2674CF00DDAD19 /* ARManager.swift */; };
+		D7B17E3D2A26756F00DDAD19 /* ARMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B17E3C2A26756F00DDAD19 /* ARMarker.swift */; };
+		D7B17E3E2A26756F00DDAD19 /* ARMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B17E3C2A26756F00DDAD19 /* ARMarker.swift */; };
 		D7B4A19029FFC2C7003AF5D4 /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = D7B4A18F29FFC2C7003AF5D4 /* OneSignal */; };
 		D7B4A19229FFC2C7003AF5D4 /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = D7B4A19129FFC2C7003AF5D4 /* OneSignalExtension */; };
 		D7B4A19A29FFC300003AF5D4 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4A19929FFC300003AF5D4 /* NotificationService.swift */; };
@@ -176,6 +182,9 @@
 		D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		D7ABA56529DAA33600CDA8DE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D7AE9A3329E1A452008CE1C0 /* BusCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCalculations.swift; sourceTree = "<group>"; };
+		D7B17E332A2660C300DDAD19 /* ARStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARStationView.swift; sourceTree = "<group>"; };
+		D7B17E392A2674CF00DDAD19 /* ARManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARManager.swift; sourceTree = "<group>"; };
+		D7B17E3C2A26756F00DDAD19 /* ARMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMarker.swift; sourceTree = "<group>"; };
 		D7B4A18D29FFBC87003AF5D4 /* Public Transport Tracking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Public Transport Tracking.entitlements"; sourceTree = "<group>"; };
 		D7B4A19729FFC300003AF5D4 /* BusifyPushNotifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BusifyPushNotifications.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B4A19929FFC300003AF5D4 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -213,8 +222,10 @@
 				D78DE7782A00227E00983F24 /* RevenueCat in Frameworks */,
 				D784169829E49A9C009F4F2C /* FeedKit in Frameworks */,
 				D78DE77C2A00228500983F24 /* StoreKit.framework in Frameworks */,
+				D78D04B72A26222900408752 /* Mirador in Frameworks */,
 				D74922CD2A14B65400A6A56F /* Map in Frameworks */,
 				D778901C29DB56C200044D10 /* Alamofire in Frameworks */,
+				D7B17E382A2674C600DDAD19 /* ARCL in Frameworks */,
 				481D351902FF5E7DB4030604 /* libPods-Public Transport Tracking.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +345,7 @@
 				D72E343E29DDF121002974CE /* AddFavoriteLineView.swift */,
 				D7ABA56229DAA2AB00CDA8DE /* SplashScreen.swift */,
 				D7361C1529DAC50A006F78D2 /* SplitterView.swift */,
+				D7B17E332A2660C300DDAD19 /* ARStationView.swift */,
 				D72B525629E3F4700048AF1C /* OrareView.swift */,
 				D7361C1729DAC624006F78D2 /* FavoritesScreen.swift */,
 				D7F8259829DDF53400A09A2B /* MapView.swift */,
@@ -348,6 +360,7 @@
 				D77DA2742A02C535009E56BA /* DonationsView.swift */,
 				D71684362A0EB5E4001E598E /* SpecialScheduleDetailView.swift */,
 				D7A1F1772A1348A9004CF09C /* LaunchView.swift */,
+				D7B17E3C2A26756F00DDAD19 /* ARMarker.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -373,6 +386,7 @@
 				D7361C1929DADC35006F78D2 /* RequestManager.swift */,
 				D7C8953529DC4D210090C97F /* LocationManager.swift */,
 				D7CB3C9B2A13659B00166D6A /* NotificationManager.swift */,
+				D7B17E392A2674CF00DDAD19 /* ARManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -432,6 +446,8 @@
 				D78DE7752A00227E00983F24 /* ReceiptParser */,
 				D78DE7772A00227E00983F24 /* RevenueCat */,
 				D74922CC2A14B65400A6A56F /* Map */,
+				D78D04B62A26222900408752 /* Mirador */,
+				D7B17E372A2674C600DDAD19 /* ARCL */,
 			);
 			productName = "Public Transport Tracking";
 			productReference = D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */;
@@ -492,6 +508,8 @@
 				D78DE7742A00227E00983F24 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				D74922CB2A14B65400A6A56F /* XCRemoteSwiftPackageReference "Map" */,
 				D7D24F8A2A162B3300CAF2A5 /* XCRemoteSwiftPackageReference "EasyTipView" */,
+				D78D04B52A26222900408752 /* XCRemoteSwiftPackageReference "Mirador" */,
+				D7B17E362A2674C600DDAD19 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
 			);
 			productRefGroup = D7ABA55229DAA28500CDA8DE /* Products */;
 			projectDirPath = "";
@@ -592,6 +610,7 @@
 				D77DA2682A02C079009E56BA /* UserViewModel.swift in Sources */,
 				D77B96E52A07F5CB005C565E /* MotionManager.swift in Sources */,
 				D7CB3C9D2A13659B00166D6A /* NotificationManager.swift in Sources */,
+				D7B17E3E2A26756F00DDAD19 /* ARMarker.swift in Sources */,
 				D7A1F1792A1348A9004CF09C /* LaunchView.swift in Sources */,
 				D7CDD5AF2A1297E2001D3ED8 /* TransitViewModel.swift in Sources */,
 				D779FFD429E9758700DF3AB8 /* BusCalculations.swift in Sources */,
@@ -622,6 +641,8 @@
 				D7361C1029DAB3CF006F78D2 /* LoopingVideo.swift in Sources */,
 				D762021929E068870061A73A /* StationView.swift in Sources */,
 				D7C8953629DC4D210090C97F /* LocationManager.swift in Sources */,
+				D7B17E3A2A2674CF00DDAD19 /* ARManager.swift in Sources */,
+				D7B17E342A2660C300DDAD19 /* ARStationView.swift in Sources */,
 				D7361C1829DAC624006F78D2 /* FavoritesScreen.swift in Sources */,
 				D784169A29E49B9A009F4F2C /* ComunicateView.swift in Sources */,
 				D7FBAB6F29E1E84A00299635 /* BusDetailView.swift in Sources */,
@@ -644,6 +665,7 @@
 				D7ABA56629DAA33600CDA8DE /* Constants.swift in Sources */,
 				D71684372A0EB5E4001E598E /* SpecialScheduleDetailView.swift in Sources */,
 				D7CB3C9C2A13659B00166D6A /* NotificationManager.swift in Sources */,
+				D7B17E3D2A26756F00DDAD19 /* ARMarker.swift in Sources */,
 				D7361C1629DAC50A006F78D2 /* SplitterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -892,6 +914,7 @@
 				INFOPLIST_FILE = "Public-Transport-Tracking/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Busify;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is required for the augmented reality experience";
 				INFOPLIST_KEY_NSLocationUsageDescription = ETA;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used for calculating the ETA, centering the map view and for marketing purposes (cannot be used to directly identify you).";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -934,6 +957,7 @@
 				INFOPLIST_FILE = "Public-Transport-Tracking/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Busify;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is required for the augmented reality experience";
 				INFOPLIST_KEY_NSLocationUsageDescription = ETA;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used for calculating the ETA, centering the map view and for marketing purposes (cannot be used to directly identify you).";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1088,12 +1112,28 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		D78D04B52A26222900408752 /* XCRemoteSwiftPackageReference "Mirador" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HyperARCo/Mirador.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		D78DE7742A00227E00983F24 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.0.0;
+			};
+		};
+		D7B17E362A2674C600DDAD19 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndrewHartAR/ARKit-CoreLocation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		D7B4A18E29FFC2C7003AF5D4 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
@@ -1160,6 +1200,11 @@
 			package = D784169629E49A9C009F4F2C /* XCRemoteSwiftPackageReference "FeedKit" */;
 			productName = FeedKit;
 		};
+		D78D04B62A26222900408752 /* Mirador */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D78D04B52A26222900408752 /* XCRemoteSwiftPackageReference "Mirador" */;
+			productName = Mirador;
+		};
 		D78DE7752A00227E00983F24 /* ReceiptParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D78DE7742A00227E00983F24 /* XCRemoteSwiftPackageReference "purchases-ios" */;
@@ -1169,6 +1214,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D78DE7742A00227E00983F24 /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = RevenueCat;
+		};
+		D7B17E372A2674C600DDAD19 /* ARCL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D7B17E362A2674C600DDAD19 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */;
+			productName = ARCL;
 		};
 		D7B4A18F29FFC2C7003AF5D4 /* OneSignal */ = {
 			isa = XCSwiftPackageProductDependency;
