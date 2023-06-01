@@ -72,6 +72,7 @@
 		D78DE7822A00327000983F24 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78DE7812A00327000983F24 /* UserViewModel.swift */; };
 		D78F1D722A27A7B9002A360C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F1D712A27A7B9002A360C /* SettingsView.swift */; };
 		D78F1D732A27A7B9002A360C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F1D712A27A7B9002A360C /* SettingsView.swift */; };
+		D797F1232A29274600698B91 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = D797F1222A29274600698B91 /* AlertToast */; };
 		D7A1F1782A1348A9004CF09C /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A1F1772A1348A9004CF09C /* LaunchView.swift */; };
 		D7A1F1792A1348A9004CF09C /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A1F1772A1348A9004CF09C /* LaunchView.swift */; };
 		D7A966E329DF1C8A00005AB2 /* Routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D7A966E229DF1C8A00005AB2 /* Routes.txt */; };
@@ -224,6 +225,7 @@
 				D7B4A19029FFC2C7003AF5D4 /* OneSignal in Frameworks */,
 				D7B4A19229FFC2C7003AF5D4 /* OneSignalExtension in Frameworks */,
 				D74065D929E81E0200E1E3AF /* SSToastMessage in Frameworks */,
+				D797F1232A29274600698B91 /* AlertToast in Frameworks */,
 				D78DE7762A00227E00983F24 /* ReceiptParser in Frameworks */,
 				D78DE7782A00227E00983F24 /* RevenueCat in Frameworks */,
 				D784169829E49A9C009F4F2C /* FeedKit in Frameworks */,
@@ -456,6 +458,7 @@
 				D74922CC2A14B65400A6A56F /* Map */,
 				D78D04B62A26222900408752 /* Mirador */,
 				D7B17E372A2674C600DDAD19 /* ARCL */,
+				D797F1222A29274600698B91 /* AlertToast */,
 			);
 			productName = "Public Transport Tracking";
 			productReference = D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */;
@@ -518,6 +521,7 @@
 				D7D24F8A2A162B3300CAF2A5 /* XCRemoteSwiftPackageReference "EasyTipView" */,
 				D78D04B52A26222900408752 /* XCRemoteSwiftPackageReference "Mirador" */,
 				D7B17E362A2674C600DDAD19 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
+				D797F1212A29274600698B91 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = D7ABA55229DAA28500CDA8DE /* Products */;
 			projectDirPath = "";
@@ -1140,6 +1144,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		D797F1212A29274600698B91 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		D7B17E362A2674C600DDAD19 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AndrewHartAR/ARKit-CoreLocation.git";
@@ -1226,6 +1238,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D78DE7742A00227E00983F24 /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = RevenueCat;
+		};
+		D797F1222A29274600698B91 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D797F1212A29274600698B91 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 		D7B17E372A2674C600DDAD19 /* ARCL */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 import Alamofire
 import FeedKit
-import SSToastMessage
+import AlertToast
 
 struct SplitterView: View {
     @State private var vehicles = [Vehicle]()
@@ -36,11 +36,6 @@ struct SplitterView: View {
     @State private var showWhatsNewScreen = false
     
     let currentDate = Date()
-    var progressInterval: ClosedRange<Date> {
-        let start = currentDate
-        let end = start.addingTimeInterval(7)
-        return start...end
-    }
     var body: some View {
         TabView(selection: $selectedTab) {
             FavoritesScreen(selectedTab: $selectedTab, orareSelection: $orarePicker)
@@ -111,6 +106,7 @@ struct SplitterView: View {
                     }
                 }
             }
+            showVinereaAlert = true
         }
         .onChange(of: selectedTab) { val in
             if val == 3 {
@@ -134,58 +130,12 @@ struct SplitterView: View {
                 UserDefaults.standard.set(firstItem, forKey: Constants.USER_DEFAULTS_NEWS_LAST_DATE)
             }
         })
-        .present(isPresented: $showNewsAlert, type: .toast, position: .top, autohideDuration: 6.5, onTap: {selectedTab = 3}) {
-            VStack{
-                Spacer(minLength: 20)
-                HStack {
-                    Image(systemName: "newspaper")
-                        .padding()
-                        .font(.title2)
-                    VStack{
-                        HStack{
-                            Text("Știre nouă")
-                                .bold()
-                            Spacer()
-                        }
-                        HStack{
-                            Text(stire)
-                            Spacer()
-                        }
-                    }
-                }
-                
-                ProgressView(timerInterval: progressInterval) {} currentValueLabel: {}
-                    .tint(.purple)
-            }
-            .frame(width: UIScreen.main.bounds.width, height: 140)
-            .background(Color(UIColor.systemGray4))
-        }
-        .present(isPresented: $showVinereaAlert, type: .toast, position: .top, autohideDuration: 6.5, closeOnTap: true) {
-            VStack{
-                Spacer(minLength: 20)
-                HStack {
-                    Image(systemName: "tag.slash.fill")
-                        .padding()
-                        .font(.title2)
-                    VStack{
-                        HStack{
-                            Text("Vinerea verde")
-                                .bold()
-                            Spacer()
-                        }
-                        HStack{
-                            Text("Azi nu este nevoie să îți validezi abonamentul sau biletul.")
-                            Spacer()
-                        }
-                    }
-                }
-                
-                ProgressView(timerInterval: progressInterval) {} currentValueLabel: {}
-                    .tint(.purple)
-            }
-            .frame(width: UIScreen.main.bounds.width, height: 140)
-            .background(Color(UIColor.systemGray4))
-        }
+        .toast(isPresenting: $showNewsAlert, duration: 5.0, tapToDismiss: true, alert: {
+            AlertToast(displayMode: .hud, type: .regular, title: stire)
+        })
+        .toast(isPresenting: $showVinereaAlert, duration: 3.0, tapToDismiss: true, alert: {
+            AlertToast(displayMode: .hud, type: .systemImage("tag.slash", .white), title: "Vinerea Verde")
+        })
         .onChange(of: scenePhase) { _ in
             if scenePhase == .background {
                 Alamofire.Session.default.session.getTasksWithCompletionHandler({ dataTasks, uploadTasks, downloadTasks in
