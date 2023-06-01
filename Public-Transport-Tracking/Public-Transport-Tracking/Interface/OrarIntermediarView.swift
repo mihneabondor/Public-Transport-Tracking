@@ -30,6 +30,7 @@ struct OrarIntermediarView: View {
                             VStack {
                                 Text("Orar special în efect - \(schedule.motiv ?? "")")
                                     .bold()
+                                    .multilineTextAlignment(.leading)
                                 Text("Momentan vehiculele circulă pe un program diferit. Apasă pentru mai multe detalii.")
                             }
                             .padding()

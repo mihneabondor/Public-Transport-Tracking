@@ -14,6 +14,7 @@ import Map
 struct MapView: View {
     @Binding var selectedTab : Int
     @Binding var orareSelection : String
+    @Binding var url : URL
     @State var busView : Bool = true
     @State var stops = [Statie]()
     
@@ -319,6 +320,21 @@ struct MapView: View {
                 }
             }
         }
+        .onChange(of: url, perform: { _ in
+            let label = url["bus"]
+            guard let vehicle = transitModel.vehicles.first(where: {$0.label == label}) else {return}
+            let midCenter = CLLocationCoordinate2D(latitude: (vehicle.latitude! + (userLocation.lastLocation?.coordinate.latitude ?? 0))/2, longitude: (vehicle.longitude! + (userLocation.lastLocation?.coordinate.longitude ?? 0))/2)
+            let midSpan = MKCoordinateSpan(latitudeDelta: abs((vehicle.latitude! - (userLocation.lastLocation?.coordinate.latitude ?? 0)))*2, longitudeDelta: abs((vehicle.longitude! - (userLocation.lastLocation?.coordinate.longitude ?? 0))*2))
+            withAnimation{
+                region = MKCoordinateRegion(center: midCenter, span: midSpan)
+            }
+            withAnimation {
+                showBusDetail = true
+            }
+            selectedVehicle = vehicle
+            focusedVehicleNearestStop = vehicle.statie ?? ""
+            focusedVehicleTripId = vehicle.tripId ?? ""
+        })
         .onChange(of: searchFieldFocus) {_ in
             showBusDetail = false
             showStationDetail = false
@@ -418,6 +434,7 @@ struct MapView: View {
         })
         .sheet(isPresented: $showARScreen, onDismiss: {}, content: {
             ARStationView()
+                .presentationDragIndicator(.visible)
         })
         .sheet(isPresented: $showDonationsScreen, onDismiss: {}, content: {
             DonationsView().presentationDetents([.medium])
@@ -455,9 +472,7 @@ struct MapView: View {
                     }
                 }
             } else {
-                DispatchQueue.main.async { @MainActor in
-                    transitModel.annotations = transitModel.annotations.filter({$0.vehicle?.tripId == focusedVehicleTripId && focusedVehicleNearestStop == $0.vehicle?.statie})
-                }
+                transitModel.annotations = transitModel.annotations.filter({$0.vehicle?.tripId == focusedVehicleTripId && focusedVehicleNearestStop == $0.vehicle?.statie})
                 
                 var stops = [Statie]()
                 do {

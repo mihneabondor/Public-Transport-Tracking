@@ -31,6 +31,10 @@ struct SplitterView: View {
     @State private var showVinereaAlert = false
     @State private var stire = ""
     
+    @State private var url = URL(string: "google.com")!
+    
+    @State private var showWhatsNewScreen = false
+    
     let currentDate = Date()
     var progressInterval: ClosedRange<Date> {
         let start = currentDate
@@ -54,7 +58,7 @@ struct SplitterView: View {
                 .onTapGesture {
                     orarePicker = ""
                 }
-            MapView(selectedTab: $selectedTab, orareSelection: $orarePicker)
+            MapView(selectedTab: $selectedTab, orareSelection: $orarePicker, url: $url)
                 .tabItem {
                     Image(systemName: "map.fill")
                     Text("Hartă")
@@ -67,10 +71,29 @@ struct SplitterView: View {
                 }
                 .tag(3)
         }
+        .onOpenURL(perform: { externalURL in
+            url = externalURL
+            selectedTab = 2
+        })
+        .sheet(isPresented: $showWhatsNewScreen, onDismiss: {
+            if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                let UDString = "com.Mihnea.busify.\(version).whatsnew"
+                UserDefaults.standard.set(true, forKey: UDString)
+            }
+        }, content: {
+            WhatsNewScreen()
+        })
         .onAppear {
             let tabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithDefaultBackground()
             UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            
+            if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                let UDString = "com.Mihnea.busify.\(version).whatsnew"
+                if UserDefaults.standard.bool(forKey: UDString) == false {
+                    showWhatsNewScreen = true
+                }
+            }
         }
         .tint(.purple)
         .preferredColorScheme(.dark)

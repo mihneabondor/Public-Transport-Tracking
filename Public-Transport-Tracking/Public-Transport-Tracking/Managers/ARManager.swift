@@ -5,7 +5,7 @@ import SwiftUI
 import Foundation
 import MapKit
 
-class ARManager: UIViewController {
+class ARManager: UIViewController, ObservableObject {
     var sceneLocationView = SceneLocationView()
     var locationManager : CLLocationManager?
     var locationStatus: CLAuthorizationStatus?
@@ -25,7 +25,7 @@ class ARManager: UIViewController {
         
         sceneLocationView.frame = view.bounds
         sceneLocationView.orientToTrueNorth = true
-        sceneLocationView.scalesLargeContentImage = true
+        sceneLocationView.scalesLargeContentImage = false
         locationManager?.requestLocation()
     }
 }

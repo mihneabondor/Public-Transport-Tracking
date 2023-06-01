@@ -90,8 +90,8 @@ struct BusDetailView: View {
                 Text(" ")
                     .font(.title)
             }
-#if !APPCLIP
             HStack{
+#if !APPCLIP
                 Button {
                     orareSelection = vehicle?.routeShortName ?? ""
                     selectedTab = 1
@@ -101,6 +101,7 @@ struct BusDetailView: View {
                         .foregroundColor(.white)
                         .padding([.leading, .trailing])
                 }
+#endif
                 
                 Button {
                     UIApplication.shared.open(URL(string: "sms:open?addresses=7479&body=\(vehicle?.routeShortName ?? "")")!, options: [:], completionHandler: nil)
@@ -111,6 +112,7 @@ struct BusDetailView: View {
                         .padding([.leading, .trailing])
                 }
                 
+#if !APPCLIP
                 Button {
                     if favorites.contains(vehicle?.routeShortName ?? "") {
                         favorites.removeAll(where: {$0 == vehicle?.routeShortName ?? ""})
@@ -128,8 +130,14 @@ struct BusDetailView: View {
                         .foregroundColor(.white)
                         .padding([.leading, .trailing])
                 }.disabled(!favorites.contains(vehicle?.routeShortName ?? "") && !userViewModel.isSubscriptionAcitve && favorites.count > 2)
-            }
 #endif
+                ShareLink(item: "https://busify-cluj.web.app/map?bus=\(vehicle?.label! ?? "")") {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.title2)
+                        .foregroundColor(.white)
+                        .padding([.leading, .trailing])
+                }
+            }
         }
         .background() {
             Rectangle()
@@ -139,9 +147,6 @@ struct BusDetailView: View {
                 .shadow(color: .black, radius: 3, x: -motion.x * 10, y: -motion.y * 10)
                 .padding()
         }
-//        .onAppear() {
-//            favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String()]
-//        }
         .onChange(of: vehicle, perform: { _ in
             DispatchQueue.main.async {
                 let vehicleLocation = CLLocation(latitude: vehicle?.latitude ?? 0, longitude: vehicle?.longitude ?? 0)

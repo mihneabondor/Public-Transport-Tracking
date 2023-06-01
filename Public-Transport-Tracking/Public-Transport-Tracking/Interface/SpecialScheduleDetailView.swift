@@ -14,7 +14,8 @@ struct SpecialScheduleDetailView: View {
             VStack {
                 Text("Orar special - \(specialSchedule.motiv ?? "")")
                     .bold()
-                    .padding(.top)
+                    .padding(25)
+                    .multilineTextAlignment(.center)
                     .font(.title3)
                 Text(specialSchedule.text ?? "")
                     .padding()

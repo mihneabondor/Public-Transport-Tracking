@@ -16,7 +16,7 @@ struct DonationsView: View {
         VStack {
             Spacer()
             Text("Susține Busify!")
-                .font(.title)
+                .font(.title3)
                 .bold()
                 .padding()
             Text("Alege tu cât să contribui la costurile de întreținere ale serverelor pe care rulează Busify.")
@@ -43,7 +43,7 @@ struct DonationsView: View {
                 ProgressView()
             }
             Spacer()
-            Text("Abonamentele și donațiile sunt supuse [termenilor, condițiilor și politica de confidențialitate Busify](https://busify-cluj.web.app/termeni).")
+            Text("Abonamentele și donațiile sunt supuse [termenilor, condițiilor și politicii de confidențialitate Busify](https://busify-cluj.web.app/termeni).")
                 .padding()
                 .font(.footnote)
                 .foregroundColor(.secondary)

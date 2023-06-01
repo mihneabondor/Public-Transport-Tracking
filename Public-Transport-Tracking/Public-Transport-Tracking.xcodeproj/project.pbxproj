@@ -28,6 +28,8 @@
 		D73E579329E5D7160044A955 /* OrarIntermediarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E579229E5D7160044A955 /* OrarIntermediarView.swift */; };
 		D74065D929E81E0200E1E3AF /* SSToastMessage in Frameworks */ = {isa = PBXBuildFile; productRef = D74065D829E81E0200E1E3AF /* SSToastMessage */; };
 		D74922CD2A14B65400A6A56F /* Map in Frameworks */ = {isa = PBXBuildFile; productRef = D74922CC2A14B65400A6A56F /* Map */; };
+		D74F99802A2917DF0048E4BC /* WhatsNewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74F997F2A2917DF0048E4BC /* WhatsNewScreen.swift */; };
+		D74F99812A2917DF0048E4BC /* WhatsNewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74F997F2A2917DF0048E4BC /* WhatsNewScreen.swift */; };
 		D762021929E068870061A73A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762021829E068870061A73A /* StationView.swift */; };
 		D778901C29DB56C200044D10 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D778901B29DB56C200044D10 /* Alamofire */; };
 		D779FFC229E96C6700DF3AB8 /* BusifyClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779FFC129E96C6700DF3AB8 /* BusifyClipApp.swift */; };
@@ -68,6 +70,8 @@
 		D78DE77C2A00228500983F24 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78DE77B2A00228500983F24 /* StoreKit.framework */; };
 		D78DE7802A00288100983F24 /* SubscriptionPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78DE77F2A00288100983F24 /* SubscriptionPaywallView.swift */; };
 		D78DE7822A00327000983F24 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78DE7812A00327000983F24 /* UserViewModel.swift */; };
+		D78F1D722A27A7B9002A360C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F1D712A27A7B9002A360C /* SettingsView.swift */; };
+		D78F1D732A27A7B9002A360C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F1D712A27A7B9002A360C /* SettingsView.swift */; };
 		D7A1F1782A1348A9004CF09C /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A1F1772A1348A9004CF09C /* LaunchView.swift */; };
 		D7A1F1792A1348A9004CF09C /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A1F1772A1348A9004CF09C /* LaunchView.swift */; };
 		D7A966E329DF1C8A00005AB2 /* Routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = D7A966E229DF1C8A00005AB2 /* Routes.txt */; };
@@ -160,6 +164,7 @@
 		D7361C2129DB2D3B006F78D2 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingManager.swift; sourceTree = "<group>"; };
 		D73E579229E5D7160044A955 /* OrarIntermediarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrarIntermediarView.swift; sourceTree = "<group>"; };
+		D74F997F2A2917DF0048E4BC /* WhatsNewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewScreen.swift; sourceTree = "<group>"; };
 		D762021829E068870061A73A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		D779FFBF29E96C6700DF3AB8 /* BusifyClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusifyClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D779FFC129E96C6700DF3AB8 /* BusifyClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusifyClipApp.swift; sourceTree = "<group>"; };
@@ -173,6 +178,7 @@
 		D78DE77B2A00228500983F24 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D78DE77F2A00288100983F24 /* SubscriptionPaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPaywallView.swift; sourceTree = "<group>"; };
 		D78DE7812A00327000983F24 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		D78F1D712A27A7B9002A360C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D7A1F1772A1348A9004CF09C /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		D7A966E229DF1C8A00005AB2 /* Routes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Routes.txt; sourceTree = "<group>"; };
 		D7ABA55129DAA28500CDA8DE /* Public Transport Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Public Transport Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -361,6 +367,8 @@
 				D71684362A0EB5E4001E598E /* SpecialScheduleDetailView.swift */,
 				D7A1F1772A1348A9004CF09C /* LaunchView.swift */,
 				D7B17E3C2A26756F00DDAD19 /* ARMarker.swift */,
+				D78F1D712A27A7B9002A360C /* SettingsView.swift */,
+				D74F997F2A2917DF0048E4BC /* WhatsNewScreen.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -627,7 +635,9 @@
 				D77DA26D2A02C118009E56BA /* BusDetailView.swift in Sources */,
 				D779FFC229E96C6700DF3AB8 /* BusifyClipApp.swift in Sources */,
 				D77DA2762A02C535009E56BA /* DonationsView.swift in Sources */,
+				D74F99812A2917DF0048E4BC /* WhatsNewScreen.swift in Sources */,
 				D779FFD829E9758700DF3AB8 /* Constants.swift in Sources */,
+				D78F1D732A27A7B9002A360C /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,7 +665,9 @@
 				D7361C1A29DADC35006F78D2 /* RequestManager.swift in Sources */,
 				D7129A2829FC2E55002A690B /* MapToolbar.swift in Sources */,
 				D7ABA56329DAA2AB00CDA8DE /* SplashScreen.swift in Sources */,
+				D74F99802A2917DF0048E4BC /* WhatsNewScreen.swift in Sources */,
 				D7CDD5AE2A1297E2001D3ED8 /* TransitViewModel.swift in Sources */,
+				D78F1D722A27A7B9002A360C /* SettingsView.swift in Sources */,
 				D73E579329E5D7160044A955 /* OrarIntermediarView.swift in Sources */,
 				D705AAFB29DE7413008AC068 /* Marker.swift in Sources */,
 				D72B525729E3F4700048AF1C /* OrareView.swift in Sources */,

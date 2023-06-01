@@ -29,6 +29,8 @@ struct FavoritesScreen: View {
     
     @State private var userNearestStop = ""
     
+    @State private var showSettings = false
+    
     @EnvironmentObject var userViewModel : UserViewModel
     @EnvironmentObject var transitModel : TransitViewModel
     @EnvironmentObject var locationManager : LocationManager
@@ -157,6 +159,7 @@ struct FavoritesScreen: View {
                                                         .padding(.bottom)
                                                 }
                                             }
+                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                                             .contextMenu {
                                                 Button {
                                                     let location = CLLocationCoordinate2D(latitude: vehicle.latitude ?? 0, longitude: vehicle.longitude ?? 0)
@@ -217,6 +220,18 @@ struct FavoritesScreen: View {
                     }
                 }
             }
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        showSettings = true
+                    } label: {
+                        Image(systemName: "person.crop.circle")
+                    }
+                }
+            }
+            .sheet(isPresented: $showSettings, onDismiss: {}, content: {
+                SettingsView()
+            })
             .onAppear {
                 pickerSelection = 1
                 createLines()
@@ -311,70 +326,4 @@ struct FavoritesScreen: View {
             }
         }
     }
-    
-    //    func loadView() {
-    //        Task(priority: .high) {
-    //            var newVehicles = [Vehicle]()
-    //            do {
-    //                newVehicles = try await RequestManager().getVehicles()
-    //            } catch let err {
-    //                print(err)
-    //            }
-    //
-    //            if newVehicles.isEmpty {
-    //                loadView()
-    //            }
-    //
-    //            var stops = [Statie]()
-    //            do {
-    //                stops = try await RequestManager().getStops()
-    //            } catch let err {
-    //                print(err)
-    //            }
-    //
-    //            var stopTimes = [StopTime]()
-    //            do {
-    //                stopTimes = try await RequestManager().getStopTimes()
-    //            } catch let err {
-    //                print(err)
-    //            }
-    //
-    //            vehicles.removeAll()
-    //            vehicles = newVehicles
-    //
-    //            vehicles = vehicles.filter({vehicle in vehicle.latitude != nil && vehicle.longitude != nil && vehicle.tripId != nil && vehicle.routeId != nil && routes.contains(where: {route in route.routeId == vehicle.routeId})})
-    //
-    //            linii.removeAll()
-    //            let constantLinii = Constants.linii
-    //            for elem in constantLinii {
-    //                linii.append(Linii(tripId: elem, vehicles: [Vehicle](), favorite: false))
-    //            }
-    //
-    //            for i in 0..<vehicles.count {
-    //                var closestStopName = "", minimumDistance = 100.0
-    //                let vehicleSpecificStopTime = stopTimes.filter({$0.tripId == vehicles[i].tripId})
-    //                for k in 0..<vehicleSpecificStopTime.count {
-    //                    let stopTime = vehicleSpecificStopTime[k]
-    //                    let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
-    //                    let stopLocation = CLLocation(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0)
-    //                    let vehicleLocation = CLLocation(latitude: vehicles[i].latitude ?? 0, longitude: vehicles[i].longitude ?? 0)
-    //                    let distance = vehicleLocation.distance(from: stopLocation) / 1000
-    //                    if minimumDistance > distance {
-    //                        minimumDistance = distance
-    //                        closestStopName = stop?.stopName ?? ""
-    //                    }
-    //                }
-    //                vehicles[i].routeShortName = routes.first(where: {$0.routeId == vehicles[i].routeId})?.routeShortName
-    //                vehicles[i].routeLongName = routes.first(where: {$0.routeId == vehicles[i].routeId})?.routeLongName
-    //                vehicles[i].statie = closestStopName
-    //                vehicles[i].headsign = trips.first(where: {$0.tripId == vehicles[i].tripId})?.tripHeadsign ?? "-"
-    //
-    //                let indexCoresp = linii.firstIndex(where: {$0.tripId == vehicles[i].routeShortName})
-    //
-    //                if let indexCoresp = indexCoresp {
-    //                    linii[indexCoresp].vehicles.append(vehicles[i])
-    //                }
-    //            }
-    //        }
-    //    }
 }
