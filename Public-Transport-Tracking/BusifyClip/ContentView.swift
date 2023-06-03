@@ -126,7 +126,7 @@ struct ContentView: View {
                             )
                     }
                 }
-            }).edgesIgnoringSafeArea([.top, .bottom])
+            }).edgesIgnoringSafeArea([.top, .bottom]).tint(.purple)
             VStack{
                 HStack{
                     TextField("Cauta o linie", text: $searchText)
@@ -190,7 +190,7 @@ struct ContentView: View {
                                         }
                                     }
                                 } else {
-                                    createAnnotations()
+                                    transitModel.createAnnotations()
                                 }
                             } label: {
                                 Image(systemName: busView ? "bus.fill" : "door.garage.open")
@@ -269,13 +269,13 @@ struct ContentView: View {
         }
         .onChange(of: stationDetails, perform: { _ in
             if busView {
-                annotations.removeAll()
+                transitModel.annotations.removeAll()
                 for stationDetail in stationDetails {
                     let location = CLLocationCoordinate2D(latitude: stationDetail.vehicle.latitude ?? 0, longitude: stationDetail.vehicle.longitude ?? 0)
-                    annotations.append(Annotation(type: 0, coordinates: location, vehicle: stationDetail.vehicle, statie: nil))
+                    transitModel.annotations.append(Annotation(type: 0, coordinates: location, vehicle: stationDetail.vehicle, statie: nil))
                 }
                 let location = CLLocationCoordinate2D(latitude: selectedStation.lat ?? 0, longitude: selectedStation.long ?? 0)
-                annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
+                transitModel.annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
             }
         })
         .onChange(of: showStationDetail, perform: { _ in
@@ -301,72 +301,64 @@ struct ContentView: View {
         .onChange(of: focusedVehicleTripId, perform: { _ in
             loadFocusedVehicle()
         })
-        .onChange(of: transitModel.vehicles) {_ in
-//            if !directionSteps.isEmpty {
-//                DispatchQueue.main.async {
-//                    let oldAnnotations = annotations
-//                    annotations.removeAll(where: {$0.type == 0})
-//                    for vehicle in transitModel.vehicles {
-//                        if oldAnnotations.contains(where: {annotation in annotation.vehicle?.label ?? "0" == vehicle.label ?? "0"}) == true {
-//                            let location = CLLocationCoordinate2D(latitude: vehicle.latitude ?? 0, longitude: vehicle.longitude ?? 0)
-//                            let annotation = Annotation(type: 0, coordinates: location, vehicle: vehicle, statie: nil)
-//                            annotations.append(annotation)
-//                        }
-//                    }
-//                }
-//            } else
+        .onChange(of: transitModel.annotations) {annotation in
             if busView {
+                annotations.removeAll()
+                annotations = annotation
+            }
+        }
+        .onChange(of: transitModel.vehicles) {_ in
+            if busView && !transitModel.vehicles.isEmpty {
                 DispatchQueue.main.async {
                     searchResults.removeAll()
                     withAnimation {
                         searchResults = transitModel.vehicles.filter({$0.routeShortName?.contains(searchText) == true})
                     }
                     if focusedVehicleTripId == "" {
-                        DispatchQueue.main.async {
-                            annotations.removeAll()
-                            for elem in transitModel.vehicles {
-                                annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
-                            }
+                        DispatchQueue.main.async { @MainActor in
+                            transitModel.createAnnotations()
                         }
                     } else {
                         if stationDetails.isEmpty {
-                            let elem = transitModel.vehicles.first(where: {$0.label == selectedVehicle?.label})
-                            DispatchQueue.main.async {
-                                annotations.removeAll(where: {$0.type == 0})
-                                annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem?.latitude ?? 0, longitude: elem?.longitude ?? 0), vehicle: elem, statie: nil))
-                            }
+                            loadFocusedVehicle()
                         } else {
-                            annotations.removeAll()
                             for elem in transitModel.vehicles {
                                 if stationDetails.contains(where: {$0.vehicle == elem}) {
                                     let location = CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0)
-                                    annotations.append(Annotation(type: 0, coordinates: location, vehicle: elem, statie: nil))
+                                    transitModel.annotations.append(Annotation(type: 0, coordinates: location, vehicle: elem, statie: nil))
                                 }
                             }
                             let location = CLLocationCoordinate2D(latitude: selectedStation.lat ?? 0, longitude: selectedStation.long ?? 0)
-                            annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
+                            transitModel.annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
                         }
                     }
                     if !stationDetails.isEmpty {
-                        annotations.removeAll()
+                        transitModel.annotations.removeAll()
                         for elem in transitModel.vehicles {
                             if stationDetails.contains(where: {$0.vehicle.label == elem.label}) {
                                 let location = CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0)
-                                annotations.append(Annotation(type: 0, coordinates: location, vehicle: elem, statie: nil))
+                                transitModel.annotations.append(Annotation(type: 0, coordinates: location, vehicle: elem, statie: nil))
                             }
                         }
                         let location = CLLocationCoordinate2D(latitude: selectedStation.lat ?? 0, longitude: selectedStation.long ?? 0)
-                        annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
+                        transitModel.annotations.append(Annotation(type: 1, coordinates: location, vehicle: nil, statie: selectedStation))
                     }
                 }
             }
         }
-        .onAppear() {
-            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.lastLocation?.coordinate.latitude ?? 46.7712, longitude: userLocation.lastLocation?.coordinate.longitude ?? 23.6236), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String]()
-            DispatchQueue.main.async {
-                for elem in transitModel.vehicles {
-                    annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
+        .onAppear{
+            showBusDetail = false
+            showStationDetail = false
+            annotations = transitModel.annotations
+            DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+                let center = CLLocationCoordinate2D(latitude: userLocation.lastLocation?.coordinate.latitude ?? 0, longitude: userLocation.lastLocation?.coordinate.longitude ?? 0)
+                let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                region = MKCoordinateRegion(center: center, span: span)
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.2){
+                if let stateRegion = userLocation.region {
+                    region = stateRegion
+                    userLocation.region = nil
                 }
             }
         }
@@ -376,46 +368,23 @@ struct ContentView: View {
         Task(priority: .high) {
             if focusedVehicleTripId == "" {
                 showStationDetail = false
-                DispatchQueue.main.async {
-                    annotations.removeAll()
-                    for elem in transitModel.vehicles {
-                        annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
-                    }
+                DispatchQueue.main.async { @MainActor in
+                    transitModel.createAnnotations()
                 }
             } else {
-                DispatchQueue.main.async {
-                    annotations = annotations.filter({$0.vehicle?.tripId == focusedVehicleTripId && focusedVehicleNearestStop == $0.vehicle?.statie})
-                }
+                transitModel.annotations = transitModel.annotations.filter({$0.vehicle?.tripId == focusedVehicleTripId && focusedVehicleNearestStop == $0.vehicle?.statie})
                 
-                var stops = [Statie]()
-                do {
-                    stops = try await RequestManager().getStops()
-                } catch let err {
-                    print(err)
-                }
-                var stopTimes = [StopTime]()
-                do {
-                    stopTimes = try await RequestManager().getStopTimes()
-                } catch let err {
-                    print(err)
-                }
+                let stops = transitModel.stops
+                var stopTimes = transitModel.stopTimes
                 
                 stopTimes = stopTimes.filter({$0.tripId == focusedVehicleTripId})
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { @MainActor in
                     for i in 0..<stopTimes.count {
                         let stopTime = stopTimes[i]
                         let stop = stops.first(where: {$0.stopId == Int(stopTime.stopId!)})
-                        annotations.append(Annotation(type: 1, coordinates: CLLocationCoordinate2D(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0), vehicle: nil, statie: stop))
+                        transitModel.annotations.append(Annotation(type: 1, coordinates: CLLocationCoordinate2D(latitude: stop?.lat ?? 0, longitude: stop?.long ?? 0), vehicle: nil, statie: stop))
                     }
                 }
-            }
-        }
-    }
-    
-    private func createAnnotations() {
-        DispatchQueue.main.async {
-            for elem in transitModel.vehicles {
-                annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
             }
         }
     }

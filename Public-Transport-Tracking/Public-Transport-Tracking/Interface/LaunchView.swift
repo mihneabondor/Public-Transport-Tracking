@@ -20,7 +20,7 @@ struct LaunchView: View {
                     .resizable()
                     .frame(width: 100, height: 100)
                     .cornerRadius(10)
-                    .shadow(color: .black, radius: 3, x: -motion.x * 10, y: -motion.y * 10)
+                    .shadow(color: .black, radius: 3, x: 5, y: 5)
                 
                 if showLoading {
                     ProgressView()

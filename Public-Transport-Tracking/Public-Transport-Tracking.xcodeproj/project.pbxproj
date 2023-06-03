@@ -98,6 +98,7 @@
 		D7CDD5AE2A1297E2001D3ED8 /* TransitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CDD5AD2A1297E2001D3ED8 /* TransitViewModel.swift */; };
 		D7CDD5AF2A1297E2001D3ED8 /* TransitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CDD5AD2A1297E2001D3ED8 /* TransitViewModel.swift */; };
 		D7F8259929DDF53400A09A2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F8259829DDF53400A09A2B /* MapView.swift */; };
+		D7F883832A2B1C1000687384 /* Map in Frameworks */ = {isa = PBXBuildFile; productRef = D7F883822A2B1C1000687384 /* Map */; };
 		D7FBAB6F29E1E84A00299635 /* BusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FBAB6E29E1E84A00299635 /* BusDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -213,6 +214,7 @@
 				D779FFDA29E975B500DF3AB8 /* Alamofire in Frameworks */,
 				D779FFDC29E975B500DF3AB8 /* FeedKit in Frameworks */,
 				D77DA2712A02C139009E56BA /* RevenueCat in Frameworks */,
+				D7F883832A2B1C1000687384 /* Map in Frameworks */,
 				D77DA26F2A02C139009E56BA /* ReceiptParser in Frameworks */,
 				D779FFDE29E975B500DF3AB8 /* SSToastMessage in Frameworks */,
 			);
@@ -423,6 +425,7 @@
 				D779FFDD29E975B500DF3AB8 /* SSToastMessage */,
 				D77DA26E2A02C139009E56BA /* ReceiptParser */,
 				D77DA2702A02C139009E56BA /* RevenueCat */,
+				D7F883822A2B1C1000687384 /* Map */,
 			);
 			productName = BusifyClip;
 			productReference = D779FFBF29E96C6700DF3AB8 /* BusifyClip.app */;
@@ -740,7 +743,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyClip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -784,7 +787,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyClip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -943,7 +946,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -986,7 +989,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1016,7 +1019,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyPushNotifications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1044,7 +1047,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyPushNotifications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1258,6 +1261,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D7B4A18E29FFC2C7003AF5D4 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
 			productName = OneSignalExtension;
+		};
+		D7F883822A2B1C1000687384 /* Map */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D74922CB2A14B65400A6A56F /* XCRemoteSwiftPackageReference "Map" */;
+			productName = Map;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

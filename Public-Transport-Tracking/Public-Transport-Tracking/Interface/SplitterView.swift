@@ -106,7 +106,6 @@ struct SplitterView: View {
                     }
                 }
             }
-            showVinereaAlert = true
         }
         .onChange(of: selectedTab) { val in
             if val == 3 {

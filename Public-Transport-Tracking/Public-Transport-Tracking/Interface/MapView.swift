@@ -143,24 +143,30 @@ struct MapView: View {
                     }
                 }
             }).edgesIgnoringSafeArea([.top, .bottom])
-            .onAppear{
-                annotations = transitModel.annotations
-                let center = CLLocationCoordinate2D(latitude: userLocation.lastLocation?.coordinate.latitude ?? 0, longitude: userLocation.lastLocation?.coordinate.longitude ?? 0)
-                let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                region = MKCoordinateRegion(center: center, span: span)
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.2){
-                    if let stateRegion = userLocation.region {
-                        region = stateRegion
-                        userLocation.region = nil
+                .onAppear{
+                    showBusDetail = false
+                    showStationDetail = false
+                    annotations = transitModel.annotations
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                        let center = CLLocationCoordinate2D(latitude: userLocation.lastLocation?.coordinate.latitude ?? 0, longitude: userLocation.lastLocation?.coordinate.longitude ?? 0)
+                        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                        region = MKCoordinateRegion(center: center, span: span)
+                    }
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.2){
+                        if let stateRegion = userLocation.region {
+                            region = stateRegion
+                            userLocation.region = nil
+                        }
                     }
                 }
-            }
-            .onChange(of: transitModel.annotations) {annotation in
-                if busView && !showDirectionsScreen {
-                    annotations.removeAll()
-                    annotations = annotation
+                .onChange(of: transitModel.annotations) {annotation in
+                    if busView && !showDirectionsScreen {
+                        annotations.removeAll()
+                        annotations = annotation
+                    }
                 }
-            }
             
             VStack{
                 HStack{
@@ -395,10 +401,7 @@ struct MapView: View {
                     }
                     if focusedVehicleTripId == "" {
                         DispatchQueue.main.async { @MainActor in
-                            transitModel.annotations.removeAll()
-                            for elem in transitModel.vehicles {
-                                transitModel.annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
-                            }
+                            transitModel.createAnnotations()
                         }
                     } else {
                         if stationDetails.isEmpty {
@@ -436,9 +439,6 @@ struct MapView: View {
             ARStationView()
                 .presentationDragIndicator(.visible)
         })
-        .sheet(isPresented: $showDonationsScreen, onDismiss: {}, content: {
-            DonationsView().presentationDetents([.medium])
-        })
         .onAppear() {
             favorites = UserDefaults.standard.object(forKey: Constants.USER_DEFAULTS_FAVORITES) as? [String] ?? [String]()
         }
@@ -447,7 +447,7 @@ struct MapView: View {
             focusedVehicleTripId = ""
             focusedVehicleNearestStop = ""
         }
-        .bottomSheet(presentationDetents: [.fraction(0.25), .medium, .large], selectedDetent: $selectedDetent, isPresented: $showDirectionsScreen, dragIndicator: .visible, sheetCornerRadius: 20) {
+        .bottomSheet(presentationDetents: userViewModel.isSubscriptionAcitve ? [.fraction(0.25), .medium, .large] : [.large], selectedDetent: $selectedDetent, isPresented: $showDirectionsScreen, dragIndicator: .visible, sheetCornerRadius: 20) {
             if userViewModel.isSubscriptionAcitve {
                 MapToolbar(region: $region, selectedDetent: $selectedDetent, annotations: $annotations, steps: $directionSteps)
             } else {
@@ -466,26 +466,13 @@ struct MapView: View {
             if focusedVehicleTripId == "" {
                 showStationDetail = false
                 DispatchQueue.main.async { @MainActor in
-                    transitModel.annotations.removeAll()
-                    for elem in transitModel.vehicles {
-                        transitModel.annotations.append(Annotation(type: 0, coordinates: CLLocationCoordinate2D(latitude: elem.latitude ?? 0, longitude: elem.longitude ?? 0), vehicle: elem, statie: nil))
-                    }
+                    transitModel.createAnnotations()
                 }
             } else {
                 transitModel.annotations = transitModel.annotations.filter({$0.vehicle?.tripId == focusedVehicleTripId && focusedVehicleNearestStop == $0.vehicle?.statie})
                 
-                var stops = [Statie]()
-                do {
-                    stops = try await RequestManager().getStops()
-                } catch let err {
-                    print(err)
-                }
-                var stopTimes = [StopTime]()
-                do {
-                    stopTimes = try await RequestManager().getStopTimes()
-                } catch let err {
-                    print(err)
-                }
+                let stops = transitModel.stops
+                var stopTimes = transitModel.stopTimes
                 
                 stopTimes = stopTimes.filter({$0.tripId == focusedVehicleTripId})
                 DispatchQueue.main.async { @MainActor in

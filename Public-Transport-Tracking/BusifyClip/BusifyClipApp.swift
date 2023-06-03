@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct BusifyClipApp: App {
+    @StateObject var transitViewModel = TransitViewModel()
+    @StateObject var locationManager = LocationManager()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(transitViewModel)
+                .environmentObject(locationManager)
         }
     }
 }

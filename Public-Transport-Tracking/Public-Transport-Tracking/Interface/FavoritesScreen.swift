@@ -121,6 +121,11 @@ struct FavoritesScreen: View {
                                         }
                                         createLines()
                                         UserDefaults().set(favorites, forKey: Constants.USER_DEFAULTS_FAVORITES)
+                                        DispatchQueue.main.asyncAfter(deadline: .now()+1.5) {
+                                            if pickerSelection == 1 {
+                                                linii = linii.filter({favorites.contains($0.tripId)})
+                                            }
+                                        }
                                     } label: {
                                         Image(systemName: favorites.contains(item.tripId) ? "heart.fill" : !userViewModel.isSubscriptionAcitve && favorites.count > 2 ? "heart.slash" : "heart")
                                             .font(.title2)
