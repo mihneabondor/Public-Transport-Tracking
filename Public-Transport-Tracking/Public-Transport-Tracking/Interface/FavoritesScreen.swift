@@ -135,8 +135,9 @@ struct FavoritesScreen: View {
                                 }.padding(.bottom)
                                 
                                 if item.showMenu {
-                                    Grid {
-                                        ForEach(item.vehicles, id:\.self) {vehicle in
+                                    
+                                    ForEach(item.vehicles, id:\.self) { vehicle in
+                                        Grid {
                                             GridRow {
                                                 VStack{
                                                     Text("STAȚIE CURENTĂ")
@@ -147,13 +148,13 @@ struct FavoritesScreen: View {
                                                         Image(systemName: "map")
                                                             .font(.callout)
                                                     }
-                                                        .padding(.bottom)
-                                                        .onTapGesture {
-                                                            let location = CLLocationCoordinate2D(latitude: vehicle.latitude ?? 0, longitude: vehicle.longitude ?? 0)
-                                                            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-                                                            locationManager.region = MKCoordinateRegion(center: location, span: span)
-                                                            selectedTab = 2
-                                                        }
+                                                    .padding(.bottom)
+                                                    .onTapGesture {
+                                                        let location = CLLocationCoordinate2D(latitude: vehicle.latitude ?? 0, longitude: vehicle.longitude ?? 0)
+                                                        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+                                                        locationManager.region = MKCoordinateRegion(center: location, span: span)
+                                                        selectedTab = 2
+                                                    }
                                                 }
                                                 
                                                 VStack {
@@ -162,17 +163,6 @@ struct FavoritesScreen: View {
                                                         .foregroundColor(.secondary)
                                                     Text("\(vehicle.eta ?? 0) min")
                                                         .padding(.bottom)
-                                                }
-                                            }
-                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                            .contextMenu {
-                                                Button {
-                                                    let location = CLLocationCoordinate2D(latitude: vehicle.latitude ?? 0, longitude: vehicle.longitude ?? 0)
-                                                    let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-                                                    locationManager.region = MKCoordinateRegion(center: location, span: span)
-                                                    selectedTab = 2
-                                                } label: {
-                                                    Label("Vezi în hartă", systemImage: "map.fill")
                                                 }
                                             }
                                             
@@ -204,6 +194,21 @@ struct FavoritesScreen: View {
                                             Divider()
                                                 .background(Color.purple)
                                                 .transition(.move(edge: .top))
+                                        }
+                                        .contextMenu {
+                                            ShareLink(item: "https://busify-cluj.web.app/map?bus=\(vehicle.label!)") {
+                                                Label("Distribuie", systemImage: "square.and.arrow.up")
+                                            }
+                                            
+                                            Button {
+                                                let location = CLLocationCoordinate2D(latitude: vehicle.latitude ?? 0, longitude: vehicle.longitude ?? 0)
+                                                let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+                                                locationManager.region = MKCoordinateRegion(center: location, span: span)
+                                                selectedTab = 2
+                                            } label: {
+                                                Label("Vezi în hartă", systemImage: "map")
+                                            }
+                                            
                                         }
                                     }
                                 }

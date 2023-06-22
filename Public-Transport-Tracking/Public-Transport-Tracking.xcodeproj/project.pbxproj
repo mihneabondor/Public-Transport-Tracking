@@ -27,6 +27,8 @@
 		D7361C2429DB2E6F006F78D2 /* DecodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */; };
 		D73E579329E5D7160044A955 /* OrarIntermediarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E579229E5D7160044A955 /* OrarIntermediarView.swift */; };
 		D74065D929E81E0200E1E3AF /* SSToastMessage in Frameworks */ = {isa = PBXBuildFile; productRef = D74065D829E81E0200E1E3AF /* SSToastMessage */; };
+		D7451B592A3735A4004B7A68 /* MapMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7451B582A3735A4004B7A68 /* MapMenu.swift */; };
+		D7451B5A2A3735A4004B7A68 /* MapMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7451B582A3735A4004B7A68 /* MapMenu.swift */; };
 		D74922CD2A14B65400A6A56F /* Map in Frameworks */ = {isa = PBXBuildFile; productRef = D74922CC2A14B65400A6A56F /* Map */; };
 		D74F99802A2917DF0048E4BC /* WhatsNewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74F997F2A2917DF0048E4BC /* WhatsNewScreen.swift */; };
 		D74F99812A2917DF0048E4BC /* WhatsNewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74F997F2A2917DF0048E4BC /* WhatsNewScreen.swift */; };
@@ -64,7 +66,6 @@
 		D77DA2762A02C535009E56BA /* DonationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DA2742A02C535009E56BA /* DonationsView.swift */; };
 		D784169829E49A9C009F4F2C /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = D784169729E49A9C009F4F2C /* FeedKit */; };
 		D784169A29E49B9A009F4F2C /* ComunicateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784169929E49B9A009F4F2C /* ComunicateView.swift */; };
-		D78D04B72A26222900408752 /* Mirador in Frameworks */ = {isa = PBXBuildFile; productRef = D78D04B62A26222900408752 /* Mirador */; };
 		D78DE7762A00227E00983F24 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = D78DE7752A00227E00983F24 /* ReceiptParser */; };
 		D78DE7782A00227E00983F24 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = D78DE7772A00227E00983F24 /* RevenueCat */; };
 		D78DE77C2A00228500983F24 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78DE77B2A00228500983F24 /* StoreKit.framework */; };
@@ -166,6 +167,7 @@
 		D7361C2129DB2D3B006F78D2 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		D7361C2329DB2E6F006F78D2 /* DecodingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingManager.swift; sourceTree = "<group>"; };
 		D73E579229E5D7160044A955 /* OrarIntermediarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrarIntermediarView.swift; sourceTree = "<group>"; };
+		D7451B582A3735A4004B7A68 /* MapMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMenu.swift; sourceTree = "<group>"; };
 		D74F997F2A2917DF0048E4BC /* WhatsNewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewScreen.swift; sourceTree = "<group>"; };
 		D762021829E068870061A73A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		D779FFBF29E96C6700DF3AB8 /* BusifyClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusifyClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,7 +234,6 @@
 				D78DE7782A00227E00983F24 /* RevenueCat in Frameworks */,
 				D784169829E49A9C009F4F2C /* FeedKit in Frameworks */,
 				D78DE77C2A00228500983F24 /* StoreKit.framework in Frameworks */,
-				D78D04B72A26222900408752 /* Mirador in Frameworks */,
 				D74922CD2A14B65400A6A56F /* Map in Frameworks */,
 				D778901C29DB56C200044D10 /* Alamofire in Frameworks */,
 				D7B17E382A2674C600DDAD19 /* ARCL in Frameworks */,
@@ -358,6 +359,7 @@
 				D7B17E332A2660C300DDAD19 /* ARStationView.swift */,
 				D72B525629E3F4700048AF1C /* OrareView.swift */,
 				D7361C1729DAC624006F78D2 /* FavoritesScreen.swift */,
+				D7451B582A3735A4004B7A68 /* MapMenu.swift */,
 				D7F8259829DDF53400A09A2B /* MapView.swift */,
 				D705AAFA29DE7413008AC068 /* Marker.swift */,
 				D762021829E068870061A73A /* StationView.swift */,
@@ -459,7 +461,6 @@
 				D78DE7752A00227E00983F24 /* ReceiptParser */,
 				D78DE7772A00227E00983F24 /* RevenueCat */,
 				D74922CC2A14B65400A6A56F /* Map */,
-				D78D04B62A26222900408752 /* Mirador */,
 				D7B17E372A2674C600DDAD19 /* ARCL */,
 				D797F1222A29274600698B91 /* AlertToast */,
 			);
@@ -633,6 +634,7 @@
 				D779FFDF29E976BF00DF3AB8 /* StationView.swift in Sources */,
 				D779FFD329E9758700DF3AB8 /* Structs.swift in Sources */,
 				D779FFD529E9758700DF3AB8 /* LocationManager.swift in Sources */,
+				D7451B5A2A3735A4004B7A68 /* MapMenu.swift in Sources */,
 				D71684382A0EB5E4001E598E /* SpecialScheduleDetailView.swift in Sources */,
 				D77DA2692A02C081009E56BA /* SubscriptionPaywallView.swift in Sources */,
 				D779FFD629E9758700DF3AB8 /* RequestManager.swift in Sources */,
@@ -659,6 +661,7 @@
 				D762021929E068870061A73A /* StationView.swift in Sources */,
 				D7C8953629DC4D210090C97F /* LocationManager.swift in Sources */,
 				D7B17E3A2A2674CF00DDAD19 /* ARManager.swift in Sources */,
+				D7451B592A3735A4004B7A68 /* MapMenu.swift in Sources */,
 				D7B17E342A2660C300DDAD19 /* ARStationView.swift in Sources */,
 				D7361C1829DAC624006F78D2 /* FavoritesScreen.swift in Sources */,
 				D784169A29E49B9A009F4F2C /* ComunicateView.swift in Sources */,
@@ -743,7 +746,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyClip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -787,7 +790,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyClip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -946,7 +949,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -989,7 +992,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1019,7 +1022,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyPushNotifications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1047,7 +1050,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mihnea.busify.BusifyPushNotifications;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1226,11 +1229,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D784169629E49A9C009F4F2C /* XCRemoteSwiftPackageReference "FeedKit" */;
 			productName = FeedKit;
-		};
-		D78D04B62A26222900408752 /* Mirador */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D78D04B52A26222900408752 /* XCRemoteSwiftPackageReference "Mirador" */;
-			productName = Mirador;
 		};
 		D78DE7752A00227E00983F24 /* ReceiptParser */ = {
 			isa = XCSwiftPackageProductDependency;

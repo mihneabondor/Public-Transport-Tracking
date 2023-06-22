@@ -11,7 +11,7 @@ struct WhatsNewScreen: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack {
-            Text("Ce este nou în Busify")
+            Text("Ce e nou în Busify")
                 .bold()
                 .font(.title)
                 .padding()
@@ -19,9 +19,8 @@ struct WhatsNewScreen: View {
             Text(" ")
                 .font(.system(size: 70))
             
-            GridCell(systemImage: "arkit", title: "Modul AR", text: "Îndreaptă camera spre o stație pentru a afla mai multe detalii despre aceasta")
-            GridCell(systemImage: "square.and.arrow.up", title: "Dă mai departe", text: "Distribuie vehiculul selectat din ecranul hărții")
-            GridCell(systemImage: "paperplane", title: "Contact", text: "O cale nouă și sigură pentru a-mi da sugestii sau a-mi spune ce nu merge")
+            GridCell(systemImage: "hand.tap", title: "Scurtături", text: "Ține apăsat textul din celula unui vehicul din pagina Favorite pentru acțiuni rapide")
+            GridCell(systemImage: "ladybug", title: "Mai puține erori", text: "Au fost reparate o serie de probleme cunoscute. Acum Busify se va mișca mai bine :)")
             
             Spacer()
                 .preferredColorScheme(.dark)

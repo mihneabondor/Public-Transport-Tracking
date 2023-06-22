@@ -40,6 +40,7 @@ struct BusDetailView: View {
                     withAnimation {
                         closeView.toggle()
                     }
+                    vehicle = nil
                 } label: {
                     Image(systemName: "xmark")
                         .foregroundColor(.gray)
@@ -141,9 +142,10 @@ struct BusDetailView: View {
         }
         .background() {
             Rectangle()
+                .fill(.shadow(.inner(radius: 10, x: -5, y: 5)))
+                .foregroundStyle(Color(.systemGray4))
                 .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/3.6)
                 .cornerRadius(20)
-                .foregroundColor(Color(UIColor.systemGray4))
                 .shadow(color: .black, radius: 3, x: -motion.x * 10, y: -motion.y * 10)
                 .padding()
         }

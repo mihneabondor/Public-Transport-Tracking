@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Mirador
 import CoreLocation
 
 struct ARStationView: View {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OneSignal
 
 struct SettingsView: View {
     var body: some View {

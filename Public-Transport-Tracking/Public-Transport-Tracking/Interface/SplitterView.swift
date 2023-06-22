@@ -130,7 +130,9 @@ struct SplitterView: View {
             }
         })
         .toast(isPresenting: $showNewsAlert, duration: 5.0, tapToDismiss: true, alert: {
-            AlertToast(displayMode: .hud, type: .regular, title: stire)
+            AlertToast(displayMode: .hud, type: .regular, title: "Știre nouă", subTitle: "Apasă pentru mai multe detalii")
+        }, onTap: {
+            selectedTab = 3
         })
         .toast(isPresenting: $showVinereaAlert, duration: 3.0, tapToDismiss: true, alert: {
             AlertToast(displayMode: .hud, type: .systemImage("tag.slash", .white), title: "Vinerea Verde")

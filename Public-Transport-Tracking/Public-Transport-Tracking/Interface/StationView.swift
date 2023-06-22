@@ -41,6 +41,7 @@ struct StationView: View {
                         closeView.toggle()
                     }
                     details.removeAll()
+                    transitModel.createAnnotations()
                 } label: {
                     Image(systemName: "xmark")
                         .foregroundColor(.gray)
